@@ -7,7 +7,7 @@ import Page1 from './quiz_init/page1'
 const Home: NextPage = () => {
   return (
     <div className={styles.container}>
-      <Page1 />
+      <h1>my app</h1>
     </div>
   )
 }
