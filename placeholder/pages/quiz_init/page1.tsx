@@ -25,15 +25,15 @@ export default function Page1() {
             <h1> > I am a ...... developer</h1>
           }
           {level === 'beginner' && 
-            <h1> > I am a {level} developer.</h1>
+            <h1> > I am a <span className='level'> {level}</span> developer.</h1>
           }
 
           {level === `senior` &&
-            <h1> > I am a {level} developer. </h1>
+            <h1> > I am a <span className='level'> {level}</span> developer. </h1>
           } 
 
           {level === 'intermediate' &&
-            <h1> > I am an {level} developer.</h1>
+            <h1> > I am an <span className='level'> {level}</span> developer.</h1>
           }
         </div>
         

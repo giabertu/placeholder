@@ -21,6 +21,10 @@
   font-size: 1.5rem;
 }
 
+.level {
+  font-weight: bold;
+}
+
 .options {
   display: flex;
   flex-direction: column;
