@@ -10,12 +10,12 @@ import styles from '../../styles/Page1.module.css'
 
 export default function Page1() {
   const [level, setLevel] = useState('')
-  
+
 
   function handleLevel(e: React.MouseEvent<HTMLButtonElement>) {
     console.log(e.currentTarget.value)
     setLevel(e.currentTarget.value);
-    
+
   }
 
 
@@ -28,19 +28,19 @@ export default function Page1() {
           {level === '' &&
             <h1> {'>'} I am a ...... developer</h1>
           }
-          {level === 'beginner' && 
+          {level === 'beginner' &&
             <h1> {'>'} I am a <span className={styles.level}> {level}</span> developer.</h1>
           }
 
           {level === `advanced` &&
             <h1> {'>'} I am an <span className={styles.level}> {level}</span> developer. </h1>
-          } 
+          }
 
           {level === 'intermediate' &&
             <h1> {'>'} I am an <span className={styles.level}> {level}</span> developer.</h1>
           }
         </div>
-        
+
         <div className={styles.options}>
           <button className={styles.btn} value='beginner' onClick={handleLevel}> {`>`} beginner </button>
           <button className={styles.btn} value='intermediate' onClick={handleLevel}> {`>`} intermediate</button>
@@ -48,8 +48,8 @@ export default function Page1() {
         </div>
 
         <div className={styles.descriptionContainer}>
-          
-          {level === 'beginner' && 
+
+          {level === 'beginner' &&
             <h2 className={styles.description}>A beginner developer would have bla bla bla qualities.</h2>
           }
           {level === 'intermediate' &&
@@ -65,14 +65,14 @@ export default function Page1() {
         <QuizNavigationButtons back='/' next="quiz_init/page2"/>
 
       </div>
-     
-      
-       
-      
-      
-      
+
+
+
+
+
+
 
     </div>
-  
+
   )
 }
