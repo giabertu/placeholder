@@ -82,7 +82,7 @@ function Page2() {
           </div>}
         </div>
       </div>
-      <QuizNavigationButtons back='/' next="page3" />
+      <QuizNavigationButtons back='quiz_init/page1' next="quiz_init/page3" />
     </div >
   )
 }

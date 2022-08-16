@@ -1,6 +1,8 @@
 .container {
-  padding: 1rem;
-  gap: 30px;
+  padding: 3rem 2rem;
+  gap: 1.2rem;
+  height: 100vh;
+  justify-content: space-between;
 }
 
 .question-container {
@@ -12,7 +14,6 @@
 }
 
 .input-description-container {
-  /* padding: 1rem; */
   gap: 1.5rem;
   height: 18rem;
   justify-content: space-between;
@@ -29,7 +30,6 @@
 .options-container {
   gap: 1rem;
   align-items: flex-start;
-  /* outline: solid 1px; */
   width: 50%;
 }
 
