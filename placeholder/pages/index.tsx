@@ -5,6 +5,7 @@ import styles from '../styles/Home.module.css'
 import Typewriter from 'typewriter-effect';
 import React, { useRef, useEffect, useState } from 'react';
 
+
 const Home: NextPage = () => {
 
   const [extraTerminalLines, setExtraTerminalLines] = useState<string[]>([]);
