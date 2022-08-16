@@ -93,13 +93,18 @@ const Home: NextPage = () => {
               .pauseFor(150)
               .typeString("<br /> 03 find a programming (mentor || mentee) in minutes")
               .pauseFor(150)
-              .typeString("<br /> 04 enter (login || quiz_init) to begin")
+              .typeString("<br /> 04")
+              .pauseFor(150)
+              .typeString("<br /> 05 if (you've been here before) enter 'login'")
+              .pauseFor(150)
+              .typeString("<br /> 06 else enter 'quiz_init'")
+
               .start();
           }}
         />
 
         {extraTerminalLines.map((extraTerminalLine, index) => {
-          const lineNumber = index + 5;
+          const lineNumber = index + 7;
           const printedLineNumber = (lineNumber).toString().length < 2 ? "0" + (lineNumber) : (lineNumber).toString();
           return (
             <Typewriter

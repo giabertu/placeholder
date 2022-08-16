@@ -8,15 +8,12 @@ import { ChakraProvider, NumberInputStepper} from '@chakra-ui/react'
 import { setFlagsFromString } from 'v8'
 
 
-
-
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <ChakraProvider theme={theme}>
       <Component {...pageProps} />
     </ChakraProvider>
   )
-
 }
 
 export default MyApp

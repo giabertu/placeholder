@@ -62,7 +62,7 @@ export default function Page1() {
 
 
         </div>
-        <QuizNavigationButtons back='/' next="quiz_init/page2"/>
+        <QuizNavigationButtons back='/' next="quiz_init/beginner_mentor_talk"/>
 
       </div>
 
