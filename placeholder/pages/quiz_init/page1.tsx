@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import ProgressBar from '../../components/ProgressBar';
 import QuizCompanyName from '../../components/QuizCompanyName';
+import QuizNavigationButtons from '../../components/QuizNavigationButtons';
 import styles from '../../styles/page1.module.css'
 
 
@@ -59,6 +60,7 @@ export default function Page1() {
 
 
         </div>
+        <QuizNavigationButtons back='/' next="page2"/>
 
       </div>
      
