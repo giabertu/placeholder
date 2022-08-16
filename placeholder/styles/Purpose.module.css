@@ -35,7 +35,25 @@
   width: 10rem;
   height: 1.8rem;
   text-align: left;
+  border-style: none;
+  
 }
+
+.btn:focus {
+  border: solid 0.1rem black;
+  padding-left: 0.5rem;
+
+}
+
+.btn:hover {
+  
+  padding-left: 0.5rem;
+
+}
+
+
+
+
 
 .underline {
   animation: blink 1s step-end infinite;

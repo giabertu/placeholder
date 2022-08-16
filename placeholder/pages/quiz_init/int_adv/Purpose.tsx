@@ -29,6 +29,8 @@ export default function Purpose() {
           }
           {purpose === 'both' && 
             <h1> {'>'} I am here for {purpose}.</h1>}
+          
+         
 
         </div>
 
