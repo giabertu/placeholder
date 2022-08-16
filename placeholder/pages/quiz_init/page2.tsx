@@ -2,10 +2,7 @@ import ProgressBar from "../../components/ProgressBar";
 import QuizCompanyName from "../../components/QuizCompanyName";
 import { useState } from 'react'
 import QuizNavigationButtons from "../../components/QuizNavigationButtons";
-
-
-const initialTitle = 'I\'d like to speak to my mentor about ___________'
-const choicesArray = ['learning how to program', 'switching careers', 'finding my dream developer role', 'writing better code']
+import { choicesArray } from '../../utils/constants'
 
 function Page2() {
 
