@@ -2,10 +2,8 @@ import { useState } from "react";
 import ProgressBar from "../../../components/ProgressBar";
 import QuizCompanyName from "../../../components/QuizCompanyName";
 import QuizNavigationButtons from "../../../components/QuizNavigationButtons";
+import { roles } from '../../../utils/constants'
 
-
-
-const roles = ['frontend', 'backend', 'full stack', 'mobile', 'game', 'data scientist', 'devops', 'web3']
 
 function Roles() {
 
