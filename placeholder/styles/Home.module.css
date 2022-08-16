@@ -1,6 +1,26 @@
 .container {
   padding: 1.3vw;
-  font-size: 1.1rem;
+  font-size: 1rem;
+}
+
+.CLIFeed {
+  max-height: 40vh;
+  overflow-y: auto;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.CLIFeed::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.CLIFeed {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.companyName {
+  color: blue;
 }
 
 /* .container:hover {
@@ -15,7 +35,7 @@
 }
 
 .input {
-  padding-top: 0.5em;
+  padding-top: 0.7em;
   animation: fadeInAnimation linear 4s;
   /* animation-iteration-count: 1; */
   /* animation-fill-mode: forwards; */
@@ -35,4 +55,9 @@
   100% {
     opacity: 1;
   }
+}
+
+.testButton {
+  background-color: red;
+  width: 200px
 }
