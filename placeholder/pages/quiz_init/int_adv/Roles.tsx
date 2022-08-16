@@ -18,9 +18,9 @@ function Roles() {
 
 
   return (
-    <div className="container flex-column outline">
+    <div className="container flex-column">
       <QuizCompanyName />
-      <div className="question-container flex-column outline">
+      <div className="question-container flex-column">
         <ProgressBar value={25} />
         <div className="title-container flex-row">
           <h1 className='h1'>I am a <span className='h1-span'>{choice}</span> developer</h1>
