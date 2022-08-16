@@ -1,7 +1,7 @@
-import ProgressBar from "../components/ProgressBar";
-import QuizCompanyName from "../components/QuizCompanyName";
+import ProgressBar from "../../components/ProgressBar";
+import QuizCompanyName from "../../components/QuizCompanyName";
 import { useState } from 'react'
-import QuizNavigationButtons from "../components/QuizNavigationButtons";
+import QuizNavigationButtons from "../../components/QuizNavigationButtons";
 
 
 const initialTitle = 'I\'d like to speak to my mentor about ___________'
