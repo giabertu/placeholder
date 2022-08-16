@@ -3,6 +3,7 @@ import '../styles/Page2.css'
 import '../styles/utilityClasses.css'
 import '../styles/QuizNavigationButtons.css'
 import type { AppProps } from 'next/app'
+
 import { ChakraProvider, extendTheme, NumberInputStepper } from '@chakra-ui/react'
 
 const theme = extendTheme({
