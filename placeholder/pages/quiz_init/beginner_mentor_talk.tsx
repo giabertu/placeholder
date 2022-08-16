@@ -11,7 +11,7 @@ function BeginnerMentorTalk() {
   return (
     <div className="container flex-column outline">
       <Navbar />
-      <MentorTalk choices={beginnerChoices} descriptions={beginnerDescriptions} />
+      <MentorTalk choices={beginnerChoices} descriptions={beginnerDescriptions} progressValue={25} />
       <QuizNavigationButtons back='quiz_init/page1' next="quiz_init/page3" />
     </div >
   )

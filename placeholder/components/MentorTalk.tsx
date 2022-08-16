@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import ProgressBar from './ProgressBar';
 
-function MentorTalk({ choices, descriptions }: { choices: string[], descriptions: string[] }) {
+function MentorTalk({ choices, descriptions, progressValue }: { choices: string[], descriptions: string[], progressValue: number }) {
 
   const [choice, setChoice] = useState<string>('___________')
   const [currentSelection, setCurrentSelection] = useState<number | null>(null)
@@ -14,7 +14,7 @@ function MentorTalk({ choices, descriptions }: { choices: string[], descriptions
 
   return (
     <div className="question-container flex-column outline">
-      <ProgressBar value={25} />
+      <ProgressBar value={progressValue} />
       <div className="title-container flex-row">
         <h1 className='h1'>I'd like to speak to my mentor about<span className='h1-span'>{choice}</span></h1>
       </div>
