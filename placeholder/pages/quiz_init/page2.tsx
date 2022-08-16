@@ -40,7 +40,7 @@ function Page2() {
                 <p className="info-tag">Programming can be intimidating, and it can be
                   difficult to know where to start. I'd like a mentor
                   that can show me the ropes and give me some direction,
-                  or even teach me about a specific technology.</p>
+                  or teach me about a specific technology.</p>
               </div>
             }
             {currentSelection == 1 &&
@@ -52,7 +52,7 @@ function Page2() {
             {currentSelection == 2 &&
               <p className="info-tag">A career in developing is highly rewarding and challenging,
                 but it may be a daunting prospect for some. I'd like a
-                mentor that can be authentic in talking about the good and the bad of different roles.
+                mentor that can takl authenticly about the good and the bad of different roles.
               </p>}
             {currentSelection == 3 &&
               <p className="info-tag">I have been coding for some time and I am ready to take it up a notch.

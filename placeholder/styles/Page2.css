@@ -1,7 +1,7 @@
 .container {
   padding: 3rem 2rem;
   gap: 1.2rem;
-  height: 100vh;
+  min-height: 100vh;
   justify-content: space-between;
 }
 
@@ -9,13 +9,15 @@
   align-self: center;
   margin-top: 20px;
   max-width: 60rem;
+  min-width: 60rem;
   gap: 3rem;
   padding: 1.5rem;
+  height: fit-content;
 }
 
 .input-description-container {
   gap: 1.5rem;
-  height: 18rem;
+  height: fit-content;
   justify-content: space-between;
 }
 
@@ -31,7 +33,6 @@
   gap: 1rem;
   align-items: flex-start;
   width: 50%;
-  /* overflow: auto; */
 }
 
 .button-style {
