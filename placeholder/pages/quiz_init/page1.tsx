@@ -26,7 +26,7 @@ export default function Page1() {
         <ProgressBar value={10} />
         <div className={styles.title}>
           {level === '' &&
-            <h1> {'>'} I am a ...... developer</h1>
+            <h1> {'>'} I am a <span className={styles.underline}> ___</span> developer.</h1>
           }
           {level === 'beginner' &&
             <h1> {'>'} I am a <span className={styles.level}> {level}</span> developer.</h1>
