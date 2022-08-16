@@ -8,6 +8,7 @@ import { roles } from '../../../utils/constants'
 function Roles() {
 
   const [choice, setChoice] = useState<string>('___________')
+  const [currentSelection, setCurrentSelection] = useState<null | number>(null)
 
   function handleButtonClick(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
     const eventButton = event.target as HTMLButtonElement;
@@ -15,10 +16,12 @@ function Roles() {
     setChoice(endOfTitle)
   }
 
+  // function handleKeydown(event) {
 
+  // }
 
   return (
-    <div className="container flex-column">
+    <div className="container flex-column" /* onKeyDown={(event: KeyboardEvent<HTMLImageElement>) => handleKeydown(event)} */>
       <QuizCompanyName />
       <div className="question-container flex-column">
         <ProgressBar value={25} />
