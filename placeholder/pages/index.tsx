@@ -1,11 +1,10 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
-
 import styles from '../styles/Home.module.css'
-
 import Typewriter from 'typewriter-effect';
 import React, { useRef, useEffect, useState } from 'react';
+import { useRouter } from 'next/router'
 
 const Home: NextPage = () => {
 
@@ -35,6 +34,8 @@ const Home: NextPage = () => {
     scrollToBottom()
   }, [extraTerminalLines]);
 
+  const router = useRouter();
+
   const handleCLIInput = function (event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
     if (inputElementRef.current) {
@@ -43,7 +44,7 @@ const Home: NextPage = () => {
         setExtraTerminalLines([...extraTerminalLines, "invalid input"]);
       }
       if (inputElementRef.current.value === "quiz_init" && !enteringUsername && !enteringPassword) {
-        // take user to questionnare
+        router.push('quiz_init/page1');
       }
       //
       else if (inputElementRef.current.value === "login") {

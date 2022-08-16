@@ -5,7 +5,6 @@ import QuizNavigationButtons from "../../components/QuizNavigationButtons";
 import Navbar from "../../components/Navbar";
 import { choicesArray } from '../../utils/constants'
 
-
 function Page2() {
 
   const [choice, setChoice] = useState<string>('___________')
