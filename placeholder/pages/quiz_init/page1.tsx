@@ -4,7 +4,7 @@ import Navbar from '../../components/Navbar';
 import ProgressBar from '../../components/ProgressBar';
 import QuizCompanyName from '../../components/QuizCompanyName';
 import QuizNavigationButtons from '../../components/QuizNavigationButtons';
-import styles from '../../styles/page1.module.css'
+import styles from '../../styles/Page1.module.css'
 
 
 
@@ -50,14 +50,14 @@ export default function Page1() {
         <div className={styles.descriptionContainer}>
           
           {level === 'beginner' && 
-            <h1 className={styles.description}>A beginner developer would have bla bla bla qualities.</h1>
+            <h2 className={styles.description}>A beginner developer would have bla bla bla qualities.</h2>
           }
           {level === 'intermediate' &&
-            <h1 className={styles.description}>An intermediate developer would have bla bla bla qualities.</h1>
+            <h2 className={styles.description}>An intermediate developer would have bla bla bla qualities.</h2>
           }
 
           {level === 'advanced' &&
-            <h1 className={styles.description}>An advanced developer would have bla bla bla qualities.</h1>
+            <h2 className={styles.description}>An advanced developer would have bla bla bla qualities.</h2>
           }
 
 

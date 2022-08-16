@@ -115,7 +115,7 @@
 }
 
 .description {
-  border: solid 2px rgb(229, 229, 229);
+  border: solid 0.1rem rgb(229, 229, 229);
   padding: 0.5rem 0.5rem;
   
 }
