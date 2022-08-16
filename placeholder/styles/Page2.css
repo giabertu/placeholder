@@ -22,7 +22,7 @@
 }
 
 .h1 {
-  font-size: 2rem;
+  /* font-size: 2rem; */
 }
 
 .title-container {
@@ -36,8 +36,8 @@
 }
 
 .button-style {
-  font-size: 1.3rem;
-  border: solid 2px rgb(229, 229, 229);
+  font-size: 1.2rem;
+  border: solid 2px rgba(255, 255, 255, 0);
   padding: 0.25rem 0.75rem;
   width: 100%;
   text-align: left;
@@ -57,5 +57,5 @@
 }
 
 .info-tag {
-  font-size: 1.2rem;
+  font-size: 1rem;
 }
