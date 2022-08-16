@@ -1,0 +1,23 @@
+.quiz-nav-buttons-container {
+  justify-content: center;
+  gap: 1rem;
+}
+
+.quiz-nav-button-container {
+  width: 4rem;
+  justify-content: center;
+  /* width: auto; */
+}
+
+.quiz-nav-buttons {
+  width: fit-content;
+}
+
+.quiz-back-button:hover {
+  margin-left: 0rem;
+  margin-right: 0.5rem;
+}
+
+.outline {
+  outline: solid 1px;
+}
