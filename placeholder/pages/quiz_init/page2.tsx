@@ -2,7 +2,14 @@ import ProgressBar from "../../components/ProgressBar";
 import QuizCompanyName from "../../components/QuizCompanyName";
 import { useState } from 'react'
 import QuizNavigationButtons from "../../components/QuizNavigationButtons";
+import Navbar from "../../components/Navbar";
+
+
+const initialTitle = 'I\'d like to speak to my mentor about ___________'
+const choicesArray = ['learning how to program', 'switching careers', 'finding my dream developer role', 'writing better code']
+
 import { choicesArray } from '../../utils/constants'
+
 
 function Page2() {
 
@@ -17,11 +24,11 @@ function Page2() {
 
   return (
     <div className="container flex-column outline">
-      <QuizCompanyName />
+      <Navbar />
       <div className="question-container flex-column outline">
         <ProgressBar value={25} />
         <div className="title-container flex-row">
-          <h1 className='h1'>I'd like to speak to my mentor about <span className='h1-span'>{choice}</span></h1>
+          <h1 className='h1'>I'd like to speak to my mentor about<span className='h1-span'>{choice}</span></h1>
         </div>
         <div className="input-description-container flex-row">
           <div className="options-container flex-column">

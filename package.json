@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "@chakra-ui/icons": "^2.0.8",
+    "@dub-stack/chakra-radix-colors": "^1.0.3",
+    "@radix-ui/colors": "^0.1.8"
+  }
+}
