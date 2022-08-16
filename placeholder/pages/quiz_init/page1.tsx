@@ -1,4 +1,6 @@
 import React, {useState} from 'react';
+import ColorModeToggle from '../../components/ColorModeToggle';
+import Navbar from '../../components/Navbar';
 import ProgressBar from '../../components/ProgressBar';
 import QuizCompanyName from '../../components/QuizCompanyName';
 import QuizNavigationButtons from '../../components/QuizNavigationButtons';
@@ -19,23 +21,23 @@ export default function Page1() {
 
   return (
     <div className={styles.container}>
-      <QuizCompanyName />
+      <Navbar/>
       <div className={styles.questionContainer}>
         <ProgressBar value={10} />
         <div className={styles.title}>
           {level === '' &&
-            <h1> > I am a ...... developer</h1>
+            <h1> {'>'} I am a ...... developer</h1>
           }
           {level === 'beginner' && 
-            <h1> > I am a <span className={styles.level}> {level}</span> developer.</h1>
+            <h1> {'>'} I am a <span className={styles.level}> {level}</span> developer.</h1>
           }
 
           {level === `advanced` &&
-            <h1> > I am an <span className={styles.level}> {level}</span> developer. </h1>
+            <h1> {'>'} I am an <span className={styles.level}> {level}</span> developer. </h1>
           } 
 
           {level === 'intermediate' &&
-            <h1> > I am an <span className={styles.level}> {level}</span> developer.</h1>
+            <h1> {'>'} I am an <span className={styles.level}> {level}</span> developer.</h1>
           }
         </div>
         
@@ -60,7 +62,7 @@ export default function Page1() {
 
 
         </div>
-        <QuizNavigationButtons back='/' next="page2"/>
+        <QuizNavigationButtons back='/' next="quiz_init/page2"/>
 
       </div>
      

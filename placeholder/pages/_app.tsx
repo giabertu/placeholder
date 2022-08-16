@@ -3,21 +3,11 @@ import '../styles/Page2.css'
 import '../styles/utilityClasses.css'
 import '../styles/QuizNavigationButtons.css'
 import type { AppProps } from 'next/app'
-import { ChakraProvider, extendTheme, NumberInputStepper } from '@chakra-ui/react'
+import theme from '../theme'
+import { ChakraProvider, NumberInputStepper} from '@chakra-ui/react'
+import { setFlagsFromString } from 'v8'
 
-const theme = extendTheme({
-  styles: {
-    global: {
-      body: {
-        fontFamily: 'monospace',
-      },
-      h1: {
-        fontWeight: 900,
-        fontSize: '1.2rem'
-      },
-    }
-  },
-})
+
 
 
 function MyApp({ Component, pageProps }: AppProps) {
