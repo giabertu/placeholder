@@ -8,6 +8,9 @@ import Navbar from "../../components/Navbar";
 const initialTitle = 'I\'d like to speak to my mentor about ___________'
 const choicesArray = ['learning how to program', 'switching careers', 'finding my dream developer role', 'writing better code']
 
+import { choicesArray } from '../../utils/constants'
+
+
 function Page2() {
 
   const [choice, setChoice] = useState<string>('___________')
@@ -29,30 +32,14 @@ function Page2() {
         </div>
         <div className="input-description-container flex-row">
           <div className="options-container flex-column">
-            <button className="button-style"
-              onMouseEnter={() => setCurrentSelection(0)}
-              onMouseLeave={() => setCurrentSelection(null)}
-              onClick={(event) => {
-                handleButtonClick(event);
-              }}>&gt; learning how to program</button>
-            <button className="button-style"
-              onMouseEnter={() => setCurrentSelection(1)}
-              onMouseLeave={() => setCurrentSelection(null)}
-              onClick={(event) => {
-                handleButtonClick(event)
-              }}>&gt; switching careers</button>
-            <button className="button-style"
-              onMouseEnter={() => setCurrentSelection(2)}
-              onMouseLeave={() => setCurrentSelection(null)}
-              onClick={(event) => {
-                handleButtonClick(event)
-              }}>&gt; finding my dream developer role</button>
-            <button className="button-style"
-              onMouseEnter={() => setCurrentSelection(3)}
-              onMouseLeave={() => setCurrentSelection(null)}
-              onClick={(event) => {
-                handleButtonClick(event)
-              }}>&gt; writing better code</button>
+            {choicesArray.map((choice: string, index: number) =>
+              <button className="button-style"
+                onMouseEnter={() => setCurrentSelection(index)}
+                onMouseLeave={() => setCurrentSelection(null)}
+                onClick={(event) => {
+                  handleButtonClick(event);
+                }}>&gt; {choice}</button>
+            )}
           </div>
           {currentSelection == null || <div className="description-container">
             {currentSelection == 0 &&
@@ -60,7 +47,7 @@ function Page2() {
                 <p className="info-tag">Programming can be intimidating, and it can be
                   difficult to know where to start. I'd like a mentor
                   that can show me the ropes and give me some direction,
-                  or even teach me about a specific technology.</p>
+                  or teach me about a specific technology.</p>
               </div>
             }
             {currentSelection == 1 &&
@@ -72,7 +59,7 @@ function Page2() {
             {currentSelection == 2 &&
               <p className="info-tag">A career in developing is highly rewarding and challenging,
                 but it may be a daunting prospect for some. I'd like a
-                mentor that can be authentic in talking about the good and the bad of different roles.
+                mentor that can takl authenticly about the good and the bad of different roles.
               </p>}
             {currentSelection == 3 &&
               <p className="info-tag">I have been coding for some time and I am ready to take it up a notch.
@@ -83,7 +70,7 @@ function Page2() {
           </div>}
         </div>
       </div>
-      <QuizNavigationButtons back='quiz_init/page1' next="page3" />
+      <QuizNavigationButtons back='quiz_init/page1' next="quiz_init/page3" />
     </div >
   )
 }

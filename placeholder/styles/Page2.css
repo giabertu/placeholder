@@ -1,20 +1,23 @@
 .container {
-  padding: 1rem;
-  gap: 30px;
+  padding: 3rem 2rem;
+  gap: 1.2rem;
+  min-height: 100vh;
+  justify-content: space-between;
 }
 
 .question-container {
   align-self: center;
   margin-top: 20px;
   max-width: 60rem;
+  min-width: 60rem;
   gap: 3rem;
   padding: 1.5rem;
+  height: fit-content;
 }
 
 .input-description-container {
-  /* padding: 1rem; */
   gap: 1.5rem;
-  height: 18rem;
+  height: fit-content;
   justify-content: space-between;
 }
 
@@ -29,7 +32,6 @@
 .options-container {
   gap: 1rem;
   align-items: flex-start;
-  /* outline: solid 1px; */
   width: 50%;
 }
 
