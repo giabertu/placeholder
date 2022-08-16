@@ -28,30 +28,14 @@ function Page2() {
         </div>
         <div className="input-description-container flex-row">
           <div className="options-container flex-column">
-            <button className="button-style"
-              onMouseEnter={() => setCurrentSelection(0)}
-              onMouseLeave={() => setCurrentSelection(null)}
-              onClick={(event) => {
-                handleButtonClick(event);
-              }}>&gt; learning how to program</button>
-            <button className="button-style"
-              onMouseEnter={() => setCurrentSelection(1)}
-              onMouseLeave={() => setCurrentSelection(null)}
-              onClick={(event) => {
-                handleButtonClick(event)
-              }}>&gt; switching careers</button>
-            <button className="button-style"
-              onMouseEnter={() => setCurrentSelection(2)}
-              onMouseLeave={() => setCurrentSelection(null)}
-              onClick={(event) => {
-                handleButtonClick(event)
-              }}>&gt; finding my dream developer role</button>
-            <button className="button-style"
-              onMouseEnter={() => setCurrentSelection(3)}
-              onMouseLeave={() => setCurrentSelection(null)}
-              onClick={(event) => {
-                handleButtonClick(event)
-              }}>&gt; writing better code</button>
+            {choicesArray.map((choice: string, index: number) =>
+              <button className="button-style"
+                onMouseEnter={() => setCurrentSelection(index)}
+                onMouseLeave={() => setCurrentSelection(null)}
+                onClick={(event) => {
+                  handleButtonClick(event);
+                }}>&gt; {choice}</button>
+            )}
           </div>
           {currentSelection == null || <div className="description-container">
             {currentSelection == 0 &&

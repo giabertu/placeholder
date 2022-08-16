@@ -31,6 +31,7 @@
   align-items: flex-start;
   /* outline: solid 1px; */
   width: 50%;
+  /* overflow: auto; */
 }
 
 .button-style {
