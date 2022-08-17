@@ -40,7 +40,10 @@ function beginner_which_technologies() {
 
         <h2 className={styles.instruction}>Search for the technologies you wish to learn, or choose from the list of popular tech below</h2>
 
-        <input type="text" placeholder='> Type technology here...'></input>
+        <form className={styles.form}>
+          <span className={styles.terminalArrow}>&gt;</span>
+          <input className={styles.technologiesSearchInput} type="text" placeholder='Type technology here...'></input>
+        </form>
 
         <div className={styles.logoContainer}>
           <TechLogo imgSrc={logoImages.react.src} value="react" onClick={handleTechnology}/>
@@ -71,7 +74,6 @@ function beginner_which_technologies() {
 
         <div className={styles.descriptionContainer}>
 
-          {/* <QuestionnaireButton text="hello hello testing hello" value="hello" onClick={()=>console.log("hello")}/> */}
 
 
         </div>

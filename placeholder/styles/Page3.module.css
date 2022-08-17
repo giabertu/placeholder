@@ -19,12 +19,6 @@
   /* font-weight: normal; */
 }
 
-.instruction {
-  text-align: center;
-  font-size: 1rem;
-  width: 60%;
-}
-
 .underline {
   animation: blink 1.6s step-end infinite;
 
@@ -36,8 +30,32 @@
   100%{opacity: 1.0;}
   }
 
-.level {
-  font-weight: bold;
+.instruction {
+  text-align: center;
+  font-size: 1rem;
+  width: 60%;
+}
+
+.form {
+  position: relative;
+  /* right: 125px; */
+}
+
+.terminalArrow {
+  margin-right: 0.4em;
+}
+
+.technologiesSearchInput {
+  display: inline;
+  width: 16em;
+}
+
+.technologiesSearchInput:focus {
+  outline: none;
+}
+
+.technologiesSearchInput::placeholder {
+  font-size: 1rem;
 }
 
 .logoContainer {
@@ -50,89 +68,4 @@
   gap: 0.5rem;
   width: calc((6rem * 5) + 2rem);
   align-self: center;
-}
-
-.btn {
-  width: 10rem;
-  height: 1.8rem;
-  text-align: left;
-}
-
-.btn:hover{
-  animation: glitch 1s linear infinite;
-}
-
-@keyframes glitch{
-  2%,64%{
-    transform: translate(2px,0) skew(0deg);
-  }
-  4%,60%{
-    transform: translate(-2px,0) skew(0deg);
-  }
-  62%{
-    transform: translate(0,0) skew(5deg);
-  }
-}
-
-.btn:before,
-.btn:after{
-  content: attr(title);
-  position: absolute;
-  left: 0;
-}
-
-.btn:before{
-  animation: glitchTop 1s linear infinite;
-  clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);
-  -webkit-clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);
-}
-
-@keyframes glitchTop{
-  2%,64%{
-    transform: translate(2px,-2px);
-  }
-  4%,60%{
-    transform: translate(-2px,2px);
-  }
-  62%{
-    transform: translate(13px,-1px) skew(-13deg);
-  }
-}
-
-.btn:after{
-  animation: glitchBottom 1.5s linear infinite;
-  clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
-  -webkit-clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
-}
-
-@keyframes glitchBottom{
-  2%,64%{
-    transform: translate(-2px,0);
-  }
-  4%,60%{
-    transform: translate(-2px,0);
-  }
-  62%{
-    transform: translate(-22px,5px) skew(21deg);
-  }
-}
-
-.descriptionContainer {
-  display: flex;
-  width: 50%;
-  position: relative;
-
-  left: 25rem;
-  bottom: 5.5rem;
-  text-align: justify;
-
-
-  font-size: 1rem;
-
-}
-
-.description {
-  border: solid 0.1rem rgb(229, 229, 229);
-  padding: 0.5rem 0.5rem;
-
 }
