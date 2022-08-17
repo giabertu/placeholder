@@ -11,13 +11,9 @@ import styles from '../../styles/Page1.module.css'
 export default function Page1() {
   const [level, setLevel] = useState('')
 
-
-  function handleLevel(e: React.MouseEvent<HTMLButtonElement>) {
-    console.log(e.currentTarget.value)
-    setLevel(e.currentTarget.value);
-
+  function handleLevel(event: React.MouseEvent<HTMLButtonElement>) {
+    setLevel(event.currentTarget.value);
   }
-
 
   return (
     <div className={styles.container}>
@@ -62,14 +58,9 @@ export default function Page1() {
 
 
         </div>
-        <QuizNavigationButtons back='/' next="quiz_init/page2"/>
+        <QuizNavigationButtons back='/' next="quiz_init/beginner_mentor_talk"/>
 
       </div>
-
-
-
-
-
 
 
     </div>

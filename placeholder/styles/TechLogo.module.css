@@ -1,0 +1,25 @@
+.container {
+  display: inline;
+  margin: 0 0.5rem;
+  width: 5rem;
+  height: 5rem;
+}
+
+.button {
+  /* width: 5rem;
+  height: 5rem; */
+  outline: 1px transparent solid;
+  transition: outline-color 0.5s;
+}
+
+.selected {
+  /* width: 5rem;
+  height: 5rem; */
+  outline: 1px black solid;
+  transition: outline-color 0.5s;
+}
+
+.logo {
+  width: 5rem;
+  height: 5rem;
+}
