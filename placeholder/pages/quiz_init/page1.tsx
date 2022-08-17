@@ -1,19 +1,25 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import ColorModeToggle from '../../components/ColorModeToggle';
 import Navbar from '../../components/Navbar';
 import ProgressBar from '../../components/ProgressBar';
 import QuizCompanyName from '../../components/QuizCompanyName';
 import QuizNavigationButtons from '../../components/QuizNavigationButtons';
-import styles from '../../styles/Page1.module.css'
+
+import styles from '../../styles/page1.module.css'
 
 
 
 export default function Page1() {
   const [level, setLevel] = useState('')
+  
 
   function handleLevel(event: React.MouseEvent<HTMLButtonElement>) {
+    event.preventDefault();
     setLevel(event.currentTarget.value);
+    
   }
+
+
 
   return (
     <div className={styles.container}>
@@ -41,7 +47,12 @@ export default function Page1() {
           <button className={styles.btn} value='beginner' onClick={handleLevel}> {`>`} <span className={styles.move}>beginner</span> </button>
           <button className={styles.btn} value='intermediate' onClick={handleLevel}> {`>`} <span className={styles.move}>intermediate</span></button>
           <button className={styles.btn} value='advanced' onClick={handleLevel}> {`>`} <span className={styles.move}>advanced</span></button>
+         
+          {/* <input className={styles.btn} type='radio' value='beginner' onClick={handleLevel} /> {`>`} <span className={styles.move}>beginner</span> */}
+          
         </div>
+
+
 
         <div className={styles.descriptionContainer}>
 

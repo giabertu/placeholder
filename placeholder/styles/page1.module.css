@@ -41,6 +41,9 @@
   text-align: left;
   outline: 1px transparent solid;
   transition: outline-color 0.5s;
+  padding-left: 0.1rem;
+  
+
  
   
 }
@@ -49,8 +52,11 @@
 .btn:focus {
   outline: 1px black solid;
   transition: outline-color 0.5s;
-  padding-left: 0.1rem;
   
+}
+
+.move {
+  transition: all 0.3s ease;
 }
 
 .move:hover {

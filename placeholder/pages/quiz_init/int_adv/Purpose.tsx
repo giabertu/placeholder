@@ -6,9 +6,10 @@ import styles from '../../../styles/Purpose.module.css'
 export default function Purpose() {
   const [purpose, setPurpose] = useState('')
 
-  function handlePurpose(e: React.MouseEvent<HTMLButtonElement>) {
-    console.log(e.currentTarget.value)
-    setPurpose(e.currentTarget.value);
+  function handlePurpose(event: React.MouseEvent<HTMLButtonElement>) {
+    console.log(event.currentTarget.value)
+    event.preventDefault();
+    setPurpose(event.currentTarget.value);
 
   }
 
@@ -35,7 +36,7 @@ export default function Purpose() {
         </div>
 
         <div className={styles.options}>
-        <button className={styles.btn} value='be mentored' onClick={handlePurpose}> {'>'} <span className={styles.move}>mentor</span></button>
+        <button className={styles.btn} value='mentor' onClick={handlePurpose}> {'>'} <span className={styles.move}>mentor</span></button>
           <button className={styles.btn} value='be mentored' onClick={handlePurpose}> {'>'} <span className={styles.move}>be mentored</span></button>
           <button className={styles.btn} value='both' onClick={handlePurpose}> {'>'} <span className={styles.move}>both</span></button>
         </div>
