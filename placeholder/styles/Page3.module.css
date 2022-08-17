@@ -1,9 +1,8 @@
 .container {
   display: flex;
   flex-direction: column;
-  padding: 2rem;
+  padding: 1.5rem;
   gap: 20px;
-
 }
 
 .questionContainer {
@@ -14,22 +13,39 @@
   gap: 1rem;
   width: 60rem;
   padding: 1.5rem;
-
 }
 
 .title {
-  font-size: 1.5rem;
+  text-align: center;
+  font-size: 1.2rem;
+  /* font-weight: normal; */
 }
+
+.underline {
+  animation: blink 1.6s step-end infinite;
+
+}
+
+@keyframes blink{
+  0%{opacity: 1.0;}
+  50%{opacity: 0.0;}
+  100%{opacity: 1.0;}
+  }
 
 .level {
   font-weight: bold;
 }
 
-.options {
-  /* display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  font-size: 1rem; */
+.logoContainer {
+  padding-top: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1rem;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  width: calc((6rem * 5) + 2rem);
+  align-self: center;
 }
 
 .btn {

@@ -2,8 +2,10 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  padding-left: 1rem;
-  padding-right: 1rem;
+  padding: 0 1rem 0.3rem 1rem;
+  border-bottom: 1px black solid;
+
+  /* background-color: red; */
 }
 
 .name {
