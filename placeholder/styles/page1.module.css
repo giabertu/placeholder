@@ -35,7 +35,7 @@
 
 }
 
-.btn {
+/* .btn {
   width: 10rem;
   height: 1.8rem;
   text-align: left;
@@ -46,10 +46,10 @@
 
  
   
-}
+} */
 
 
-.btn:focus {
+/* .btn:focus {
   outline: 1px black solid;
   transition: outline-color 0.5s;
   
@@ -61,7 +61,7 @@
 
 .move:hover {
   margin-left: 0.2rem;
-}
+} */
 
 
 

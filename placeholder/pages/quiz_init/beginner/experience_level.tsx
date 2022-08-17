@@ -1,12 +1,12 @@
 import React, {useEffect, useState} from 'react';
-import ColorModeToggle from '../../components/ColorModeToggle';
-import Navbar from '../../components/Navbar';
-import ProgressBar from '../../components/ProgressBar';
-import QuizCompanyName from '../../components/QuizCompanyName';
-import QuizNavigationButtons from '../../components/QuizNavigationButtons';
-import QuestionnaireButton from '../../components/QuestionnaireButton';
+import ColorModeToggle from '../../../components/ColorModeToggle';
+import Navbar from '../../../components/Navbar'
+import ProgressBar from '../../../components/ProgressBar';
+import QuizCompanyName from '../../../components/QuizCompanyName';
+import QuizNavigationButtons from '../../../components/QuizNavigationButtons';
+import QuestionnaireButton from '../../../components/QuestionnaireButton';
 
-import styles from '../../styles/page1.module.css'
+import styles from '../../../styles/page1.module.css'
 
 
 

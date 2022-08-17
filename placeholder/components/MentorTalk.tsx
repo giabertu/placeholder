@@ -1,10 +1,13 @@
-import { useState } from 'react'
+import { useState } from 'react';
 import ProgressBar from './ProgressBar';
+import {useColorMode} from '@chakra-ui/react'
 
 function MentorTalk({ choices, descriptions, progressValue }: { choices: string[], descriptions: string[], progressValue: number }) {
 
   const [choice, setChoice] = useState<string[]>([''])
   const [currentSelection, setCurrentSelection] = useState<number | null>(null)
+  const  {colorMode} = useColorMode();
+  const isDark = colorMode === 'dark';
 
   function handleButtonClick(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
     const eventButton = event.target as HTMLButtonElement;
@@ -31,13 +34,13 @@ function MentorTalk({ choices, descriptions, progressValue }: { choices: string[
       <div className="input-description-container flex-row">
         <div className="options-container flex-column">
           {choices.map((choice: string, index: number) =>
-            <button className="button-style"
+            <button className={isDark ? 'button-style-dark-mode' : 'button-style'}
               onMouseEnter={() => setCurrentSelection(index)}
               onMouseLeave={() => setCurrentSelection(null)}
               onClick={(event) => handleButtonClick(event)}>&gt; {choice}</button>)}
         </div>
         {currentSelection == null ||
-          <div className="description-container">
+          <div className={isDark ? "description-container-dark-mode" : "description-container"}>
             <p className="info-tag">{descriptions[currentSelection]}</p>
           </div>}
       </div>

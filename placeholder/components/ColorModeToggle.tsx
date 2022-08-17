@@ -10,6 +10,7 @@ import {MoonIcon, SunIcon} from '@chakra-ui/icons';
 export default function ColorModeToggle() {
 
   const {colorMode, toggleColorMode } = useColorMode();
+  const isDark = colorMode === 'dark';
   
   return (
     
