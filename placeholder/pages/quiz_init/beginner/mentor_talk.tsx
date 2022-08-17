@@ -1,7 +1,7 @@
-import QuizNavigationButtons from "../../components/QuizNavigationButtons";
-import Navbar from "../../components/Navbar";
-import { beginnerChoices, beginnerDescriptions } from '../../utils/constants'
-import MentorTalk from "../../components/MentorTalk";
+import QuizNavigationButtons from "../../../components/QuizNavigationButtons";
+import Navbar from "../../../components/Navbar";
+import { beginnerChoices, beginnerDescriptions } from '../../../utils/constants'
+import MentorTalk from "../../../components/MentorTalk";
 
 function BeginnerMentorTalk() {
 

@@ -3,20 +3,30 @@ import ProgressBar from './ProgressBar';
 
 function MentorTalk({ choices, descriptions, progressValue }: { choices: string[], descriptions: string[], progressValue: number }) {
 
-  const [choice, setChoice] = useState<string>('___________')
+  const [choice, setChoice] = useState<string[]>([''])
   const [currentSelection, setCurrentSelection] = useState<number | null>(null)
 
   function handleButtonClick(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
     const eventButton = event.target as HTMLButtonElement;
-    const endOfTitle = eventButton.innerText.replace('> ', '');
-    setChoice(endOfTitle)
+    const buttonText = eventButton.innerText.replace('> ', '');
+    if (choice[0] == '') {
+      setChoice([buttonText])
+    } else if (choice.includes(buttonText)) {
+      choice.length == 1 ? setChoice(['']) : setChoice(() => choice.filter(item => item !== buttonText))
+    } else {
+      setChoice(choice.concat(buttonText))
+    }
+  }
+
+  function getStringifiedArray() {
+    return JSON.stringify(choice).replace(/,/g, ', ');
   }
 
   return (
     <div className="question-container flex-column">
       <ProgressBar value={progressValue} />
       <div className="title-container flex-row">
-        <h1 className='h1'>I'd like to speak to my mentor about <span className='h1-span'>{choice}</span></h1>
+        <h1 className='h1'>I'd like to speak to my mentor about <span className='h1-span'>{getStringifiedArray()}</span></h1>
       </div>
       <div className="input-description-container flex-row">
         <div className="options-container flex-column">

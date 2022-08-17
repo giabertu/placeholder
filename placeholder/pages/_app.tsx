@@ -1,10 +1,10 @@
 import '../styles/globals.css'
-import '../styles/Page2.css'
+import '../styles/MentorTalk.css'
 import '../styles/utilityClasses.css'
 import '../styles/QuizNavigationButtons.css'
 import type { AppProps } from 'next/app'
 import theme from '../theme'
-import { ChakraProvider, NumberInputStepper} from '@chakra-ui/react'
+import { ChakraProvider, NumberInputStepper } from '@chakra-ui/react'
 import { setFlagsFromString } from 'v8'
 
 
