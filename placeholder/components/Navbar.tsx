@@ -7,7 +7,6 @@ export default function Navbar() {
     <div className={styles.container}>
       <QuizCompanyName />
       <ColorModeToggle />
-
     </div>
   )
 }
