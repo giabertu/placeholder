@@ -48,7 +48,7 @@ const Home: NextPage = () => {
       if (inputElementRef.current.value.match(/\w/) === null) {
         setExtraTerminalLines([...extraTerminalLines, "invalid input"]);
       }
-      if (inputElementRef.current.value === "quiz_init" && !enteringUsername && !enteringPassword) {
+      if (inputElementRef.current.value === "quiz init" && !enteringUsername && !enteringPassword) {
         router.push('quiz_init/page1');
       }
       //
@@ -59,6 +59,11 @@ const Home: NextPage = () => {
         setEnteringUsername(true);
         setEnteringPassword(false);
         setExtraTerminalLines([...extraTerminalLines, "enter username"]);
+      }
+      else if (inputElementRef.current.value === 'git init') {
+        signIn('github', { callbackUrl: '/' })
+      } else if (inputElementRef.current.value === 'google init') {
+        signIn('google', { callbackUrl: '/' })
       }
       else if (enteringUsername) {
         setEnteringUsername(false);
@@ -100,9 +105,9 @@ const Home: NextPage = () => {
               .pauseFor(150)
               .typeString("<br /> 04")
               .pauseFor(150)
-              .typeString("<br /> 05 if (you've been here before) enter 'login'")
+              .typeString("<br /> 05 if (you've been here before) enter ('git init' || 'google init')")
               .pauseFor(150)
-              .typeString("<br /> 06 else enter 'quiz_init'")
+              .typeString("<br /> 06 else enter 'quiz init'")
 
               .start();
           }}
@@ -139,12 +144,12 @@ const Home: NextPage = () => {
       </div>
 
       <form onSubmit={handleCLIInput}>
-        <p className={styles.terminalArrow}>{">"}</p>
+        <p className={styles.terminalArrow}>&gt;</p>
         <input className={styles.input} ref={inputElementRef} type={'text'} placeholder="command" autoFocus={true}></input>
       </form>
 
       <div>
-        {!session ? <button onClick={() => signIn()}>Sign In with Github</button> :
+        {session &&
           <div>
             <button onClick={() => signOut()}>Sign Out</button>
             <Avatar size='xl' name={`${session.user?.name}`} src={`${session.user?.image}`} />
