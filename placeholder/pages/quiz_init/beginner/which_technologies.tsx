@@ -7,6 +7,8 @@ import QuizNavigationButtons from '../../components/QuizNavigationButtons';
 import TechLogo from '../../components/TechLogo';
 import * as logoImages from "../../utils/logos";
 
+import QuestionnaireButton from '../../components/QuestionnaireButton';
+
 
 function beginner_which_technologies() {
 
@@ -31,9 +33,9 @@ function beginner_which_technologies() {
       <div className={styles.questionContainer}>
         <ProgressBar value={10} />
         <div className={styles.title}>
-          {!technologies.length ? <h1 className={styles.title}> {'>'} I want to become a better <span className={styles.underline}>_______</span> developer</h1>
-            : technologies[0] === "general" ?  <h1 className={styles.title}> {'>'} I want to become a better general developer</h1>
-            : <h1 className={styles.title}> {'>'} I want to become a better {JSON.stringify(technologies).replaceAll(",", ", ")} developer</h1>
+          {!technologies.length ? <h1 className={styles.title}> &#62; I want to become a better <span className={styles.underline}>_______</span> developer</h1>
+            : technologies[0] === "general" ?  <h1 className={styles.title}> &#62; I want to become a better general developer</h1>
+            : <h1 className={styles.title}> &#62; I want to become a better {JSON.stringify(technologies).replaceAll(",", ", ")} developer</h1>
           }
         </div>
 
@@ -68,6 +70,8 @@ function beginner_which_technologies() {
         </div>
 
         <div className={styles.descriptionContainer}>
+
+          <QuestionnaireButton text="hello hello testing hello" value="hello" onClick={()=>console.log("hello")}/>
 
 
         </div>

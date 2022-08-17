@@ -1,0 +1,26 @@
+.button {
+  font-size: 1.2rem;
+  border: solid 2px rgba(255, 255, 255, 0);
+  padding: 0.25rem 0.75rem;
+  width: 100%;
+  text-align: left;
+  transition: all 0.3s ease;
+  position: relative;
+  left: 0;
+}
+
+.button:hover {
+  left: 0.5rem;
+  border: solid 2px black;
+}
+
+.buttonSelected {
+  font-size: 1.2rem;
+  padding: 0.25rem 0.75rem;
+  width: 100%;
+  text-align: left;
+  transition: all 0.3s ease;
+  position: relative;
+  left: 0.5rem;
+  border: solid 2px black;
+}
