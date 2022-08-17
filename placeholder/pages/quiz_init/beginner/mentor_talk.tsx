@@ -14,5 +14,4 @@ function BeginnerMentorTalk() {
   )
 }
 
-
 export default BeginnerMentorTalk;

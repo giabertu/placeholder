@@ -32,15 +32,15 @@ function beginner_which_technologies() {
       <div className={styles.formContainer}>
         <ProgressBar value={10} />
         <div className={styles.title}>
-          {!technologies.length ? <h1 className={styles.title}> &#62; I want to become a better <span className={styles.underline}>_______</span> developer</h1>
-            : technologies[0] === "general" ?  <h1 className={styles.title}> &#62; I want to become a better general developer</h1>
-            : <h1 className={styles.title}> &#62; I want to become a better {JSON.stringify(technologies).replaceAll(",", ", ")} developer</h1>
+          {!technologies.length ? <h1 className={styles.title}> &#62; I'd like to become a better <span className={styles.underline}>_______</span> developer</h1>
+            : technologies[0] === "general" ?  <h1 className={styles.title}> &#62; I'd like to become a better general developer</h1>
+            : <h1 className={styles.title}> &#62; I'd like to become a better {JSON.stringify(technologies).replaceAll(",", ", ")} developer</h1>
           }
         </div>
 
         <h2 className={styles.instruction}>Search for the technologies you wish to learn, or choose from the list of popular tech below</h2>
 
-        <form className={styles.form}>
+        <form>
           <span className={styles.terminalArrow}>&gt;</span>
           <input className={styles.technologiesSearchInput} type="text" placeholder='Type technology here...'></input>
         </form>
@@ -72,11 +72,10 @@ function beginner_which_technologies() {
 
         </div>
 
-        <div className={styles.descriptionContainer}>
+        <h2 className={styles.horizontalRule}><span className={styles.horizontalRuleText}>OR</span></h2>
 
 
-
-        </div>
+        <QuestionnaireButton text="I'm unsure at this stage" value="general" onClick={handleTechnology}/>
         <QuizNavigationButtons back='quiz_init/beginner/mentor_talk' next=""/>
 
       </div>
