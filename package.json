@@ -2,6 +2,10 @@
   "dependencies": {
     "@chakra-ui/icons": "^2.0.8",
     "@dub-stack/chakra-radix-colors": "^1.0.3",
-    "@radix-ui/colors": "^0.1.8"
+    "@radix-ui/colors": "^0.1.8",
+    "next-auth": "^4.10.3"
+  },
+  "devDependencies": {
+    "prisma": "^4.2.1"
   }
 }

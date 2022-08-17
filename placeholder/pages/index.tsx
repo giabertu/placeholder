@@ -5,8 +5,13 @@ import styles from '../styles/Home.module.css'
 import Typewriter from 'typewriter-effect';
 import React, { useRef, useEffect, useState } from 'react';
 import { useRouter } from 'next/router'
+import { useSession, signIn, signOut } from 'next-auth/react'
+import { Avatar } from '@chakra-ui/avatar';
 
 const Home: NextPage = () => {
+
+  const { data: session } = useSession()
+
 
   const [extraTerminalLines, setExtraTerminalLines] = useState<string[]>([]);
   const [enteringUsername, setEnteringUsername] = useState(false);
@@ -114,16 +119,16 @@ const Home: NextPage = () => {
                 cursor: ""
               }}
               onInit={(typewriter) => {
-              typewriter
-                .typeString("...")
-                .pauseFor(500)
-                .deleteAll(50)
-                .typeString("...")
-                .pauseFor(500)
-                .deleteAll(50)
-                .changeDelay(5)
-                .typeString(printedLineNumber + " " + extraTerminalLine)
-                .start();
+                typewriter
+                  .typeString("...")
+                  .pauseFor(500)
+                  .deleteAll(50)
+                  .typeString("...")
+                  .pauseFor(500)
+                  .deleteAll(50)
+                  .changeDelay(5)
+                  .typeString(printedLineNumber + " " + extraTerminalLine)
+                  .start();
               }}
             />
           )
@@ -134,10 +139,18 @@ const Home: NextPage = () => {
       </div>
 
       <form onSubmit={handleCLIInput}>
-          <p className={styles.terminalArrow}>{">"}</p>
-          <input className={styles.input} ref={inputElementRef} type={'text'} placeholder="command" autoFocus={true}></input>
-        </form>
+        <p className={styles.terminalArrow}>{">"}</p>
+        <input className={styles.input} ref={inputElementRef} type={'text'} placeholder="command" autoFocus={true}></input>
+      </form>
 
+      <div>
+        {!session ? <button onClick={() => signIn()}>Sign In with Github</button> :
+          <div>
+            <button onClick={() => signOut()}>Sign Out</button>
+            <Avatar size='xl' name={`${session.user?.name}`} src={`${session.user?.image}`} />
+          </div>
+        }
+      </div>
     </div>
 
   )
