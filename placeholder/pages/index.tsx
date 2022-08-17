@@ -66,6 +66,7 @@ const Home: NextPage = () => {
         signIn('google', { callbackUrl: '/' })
       }
       else if (enteringUsername) {
+        // signIn('email', { email: inputElementRef.current.value, callbackUrl: '/' })
         setEnteringUsername(false);
         setEnteringPassword(true);
         setExtraTerminalLines([...extraTerminalLines, "enter password"]);
@@ -149,6 +150,7 @@ const Home: NextPage = () => {
       </form>
 
       <div>
+        <button onClick={() => signIn()}>Sign In</button>
         {session &&
           <div>
             <button onClick={() => signOut()}>Sign Out</button>
