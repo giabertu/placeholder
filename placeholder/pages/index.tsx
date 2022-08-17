@@ -144,7 +144,8 @@ const Home: NextPage = () => {
       </form>
 
       <div>
-        {!session ? <button onClick={() => signIn()}>Sign In with Github</button> :
+        {!session && <button onClick={() => signIn('github', { callbackUrl: '/' })}>Sign In</button>}
+        {session &&
           <div>
             <button onClick={() => signOut()}>Sign Out</button>
             <Avatar size='xl' name={`${session.user?.name}`} src={`${session.user?.image}`} />
