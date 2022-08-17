@@ -17,16 +17,18 @@
 
 .input-description-container {
   gap: 1.5rem;
+  min-height: 13rem;
   height: fit-content;
   justify-content: space-between;
 }
 
-.h1 {
-  font-size: 2rem;
-}
+/* .h1 { */
+/* font-size: 2rem; */
+/* } */
 
 .title-container {
   gap: 1rem;
+  min-height: 4rem;
 }
 
 .options-container {
@@ -36,8 +38,8 @@
 }
 
 .button-style {
-  font-size: 1.3rem;
-  border: solid 2px rgb(229, 229, 229);
+  font-size: 1.2rem;
+  border: solid 2px rgba(255, 255, 255, 0);
   padding: 0.25rem 0.75rem;
   width: 100%;
   text-align: left;
@@ -50,12 +52,13 @@
 }
 
 .description-container {
+  padding: 1rem;
   width: 40%;
   height: 80%;
   text-align: center;
-  box-shadow: 0px 0px 5px rgb(160, 160, 160);
+  box-shadow: 0px 0px 1px rgb(0, 0, 0);
 }
 
 .info-tag {
-  font-size: 1.2rem;
+  font-size: 1rem;
 }

@@ -9,6 +9,7 @@ const theme = extendTheme({
     global: {
       body: {
         fontFamily: 'monospace',
+        boxSizing: 'border-box'
       },
       h1: {
         fontWeight: 900,
