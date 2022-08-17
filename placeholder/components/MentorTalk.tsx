@@ -3,16 +3,18 @@ import ProgressBar from './ProgressBar';
 
 function MentorTalk({ choices, descriptions, progressValue }: { choices: string[], descriptions: string[], progressValue: number }) {
 
-  const [choice, setChoice] = useState<string[]>(['___________'])
+  const [choice, setChoice] = useState<string[]>([''])
   const [currentSelection, setCurrentSelection] = useState<number | null>(null)
 
   function handleButtonClick(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
     const eventButton = event.target as HTMLButtonElement;
-    const endOfTitle = eventButton.innerText.replace('> ', '');
-    if (choice[0].match(/_/)?.length) {
-      setChoice([endOfTitle])
-    } else if (!choice.includes(endOfTitle)) {
-      setChoice(choice.concat(endOfTitle))
+    const buttonText = eventButton.innerText.replace('> ', '');
+    if (choice[0] == '') {
+      setChoice([buttonText])
+    } else if (choice.includes(buttonText)) {
+      choice.length == 1 ? setChoice(['']) : setChoice(() => choice.filter(item => item !== buttonText))
+    } else {
+      setChoice(choice.concat(buttonText))
     }
   }
 
