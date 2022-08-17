@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
-import Navbar from '../../components/Navbar';
-import ProgressBar from '../../components/ProgressBar';
-import styles from '../../styles/Page3.module.css'
+import Navbar from '../../../components/Navbar';
+import ProgressBar from '../../../components/ProgressBar';
+import styles from '../../../styles/Page3.module.css'
 import { useRouter } from 'next/router'
-import QuizNavigationButtons from '../../components/QuizNavigationButtons';
-import TechLogo from '../../components/TechLogo';
-import * as logoImages from "../../utils/logos";
+import QuizNavigationButtons from '../../../components/QuizNavigationButtons';
+import TechLogo from '../../../components/TechLogo';
+import * as logoImages from "../../../utils/logos";
 
-import QuestionnaireButton from '../../components/QuestionnaireButton';
+import QuestionnaireButton from '../../../components/QuestionnaireButton';
 
 
 function beginner_which_technologies() {
@@ -24,13 +24,12 @@ function beginner_which_technologies() {
     }
 
     setTechnologies([...technologies, technology])
-
   }
 
   return (
     <div className={styles.container}>
       <Navbar/>
-      <div className={styles.questionContainer}>
+      <div className={styles.formContainer}>
         <ProgressBar value={10} />
         <div className={styles.title}>
           {!technologies.length ? <h1 className={styles.title}> &#62; I want to become a better <span className={styles.underline}>_______</span> developer</h1>
@@ -38,6 +37,10 @@ function beginner_which_technologies() {
             : <h1 className={styles.title}> &#62; I want to become a better {JSON.stringify(technologies).replaceAll(",", ", ")} developer</h1>
           }
         </div>
+
+        <h2 className={styles.instruction}>Search for the technologies you wish to learn, or choose from the list of popular tech below</h2>
+
+        <input type="text" placeholder='> Type technology here...'></input>
 
         <div className={styles.logoContainer}>
           <TechLogo imgSrc={logoImages.react.src} value="react" onClick={handleTechnology}/>
@@ -63,19 +66,16 @@ function beginner_which_technologies() {
           <TechLogo imgSrc={logoImages.SQL.src} value="SQL" onClick={handleTechnology}/>
           <TechLogo imgSrc={logoImages.noSQL.src} value="NoSQL" onClick={handleTechnology}/>
 
-          {/* <img src="./img/google.png" alt="rust logo" value="rust" onClick={handleTechnology} />
-          <input type="image" src={rustLogo.src} value="rust" onClick={handleTechnology}></input> */}
 
-          {/* <button className={styles.btn} value='general' onClick={handleTechnology}> {`>`} general</button> */}
         </div>
 
         <div className={styles.descriptionContainer}>
 
-          <QuestionnaireButton text="hello hello testing hello" value="hello" onClick={()=>console.log("hello")}/>
+          {/* <QuestionnaireButton text="hello hello testing hello" value="hello" onClick={()=>console.log("hello")}/> */}
 
 
         </div>
-        <QuizNavigationButtons back='quiz_init/beginner_mentor_talk' next=""/>
+        <QuizNavigationButtons back='quiz_init/beginner/mentor_talk' next=""/>
 
       </div>
 

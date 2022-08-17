@@ -16,22 +16,22 @@ export default function Purpose() {
   return (
     <div className={styles.container}>
       <Navbar/>
-      <div className={styles.questionContainer}>
+      <div className={styles.formContainer}>
         <ProgressBar value={60} />
         <div className={styles.title}>
           {purpose === '' &&
             <h1> {'>'} I am here to <span className={styles.underline}> ___</span>.</h1>
           }
-          {purpose === 'mentor' && 
+          {purpose === 'mentor' &&
             <h1> {'>'} I am here to {purpose}.</h1>
           }
-          {purpose === 'be mentored' && 
+          {purpose === 'be mentored' &&
             <h1> {'>'} I am here to {purpose}.</h1>
           }
-          {purpose === 'both' && 
+          {purpose === 'both' &&
             <h1> {'>'} I am here for {purpose}.</h1>}
-          
-         
+
+
 
         </div>
 
@@ -41,7 +41,7 @@ export default function Purpose() {
           <button className={styles.btn} value='both' onClick={handlePurpose}> {'>'} <span className={styles.move}>both</span></button>
         </div>
       </div>
-      
+
     </div>
   )
 }

@@ -3,10 +3,10 @@
   flex-direction: column;
   padding: 2rem;
   gap: 20px;
-  
+
 }
 
-.questionContainer {
+.formContainer {
   display: flex;
   flex-direction: column;
   align-self: center;
@@ -42,17 +42,17 @@
   outline: 1px transparent solid;
   transition: outline-color 0.5s;
   padding-left: 0.1rem;
-  
 
- 
-  
+
+
+
 }
 
 
 .btn:focus {
   outline: 1px black solid;
   transition: outline-color 0.5s;
-  
+
 }
 
 .move {
@@ -75,12 +75,12 @@
   display: flex;
   width: 50%;
   position: relative;
-  
+
   left: 25rem;
   bottom: 5.5rem;
   text-align: justify;
- 
-  
+
+
   font-size: 1rem;
 
 }
@@ -88,7 +88,7 @@
 .description {
   border: solid 0.1rem rgb(229, 229, 229);
   padding: 0.5rem 0.5rem;
-  
+
 }
 
 .underline {

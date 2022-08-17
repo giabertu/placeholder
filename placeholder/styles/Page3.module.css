@@ -1,24 +1,28 @@
 .container {
   display: flex;
   flex-direction: column;
+  align-items: center;
   padding: 1.5rem;
-  gap: 20px;
 }
 
-.questionContainer {
+.formContainer {
   display: flex;
   flex-direction: column;
-  align-self: center;
-  margin-top: 20px;
+  align-items: center;
   gap: 1rem;
   width: 60rem;
-  padding: 1.5rem;
 }
 
 .title {
   text-align: center;
   font-size: 1.2rem;
   /* font-weight: normal; */
+}
+
+.instruction {
+  text-align: center;
+  font-size: 1rem;
+  width: 60%;
 }
 
 .underline {

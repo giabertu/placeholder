@@ -25,7 +25,7 @@ export default function Page1() {
   return (
     <div className={styles.container}>
       <Navbar/>
-      <div className={styles.questionContainer}>
+      <div className={styles.formContainer}>
         <ProgressBar value={10} />
         <div className={styles.title}>
           {level === '' &&
@@ -73,7 +73,7 @@ export default function Page1() {
 
 
         </div>
-        <QuizNavigationButtons back='/' next="quiz_init/beginner_mentor_talk"/>
+        <QuizNavigationButtons back='/' next="quiz_init/beginner/mentor_talk"/>
 
       </div>
 
