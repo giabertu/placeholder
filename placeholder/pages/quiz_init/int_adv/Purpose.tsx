@@ -35,9 +35,9 @@ export default function Purpose() {
         </div>
 
         <div className={styles.options}>
-          <button className={styles.btn} value='mentor' onClick={handlePurpose}> {'>'} mentor</button>
-          <button className={styles.btn} value='be mentored' onClick={handlePurpose}> {'>'} be mentored</button>
-          <button className={styles.btn} value='both' onClick={handlePurpose}> {'>'} both</button>
+        <button className={styles.btn} value='be mentored' onClick={handlePurpose}> {'>'} <span className={styles.move}>mentor</span></button>
+          <button className={styles.btn} value='be mentored' onClick={handlePurpose}> {'>'} <span className={styles.move}>be mentored</span></button>
+          <button className={styles.btn} value='both' onClick={handlePurpose}> {'>'} <span className={styles.move}>both</span></button>
         </div>
       </div>
       
