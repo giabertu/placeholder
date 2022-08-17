@@ -28,7 +28,6 @@
 } */
 
 .terminalArrow {
-  display: inline;
   margin-right: 0.2em;
   animation: fadeInAnimation ease 4s;
   /* animation-delay: 2s; */
