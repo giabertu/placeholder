@@ -6,7 +6,7 @@ import ProgressBar from './ProgressBar';
 import { useAppDispatch, useAppSelector } from '../redux/hooks';
 import { changeDesiredCategory } from '../redux/slices/mentorPreferencesSlice';
 
-function MentorTalk({ choices, descriptions, progressValue }: { choices: string[], descriptions: string[], progressValue: number }) {
+function MentorTalk({ choices, descriptions }: { choices: string[], descriptions: string[] }) {
 
   const dispatch = useAppDispatch();
 
@@ -27,13 +27,10 @@ function MentorTalk({ choices, descriptions, progressValue }: { choices: string[
   }
 
   return (
-    <div className="question-container flex-column">
-      <ProgressBar value={progressValue} />
-      <div className="title-container flex-row">
-        <h1 className='h1'> &#62; I'd like to speak to my mentor about <span className='h1-span'>{getStringifiedArray()}</span></h1>
-      </div>
-      <div className="input-description-container flex-row">
-        <div className="options-container flex-column">
+    <div className="form-container flex-column">
+      <h1 className='title'> I'd like to speak to my mentor about {mentorChoices.length ? getStringifiedArray() : <span className="underline">_______</span>}</h1>
+      <div className="options-container flex-row">
+        <div className="choices-container flex-column">
           {choices.map((choice: string, index: number) =>
             <button className={isDark ? 'button-style-dark-mode' : 'button-style'}
               key={uniqid()}
@@ -42,7 +39,7 @@ function MentorTalk({ choices, descriptions, progressValue }: { choices: string[
               onClick={(event) => handleButtonClick(event)}>&gt; {choice}</button>)}
         </div>
         {currentSelection == null ||
-          <div className={isDark ? "description-container-dark-mode" : "description-container"}>
+          <div className={isDark ? "descriptions-container-dark-mode" : "descriptions-container"}>
             <p className="info-tag">{descriptions[currentSelection]}</p>
           </div>}
       </div>

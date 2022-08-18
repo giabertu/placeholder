@@ -25,12 +25,12 @@ function WhichTechnologies() {
   return (
     <div className={styles.container}>
       <Navbar/>
+      <ProgressBar value={10} />
       <div className={styles.formContainer}>
-        <ProgressBar value={10} />
         <div className={styles.title}>
-          {!technologies.length ? <h1 className={styles.title}> &#62; I'd like to become a better <span className={styles.underline}>_______</span> developer</h1>
-            : technologies[0] === "general" ? <h1 className={styles.title}> &#62; I'd like to become a better developer</h1>
-            : <h1 className={styles.title}> &#62; I'd like to become a better {JSON.stringify(technologies).replaceAll(",", ", ")} developer</h1>
+          {!technologies.length ? <h1 className={styles.title}> I'd like to become a better <span className={styles.underline}>_______</span> developer</h1>
+            : technologies[0] === "general" ? <h1 className={styles.title}> I'd like to become a better developer</h1>
+            : <h1 className={styles.title}> I'd like to become a better {JSON.stringify(technologies).replaceAll(",", ", ")} developer</h1>
           }
         </div>
 
@@ -67,13 +67,12 @@ function WhichTechnologies() {
 
 
         </div>
-
         <h2 className={styles.horizontalRule}><span className={styles.horizontalRuleText}>OR</span></h2>
-
         <QuestionnaireButton text="I'm unsure at this stage" value="general" onClick={handleTechnology}/>
-        <QuizNavigationButtons back='quiz_init/beginner/mentor_talk' next=""/>
-
       </div>
+
+      <QuizNavigationButtons back='quiz_init/beginner/mentor_talk' next="" canProceed={Boolean(technologies.length)} />
+
     </div>
   )
 }
