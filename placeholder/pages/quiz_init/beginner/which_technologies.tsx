@@ -9,17 +9,17 @@ import TechLogo from '../../../components/TechLogo';
 import * as logoImages from "../../../utils/logos";
 import { useAppSelector, useAppDispatch } from '../../../redux/hooks';
 import QuestionnaireButton from '../../../components/QuestionnaireButton';
-import { beginnerChangeInterestedTechnologies } from '../../../redux/slices/beginnerFormSlice';
+import { changeDesiredTechnologies } from '../../../redux/slices/mentorPreferencesSlice';
 
 
 function WhichTechnologies() {
 
   const dispatch = useAppDispatch();
-  const technologies = useAppSelector((state) => state.beginnerForm.interestedTechnologies)
+  const technologies = useAppSelector((state) => state.mentorPreferences.desiredTechnologies)
 
   const handleTechnology = function (event: React.MouseEvent<HTMLButtonElement>) {
     const technology = event.currentTarget.value;
-    dispatch(beginnerChangeInterestedTechnologies(technology));
+    dispatch(changeDesiredTechnologies(technology));
   }
 
   return (
@@ -29,7 +29,7 @@ function WhichTechnologies() {
         <ProgressBar value={10} />
         <div className={styles.title}>
           {!technologies.length ? <h1 className={styles.title}> &#62; I'd like to become a better <span className={styles.underline}>_______</span> developer</h1>
-            : technologies[0] === "general" ?  <h1 className={styles.title}> &#62; I'd like to become a better developer</h1>
+            : technologies[0] === "general" ? <h1 className={styles.title}> &#62; I'd like to become a better developer</h1>
             : <h1 className={styles.title}> &#62; I'd like to become a better {JSON.stringify(technologies).replaceAll(",", ", ")} developer</h1>
           }
         </div>

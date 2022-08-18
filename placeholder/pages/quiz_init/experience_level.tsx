@@ -1,35 +1,33 @@
 import { useColorMode } from '@chakra-ui/react';
 import React, {useState} from 'react';
+
 import ColorModeToggle from '../../components/ColorModeToggle';
 import Navbar from "../../components/Navbar"
 import ProgressBar from "../../components/ProgressBar";
-
 import QuizNavigationButtons from "../../components/QuizNavigationButtons";
-
-
+import { useAppDispatch, useAppSelector } from '../../redux/hooks';
+import { changeUserLevel } from '../../redux/slices/userInfoSlice';
 import styles from "../../styles/experience_level.module.css"
-
 
 const descriptions = [
   'A beginner developer would have bla bla bla qualities.',
   'An intermediate developer would have bla bla bla qualities.',
   'An advanced developer would have bla bla bla qualities.'
-]
+];
 
-export default function Page1() {
-  const [level, setLevel] = useState('')
+function ExperienceLevel() {
+
   const [selection, setSelection] = useState<number | null>(null)
   const {colorMode } = useColorMode();
   const isDark = colorMode === 'dark';
 
+  const level = useAppSelector((state) => state.userInfo.level);
+  const dispatch = useAppDispatch();
 
   function handleLevel(event: React.MouseEvent<HTMLButtonElement>) {
     event.preventDefault();
-    setLevel(event.currentTarget.value);
-
+    dispatch(changeUserLevel(event.currentTarget.value));
   }
-
-
 
   return (
     <div className={styles.container}>
@@ -57,31 +55,20 @@ export default function Page1() {
           <button className={isDark ? styles.btnDarkMode : styles.btn} value='beginner' onClick={handleLevel} onMouseEnter={() => setSelection(0)} onMouseLeave={() => setSelection(null)}> &#62; beginner</button>
           <button className={isDark ? styles.btnDarkMode : styles.btn} value='intermediate' onClick={handleLevel} onMouseEnter={() => setSelection(1)} onMouseLeave={() => setSelection(null)}> &#62; intermediate</button>
           <button className={isDark ? styles.btnDarkMode : styles.btn} value='advanced' onClick={handleLevel} onMouseEnter={() => setSelection(2)} onMouseLeave={() => setSelection(null)}> &#62; advanced</button>
-
-
         </div>
-
-
 
         <div className={styles.descriptionContainer}>
-
           {selection == null ||
             <h2 className={styles.description}>{descriptions[selection]}</h2>}
-
-
-
         </div>
-
-
-
       </div>
+
       <div className={styles.navigationBtns}>
-          <QuizNavigationButtons back='/' next="quiz_init/beginner/mentor_talk"/>
-
-        </div>
-
+          <QuizNavigationButtons back='/' next="quiz_init/beginner/mentor_talk" canProceed/>
+      </div>
 
     </div>
-
   )
 }
+
+export default ExperienceLevel

@@ -1,9 +1,13 @@
-export type BeginnerFormState = {
-  mentorFor: string[]
-  interestedTechnologies: string[]
+export type MentorPreferencesState = {
+  desiredCategories: string[]
+  desiredTechnologies: string[]
 }
 
-export type nonBeginnerFormState = {
-  mentorFor: string[]
-  interestedTechnologies: string[]
+// export type NonBeginnerFormState = {
+//   mentorFor: string[]
+//   interestedTechnologies: string[]
+// }
+
+export type UserInfoState = {
+  level: string
 }

@@ -1,17 +1,17 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
-import type { BeginnerFormState } from "../types";
+import type { NonBeginnerFormState } from "../types";
 
-const initialState: BeginnerFormState = {
+const initialState: NonBeginnerFormState = {
   mentorFor: [],
   interestedTechnologies: []
 };
 
-export const beginnerFormSlice = createSlice({
-  name: "beginner form",
+export const nonBeginnerFormSlice = createSlice({
+  name: "non-beginner form",
   initialState,
   reducers: {
-    beginnerChangeMentorFor: (state, action: PayloadAction<string>) => {
+    nonBeginnerChangeMentorFor: (state, action: PayloadAction<string>) => {
       // toggle mentor purpose selection
       const index = state.mentorFor.indexOf(action.payload);
       if (index !== -1) {
@@ -22,7 +22,7 @@ export const beginnerFormSlice = createSlice({
       }
       return state;
     },
-    beginnerChangeInterestedTechnologies: (state, action: PayloadAction<string>) => {
+    nonBeginnerChangeInterestedTechnologies: (state, action: PayloadAction<string>) => {
       // remove all technologies if user says they're unsure about technology selection
       if (action.payload === "general") {
         if (state.interestedTechnologies.includes("general")) {
@@ -47,5 +47,5 @@ export const beginnerFormSlice = createSlice({
   }
 })
 
-export const { beginnerChangeMentorFor, beginnerChangeInterestedTechnologies} = beginnerFormSlice.actions;
-export default beginnerFormSlice.reducer;
+export const { nonBeginnerChangeMentorFor, nonBeginnerChangeInterestedTechnologies} = nonBeginnerFormSlice.actions;
+export default nonBeginnerFormSlice.reducer;

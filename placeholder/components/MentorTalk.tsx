@@ -4,23 +4,13 @@ import uniqid from 'uniqid';
 
 import ProgressBar from './ProgressBar';
 import { useAppDispatch, useAppSelector } from '../redux/hooks';
-import { beginnerChangeMentorFor } from '../redux/slices/beginnerFormSlice';
-import { nonBeginnerChangeMentorFor } from '../redux/slices/nonBeginnerFormSlice';
+import { changeDesiredCategory } from '../redux/slices/mentorPreferencesSlice';
 
-
-function MentorTalk({ choices, descriptions, progressValue, userLevel }: { choices: string[], descriptions: string[], progressValue: number, userLevel: string }) {
+function MentorTalk({ choices, descriptions, progressValue }: { choices: string[], descriptions: string[], progressValue: number }) {
 
   const dispatch = useAppDispatch();
 
-  const mentorChoices = useAppSelector((state) =>{
-    return userLevel === "beginner" ?
-      state.beginnerForm.mentorFor :
-      state.nonBeginnerForm.mentorFor
-  })
-
-  const action = userLevel === "beginner" ?
-    beginnerChangeMentorFor :
-    nonBeginnerChangeMentorFor
+  const mentorChoices = useAppSelector((state) => state.mentorPreferences.desiredCategories);
 
   const [currentSelection, setCurrentSelection] = useState<number | null>(null)
   const  {colorMode} = useColorMode();
@@ -29,7 +19,7 @@ function MentorTalk({ choices, descriptions, progressValue, userLevel }: { choic
   function handleButtonClick(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
     const eventButton = event.target as HTMLButtonElement;
     const buttonText = eventButton.innerText.replace('> ', '');
-    dispatch(action(buttonText));
+    dispatch(changeDesiredCategory(buttonText));
   }
 
   function getStringifiedArray() {
