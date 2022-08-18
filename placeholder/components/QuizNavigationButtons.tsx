@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import {useColorMode} from '@chakra-ui/react'
+import {color, useColorMode, useColorModeValue} from '@chakra-ui/react'
 
 function QuizNavigationButtons({ back, next }: { back?: string, next: string }) {
 

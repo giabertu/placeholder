@@ -29,7 +29,7 @@ function MentorTalk({ choices, descriptions, progressValue }: { choices: string[
     <div className="question-container flex-column">
       <ProgressBar value={progressValue} />
       <div className="title-container flex-row">
-        <h1 className='h1'>I'd like to speak to my mentor about <span className='h1-span'>{getStringifiedArray()}</span></h1>
+        <h1 className='h1'> &#62; I'd like to speak to my mentor about <span className='h1-span'>{getStringifiedArray()}</span></h1>
       </div>
       <div className="input-description-container flex-row">
         <div className="options-container flex-column">

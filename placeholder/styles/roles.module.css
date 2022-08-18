@@ -1,0 +1,11 @@
+.underline {
+  animation: blink 1s step-end infinite;
+
+}
+
+
+@keyframes blink{
+  0%{opacity: 1.0;}
+  50%{opacity: 0.0;}
+  100%{opacity: 1.0;}
+  }
