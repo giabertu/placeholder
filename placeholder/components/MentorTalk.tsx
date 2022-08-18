@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import ProgressBar from './ProgressBar';
+import uniqid from 'uniqid';
 
 function MentorTalk({ choices, descriptions, progressValue }: { choices: string[], descriptions: string[], progressValue: number }) {
 
@@ -31,7 +32,9 @@ function MentorTalk({ choices, descriptions, progressValue }: { choices: string[
       <div className="input-description-container flex-row">
         <div className="options-container flex-column">
           {choices.map((choice: string, index: number) =>
-            <button className="button-style"
+            <button
+              key={uniqid()}
+              className="button-style"
               onMouseEnter={() => setCurrentSelection(index)}
               onMouseLeave={() => setCurrentSelection(null)}
               onClick={(event) => handleButtonClick(event)}>&gt; {choice}</button>)}

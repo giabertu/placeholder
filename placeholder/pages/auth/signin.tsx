@@ -23,7 +23,7 @@ export default function SignIn({ providers }: { providers: Record<LiteralUnion<B
       <input placeholder="enter email" onChange={(e) => setValue(e.currentTarget.value)}></input>
       <button onClick={() => {
         console.log(value);
-        signIn('email', { email: value, callbackUrl: '/' })
+        signIn('email', { redirect: false, email: value, callbackUrl: '/' })
       }}>submit</button>
     </div>
   )

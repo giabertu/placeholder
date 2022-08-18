@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import ColorModeToggle from '../../components/ColorModeToggle';
 import Navbar from '../../components/Navbar';
 import ProgressBar from '../../components/ProgressBar';
@@ -24,7 +24,7 @@ export default function Page1() {
 
   return (
     <div className={styles.container}>
-      <Navbar/>
+      <Navbar />
       <div className={styles.questionContainer}>
         <ProgressBar value={10} />
         <div className={styles.title}>
@@ -73,7 +73,7 @@ export default function Page1() {
 
 
         </div>
-        <QuizNavigationButtons back='/' next="quiz_init/beginner_mentor_talk"/>
+        <QuizNavigationButtons back='/' next="quiz_init/beginner/mentor_talk" />
 
       </div>
 
