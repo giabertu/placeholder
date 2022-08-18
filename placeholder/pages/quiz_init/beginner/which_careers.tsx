@@ -35,7 +35,7 @@ function WhichCareers() {
         <ProgressBar value={20}/>
         <div className={styles.title}>
           {!careers.length ? <h1 className={styles.title}>&#62; Roles I'd be interested in: <span className={styles.underline}>___</span></h1>
-          : 
+          : careers[0] === "I'm unsure at this stage" ? <h1 className={styles.title}>&#62; Roles I'd be interested in: ["I'm unsure at this stage"]</h1> :
           <h1 className={styles.title}>&#62; Roles I'd be interested in: <span className='h1-span'>{getStringifiedArray()}</span></h1>}
         </div>
 
