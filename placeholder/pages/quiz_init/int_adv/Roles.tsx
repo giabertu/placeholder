@@ -3,7 +3,6 @@ import { useState } from "react";
 import Navbar from "../../../components/Navbar";
 import uniqid from "uniqid";
 import ProgressBar from "../../../components/ProgressBar";
-import QuizCompanyName from "../../../components/QuizCompanyName";
 import QuizNavigationButtons from "../../../components/QuizNavigationButtons";
 import { roles } from '../../../utils/constants'
 import styles from '../../../styles/roles.module.css'

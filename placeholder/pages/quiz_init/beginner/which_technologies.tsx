@@ -10,12 +10,15 @@ import * as logoImages from "../../../utils/logos";
 import { useAppSelector, useAppDispatch } from '../../../redux/hooks';
 import QuestionnaireButton from '../../../components/QuestionnaireButton';
 import { beginnerChangeInterestedTechnologies } from '../../../redux/slices/beginnerFormSlice';
+import { Input, InputGroup, InputLeftAddon, InputLeftElement, useColorMode } from '@chakra-ui/react';
 
 
 function WhichTechnologies() {
 
   const dispatch = useAppDispatch();
-  const technologies = useAppSelector((state) => state.beginnerForm.interestedTechnologies)
+  const technologies = useAppSelector((state) => state.beginnerForm.interestedTechnologies);
+  const {colorMode } = useColorMode();
+  const isDark = colorMode === 'dark';
 
   const handleTechnology = function (event: React.MouseEvent<HTMLButtonElement>) {
     const technology = event.currentTarget.value;
@@ -37,8 +40,13 @@ function WhichTechnologies() {
         <h2 className={styles.instruction}>Search for the technologies you wish to learn, or choose from the list of popular tech below</h2>
 
         <form>
-          <span className={styles.terminalArrow}>&gt;</span>
-          <input className={styles.technologiesSearchInput} type="text" placeholder='Type technology here...'></input>
+          {/* <span className={styles.terminalArrow}>&gt;</span> */}
+          <InputGroup width='22em' >
+            <InputLeftElement children='>' color={isDark ? 'gray.300' : 'gray.500'}/>
+            <Input variant='outline' placeholder='Type technology here...' color={isDark ? 'gray.300' : 'gray.500'} _placeholder={{color: 'inherit'}} focusBorderColor='gray.500'/>
+          </InputGroup>
+          {/* <input className={styles.technologiesSearchInput} type="text" placeholder='Type technology here...'></input> */}
+          
         </form>
 
         <div className={styles.logoContainer}>
@@ -68,10 +76,10 @@ function WhichTechnologies() {
 
         </div>
 
-        <h2 className={styles.horizontalRule}><span className={styles.horizontalRuleText}>OR</span></h2>
+        <h2 className={isDark ? styles.horizontalRuleDarkMode : styles.horizontalRule}><span className={isDark ? styles.horizontalRuleTextDarkMode : styles.horizontalRuleText}>OR</span></h2>
 
         <QuestionnaireButton text="I'm unsure at this stage" value="general" onClick={handleTechnology}/>
-        <QuizNavigationButtons back='quiz_init/beginner/mentor_talk' next=""/>
+        <QuizNavigationButtons back='quiz_init/beginner/mentor_talk' next='quiz_init/beginner/which_careers'/>
 
       </div>
     </div>

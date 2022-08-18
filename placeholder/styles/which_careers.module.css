@@ -30,9 +30,6 @@
   gap: 1rem;
 }
 
-
-
-
 .btn {
   font-size: 1.2rem;
   outline: solid 2px rgba(255, 255, 255, 0);
@@ -41,12 +38,7 @@
   width: fit-content;
   text-align: left;
 
-
-
 }
-
-
-
 
 
 .btn:hover {
@@ -78,21 +70,11 @@
   align-items: center;
   justify-content: center;
   position: absolute;
-  top: 40rem;
+  top: 50rem;
   left: 70rem;
   
 
 }
-
-
-
-
-
-
-
-
-
-
 
 .underline {
   animation: blink 1s step-end infinite;
@@ -105,4 +87,3 @@
   50%{opacity: 0.0;}
   100%{opacity: 1.0;}
   }
-
