@@ -1,11 +1,17 @@
-import { useState } from 'react'
+import { useState } from 'react';
 import ProgressBar from './ProgressBar';
+<<<<<<< HEAD
+import {useColorMode} from '@chakra-ui/react'
+=======
 import uniqid from 'uniqid';
+>>>>>>> c4d8ae0453a9247349e18bb4a735392fc073a2c5
 
 function MentorTalk({ choices, descriptions, progressValue }: { choices: string[], descriptions: string[], progressValue: number }) {
 
   const [choice, setChoice] = useState<string[]>([''])
   const [currentSelection, setCurrentSelection] = useState<number | null>(null)
+  const  {colorMode} = useColorMode();
+  const isDark = colorMode === 'dark';
 
   function handleButtonClick(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
     const eventButton = event.target as HTMLButtonElement;
@@ -27,20 +33,24 @@ function MentorTalk({ choices, descriptions, progressValue }: { choices: string[
     <div className="question-container flex-column">
       <ProgressBar value={progressValue} />
       <div className="title-container flex-row">
-        <h1 className='h1'>I'd like to speak to my mentor about <span className='h1-span'>{getStringifiedArray()}</span></h1>
+        <h1 className='h1'> &#62; I'd like to speak to my mentor about <span className='h1-span'>{getStringifiedArray()}</span></h1>
       </div>
       <div className="input-description-container flex-row">
         <div className="options-container flex-column">
           {choices.map((choice: string, index: number) =>
+<<<<<<< HEAD
+            <button className={isDark ? 'button-style-dark-mode' : 'button-style'}
+=======
             <button
               key={uniqid()}
               className="button-style"
+>>>>>>> c4d8ae0453a9247349e18bb4a735392fc073a2c5
               onMouseEnter={() => setCurrentSelection(index)}
               onMouseLeave={() => setCurrentSelection(null)}
               onClick={(event) => handleButtonClick(event)}>&gt; {choice}</button>)}
         </div>
         {currentSelection == null ||
-          <div className="description-container">
+          <div className={isDark ? "description-container-dark-mode" : "description-container"}>
             <p className="info-tag">{descriptions[currentSelection]}</p>
           </div>}
       </div>

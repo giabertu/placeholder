@@ -1,8 +1,8 @@
 .container {
-  padding: 3rem 2rem;
-  gap: 1.2rem;
+  padding: 2rem;
+  gap: 20px;
   min-height: 100vh;
-  justify-content: space-between;
+  /* justify-content: space-between; */
 }
 
 .question-container {
@@ -10,9 +10,13 @@
   margin-top: 20px;
   max-width: 60rem;
   min-width: 60rem;
-  gap: 3rem;
+  gap: 1rem;
   padding: 1.5rem;
   height: fit-content;
+}
+
+.h1 {
+  font-size: 1.5rem;
 }
 
 .input-description-container {
@@ -29,6 +33,7 @@
 .title-container {
   gap: 1rem;
   min-height: 4rem;
+
 }
 
 .options-container {
@@ -41,14 +46,34 @@
   font-size: 1.2rem;
   border: solid 2px rgba(255, 255, 255, 0);
   padding: 0.25rem 0.75rem;
-  width: 100%;
+  padding-left: 0;
+  width: fit-content;
   text-align: left;
   transition: all 0.3s ease;
 }
 
 .button-style:hover {
-  margin-left: 0.5rem;
+  
+  padding-left: 0.5rem;
   border: solid 2px black;
+}
+
+.button-style-dark-mode {
+  font-size: 1.2rem;
+  border: solid 2px rgba(255, 255, 255, 0);
+  /* border: solid 2px white; */
+  padding: 0.25rem 0.75rem;
+  padding-left: 0;
+  width: fit-content;
+  text-align: left;
+  transition: all 0.3s ease;
+
+}
+
+
+.button-style-dark-mode:hover {
+  padding-left: 0.5rem;
+  border: solid 2px white;
 }
 
 .description-container {
@@ -59,6 +84,30 @@
   box-shadow: 0px 0px 1px rgb(0, 0, 0);
 }
 
+.description-container-dark-mode {
+  padding: 1rem;
+  width: 40%;
+  height: 80%;
+  text-align: center;
+  box-shadow: 0px 0px 1px white;
+
+}
+
 .info-tag {
   font-size: 1rem;
+}
+
+.navigation-btns {
+
+  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 40rem;
+    left: 70rem;
+    
+  
+  
+
 }

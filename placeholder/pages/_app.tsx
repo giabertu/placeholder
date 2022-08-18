@@ -17,6 +17,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       // you have a short session maxAge time. Shown here with default values.
       session={pageProps.session}>
       <ChakraProvider theme={theme}>
+        
         <Component {...pageProps} />
       </ChakraProvider>
     </SessionProvider>
