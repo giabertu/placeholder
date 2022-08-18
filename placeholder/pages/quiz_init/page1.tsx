@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import ColorModeToggle from '../../components/ColorModeToggle';
 import Navbar from '../../components/Navbar';
 import ProgressBar from '../../components/ProgressBar';
