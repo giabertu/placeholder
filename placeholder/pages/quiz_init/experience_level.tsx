@@ -64,7 +64,7 @@ function ExperienceLevel() {
       </div>
 
       <div className={styles.navigationBtns}>
-          <QuizNavigationButtons back='/' next="quiz_init/beginner/mentor_talk" canProceed/>
+          <QuizNavigationButtons back='/' next="quiz_init/beginner/mentor_talk" canProceed={Boolean(level)}/>
       </div>
 
     </div>

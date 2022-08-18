@@ -1,6 +1,13 @@
 .quiz-nav-buttons-container {
-  justify-content: center;
-  gap: 1rem;
+  width: 78vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 4vw;
+  position: absolute;
+  top: 48vh;
+  background-color: green;
+  /* bottom: 4vh; */
 }
 
 .quiz-nav-button-container {
@@ -11,6 +18,7 @@
 
 .quiz-nav-buttons {
   width: fit-content;
+  font-size: 1.6rem;
 }
 
 .quiz-back-button:hover {

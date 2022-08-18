@@ -7,7 +7,7 @@ import { useAppSelector } from "../redux/hooks";
 function TechLogo({imgSrc, value, onClick}: {imgSrc: string, value: string, onClick: (event: React.MouseEvent<HTMLButtonElement>) => void}) {
 
   // const [selected, setSelected] = useState(false);
-  const technologies = useAppSelector((state) => state.beginnerForm.interestedTechnologies);
+  const technologies = useAppSelector((state) => state.mentorPreferences.desiredTechnologies);
   const selected = technologies.includes(value);
 
   return (

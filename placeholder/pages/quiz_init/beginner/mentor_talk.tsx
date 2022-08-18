@@ -7,16 +7,13 @@ import { useAppSelector } from "../../../redux/hooks";
 
 function BeginnerMentorTalk() {
 
-  const [canProceed, setCanProceed] = useState(false);
   const mentorChoices = useAppSelector((state)=> state.mentorPreferences.desiredCategories);
 
   return (
     <div className="container flex-column outline">
       <Navbar />
       <MentorTalk choices={beginnerChoices} descriptions={beginnerDescriptions} progressValue={25} />
-      <div className="navigation-btns">
-        <QuizNavigationButtons back='quiz_init/experience_level' next="quiz_init/beginner/which_technologies" canProceed={canProceed}/>
-      </div>
+      <QuizNavigationButtons back='quiz_init/experience_level' next="quiz_init/beginner/which_technologies" canProceed={Boolean(mentorChoices.length)}/>
     </div>
   )
 

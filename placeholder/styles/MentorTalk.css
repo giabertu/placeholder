@@ -2,7 +2,8 @@
   padding: 2rem;
   gap: 20px;
   min-height: 100vh;
-  /* justify-content: space-between; */
+  /* justify-content: space-between; */;
+  background-color: blue;
 }
 
 .question-container {
@@ -53,7 +54,7 @@
 }
 
 .button-style:hover {
-  
+
   padding-left: 0.5rem;
   border: solid 2px black;
 }
@@ -95,19 +96,4 @@
 
 .info-tag {
   font-size: 1rem;
-}
-
-.navigation-btns {
-
-  
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: absolute;
-    top: 40rem;
-    left: 70rem;
-    
-  
-  
-
 }
