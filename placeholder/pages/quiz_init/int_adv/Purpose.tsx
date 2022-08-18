@@ -25,20 +25,6 @@ export default function Purpose() {
         <ProgressBar value={60} />
         <div className={styles.title}>
           {purpose === '' &&
-<<<<<<< HEAD
-            <h1 className={styles.title}> {'>'} I am here to <span className={styles.underline}> ___</span>.</h1>
-          }
-          {purpose === 'mentor' && 
-            <h1 className={styles.title}> {'>'} I am here to {purpose}.</h1>
-          }
-          {purpose === 'be mentored' && 
-            <h1 className={styles.title}> {'>'} I am here to {purpose}.</h1>
-          }
-          {purpose === 'both' && 
-            <h1 className={styles.title}> {'>'} I am here for {purpose}.</h1>}
-          
-         
-=======
             <h1> &gt; I am here to <span className={styles.underline}> ___</span>.</h1>
           }
           {purpose === 'mentor' &&
@@ -49,14 +35,9 @@ export default function Purpose() {
           }
           {purpose === 'both' &&
             <h1> &gt; I am here for {purpose}.</h1>}
-
-
->>>>>>> c4d8ae0453a9247349e18bb4a735392fc073a2c5
-
         </div>
 
         <div className={styles.options}>
-<<<<<<< HEAD
         <button className={isDark ? styles.btnDarkMode : styles.btn} value='mentor' onClick={handlePurpose}> &#62; mentor</button>
           <button className={isDark ? styles.btnDarkMode : styles.btn} value='be mentored' onClick={handlePurpose}> &#62; be mentored</button>
           <button className={isDark ? styles.btnDarkMode : styles.btn} value='both' onClick={handlePurpose}> &#62; both</button>
@@ -67,14 +48,6 @@ export default function Purpose() {
 
         </div>
       
-=======
-        <button className={styles.btn} value='mentor' onClick={handlePurpose}> &gt; <span className={styles.move}>mentor</span></button>
-          <button className={styles.btn} value='be mentored' onClick={handlePurpose}> &gt; <span className={styles.move}>be mentored</span></button>
-          <button className={styles.btn} value='both' onClick={handlePurpose}> &gt; <span className={styles.move}>both</span></button>
-        </div>
-      </div>
-
->>>>>>> c4d8ae0453a9247349e18bb4a735392fc073a2c5
     </div>
   )
 }

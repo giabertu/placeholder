@@ -1,10 +1,7 @@
 import { useColorMode } from "@chakra-ui/react";
 import { useState } from "react";
-<<<<<<< HEAD
 import Navbar from "../../../components/Navbar";
-=======
 import uniqid from "uniqid";
->>>>>>> c4d8ae0453a9247349e18bb4a735392fc073a2c5
 import ProgressBar from "../../../components/ProgressBar";
 import QuizCompanyName from "../../../components/QuizCompanyName";
 import QuizNavigationButtons from "../../../components/QuizNavigationButtons";
@@ -42,16 +39,14 @@ function Roles() {
         <div className="input-description-container flex-row">
           <div className="options-container flex-column">
             {roles.map((role: string) =>
-<<<<<<< HEAD
-              <button className={isDark ? 'button-style-dark-mode' : 'button-style'} onClick={(event) => {
+
+              <button key={uniqid()} className={isDark ? 'button-style-dark-mode' : 'button-style'} onClick={(event) => {
                 handleButtonClick(event);
               }}>&gt; {role}</button>
-=======
-              <button
-                key={uniqid()}
-                className="button-style"
-                onClick={(event) => handleButtonClick(event)}>&gt; {role}</button>
->>>>>>> c4d8ae0453a9247349e18bb4a735392fc073a2c5
+    
+                
+               
+
             )}
           </div>
         </div>
