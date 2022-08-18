@@ -1,9 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
-import beginnerFormReducer from "./beginnerFormSlice";
+import beginnerFormReducer from "./slices/beginnerFormSlice";
+import nonBeginnerFormReducer from "./slices/nonBeginnerFormSlice";
 
 export const store = configureStore({
   reducer: {
-    beginnerForm: beginnerFormReducer
+    beginnerForm: beginnerFormReducer,
+    nonBeginnerForm: nonBeginnerFormReducer
   },
 })
 

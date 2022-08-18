@@ -8,7 +8,7 @@ function BeginnerMentorTalk() {
   return (
     <div className="container flex-column outline">
       <Navbar />
-      <MentorTalk choices={beginnerChoices} descriptions={beginnerDescriptions} progressValue={25} />
+      <MentorTalk choices={beginnerChoices} descriptions={beginnerDescriptions} progressValue={25} userLevel="beginner" />
       <QuizNavigationButtons back='quiz_init/page1' next="quiz_init/beginner/which_technologies" />
     </div>
   )

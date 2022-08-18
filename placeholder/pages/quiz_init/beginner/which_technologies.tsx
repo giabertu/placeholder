@@ -3,13 +3,13 @@ import { useRouter } from 'next/router'
 
 import Navbar from '../../../components/Navbar';
 import ProgressBar from '../../../components/ProgressBar';
-import styles from '../../../styles/Page3.module.css'
+import styles from '../../../styles/which_technologies.module.css'
 import QuizNavigationButtons from '../../../components/QuizNavigationButtons';
 import TechLogo from '../../../components/TechLogo';
 import * as logoImages from "../../../utils/logos";
 import { useAppSelector, useAppDispatch } from '../../../redux/hooks';
 import QuestionnaireButton from '../../../components/QuestionnaireButton';
-import { changeInterestedTechnologies } from '../../../redux/beginnerFormSlice';
+import { beginnerChangeInterestedTechnologies } from '../../../redux/slices/beginnerFormSlice';
 
 
 function WhichTechnologies() {
@@ -19,7 +19,7 @@ function WhichTechnologies() {
 
   const handleTechnology = function (event: React.MouseEvent<HTMLButtonElement>) {
     const technology = event.currentTarget.value;
-    dispatch(changeInterestedTechnologies(technology));
+    dispatch(beginnerChangeInterestedTechnologies(technology));
   }
 
   return (
@@ -74,8 +74,6 @@ function WhichTechnologies() {
         <QuizNavigationButtons back='quiz_init/beginner/mentor_talk' next=""/>
 
       </div>
-
-
     </div>
   )
 }
