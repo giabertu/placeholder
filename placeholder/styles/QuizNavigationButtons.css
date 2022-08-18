@@ -1,6 +1,7 @@
 .quiz-nav-buttons-container {
   justify-content: center;
   gap: 1rem;
+  min-width: 10rem;
 }
 
 .quiz-nav-button-container {
@@ -21,4 +22,3 @@
 .outline {
   outline: solid 1px;
 }
-

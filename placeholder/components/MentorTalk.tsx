@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import {useColorMode} from '@chakra-ui/react'
+import { useColorMode } from '@chakra-ui/react'
 import uniqid from 'uniqid';
 
 import ProgressBar from './ProgressBar';
@@ -12,7 +12,7 @@ function MentorTalk({ choices, descriptions, progressValue, userLevel }: { choic
 
   const dispatch = useAppDispatch();
 
-  const mentorChoices = useAppSelector((state) =>{
+  const mentorChoices = useAppSelector((state) => {
     return userLevel === "beginner" ?
       state.beginnerForm.mentorFor :
       state.nonBeginnerForm.mentorFor
@@ -23,7 +23,7 @@ function MentorTalk({ choices, descriptions, progressValue, userLevel }: { choic
     nonBeginnerChangeMentorFor
 
   const [currentSelection, setCurrentSelection] = useState<number | null>(null)
-  const  {colorMode} = useColorMode();
+  const { colorMode } = useColorMode();
   const isDark = colorMode === 'dark';
 
   function handleButtonClick(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
