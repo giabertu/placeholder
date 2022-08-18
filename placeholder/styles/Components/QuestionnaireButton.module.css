@@ -2,6 +2,9 @@
   font-size: 1.2rem;
   border: solid 2px rgba(255, 255, 255, 0);
   padding: 0.25rem 0.75rem;
+
+  width: fit-content;
+
   text-align: left;
   transition: all 0.3s ease;
   position: relative;
@@ -16,6 +19,10 @@
 .buttonSelected {
   font-size: 1.2rem;
   padding: 0.25rem 0.75rem;
+
+  width: fit-content;
+
+
   text-align: left;
   transition: all 0.3s ease;
   position: relative;
