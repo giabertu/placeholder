@@ -15,6 +15,9 @@ const theme = extendTheme({
         fontWeight: 900,
         fontSize: '1.2rem'
       },
+      svg: {
+        display: 'inline',
+      }
     }
   },
   config,

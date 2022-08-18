@@ -1,3 +1,36 @@
 .providers-container {
-  width: 18rem;
+  width: 25rem;
+  gap: 1rem;
+  justify-content: space-around;
+  padding: 2rem;
+  animation: fadeInAnimation linear 2s
+}
+
+.input-signin {
+  padding-top: 0.7em;
+  animation: fadeInAnimation linear 4s;
+  font-size: 1.2rem;
+}
+
+@keyframes fadeInAnimation {
+  0% {
+    opacity: 0;
+  }
+
+  30% {
+    opacity: 0
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+
+.input-signin:focus {
+  outline: none;
+}
+
+::placeholder {
+  text-align: center;
 }
