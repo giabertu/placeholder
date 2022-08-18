@@ -12,7 +12,7 @@ import QuestionnaireButton from '../../../components/QuestionnaireButton';
 import { changeInterestedTechnologies } from '../../../redux/beginnerFormSlice';
 
 
-function beginner_which_technologies() {
+function WhichTechnologies() {
 
   const dispatch = useAppDispatch();
   const technologies = useAppSelector((state) => state.beginnerForm.interestedTechnologies)
@@ -80,4 +80,4 @@ function beginner_which_technologies() {
   )
 }
 
-export default beginner_which_technologies
+export default WhichTechnologies
