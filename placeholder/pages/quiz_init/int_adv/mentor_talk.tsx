@@ -10,7 +10,7 @@ function IntermidiateMentorTalk() {
   return (
     <div className="container flex-column outline">
       <Navbar />
-      <MentorTalk choices={intermidiateChoices} descriptions={intermidiateDescriptions} progressValue={25} />
+      <MentorTalk choices={intermidiateChoices} descriptions={intermidiateDescriptions} progressValue={25} userLevel="non-beginner"/>
       <QuizNavigationButtons back='quiz_init/int_adv/Purpose' next="quiz_init/page10" />
     </div >
   )

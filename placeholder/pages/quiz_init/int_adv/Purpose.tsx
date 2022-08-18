@@ -15,7 +15,6 @@ export default function Purpose() {
     console.log(event.currentTarget.value)
     event.preventDefault();
     setPurpose(event.currentTarget.value);
-
   }
 
   return (
@@ -47,7 +46,7 @@ export default function Purpose() {
           <QuizNavigationButtons back='/quiz_init/int_adv/roles' next="quiz_init/int_adv/mentor_talk"/>
 
         </div>
-      
+
     </div>
   )
 }

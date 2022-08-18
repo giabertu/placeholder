@@ -1,13 +1,13 @@
 import { useColorMode } from '@chakra-ui/react';
 import React, {useState} from 'react';
-import ColorModeToggle from '../../../components/ColorModeToggle';
-import Navbar from '../../../components/Navbar'
-import ProgressBar from '../../../components/ProgressBar';
+import ColorModeToggle from '../../components/ColorModeToggle';
+import Navbar from "../../components/Navbar"
+import ProgressBar from "../../components/ProgressBar";
 
-import QuizNavigationButtons from '../../../components/QuizNavigationButtons';
+import QuizNavigationButtons from "../../components/QuizNavigationButtons";
 
 
-import styles from '../../../styles/experience_level.module.css'
+import styles from "../../styles/experience_level.module.css"
 
 
 const descriptions = [
@@ -57,7 +57,7 @@ export default function Page1() {
           <button className={isDark ? styles.btnDarkMode : styles.btn} value='beginner' onClick={handleLevel} onMouseEnter={() => setSelection(0)} onMouseLeave={() => setSelection(null)}> &#62; beginner</button>
           <button className={isDark ? styles.btnDarkMode : styles.btn} value='intermediate' onClick={handleLevel} onMouseEnter={() => setSelection(1)} onMouseLeave={() => setSelection(null)}> &#62; intermediate</button>
           <button className={isDark ? styles.btnDarkMode : styles.btn} value='advanced' onClick={handleLevel} onMouseEnter={() => setSelection(2)} onMouseLeave={() => setSelection(null)}> &#62; advanced</button>
-         
+
 
         </div>
 
@@ -71,8 +71,8 @@ export default function Page1() {
 
 
         </div>
-       
-        
+
+
 
       </div>
       <div className={styles.navigationBtns}>

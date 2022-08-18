@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import {color, useColorMode, useColorModeValue} from '@chakra-ui/react'
 
-function QuizNavigationButtons({ back, next }: { back?: string, next: string }) {
+function QuizNavigationButtons({ back, next, canProceed }: { back?: string, next: string, canProceed: boolean }) {
 
   const {colorMode} = useColorMode();
   const isDark = colorMode === 'dark';
@@ -17,7 +17,7 @@ function QuizNavigationButtons({ back, next }: { back?: string, next: string }) 
       }
       <div className='quiz-nav-button-container flex-row'>
         <Link href={`/${next}`}>
-          <button className={isDark ? 'button-style-dark-mode quiz-nav-buttons' : 'button-style quiz-nav-buttons'}>&gt;&gt;</button>
+          <button disabled={!canProceed} className={isDark ? 'button-style-dark-mode quiz-nav-buttons' : 'button-style quiz-nav-buttons'}>&gt;&gt;</button>
         </Link>
       </div>
     </div>
