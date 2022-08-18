@@ -10,7 +10,7 @@ function BeginnerMentorTalk() {
       <Navbar />
       <MentorTalk choices={beginnerChoices} descriptions={beginnerDescriptions} progressValue={25} />
       <QuizNavigationButtons back='quiz_init/page1' next="quiz_init/beginner/which_technologies" />
-    </div >
+    </div>
   )
 }
 
