@@ -14,10 +14,8 @@ const Home: NextPage = () => {
 
 
   const [extraTerminalLines, setExtraTerminalLines] = useState<string[]>([]);
-  const [enteringUsername, setEnteringUsername] = useState(false);
+  const [enteringEmail, setEnteringEmail] = useState(false);
   const [enteringPassword, setEnteringPassword] = useState(false);
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
 
   // automate focus on user input during page load (autoFocus unreliable in React)
   const inputElementRef = useRef<HTMLInputElement>(null);
@@ -48,33 +46,28 @@ const Home: NextPage = () => {
       if (inputElementRef.current.value.match(/\w/) === null) {
         setExtraTerminalLines([...extraTerminalLines, "invalid input"]);
       }
-      if (inputElementRef.current.value === "quiz_init" && !enteringUsername && !enteringPassword) {
+      if (inputElementRef.current.value === "quiz init") {
         router.push('quiz_init/page1');
       }
       //
-      else if (inputElementRef.current.value === "login") {
-        // if (enteringUsername) {
-        //   setExtraTerminalLines([...extraTerminalLines, "you've already said that"]);
-        // }
-        setEnteringUsername(true);
+      else if (inputElementRef.current.value === "email init") {
+        setEnteringEmail(true);
         setEnteringPassword(false);
-        setExtraTerminalLines([...extraTerminalLines, "enter username"]);
+        setExtraTerminalLines([...extraTerminalLines, "enter email"]);
       }
-      else if (enteringUsername) {
-        setEnteringUsername(false);
+      else if (inputElementRef.current.value === 'git init') {
+        signIn('github', { callbackUrl: '/' })
+      } else if (inputElementRef.current.value === 'google init') {
+        signIn('google', { callbackUrl: '/' })
+      }
+      else if (enteringEmail) {
+        signIn('email', { redirect: false, email: inputElementRef.current.value, callbackUrl: '/' })
+        setEnteringEmail(false);
         setEnteringPassword(true);
-        setExtraTerminalLines([...extraTerminalLines, "enter password"]);
+        setExtraTerminalLines([...extraTerminalLines, "check your inbox"]);
       }
       else if (enteringPassword) {
-        if (false) {
-          // go back to username if credentials are incorrect
-          setEnteringUsername(true);
-          setEnteringPassword(false);
-        }
-        else {
-          // go to dashboard
-        }
-        setExtraTerminalLines([...extraTerminalLines, "enter password"]);
+        setExtraTerminalLines([...extraTerminalLines, "command not found"]);
       }
       inputElementRef.current.value = "";
     }
@@ -100,16 +93,20 @@ const Home: NextPage = () => {
               .pauseFor(150)
               .typeString("<br /> 04")
               .pauseFor(150)
-              .typeString("<br /> 05 if (you've been here before) enter 'login'")
+              .typeString("<br /> 05 if (you've been here before)")
               .pauseFor(150)
-              .typeString("<br /> 06 else enter 'quiz_init'")
+              .typeString("<br /> 06 &nbsp;&nbsp; enter 'git init' || 'google init' || 'email init'")
+              .pauseFor(150)
+              .typeString("<br /> 07 else")
+              .pauseFor(150)
+              .typeString("<br /> 08 &nbsp;&nbsp; enter 'quiz init'")
 
               .start();
           }}
         />
 
         {extraTerminalLines.map((extraTerminalLine, index) => {
-          const lineNumber = index + 7;
+          const lineNumber = index + 9;
           const printedLineNumber = (lineNumber).toString().length < 2 ? "0" + (lineNumber) : (lineNumber).toString();
           return (
             <Typewriter
@@ -139,12 +136,13 @@ const Home: NextPage = () => {
       </div>
 
       <form onSubmit={handleCLIInput}>
-        <p className={styles.terminalArrow}>{">"}</p>
+        <span className={styles.terminalArrow}>&gt;</span>
         <input className={styles.input} ref={inputElementRef} type={'text'} placeholder="command" autoFocus={true}></input>
       </form>
 
       <div>
-        {!session ? <button onClick={() => signIn()}>Sign In with Github</button> :
+        <button onClick={() => signIn()}>Sign In</button>
+        {session &&
           <div>
             <button onClick={() => signOut()}>Sign Out</button>
             <Avatar size='xl' name={`${session.user?.name}`} src={`${session.user?.image}`} />

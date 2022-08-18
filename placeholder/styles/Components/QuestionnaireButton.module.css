@@ -2,7 +2,10 @@
   font-size: 1.2rem;
   border: solid 2px rgba(255, 255, 255, 0);
   padding: 0.25rem 0.75rem;
+<<<<<<< HEAD
   width: fit-content;
+=======
+>>>>>>> c4d8ae0453a9247349e18bb4a735392fc073a2c5
   text-align: left;
   transition: all 0.3s ease;
   position: relative;
@@ -17,7 +20,10 @@
 .buttonSelected {
   font-size: 1.2rem;
   padding: 0.25rem 0.75rem;
+<<<<<<< HEAD
   width: fit-content;
+=======
+>>>>>>> c4d8ae0453a9247349e18bb4a735392fc073a2c5
   text-align: left;
   transition: all 0.3s ease;
   position: relative;

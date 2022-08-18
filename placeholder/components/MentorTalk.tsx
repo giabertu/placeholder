@@ -1,6 +1,10 @@
 import { useState } from 'react';
 import ProgressBar from './ProgressBar';
+<<<<<<< HEAD
 import {useColorMode} from '@chakra-ui/react'
+=======
+import uniqid from 'uniqid';
+>>>>>>> c4d8ae0453a9247349e18bb4a735392fc073a2c5
 
 function MentorTalk({ choices, descriptions, progressValue }: { choices: string[], descriptions: string[], progressValue: number }) {
 
@@ -34,7 +38,13 @@ function MentorTalk({ choices, descriptions, progressValue }: { choices: string[
       <div className="input-description-container flex-row">
         <div className="options-container flex-column">
           {choices.map((choice: string, index: number) =>
+<<<<<<< HEAD
             <button className={isDark ? 'button-style-dark-mode' : 'button-style'}
+=======
+            <button
+              key={uniqid()}
+              className="button-style"
+>>>>>>> c4d8ae0453a9247349e18bb4a735392fc073a2c5
               onMouseEnter={() => setCurrentSelection(index)}
               onMouseLeave={() => setCurrentSelection(null)}
               onClick={(event) => handleButtonClick(event)}>&gt; {choice}</button>)}
