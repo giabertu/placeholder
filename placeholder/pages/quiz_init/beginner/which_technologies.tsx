@@ -39,7 +39,7 @@ function WhichTechnologies() {
 
         <h2 className={styles.instruction}>Search for the technologies you wish to learn, or choose from the list of popular tech below</h2>
 
-        <form>
+        {/* <form> */}
           {/* <span className={styles.terminalArrow}>&gt;</span> */}
           <InputGroup width='22em' >
             <InputLeftElement children='>' color={isDark ? 'gray.300' : 'gray.500'}/>
@@ -47,7 +47,7 @@ function WhichTechnologies() {
           </InputGroup>
           {/* <input className={styles.technologiesSearchInput} type="text" placeholder='Type technology here...'></input> */}
           
-        </form>
+        {/* </form> */}
 
         <div className={styles.logoContainer}>
           <TechLogo imgSrc={logoImages.react.src} value="react" onClick={handleTechnology}/>

@@ -8,12 +8,16 @@ import TechLogo from '../../../components/TechLogo';
 import * as logoImages from "../../../utils/logos";
 import { useAppSelector, useAppDispatch } from '../../../redux/hooks';
 import { nonBeginnerChangeInterestedTechnologies } from '../../../redux/slices/nonBeginnerFormSlice';
+import { Input, InputGroup, InputLeftElement, useColorMode } from '@chakra-ui/react';
 
 
 function WhichTechnologies() {
 
   const dispatch = useAppDispatch();
-  const technologies = useAppSelector((state) => state.nonBeginnerForm.interestedTechnologies)
+  const technologies = useAppSelector((state) => state.nonBeginnerForm.interestedTechnologies);
+  const {colorMode } = useColorMode();
+  const isDark = colorMode === 'dark';
+
 
   const handleTechnology = function (event: React.MouseEvent<HTMLButtonElement>) {
     const technology = event.currentTarget.value;
@@ -26,8 +30,8 @@ function WhichTechnologies() {
       <div className={styles.formContainer}>
         <ProgressBar value={10} />
         <div className={styles.title}>
-          {!technologies.length ? <h1 className={styles.title}> &#62; I am familiar with <span className={styles.underline}>_______</span> technologies</h1>
-            : <h1 className={styles.title}> &#62; I am familiar with {JSON.stringify(technologies).replaceAll(",", ", ")} technologies</h1>
+          {!technologies.length ? <h1 className={styles.title}> &#62; I am familiar with the following technologies: <span className={styles.underline}>_______</span></h1>
+            : <h1 className={styles.title}> &#62; I am familiar with the following technologies: {JSON.stringify(technologies).replaceAll(",", ", ")}</h1>
           }
         </div>
 
@@ -61,12 +65,12 @@ function WhichTechnologies() {
 
         </div>
 
-        <h2 className={styles.horizontalRule}><span className={styles.horizontalRuleText}>OR</span></h2>
+        <h2 className={isDark ? styles.horizontalRuleDarkMode : styles.horizontalRule}><span className={isDark ? styles.horizontalRuleTextDarkMode : styles.horizontalRuleText}>OR</span></h2>
 
-        <form>
-          <span className={styles.terminalArrow}>&gt;</span>
-          <input className={styles.technologiesSearchInput} type="text" placeholder='Type technology here...'></input>
-        </form>
+        <InputGroup width='22em' >
+          <InputLeftElement children='>' color={isDark ? 'gray.300' : 'gray.500'}/>
+          <Input variant='outline' placeholder='Type technology here...' color={isDark ? 'gray.300' : 'gray.500'} _placeholder={{color: 'inherit'}} focusBorderColor='gray.500'/>
+        </InputGroup>
 
         <QuizNavigationButtons back='quiz_init/beginner/mentor_talk' next="" />
       </div>
