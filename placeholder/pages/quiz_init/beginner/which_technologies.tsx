@@ -71,7 +71,7 @@ function WhichTechnologies() {
         <h2 className={styles.horizontalRule}><span className={styles.horizontalRuleText}>OR</span></h2>
 
         <QuestionnaireButton text="I'm unsure at this stage" value="general" onClick={handleTechnology}/>
-        <QuizNavigationButtons back='quiz_init/beginner/mentor_talk' next=""/>
+        <QuizNavigationButtons back='quiz_init/beginner/mentor_talk' next='quiz_init/beginner/which_careers'/>
 
       </div>
     </div>
