@@ -9,7 +9,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1rem;
+  gap: 2rem;
   width: 60rem;
 }
 
@@ -24,11 +24,19 @@
   animation: blink 1.6s step-end infinite;
 }
 
-@keyframes blink{
-  0%{opacity: 1.0;}
-  50%{opacity: 0.0;}
-  100%{opacity: 1.0;}
+@keyframes blink {
+  0% {
+    opacity: 1.0;
   }
+
+  50% {
+    opacity: 0.0;
+  }
+
+  100% {
+    opacity: 1.0;
+  }
+}
 
 .instruction {
   margin-top: 0.75rem;
@@ -75,7 +83,7 @@
 }
 
 .horizontalRuleText {
-  background:#fff;
+  background: #fff;
   padding: 0 0.4rem;
   font-size: 1.1rem;
 }
