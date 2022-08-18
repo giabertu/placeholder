@@ -1,4 +1,5 @@
 import { useState } from "react";
+import uniqid from "uniqid";
 import ProgressBar from "../../../components/ProgressBar";
 import QuizCompanyName from "../../../components/QuizCompanyName";
 import QuizNavigationButtons from "../../../components/QuizNavigationButtons";
@@ -31,9 +32,10 @@ function Roles() {
         <div className="input-description-container flex-row">
           <div className="options-container flex-column">
             {roles.map((role: string) =>
-              <button className="button-style" onClick={(event) => {
-                handleButtonClick(event);
-              }}>&gt; {role}</button>
+              <button
+                key={uniqid()}
+                className="button-style"
+                onClick={(event) => handleButtonClick(event)}>&gt; {role}</button>
             )}
           </div>
         </div>
