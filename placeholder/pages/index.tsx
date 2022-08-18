@@ -136,7 +136,7 @@ const Home: NextPage = () => {
       </div>
 
       <form onSubmit={handleCLIInput}>
-        <p className={styles.terminalArrow}>&gt;</p>
+        <span className={styles.terminalArrow}>&gt;</span>
         <input className={styles.input} ref={inputElementRef} type={'text'} placeholder="command" autoFocus={true}></input>
       </form>
 
