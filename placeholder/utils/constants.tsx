@@ -1,6 +1,5 @@
 export const beginnerChoices = ['learning how to program', 'switching careers', 'finding my dream developer role', /* 'writing better code' */];
 
-
 export const beginnerDescriptions = [
   'Programming can be intimidating, and it can be difficult to know where to start. I\'d like a mentor that can show me the ropes and give me some direction, or teach me about a specific technology.',
 

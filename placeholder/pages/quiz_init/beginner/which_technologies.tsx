@@ -1,29 +1,25 @@
 import React, { useState } from 'react';
+import { useRouter } from 'next/router'
+
 import Navbar from '../../../components/Navbar';
 import ProgressBar from '../../../components/ProgressBar';
-import styles from '../../../styles/Page3.module.css'
-import { useRouter } from 'next/router'
+import styles from '../../../styles/which_technologies.module.css'
 import QuizNavigationButtons from '../../../components/QuizNavigationButtons';
 import TechLogo from '../../../components/TechLogo';
 import * as logoImages from "../../../utils/logos";
-
+import { useAppSelector, useAppDispatch } from '../../../redux/hooks';
 import QuestionnaireButton from '../../../components/QuestionnaireButton';
+import { beginnerChangeInterestedTechnologies } from '../../../redux/slices/beginnerFormSlice';
 
 
-function beginner_which_technologies() {
+function WhichTechnologies() {
 
-  const [technologies, setTechnologies] = useState<string[]>([]);
+  const dispatch = useAppDispatch();
+  const technologies = useAppSelector((state) => state.beginnerForm.interestedTechnologies)
 
   const handleTechnology = function (event: React.MouseEvent<HTMLButtonElement>) {
-    const technology = technologies.length ? event.currentTarget.value : event.currentTarget.value
-    const newTechnologies = [...technologies];
-
-    if (technologies.includes(technology)) {
-      newTechnologies.splice(newTechnologies.indexOf(technology), 1);
-      return setTechnologies(newTechnologies);
-    }
-
-    setTechnologies([...technologies, technology])
+    const technology = event.currentTarget.value;
+    dispatch(beginnerChangeInterestedTechnologies(technology));
   }
 
   return (
@@ -33,7 +29,7 @@ function beginner_which_technologies() {
         <ProgressBar value={10} />
         <div className={styles.title}>
           {!technologies.length ? <h1 className={styles.title}> &#62; I'd like to become a better <span className={styles.underline}>_______</span> developer</h1>
-            : technologies[0] === "general" ?  <h1 className={styles.title}> &#62; I'd like to become a better general developer</h1>
+            : technologies[0] === "general" ?  <h1 className={styles.title}> &#62; I'd like to become a better developer</h1>
             : <h1 className={styles.title}> &#62; I'd like to become a better {JSON.stringify(technologies).replaceAll(",", ", ")} developer</h1>
           }
         </div>
@@ -74,15 +70,12 @@ function beginner_which_technologies() {
 
         <h2 className={styles.horizontalRule}><span className={styles.horizontalRuleText}>OR</span></h2>
 
-
         <QuestionnaireButton text="I'm unsure at this stage" value="general" onClick={handleTechnology}/>
         <QuizNavigationButtons back='quiz_init/beginner/mentor_talk' next=""/>
 
       </div>
-
-
     </div>
   )
 }
 
-export default beginner_which_technologies
+export default WhichTechnologies

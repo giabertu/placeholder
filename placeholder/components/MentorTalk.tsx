@@ -1,14 +1,27 @@
 import { useState } from 'react';
-import ProgressBar from './ProgressBar';
-
 import {useColorMode} from '@chakra-ui/react'
-
 import uniqid from 'uniqid';
 
+import ProgressBar from './ProgressBar';
+import { useAppDispatch, useAppSelector } from '../redux/hooks';
+import { beginnerChangeMentorFor } from '../redux/slices/beginnerFormSlice';
+import { nonBeginnerChangeMentorFor } from '../redux/slices/nonBeginnerFormSlice';
 
-function MentorTalk({ choices, descriptions, progressValue }: { choices: string[], descriptions: string[], progressValue: number }) {
 
-  const [choice, setChoice] = useState<string[]>([''])
+function MentorTalk({ choices, descriptions, progressValue, userLevel }: { choices: string[], descriptions: string[], progressValue: number, userLevel: string }) {
+
+  const dispatch = useAppDispatch();
+
+  const mentorChoices = useAppSelector((state) =>{
+    return userLevel === "beginner" ?
+      state.beginnerForm.mentorFor :
+      state.nonBeginnerForm.mentorFor
+  })
+
+  const action = userLevel === "beginner" ?
+    beginnerChangeMentorFor :
+    nonBeginnerChangeMentorFor
+
   const [currentSelection, setCurrentSelection] = useState<number | null>(null)
   const  {colorMode} = useColorMode();
   const isDark = colorMode === 'dark';
@@ -16,17 +29,11 @@ function MentorTalk({ choices, descriptions, progressValue }: { choices: string[
   function handleButtonClick(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
     const eventButton = event.target as HTMLButtonElement;
     const buttonText = eventButton.innerText.replace('> ', '');
-    if (choice[0] == '') {
-      setChoice([buttonText])
-    } else if (choice.includes(buttonText)) {
-      choice.length == 1 ? setChoice(['']) : setChoice(() => choice.filter(item => item !== buttonText))
-    } else {
-      setChoice(choice.concat(buttonText))
-    }
+    dispatch(action(buttonText));
   }
 
   function getStringifiedArray() {
-    return JSON.stringify(choice).replace(/,/g, ', ');
+    return JSON.stringify(mentorChoices).replace(/,/g, ', ');
   }
 
   return (
