@@ -4,7 +4,8 @@ import type { UserInfoState } from "../types";
 
 const initialState: UserInfoState = {
   level: "",
-  developerField: null
+  developerField: null,
+  experiencedWithTechnologies: []
 };
 
 export const userInfoSlice = createSlice({
@@ -18,9 +19,20 @@ export const userInfoSlice = createSlice({
     changeUserDeveloperField: (state, action: PayloadAction<string>) => {
       state.developerField = action.payload;
       return state;
+    },
+    changeExperiencedWithTechnologies: (state, action: PayloadAction<string> ) => {
+      // toggle technologies purpose selection
+      const index = state.experiencedWithTechnologies.indexOf(action.payload);
+      if (index !== -1) {
+        state.experiencedWithTechnologies.splice(index, 1);
+      }
+      else {
+        state.experiencedWithTechnologies.push(action.payload);
+      }
+      return state;
     }
   }
 })
 
-export const { changeUserLevel, changeUserDeveloperField } = userInfoSlice.actions;
+export const { changeUserLevel, changeUserDeveloperField, changeExperiencedWithTechnologies } = userInfoSlice.actions;
 export default userInfoSlice.reducer;
