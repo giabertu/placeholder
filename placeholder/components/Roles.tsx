@@ -6,13 +6,11 @@ import { useAppDispatch, useAppSelector } from '../redux/hooks';
 import { changeDesiredCategory } from '../redux/slices/mentorPreferencesSlice';
 import QuestionnaireButton from './QuestionnaireButton';
 
-function MentorTalk({ choices, descriptions }: { choices: string[], descriptions: string[] }) {
+function Roles({ choices }: { choices: string[] }) {
 
   const dispatch = useAppDispatch();
+  const selectedField = useAppSelector((state) => state.userInfo.developerField);
 
-  const mentorChoices = useAppSelector((state) => state.mentorPreferences.desiredCategories);
-
-  const [currentSelection, setCurrentSelection] = useState<number | null>(null)
   const { colorMode } = useColorMode();
   const isDark = colorMode === 'dark';
 
@@ -22,33 +20,32 @@ function MentorTalk({ choices, descriptions }: { choices: string[], descriptions
     dispatch(changeDesiredCategory(buttonText));
   }
 
-  function getStringifiedArray() {
-    return JSON.stringify(mentorChoices).replace(/,/g, ', ');
+  const generateTitle = function () {
+    if (!selectedField) {
+      return (
+        <h1 className='title'> &#62; I am a <span className="underline">____</span> developer.</h1>
+      )
+    }
+    return <h1 className='title'> &#62; I am a {selectedField} developer.</h1>
   }
 
   return (
     <div className="form-container flex-column">
-      <h1 className='title'> I'd like to speak to my mentor about {mentorChoices.length ? getStringifiedArray() : <span className="underline">_______</span>}</h1>
+      {generateTitle()}
       <div className="options-container flex-row">
         <div className="choices-container flex-column">
-          {choices.map((text: string, index: number) =>
+          {choices.map((text: string) =>
               <QuestionnaireButton
                 key={uniqid()}
                 text={text}
                 value={text}
                 onClick={(event) => handleButtonClick(event)}
-                onMouseEnter={() => setCurrentSelection(index)}
-                onMouseLeave={() => setCurrentSelection(null)}
               />
               )}
         </div>
-        {currentSelection == null ||
-          <div className={isDark ? "descriptions-container-dark-mode" : "descriptions-container"}>
-            <p className="info-tag">{descriptions[currentSelection]}</p>
-          </div>}
       </div>
     </div>
   )
 }
 
-export default MentorTalk;
+export default Roles;

@@ -1,24 +1,26 @@
 .quiz-nav-buttons-container {
-  justify-content: center;
-  gap: 1rem;
+  width: 78vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 3.8vw;
+  position: absolute;
+  /* top: 48vh; */
+  bottom: 4vh;
+  /* background-color: blue; */
 }
 
 .quiz-nav-button-container {
   width: 4rem;
   justify-content: center;
-  /* width: auto; */
 }
 
 .quiz-nav-buttons {
   width: fit-content;
+  font-size: 1.6rem;
 }
 
 .quiz-back-button:hover {
   margin-left: 0rem;
   margin-right: 0.5rem;
 }
-
-.outline {
-  outline: solid 1px;
-}
-

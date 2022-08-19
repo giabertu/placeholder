@@ -1,7 +1,7 @@
 import '../styles/globals.css'
 import '../styles/MentorTalk.css'
 import '../styles/utilityClasses.css'
-import '../styles/QuizNavigationButtons.css'
+import '../styles/components/QuizNavigationButtons.css'
 import '../styles/SignIn.css'
 import type { AppProps } from 'next/app'
 import theme from '../theme'

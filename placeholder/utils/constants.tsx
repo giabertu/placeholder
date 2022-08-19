@@ -1,5 +1,6 @@
 export const beginnerChoices = ['learning how to program', 'switching careers', 'finding my dream developer role', /* 'writing better code' */];
 
+
 export const beginnerDescriptions = [
   'Programming can be intimidating, and it can be difficult to know where to start. I\'d like a mentor that can show me the ropes and give me some direction, or teach me about a specific technology.',
 
@@ -10,11 +11,25 @@ export const beginnerDescriptions = [
   'I have been coding for some time and I am ready to take it up a notch. I am looking for someone that will review my code and suggest improvements that will improve my skill and help me code more confidently.',
 ]
 
-export const intermidiateChoices = [
+export const levelChoices = [
+  "Beginner",
+  "Intermediate",
+  "Advanced"
+]
+
+export const levelDescriptions = [
+  "I am just starting out as a software developer and aiming to learn basic programming foundations. I have been consistently learning how to program and I want to prepare for the next stage to land my first software developing role.",
+
+  "I am a software developer with at least 2 years of experience in the industry and I have 1 or more language of mastery.",
+
+  'I am a software developer with at least 5 years of experience in the industry. I have past experience in leading junior-mid level developers/working independently.'
+]
+
+export const IntermediateChoices = [
   'expanding my programming skillset', 'advancing in my career', 'writing better code'
 ]
 
-export const intermidiateDescriptions = [
+export const IntermediateDescriptions = [
   'I already have experience and I am looking for someone to guide me in learning a new language, framework or library. Or even talk about programming concepts.',
 
   'I am interested in taking my career to the next step or in switching to a different role in which I have less experience. I would like someone to give me interview tips, review my CV and give me advice.',
@@ -24,4 +39,4 @@ export const intermidiateDescriptions = [
 ]
 
 
-export const roles = ['frontend', 'backend', 'full stack', 'mobile', 'game', 'data scientist', 'devops', 'web3']
+export const rolesChoices = ['frontend', 'backend', 'full stack', 'mobile', 'game', 'data scientist', 'devops', 'web3']

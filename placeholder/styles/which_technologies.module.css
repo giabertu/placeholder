@@ -2,19 +2,20 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 1.5rem;
+  padding: 0 1.5rem 5.5rem 1.5rem;
 }
 
 .formContainer {
+  /* background-color: red; */
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 1rem;
-  width: 60rem;
+  z-index: 1;
+  padding-top: 7rem;
 }
 
 .title {
-  margin-top: 1rem;
   text-align: center;
   font-size: 1.2rem;
   /* font-weight: normal; */
@@ -24,11 +25,11 @@
   animation: blink 1.6s step-end infinite;
 }
 
-@keyframes blink{
-  0%{opacity: 1.0;}
-  50%{opacity: 0.0;}
-  100%{opacity: 1.0;}
-  }
+@keyframes blink {
+  0% {opacity: 1.0;}
+  50% {opacity: 0.0;}
+  100% {opacity: 1.0;}
+}
 
 .instruction {
   margin-top: 0.75rem;
@@ -74,8 +75,22 @@
   margin: 1.2rem 0;
 }
 
+.horizontalRuleDarkMode {
+  width: 100%;
+  text-align: center;
+  border-bottom: 1px solid white;
+  line-height: 0.1em;
+  margin: 1.2rem 0;
+}
+
 .horizontalRuleText {
-  background:#fff;
+  background: #fff;
+  padding: 0 0.4rem;
+  font-size: 1.1rem;
+}
+
+.horizontalRuleTextDarkMode {
+  background: #20242c;
   padding: 0 0.4rem;
   font-size: 1.1rem;
 }
