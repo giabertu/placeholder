@@ -46,28 +46,28 @@ function WhichTechnologies() {
         </form>
 
         <div className={styles.logoContainer}>
-          <TechLogo imgSrc={logoImages.react.src} value="react" onClick={handleTechnology}/>
-          <TechLogo imgSrc={logoImages.JS.src} value="javascript" onClick={handleTechnology}/>
-          <TechLogo imgSrc={logoImages.TS.src} value="typescript" onClick={handleTechnology}/>
-          <TechLogo imgSrc={logoImages.angular.src} value="angular" onClick={handleTechnology}/>
-          <TechLogo imgSrc={logoImages.python.src} value="python" onClick={handleTechnology}/>
+          <TechLogo imgSrc={logoImages.react.src} value="react" onClick={handleTechnology} toLearn={false} />
+          <TechLogo imgSrc={logoImages.JS.src} value="javascript" onClick={handleTechnology} toLearn={false} />
+          <TechLogo imgSrc={logoImages.TS.src} value="typescript" onClick={handleTechnology} toLearn={false} />
+          <TechLogo imgSrc={logoImages.angular.src} value="angular" onClick={handleTechnology} toLearn={false} />
+          <TechLogo imgSrc={logoImages.python.src} value="python" onClick={handleTechnology} toLearn={false} />
 
-          <TechLogo imgSrc={logoImages.java.src} value="java" onClick={handleTechnology}/>
-          <TechLogo imgSrc={logoImages.git.src} value="git" onClick={handleTechnology}/>
-          <TechLogo imgSrc={logoImages.HTML.src} value="HTML" onClick={handleTechnology}/>
-          <TechLogo imgSrc={logoImages.CSS.src} value="CSS" onClick={handleTechnology}/>
-          <TechLogo imgSrc={logoImages.node.src} value="Node.js" onClick={handleTechnology}/>
+          <TechLogo imgSrc={logoImages.java.src} value="java" onClick={handleTechnology} toLearn={false} />
+          <TechLogo imgSrc={logoImages.git.src} value="git" onClick={handleTechnology} toLearn={false} />
+          <TechLogo imgSrc={logoImages.HTML.src} value="HTML" onClick={handleTechnology} toLearn={false} />
+          <TechLogo imgSrc={logoImages.CSS.src} value="CSS" onClick={handleTechnology} toLearn={false} />
+          <TechLogo imgSrc={logoImages.node.src} value="Node.js" onClick={handleTechnology} toLearn={false} />
 
-          <TechLogo imgSrc={logoImages.ruby.src} value="ruby" onClick={handleTechnology}/>
-          <TechLogo imgSrc={logoImages.rust.src} value="rust" onClick={handleTechnology}/>
-          <TechLogo imgSrc={logoImages.CPlusPlus.src} value="C++" onClick={handleTechnology}/>
-          <TechLogo imgSrc={logoImages.CSharp.src} value="C#" onClick={handleTechnology}/>
-          <TechLogo imgSrc={logoImages.php.src} value="PHP" onClick={handleTechnology}/>
+          <TechLogo imgSrc={logoImages.ruby.src} value="ruby" onClick={handleTechnology} toLearn={false} />
+          <TechLogo imgSrc={logoImages.rust.src} value="rust" onClick={handleTechnology} toLearn={false} />
+          <TechLogo imgSrc={logoImages.CPlusPlus.src} value="C++" onClick={handleTechnology} toLearn={false} />
+          <TechLogo imgSrc={logoImages.CSharp.src} value="C#" onClick={handleTechnology} toLearn={false} />
+          <TechLogo imgSrc={logoImages.php.src} value="PHP" onClick={handleTechnology} toLearn={false} />
 
-          <TechLogo imgSrc={logoImages.docker.src} value="docker" onClick={handleTechnology}/>
-          <TechLogo imgSrc={logoImages.graphQL.src} value="graphQL" onClick={handleTechnology}/>
-          <TechLogo imgSrc={logoImages.SQL.src} value="SQL" onClick={handleTechnology}/>
-          <TechLogo imgSrc={logoImages.noSQL.src} value="NoSQL" onClick={handleTechnology}/>
+          <TechLogo imgSrc={logoImages.docker.src} value="docker" onClick={handleTechnology} toLearn={false} />
+          <TechLogo imgSrc={logoImages.graphQL.src} value="graphQL" onClick={handleTechnology} toLearn={false} />
+          <TechLogo imgSrc={logoImages.SQL.src} value="SQL" onClick={handleTechnology} toLearn={false} />
+          <TechLogo imgSrc={logoImages.noSQL.src} value="NoSQL" onClick={handleTechnology} toLearn={false} />
 
 
         </div>

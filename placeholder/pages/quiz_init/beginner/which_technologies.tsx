@@ -49,35 +49,35 @@ function WhichTechnologies() {
         </form>
 
         <div className={styles.logoContainer}>
-          <TechLogo imgSrc={logoImages.react.src} value="react" onClick={handleTechnology}/>
-          <TechLogo imgSrc={logoImages.JS.src} value="javascript" onClick={handleTechnology}/>
-          <TechLogo imgSrc={logoImages.TS.src} value="typescript" onClick={handleTechnology}/>
-          <TechLogo imgSrc={logoImages.angular.src} value="angular" onClick={handleTechnology}/>
-          <TechLogo imgSrc={logoImages.python.src} value="python" onClick={handleTechnology}/>
+          <TechLogo imgSrc={logoImages.react.src} value="react" onClick={handleTechnology} toLearn={true} />
+          <TechLogo imgSrc={logoImages.JS.src} value="javascript" onClick={handleTechnology} toLearn={true} />
+          <TechLogo imgSrc={logoImages.TS.src} value="typescript" onClick={handleTechnology} toLearn={true} />
+          <TechLogo imgSrc={logoImages.angular.src} value="angular" onClick={handleTechnology} toLearn={true} />
+          <TechLogo imgSrc={logoImages.python.src} value="python" onClick={handleTechnology} toLearn={true} />
 
-          <TechLogo imgSrc={logoImages.java.src} value="java" onClick={handleTechnology}/>
-          <TechLogo imgSrc={logoImages.git.src} value="git" onClick={handleTechnology}/>
-          <TechLogo imgSrc={logoImages.HTML.src} value="HTML" onClick={handleTechnology}/>
-          <TechLogo imgSrc={logoImages.CSS.src} value="CSS" onClick={handleTechnology}/>
-          <TechLogo imgSrc={logoImages.node.src} value="Node.js" onClick={handleTechnology}/>
+          <TechLogo imgSrc={logoImages.java.src} value="java" onClick={handleTechnology} toLearn={true} />
+          <TechLogo imgSrc={logoImages.git.src} value="git" onClick={handleTechnology} toLearn={true} />
+          <TechLogo imgSrc={logoImages.HTML.src} value="HTML" onClick={handleTechnology} toLearn={true} />
+          <TechLogo imgSrc={logoImages.CSS.src} value="CSS" onClick={handleTechnology} toLearn={true} />
+          <TechLogo imgSrc={logoImages.node.src} value="Node.js" onClick={handleTechnology} toLearn={true} />
 
-          <TechLogo imgSrc={logoImages.ruby.src} value="ruby" onClick={handleTechnology}/>
-          <TechLogo imgSrc={logoImages.rust.src} value="rust" onClick={handleTechnology}/>
-          <TechLogo imgSrc={logoImages.CPlusPlus.src} value="C++" onClick={handleTechnology}/>
-          <TechLogo imgSrc={logoImages.CSharp.src} value="C#" onClick={handleTechnology}/>
-          <TechLogo imgSrc={logoImages.php.src} value="PHP" onClick={handleTechnology}/>
+          <TechLogo imgSrc={logoImages.ruby.src} value="ruby" onClick={handleTechnology} toLearn={true} />
+          <TechLogo imgSrc={logoImages.rust.src} value="rust" onClick={handleTechnology} toLearn={true} />
+          <TechLogo imgSrc={logoImages.CPlusPlus.src} value="C++" onClick={handleTechnology} toLearn={true} />
+          <TechLogo imgSrc={logoImages.CSharp.src} value="C#" onClick={handleTechnology} toLearn={true} />
+          <TechLogo imgSrc={logoImages.php.src} value="PHP" onClick={handleTechnology} toLearn={true} />
 
-          <TechLogo imgSrc={logoImages.docker.src} value="docker" onClick={handleTechnology}/>
-          <TechLogo imgSrc={logoImages.graphQL.src} value="graphQL" onClick={handleTechnology}/>
-          <TechLogo imgSrc={logoImages.SQL.src} value="SQL" onClick={handleTechnology}/>
-          <TechLogo imgSrc={logoImages.noSQL.src} value="NoSQL" onClick={handleTechnology}/>
+          <TechLogo imgSrc={logoImages.docker.src} value="docker" onClick={handleTechnology} toLearn={true} />
+          <TechLogo imgSrc={logoImages.graphQL.src} value="graphQL" onClick={handleTechnology} toLearn={true} />
+          <TechLogo imgSrc={logoImages.SQL.src} value="SQL" onClick={handleTechnology} toLearn={true} />
+          <TechLogo imgSrc={logoImages.noSQL.src} value="NoSQL" onClick={handleTechnology} toLearn={true} />
 
 
         </div>
 
         <h2 className={isDark ? styles.horizontalRuleDarkMode : styles.horizontalRule}><span className={isDark ? styles.horizontalRuleTextDarkMode : styles.horizontalRuleText}>OR</span></h2>
 
-        <QuestionnaireButton text="I'm unsure at this stage" value="general" onClick={handleTechnology}/>
+        <QuestionnaireButton text="I'm unsure at this stage" value="general" onClick={handleTechnology} />
 
       </div>
 

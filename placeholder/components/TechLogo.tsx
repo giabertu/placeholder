@@ -4,11 +4,11 @@ import { Tooltip, useColorMode } from '@chakra-ui/react'
 
 import { useAppSelector } from "../redux/hooks";
 
-function TechLogo({imgSrc, value, onClick}: {imgSrc: string, value: string, onClick: (event: React.MouseEvent<HTMLButtonElement>) => void}) {
+function TechLogo({imgSrc, value, onClick, toLearn}: {imgSrc: string, value: string, onClick: (event: React.MouseEvent<HTMLButtonElement>) => void, toLearn: boolean}) {
 
   // const [selected, setSelected] = useState(false);
-  const technologies = useAppSelector((state) => state.mentorPreferences.desiredTechnologies);
-  const selected = technologies.includes(value);
+  const selectedTechnologies = toLearn ? useAppSelector((state) => state.mentorPreferences.desiredTechnologies) : useAppSelector((state) => state.userInfo.experiencedWithTechnologies);
+  const selected = selectedTechnologies.includes(value);
   const {colorMode } = useColorMode();
   const isDark = colorMode === 'dark';
 
