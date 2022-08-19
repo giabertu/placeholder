@@ -24,8 +24,8 @@ function WhichTechnologies() {
 
   return (
     <div className={styles.container}>
-      <Navbar/>
-      <ProgressBar value={10} />
+      <Navbar progressValue={40}/>
+      {/* <ProgressBar value={10} /> */}
       <div className={styles.formContainer}>
         <div className={styles.title}>
           {!technologies.length ? <h1 className={styles.title}> I'd like to become a better <span className={styles.underline}>_______</span> developer</h1>

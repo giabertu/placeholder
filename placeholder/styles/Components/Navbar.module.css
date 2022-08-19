@@ -1,11 +1,19 @@
+.flexbox {
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  z-index: 2;
+  position: fixed;
+}
+
 .container {
+  /* background-color: blue; */
   width: 95vw;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   padding: 0 1rem 0.3rem 1rem;
   border-bottom: 1px black solid;
-
   /* background-color: red; */
 }
 
@@ -16,8 +24,6 @@
   padding: 0 1rem 0.3rem 1rem;
   border-bottom: 1px rgba(255, 255, 255, 0.825) solid;
 }
-
-
 
 .name {
   align-self: center;
