@@ -60,6 +60,7 @@
   padding: 0.25rem 0.75rem;
   padding-left: 0;
   width: fit-content;
+  height: fit-content;
   text-align: left;
   transition: all 0.3s ease;
 }
@@ -108,3 +109,4 @@
 .info-tag {
   font-size: 1rem;
 }
+

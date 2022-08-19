@@ -15,8 +15,10 @@
 
 /* Hide scrollbar for IE, Edge and Firefox */
 .CLIFeed {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
 }
 
 /* .container:hover {
@@ -32,6 +34,7 @@
 .input {
   padding-top: 0.7em;
   animation: fadeInAnimation linear 4s;
+  /* outline: solid 1px rgb(107, 107, 107); */
   /* animation-iteration-count: 1; */
   /* animation-fill-mode: forwards; */
 }
@@ -44,9 +47,11 @@
   0% {
     opacity: 0;
   }
+
   30% {
     opacity: 0
   }
+
   100% {
     opacity: 1;
   }
