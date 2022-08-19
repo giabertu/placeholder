@@ -47,7 +47,7 @@ const Home: NextPage = () => {
         setExtraTerminalLines([...extraTerminalLines, "invalid input"]);
       }
       if (inputElementRef.current.value === "quiz init") {
-        router.push('quiz_init/beginner/experience_level');
+        router.push('quiz_init/experience_level');
       }
       //
       else if (inputElementRef.current.value === "email init") {

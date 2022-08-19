@@ -7,7 +7,12 @@ const config: ThemeConfig = {
 const theme = extendTheme({
   styles: {
     global: {
+      html: {
+        overflowY: "overlay",
+      },
       body: {
+        padding: 0,
+        margin: 0,
         fontFamily: 'monospace',
         boxSizing: 'border-box'
       },
@@ -18,8 +23,8 @@ const theme = extendTheme({
     }
   },
   config,
- 
-  
+
+
 })
 
 export default theme;

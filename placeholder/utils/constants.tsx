@@ -1,10 +1,5 @@
 export const beginnerChoices = ['learning how to program', 'switching careers', 'finding my dream developer role', /* 'writing better code' */];
 
-export const levelDescriptions = [
-  'A beginner developer would have bla bla bla qualities.',
-  'An intermediate developer would have bla bla bla qualities.',
-  'An advanced developer would have bla bla bla qualities.'
-]
 
 export const beginnerDescriptions = [
   'Programming can be intimidating, and it can be difficult to know where to start. I\'d like a mentor that can show me the ropes and give me some direction, or teach me about a specific technology.',
@@ -14,6 +9,20 @@ export const beginnerDescriptions = [
   'A career in developing is highly rewarding and challenging, but it may be a daunting prospect for some.I\'d like a mentor that can takl authenticly about the good and the bad of different roles.',
 
   'I have been coding for some time and I am ready to take it up a notch. I am looking for someone that will review my code and suggest improvements that will improve my skill and help me code more confidently.',
+]
+
+export const levelChoices = [
+  "Beginner",
+  "Intermediate",
+  "Advanced"
+]
+
+export const levelDescriptions = [
+  "I am just starting out as a software developer and aiming to learn basic programming foundations. I have been consistently learning how to program and I want to prepare for the next stage to land my first software developing role.",
+
+  "I am a software developer with at least 2 years of experience in the industry and I have 1 or more language of mastery.",
+
+  'An advanced developer would have bla bla bla qualities.'
 ]
 
 export const intermidiateChoices = [

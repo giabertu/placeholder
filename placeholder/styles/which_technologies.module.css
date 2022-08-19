@@ -2,19 +2,20 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 1.5rem;
+  padding: 0 1.5rem 5.5rem 1.5rem;
 }
 
 .formContainer {
+  /* background-color: red; */
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2rem;
-  width: 60rem;
+  gap: 1rem;
+  z-index: 1;
+  padding-top: 7rem;
 }
 
 .title {
-  margin-top: 1rem;
   text-align: center;
   font-size: 1.2rem;
   /* font-weight: normal; */
@@ -25,17 +26,9 @@
 }
 
 @keyframes blink {
-  0% {
-    opacity: 1.0;
-  }
-
-  50% {
-    opacity: 0.0;
-  }
-
-  100% {
-    opacity: 1.0;
-  }
+  0% {opacity: 1.0;}
+  50% {opacity: 0.0;}
+  100% {opacity: 1.0;}
 }
 
 .instruction {

@@ -21,19 +21,18 @@ function Roles() {
     setChoice(endOfTitle)
   }
 
-  
+
 
   return (
     <div className="container flex-column" /* onKeyDown={(event: KeyboardEvent<HTMLImageElement>) => handleKeydown(event)} */>
-      <Navbar />
+      <Navbar progressValue={60}/>
       <div className="question-container flex-column">
-        <ProgressBar value={25} />
         <div className="title-container flex-row">
-          { choice === '_' ? 
+          { choice === '_' ?
           <h1 className='h1'> &#62; I am a <span className={styles.underline}> ___</span> developer.</h1> :
           choice === 'data scientist' ?
-          <h1 className='h1'> &#62; I am a <span className="h1-span">{choice}</span>.</h1> :   
-          <h1 className='h1'> &#62; I am a <span className='h1-span'>{choice}</span> developer.</h1>}
+          <h1 className='h1'> &#62; I am a {choice}.</h1> :
+          <h1 className='h1'> &#62; I am a {choice} developer.</h1>}
         </div>
         <div className="input-description-container flex-row">
           <div className="options-container flex-column">
@@ -42,9 +41,9 @@ function Roles() {
               <button key={uniqid()} className={isDark ? 'button-style-dark-mode' : 'button-style'} onClick={(event) => {
                 handleButtonClick(event);
               }}>&gt; {role}</button>
-    
-                
-               
+
+
+
 
             )}
           </div>
