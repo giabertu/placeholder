@@ -2,18 +2,16 @@ import { useColorMode } from "@chakra-ui/react";
 import React from "react";
 import Navbar from "../../../components/Navbar";
 import uniqid from "uniqid";
-import ProgressBar from "../../../components/ProgressBar";
 import QuizNavigationButtons from "../../../components/QuizNavigationButtons";
-import { roles } from '../../../utils/constants'
 import styles from '../../../styles/which_careers.module.css'
 import { useAppDispatch, useAppSelector } from "../../../redux/hooks";
-import {beginnerChangedesiredCareers} from '../../../redux/slices/beginnerFormSlice'
 import QuestionnaireButton from "../../../components/QuestionnaireButton";
+import { changeDesiredCareers } from "../../../redux/slices/mentorPreferencesSlice";
 
 function WhichCareers() {
 
   const dispatch = useAppDispatch();
-  const careers = useAppSelector((state) => state.beginnerForm.desiredCareers);
+  const careers = useAppSelector((state) => state.mentorPreferences.desiredCareers);
   const {colorMode} = useColorMode();
   const isDark = colorMode === 'dark';
 
@@ -30,9 +28,8 @@ function WhichCareers() {
 
   return (
     <div className={styles.container}>
-      <Navbar/>
+      <Navbar progressValue={20}/>
       <div className={styles.formContainer}>
-        <ProgressBar value={20}/>
         <div className={styles.title}>
           {!careers.length ? <h1 className={styles.title}>&#62; Roles I'd be interested in: <span className={styles.underline}>___</span></h1>
           : careers[0] === "I'm unsure at this stage" ? <h1 className={styles.title}>&#62; Roles I'd be interested in: ["I'm unsure at this stage"]</h1> :

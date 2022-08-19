@@ -44,9 +44,31 @@ export const mentorPreferencesSlice = createSlice({
         state.desiredTechnologies.push(action.payload);
       }
       return state;
+    },
+    changeDesiredCareers: (state, action: PayloadAction<string>) => {
+      // remove all technologies if user says they're unsure about technology selection
+      if (action.payload === "general") {
+        if (state.desiredCareers.includes("general")) {
+          state.desiredTechnologies = [];
+          return state;
+        }
+        else {
+          state.desiredTechnologies = ["general"];
+          return state;
+        }
+      }
+      // toggle technology selection
+      const index = state.desiredCareers.indexOf(action.payload)
+      if (index !== -1) {
+        state.desiredCareers.splice(index, 1);
+      }
+      else {
+        state.desiredCareers.push(action.payload);
+      }
+      return state;
     }
   }
 })
 
-export const { changeDesiredCategory, changeDesiredTechnologies} = mentorPreferencesSlice.actions;
+export const { changeDesiredCategory, changeDesiredTechnologies, changeDesiredCareers} = mentorPreferencesSlice.actions;
 export default mentorPreferencesSlice.reducer;

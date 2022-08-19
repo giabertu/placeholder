@@ -1,15 +1,13 @@
-import { useState } from 'react';
 import { useColorMode } from '@chakra-ui/react'
 import uniqid from 'uniqid';
-
 import { useAppDispatch, useAppSelector } from '../redux/hooks';
-import { changeDeveloperField } from '../redux/slices/userInfoSlice';
+import { changePurpose } from '../redux/slices/userInfoSlice';
 import QuestionnaireButton from './QuestionnaireButton';
 
-function Roles({ choices }: { choices: string[] }) {
+function Purpose({ choices }: { choices: string[] }) {
 
   const dispatch = useAppDispatch();
-  const selectedField = useAppSelector((state) => state.userInfo.developerField);
+  const selectedPurpose = useAppSelector((state) => state.userInfo.purpose);
 
   const { colorMode } = useColorMode();
   const isDark = colorMode === 'dark';
@@ -18,16 +16,16 @@ function Roles({ choices }: { choices: string[] }) {
     const eventButton = event.target as HTMLButtonElement;
     const buttonText = eventButton.innerText.replace('> ', '');
     console.log(buttonText);
-    dispatch(changeDeveloperField(buttonText));
+    dispatch(changePurpose(buttonText));
   }
 
   const generateTitle = function () {
-    if (!selectedField) {
+    if (!selectedPurpose) {
       return (
-        <h1 className='title'> &#62; I am best described as a <span className="underline">____</span> developer.</h1>
+        <h1 className='title'> &#62; I am here to <span className="underline">____</span>.</h1>
       )
     }
-    return <h1 className='title'> &#62; I am best described as a {selectedField} developer.</h1>
+    return <h1 className='title'> &#62; I am here to {selectedPurpose}.</h1>
   }
 
   return (
@@ -47,4 +45,4 @@ function Roles({ choices }: { choices: string[] }) {
   )
 }
 
-export default Roles;
+export default Purpose;

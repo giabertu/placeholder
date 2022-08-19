@@ -25,11 +25,11 @@ export const levelDescriptions = [
   'I am a software developer with at least 5 years of experience in the industry. I have past experience in leading junior-mid level developers/working independently.'
 ]
 
-export const IntermediateChoices = [
+export const int_advChoices = [
   'expanding my programming skillset', 'advancing in my career', 'writing better code'
 ]
 
-export const IntermediateDescriptions = [
+export const int_advDescriptions = [
   'I already have experience and I am looking for someone to guide me in learning a new language, framework or library. Or even talk about programming concepts.',
 
   'I am interested in taking my career to the next step or in switching to a different role in which I have less experience. I would like someone to give me interview tips, review my CV and give me advice.',
@@ -39,4 +39,6 @@ export const IntermediateDescriptions = [
 ]
 
 
-export const rolesChoices = ['frontend', 'backend', 'full stack', 'mobile', 'game', 'data scientist', 'devops', 'web3']
+export const rolesChoices = ['frontend', 'backend', 'full stack', 'mobile', 'game', 'data scientist', 'devops', 'web3'];
+
+export const purposeChoices = ['mentor', 'be mentored', 'both mentor and be mentored'];

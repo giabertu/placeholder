@@ -35,6 +35,14 @@
   100% {opacity: 1.0;}
 }
 
+.subtitle {
+  margin-top: 0.75rem;
+  text-align: center;
+  align-self: center;
+  font-size: 1rem;
+  width: 65%;
+}
+
 .options-container {
   display: flex;
   align-items: center;

@@ -14,7 +14,7 @@ function Roles() {
   const isDark = colorMode === 'dark';
 
   return (
-    <div className="container flex-column">
+  <div className="container flex-column">
     <Navbar progressValue={25}/>
     <RolesForm choices={rolesChoices} />
     <QuizNavigationButtons back='quiz_init/experience_level' next="quiz_init/int_adv/which_technologies" canProceed={Boolean(selectedRole)}/>

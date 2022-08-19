@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../redux/hooks';
 import { useColorMode } from '@chakra-ui/react';
-import { changeUserLevel } from '../redux/slices/userInfoSlice';
+import { changeLevel } from '../redux/slices/userInfoSlice';
 import QuestionnaireButton from './QuestionnaireButton';
 import uniqid from 'uniqid';
 
@@ -17,7 +17,7 @@ function ExperienceLevel({ choices, descriptions }: { choices: string[], descrip
   function handleButtonClick(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
     const eventButton = event.target as HTMLButtonElement;
     const buttonText = eventButton.innerText.replace('> ', '');
-    dispatch(changeUserLevel(buttonText));
+    dispatch(changeLevel(buttonText));
   }
 
   const generateTitle = function () {

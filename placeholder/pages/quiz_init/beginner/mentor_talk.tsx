@@ -7,12 +7,13 @@ import { useAppSelector } from "../../../redux/hooks";
 function BeginnerMentorTalk() {
 
   const mentorChoices = useAppSelector((state)=> state.mentorPreferences.desiredCategories);
+  const subroute = mentorChoices.includes("learning how to program") ? "which_technologies": "which_careers";
 
   return (
     <div className="container">
       <Navbar progressValue={25}/>
       <MentorTalkForm choices={beginnerChoices} descriptions={beginnerDescriptions} />
-      <QuizNavigationButtons back='quiz_init/experience_level' next="quiz_init/beginner/which_technologies" canProceed={Boolean(mentorChoices.length)}/>
+      <QuizNavigationButtons back='quiz_init/experience_level' next={`quiz_init/beginner/${subroute}`} canProceed={Boolean(mentorChoices.length)}/>
     </div>
   )
 

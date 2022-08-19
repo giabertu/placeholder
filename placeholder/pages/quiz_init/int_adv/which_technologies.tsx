@@ -28,12 +28,12 @@ function WhichTechnologies() {
       {/* <ProgressBar value={10} /> */}
       <div className={styles.formContainer}>
         <div className={styles.title}>
-          {!technologies.length ? <h1 className={styles.title}> I'm familiar with <span className={styles.underline}>_______</span></h1>
-            : <h1 className={styles.title}> I'm familiar with {JSON.stringify(technologies).replaceAll(",", ", ")}</h1>
+          {!technologies.length ? <h1 className={styles.title}> I'm experienced with <span className={styles.underline}>_______</span></h1>
+            : <h1 className={styles.title}> I'm experienced with {JSON.stringify(technologies).replaceAll(",", ", ")}</h1>
           }
         </div>
 
-        <h2 className={styles.instruction}>Search for the technologies you wish to learn, or choose from the list of popular tech below</h2>
+        <h2 className={styles.instruction}>Search for the technologies you're most familiar with, or choose from the list of popular tech below</h2>
 
         <form>
           {/* <span className={styles.terminalArrow}>&gt;</span> */}
@@ -74,7 +74,7 @@ function WhichTechnologies() {
 
       </div>
 
-      <QuizNavigationButtons back='quiz_init/beginner/mentor_talk' next="quiz_init/int_adv/purpose" canProceed={Boolean(technologies.length)} />
+      <QuizNavigationButtons back='quiz_init/int_adv/roles' next="quiz_init/int_adv/purpose" canProceed={Boolean(technologies.length)} />
 
     </div>
   )
