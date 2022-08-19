@@ -16,7 +16,7 @@
   height: 100%;
   z-index: 1;
   padding-top: 7rem;
-  /* background-color: green; */
+  background-color: green;
 }
 
 .title {
@@ -44,14 +44,14 @@
   justify-content: space-between;
   position: relative;
   top: 13vh;
-  /* background-color: blue; */
+  background-color: blue;
 }
 
 .choices-container {
   gap: 1rem;
   align-items: flex-start;
   width: 50%;
-  /* background-color: red; */
+  background-color: red;
 }
 
 .button-style {
@@ -110,3 +110,22 @@
   font-size: 1rem;
 }
 
+.form-container-choices-list-no-description {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  width: 55rem;
+  height: 100%;
+  z-index: 1;
+  padding-top: 7rem;
+}
+
+.choices-container-choices-list-no-description {
+  margin-top: 1.5rem;
+  gap: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50%;
+}

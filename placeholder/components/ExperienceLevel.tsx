@@ -16,7 +16,7 @@ function ExperienceLevel({ choices, descriptions }: { choices: string[], descrip
 
   function handleButtonClick(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
     const eventButton = event.target as HTMLButtonElement;
-    const buttonText = eventButton.innerText.replace('> ', '').toLowerCase();
+    const buttonText = eventButton.innerText.replace('> ', '');
     dispatch(changeUserLevel(buttonText));
   }
 

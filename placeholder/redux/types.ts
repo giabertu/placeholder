@@ -1,7 +1,7 @@
 export type MentorPreferencesState = {
   desiredCategories: string[]
   desiredTechnologies: string[]
-  interestedCareers: string[]
+  desiredCareers: string[]
 }
 
 // export type NonBeginnerFormState = {

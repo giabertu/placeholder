@@ -12,9 +12,9 @@ export const beginnerDescriptions = [
 ]
 
 export const levelChoices = [
-  "Beginner",
-  "Intermediate",
-  "Advanced"
+  "beginner",
+  "intermediate",
+  "advanced"
 ]
 
 export const levelDescriptions = [
