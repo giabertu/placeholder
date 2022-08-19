@@ -6,7 +6,7 @@ import { levelChoices, levelDescriptions } from '../../utils/constants';
 import QuizNavigationButtons from '../../components/QuizNavigationButtons';
 import { useAppSelector } from '../../redux/hooks';
 
-import UserLevels from '../../components/UserLevels';
+import UserLevelForm from '../../components/ExperienceLevel';
 
 function ExperienceLevel() {
   const [selection, setSelection] = useState<number | null>(null)
@@ -20,7 +20,7 @@ function ExperienceLevel() {
   return (
     <div className="container">
       <Navbar progressValue={25}/>
-      <UserLevels choices={levelChoices} descriptions={levelDescriptions} />
+      <UserLevelForm choices={levelChoices} descriptions={levelDescriptions} />
       <QuizNavigationButtons back='/' next={`quiz_init/${route}/${subroute}`} canProceed={Boolean(selectedLevel)}/>
     </div>
   )

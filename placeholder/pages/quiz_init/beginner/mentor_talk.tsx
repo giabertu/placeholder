@@ -1,7 +1,7 @@
 import QuizNavigationButtons from "../../../components/QuizNavigationButtons";
 import Navbar from "../../../components/Navbar";
 import { beginnerChoices, beginnerDescriptions } from '../../../utils/constants'
-import MentorTalk from "../../../components/MentorTalk";
+import MentorTalkForm from "../../../components/MentorTalk";
 import { useAppSelector } from "../../../redux/hooks";
 
 function BeginnerMentorTalk() {
@@ -11,7 +11,7 @@ function BeginnerMentorTalk() {
   return (
     <div className="container">
       <Navbar progressValue={25}/>
-      <MentorTalk choices={beginnerChoices} descriptions={beginnerDescriptions} />
+      <MentorTalkForm choices={beginnerChoices} descriptions={beginnerDescriptions} />
       <QuizNavigationButtons back='quiz_init/experience_level' next="quiz_init/beginner/which_technologies" canProceed={Boolean(mentorChoices.length)}/>
     </div>
   )

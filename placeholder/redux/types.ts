@@ -11,4 +11,5 @@ export type MentorPreferencesState = {
 
 export type UserInfoState = {
   level: string
+  developerField: string | null
 }

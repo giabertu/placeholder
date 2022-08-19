@@ -3,7 +3,8 @@ import type { PayloadAction } from "@reduxjs/toolkit";
 import type { UserInfoState } from "../types";
 
 const initialState: UserInfoState = {
-  level: ""
+  level: "",
+  developerField: null
 };
 
 export const userInfoSlice = createSlice({
@@ -13,9 +14,13 @@ export const userInfoSlice = createSlice({
     changeUserLevel: (state, action: PayloadAction<string>) => {
       state.level = action.payload;
       return state;
+    },
+    changeUserDeveloperField: (state, action: PayloadAction<string>) => {
+      state.developerField = action.payload;
+      return state;
     }
   }
 })
 
-export const { changeUserLevel } = userInfoSlice.actions;
+export const { changeUserLevel, changeUserDeveloperField } = userInfoSlice.actions;
 export default userInfoSlice.reducer;
