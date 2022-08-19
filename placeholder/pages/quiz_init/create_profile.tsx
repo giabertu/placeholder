@@ -2,7 +2,7 @@ import { BuiltInProviderType } from "next-auth/providers"
 import { getProviders, LiteralUnion, ClientSafeProvider, signIn } from "next-auth/react"
 import { useState } from "react";
 import Navbar from "../../components/Navbar";
-import styles from '../styles/which_technologies.module.css'
+import styles from '../../styles/which_technologies.module.css'
 import Typewriter from 'typewriter-effect';
 
 import { LogoGithub, LogoGoogle, Mail } from 'react-ionicons'
@@ -37,7 +37,7 @@ export default function CreateProfile({ providers }: { providers: Record<Literal
               return <div key={provider.name}>
                 <button
                   className="button-style flex-row align-center"
-                  onClick={() => signIn(provider.id, { callbackUrl: '/complete_profile' })}>
+                  onClick={() => signIn(provider.id, { callbackUrl: '/quiz_init/complete_profile' })}>
                   <span>&gt; Sign in with </span>&nbsp;{provider.name == 'GitHub' ? <LogoGithub style={styleObject} /> : <LogoGoogle style={styleObject} />}&nbsp;{provider.name}
                 </button>
               </div>
@@ -50,7 +50,7 @@ export default function CreateProfile({ providers }: { providers: Record<Literal
                     className="button-style"
                     onClick={() => {
                       console.log(value);
-                      signIn('email', { redirect: false, email: value, callbackUrl: '/complete_profile' })
+                      signIn('email', { redirect: false, email: value, callbackUrl: '/quiz_init/complete_profile' })
                     }}>&gt; Sign in with <Mail style={styleObject} />&nbsp;{provider.name}</button>
                 </div>
               </div>

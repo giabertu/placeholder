@@ -81,12 +81,26 @@ function ReviewProfile() {
     return <div>You are not authorized here..</div>
   } else {
     return (
-      <div className="container flex-column justify-center align-center">
-        {/* <h1>Loading... Hold tight.</h1> */}
-        <Box padding='6' boxShadow='lg' bg='white' width={'25rem'} height={'25rem'}>
-          <SkeletonCircle size='10' />
-          <SkeletonText mt='4' noOfLines={8} spacing='4' />
-        </Box>
+      <div className="container flex-column outline align-center" >
+        <Navbar />
+        <div className="flex-column gap-2r m-top-auto m-bottom-auto">
+          {/* <Typewriter
+            options={{
+              delay: 5,
+              cursor: ""
+            }}
+            onInit={(typewriter) => {
+              typewriter
+                .typeString("<h1>Amazing! Review your profile</h1>").start()
+            }} /> */}
+          <div className="profile-container flex-column align-center justify-center">
+            {/* <h1>Loading... Hold tight.</h1> */}
+            <Box padding='6' boxShadow='lg' bg='white' width={'25rem'} height={'25rem'}>
+              <SkeletonCircle size='10' />
+              <SkeletonText mt='4' noOfLines={8} spacing='4' />
+            </Box>
+          </div>
+        </div>
       </div>
     )
   }
