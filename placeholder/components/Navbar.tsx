@@ -10,8 +10,8 @@ export default function Navbar({progressValue}: {progressValue: number}) {
   const isDark = colorMode === 'dark';
 
   return (
-    <div className={styles.flexbox}>
-      <div className={isDark ? styles.containerDarkMode : styles.container}>
+    <div className={isDark? styles.flexboxDarkMode : styles.flexbox}>
+      <div className={styles.container}>
         <QuizCompanyName />
         <ColorModeToggle />
       </div>

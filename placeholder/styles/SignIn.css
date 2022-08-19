@@ -1,3 +1,71 @@
 .providers-container {
-  width: 18rem;
+  width: 25rem;
+  gap: 1rem;
+  justify-content: space-around;
+  padding: 2rem;
+  animation: fadeInAnimation linear 2s
+}
+
+.input-signin {
+  padding-top: 0.7em;
+  animation: fadeInAnimation linear 4s;
+  font-size: 1.2rem;
+}
+
+.profile-container {
+  min-width: 40rem;
+}
+
+.profile-input {
+  padding: 0.5em 0.2rem;
+  animation: fadeInAnimation linear 2s;
+  font-size: 1.2rem;
+  outline: solid 1px rgb(162, 162, 162);
+}
+
+.profile-textarea {
+  font-size: 1rem;
+  resize: none;
+  padding: 0.5rem;
+}
+
+.profile-section {
+  padding: 1rem;
+  min-height: 6rem;
+  justify-content: space-between;
+  /* outline: solid 1px; */
+  width: 80%;
+}
+
+.profile-input-label {
+  font-size: 1.2rem;
+  padding-top: 0.5rem;
+}
+
+
+@keyframes fadeInAnimation {
+  0% {
+    opacity: 0;
+  }
+
+  30% {
+    opacity: 0
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.input-file {
+  cursor: pointer;
+  /* visibility: hidden; */
+}
+
+.input-signin:focus {
+  outline: none;
+}
+
+::placeholder {
+  text-align: center;
 }

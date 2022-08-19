@@ -60,6 +60,7 @@
   padding: 0.25rem 0.75rem;
   padding-left: 0;
   width: fit-content;
+  height: fit-content;
   text-align: left;
   transition: all 0.3s ease;
 }
@@ -96,13 +97,13 @@
 }
 
 .descriptions-container-dark-mode {
-  padding: 1rem;
+  padding: 0 1rem;
   display: flex;
   align-items: center;
   width: 40%;
-  height: 80%;
+  height: 100%;
   text-align: center;
-  /* box-shadow: 0px 0px 1px white; */
+  box-shadow: 0px 0px 1px white;
 }
 
 .info-tag {
