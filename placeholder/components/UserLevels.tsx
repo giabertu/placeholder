@@ -1,16 +1,14 @@
-import { useState } from 'react';
-import { useColorMode } from '@chakra-ui/react'
+import React, { useState } from 'react';
+import { useAppDispatch, useAppSelector } from '../redux/hooks';
+import { useColorMode } from '@chakra-ui/react';
+import { changeUserLevel } from '../redux/slices/userInfoSlice';
+import QuestionnaireButton from './QuestionnaireButton';
 import uniqid from 'uniqid';
 
-import { useAppDispatch, useAppSelector } from '../redux/hooks';
-import { changeDesiredCategory } from '../redux/slices/mentorPreferencesSlice';
-import QuestionnaireButton from './QuestionnaireButton';
-
-function MentorTalk({ choices, descriptions }: { choices: string[], descriptions: string[] }) {
+function UserLevels({ choices, descriptions }: { choices: string[], descriptions: string[] }) {
 
   const dispatch = useAppDispatch();
-
-  const mentorChoices = useAppSelector((state) => state.mentorPreferences.desiredCategories);
+  const selectedLevel = useAppSelector((state) => state.userInfo.level);
 
   const [currentSelection, setCurrentSelection] = useState<number | null>(null)
   const { colorMode } = useColorMode();
@@ -18,24 +16,34 @@ function MentorTalk({ choices, descriptions }: { choices: string[], descriptions
 
   function handleButtonClick(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
     const eventButton = event.target as HTMLButtonElement;
-    const buttonText = eventButton.innerText.replace('> ', '');
-    dispatch(changeDesiredCategory(buttonText));
+    const buttonText = eventButton.innerText.replace('> ', '').toLowerCase();
+    dispatch(changeUserLevel(buttonText));
   }
 
-  function getStringifiedArray() {
-    return JSON.stringify(mentorChoices).replace(/,/g, ', ');
+  const generateTitle = function () {
+    if (!selectedLevel) {
+      return (
+        <h1 className='title'> &#62; I am a <span className="underline">____</span> developer.</h1>
+      )
+    }
+    if (selectedLevel === "beginner"){
+      return (
+        <h1 className='title'> &#62; I am a {selectedLevel} developer.</h1>
+      )
+    }
+    return <h1 className='title'> &#62; I am an {selectedLevel} developer.</h1>
   }
 
   return (
     <div className="form-container flex-column">
-      <h1 className='title'> I'd like to speak to my mentor about {mentorChoices.length ? getStringifiedArray() : <span className="underline">_______</span>}</h1>
+      {generateTitle()}
       <div className="options-container flex-row">
         <div className="choices-container flex-column">
           {choices.map((text: string, index: number) =>
               <QuestionnaireButton
                 key={uniqid()}
                 text={text}
-                value={text}
+                value={text === "beginner" ? "beginner" : "int_adv"}
                 onClick={(event) => handleButtonClick(event)}
                 onMouseEnter={() => setCurrentSelection(index)}
                 onMouseLeave={() => setCurrentSelection(null)}
@@ -51,4 +59,4 @@ function MentorTalk({ choices, descriptions }: { choices: string[], descriptions
   )
 }
 
-export default MentorTalk;
+export default UserLevels

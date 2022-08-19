@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { useRouter } from 'next/router'
 
 import Navbar from '../../../components/Navbar';
-import ProgressBar from '../../../components/ProgressBar';
 import styles from '../../../styles/which_technologies.module.css'
 import QuizNavigationButtons from '../../../components/QuizNavigationButtons';
 import TechLogo from '../../../components/TechLogo';
@@ -79,7 +78,6 @@ function WhichTechnologies() {
         <h2 className={isDark ? styles.horizontalRuleDarkMode : styles.horizontalRule}><span className={isDark ? styles.horizontalRuleTextDarkMode : styles.horizontalRuleText}>OR</span></h2>
 
         <QuestionnaireButton text="I'm unsure at this stage" value="general" onClick={handleTechnology}/>
-        <QuizNavigationButtons back='quiz_init/beginner/mentor_talk' next=""/>
 
       </div>
 
