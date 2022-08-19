@@ -48,12 +48,13 @@
   padding: 0.25rem 0.75rem;
   padding-left: 0;
   width: fit-content;
+  height: fit-content;
   text-align: left;
   transition: all 0.3s ease;
 }
 
 .button-style:hover {
-  
+
   padding-left: 0.5rem;
   border: solid 2px black;
 }
@@ -99,15 +100,15 @@
 
 .navigation-btns {
 
-  
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: absolute;
-    top: 40rem;
-    left: 70rem;
-    
-  
-  
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 40rem;
+  left: 70rem;
+
+
+
 
 }
