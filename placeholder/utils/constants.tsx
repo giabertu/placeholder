@@ -22,14 +22,14 @@ export const levelDescriptions = [
 
   "I am a software developer with at least 2 years of experience in the industry and I have 1 or more language of mastery.",
 
-  'An advanced developer would have bla bla bla qualities.'
+  'I am a software developer with at least 5 years of experience in the industry. I have past experience in leading junior-mid level developers/working independently.'
 ]
 
-export const intermidiateChoices = [
+export const IntermediateChoices = [
   'expanding my programming skillset', 'advancing in my career', 'writing better code'
 ]
 
-export const intermidiateDescriptions = [
+export const IntermediateDescriptions = [
   'I already have experience and I am looking for someone to guide me in learning a new language, framework or library. Or even talk about programming concepts.',
 
   'I am interested in taking my career to the next step or in switching to a different role in which I have less experience. I would like someone to give me interview tips, review my CV and give me advice.',
@@ -39,4 +39,4 @@ export const intermidiateDescriptions = [
 ]
 
 
-export const roles = ['frontend', 'backend', 'full stack', 'mobile', 'game', 'data scientist', 'devops', 'web3']
+export const rolesChoices = ['frontend', 'backend', 'full stack', 'mobile', 'game', 'data scientist', 'devops', 'web3']
