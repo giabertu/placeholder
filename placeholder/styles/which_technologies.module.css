@@ -75,8 +75,22 @@
   margin: 1.2rem 0;
 }
 
+.horizontalRuleDarkMode {
+  width: 100%;
+  text-align: center;
+  border-bottom: 1px solid white;
+  line-height: 0.1em;
+  margin: 1.2rem 0;
+}
+
 .horizontalRuleText {
-  background:#fff;
+  background: #fff;
+  padding: 0 0.4rem;
+  font-size: 1.1rem;
+}
+
+.horizontalRuleTextDarkMode {
+  background: #20242c;
   padding: 0 0.4rem;
   font-size: 1.1rem;
 }

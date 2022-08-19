@@ -1,5 +1,11 @@
 export const beginnerChoices = ['learning how to program', 'switching careers', 'finding my dream developer role', /* 'writing better code' */];
 
+export const levelDescriptions = [
+  'A beginner developer would have bla bla bla qualities.',
+  'An intermediate developer would have bla bla bla qualities.',
+  'An advanced developer would have bla bla bla qualities.'
+]
+
 export const beginnerDescriptions = [
   'Programming can be intimidating, and it can be difficult to know where to start. I\'d like a mentor that can show me the ropes and give me some direction, or teach me about a specific technology.',
 

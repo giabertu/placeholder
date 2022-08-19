@@ -1,24 +1,18 @@
 import { useColorMode } from '@chakra-ui/react';
-import React, {useState} from 'react';
+import React, { useState } from 'react';
+import ColorModeToggle from '../../../components/ColorModeToggle';
+import Navbar from '../../../components/Navbar'
+import ProgressBar from '../../../components/ProgressBar';
+import { levelDescriptions } from '../../../utils/constants';
+import QuizNavigationButtons from '../../../components/QuizNavigationButtons';
 
-import ColorModeToggle from '../../components/ColorModeToggle';
-import Navbar from "../../components/Navbar"
-import ProgressBar from "../../components/ProgressBar";
-import QuizNavigationButtons from "../../components/QuizNavigationButtons";
-import { useAppDispatch, useAppSelector } from '../../redux/hooks';
-import { changeUserLevel } from '../../redux/slices/userInfoSlice';
-import styles from "../../styles/experience_level.module.css"
+import styles from '../../../styles/experience_level.module.css'
 
-const descriptions = [
-  'A beginner developer would have bla bla bla qualities.',
-  'An intermediate developer would have bla bla bla qualities.',
-  'An advanced developer would have bla bla bla qualities.'
-];
-
-function ExperienceLevel() {
-
+export default function Page1() {
+  const [level, setLevel] = useState('')
+  const [urlPath, setUrlPath] = useState('')
   const [selection, setSelection] = useState<number | null>(null)
-  const {colorMode } = useColorMode();
+  const { colorMode } = useColorMode();
   const isDark = colorMode === 'dark';
 
   const level = useAppSelector((state) => state.userInfo.level);
@@ -26,7 +20,8 @@ function ExperienceLevel() {
 
   function handleLevel(event: React.MouseEvent<HTMLButtonElement>) {
     event.preventDefault();
-    dispatch(changeUserLevel(event.currentTarget.value));
+    setLevel(event.currentTarget.innerText.replace('> ', ''));
+    setUrlPath(event.currentTarget.value)
   }
 
   return (
@@ -52,20 +47,19 @@ function ExperienceLevel() {
 
         <div className={styles.options}>
           <button className={isDark ? styles.btnDarkMode : styles.btn} value='beginner' onClick={handleLevel} onMouseEnter={() => setSelection(0)} onMouseLeave={() => setSelection(null)}> &#62; beginner</button>
-          <button className={isDark ? styles.btnDarkMode : styles.btn} value='intermediate' onClick={handleLevel} onMouseEnter={() => setSelection(1)} onMouseLeave={() => setSelection(null)}> &#62; intermediate</button>
-          <button className={isDark ? styles.btnDarkMode : styles.btn} value='advanced' onClick={handleLevel} onMouseEnter={() => setSelection(2)} onMouseLeave={() => setSelection(null)}> &#62; advanced</button>
+          <button className={isDark ? styles.btnDarkMode : styles.btn} value='int_adv' onClick={handleLevel} onMouseEnter={() => setSelection(1)} onMouseLeave={() => setSelection(null)}> &#62; intermediate</button>
+          <button className={isDark ? styles.btnDarkMode : styles.btn} value='int_adv' onClick={handleLevel} onMouseEnter={() => setSelection(2)} onMouseLeave={() => setSelection(null)}> &#62; advanced</button>
         </div>
 
         <div className={styles.descriptionContainer}>
           {selection == null ||
-            <h2 className={styles.description}>{descriptions[selection]}</h2>}
+            <h2 className={styles.description}>{levelDescriptions[selection]}</h2>}
         </div>
       </div>
 
       <div className={styles.navigationBtns}>
-          <QuizNavigationButtons back='/' next="quiz_init/beginner/mentor_talk" canProceed={Boolean(level)}/>
+        <QuizNavigationButtons back='/' next={`quiz_init/${urlPath}/${urlPath === 'int_adv' ? 'roles' : 'mentor_talk'}`} />
       </div>
-
     </div>
   )
 }

@@ -17,7 +17,7 @@ export default NextAuth({
         //@ts-ignore
         clientId: process.env.GOOGLE_ID,
         //@ts-ignore
-        clientSecret: process.env.GOOGLE_SECRET
+        clientSecret: process.env.GOOGLE_SECRET,
       }),
       EmailProvider({
         server: {

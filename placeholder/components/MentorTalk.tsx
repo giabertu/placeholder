@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import {useColorMode} from '@chakra-ui/react'
+import { useColorMode } from '@chakra-ui/react'
 import uniqid from 'uniqid';
 
 import ProgressBar from './ProgressBar';
@@ -14,7 +14,7 @@ function MentorTalk({ choices, descriptions }: { choices: string[], descriptions
   const mentorChoices = useAppSelector((state) => state.mentorPreferences.desiredCategories);
 
   const [currentSelection, setCurrentSelection] = useState<number | null>(null)
-  const  {colorMode} = useColorMode();
+  const { colorMode } = useColorMode();
   const isDark = colorMode === 'dark';
 
   function handleButtonClick(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
