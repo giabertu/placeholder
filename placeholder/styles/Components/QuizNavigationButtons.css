@@ -1,5 +1,5 @@
 .quiz-nav-buttons-container {
-  width: 78vw;
+  width: 73vw;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -13,14 +13,48 @@
 .quiz-nav-button-container {
   width: 4rem;
   justify-content: center;
+  
 }
 
-.quiz-nav-buttons {
-  width: fit-content;
+.quiz-back-nav-buttons {
   font-size: 1.6rem;
+  width: fit-content;
+  height: fit-content;
+  font-size: 1.6rem;
+  padding: 0.3rem 0.75rem; 
+  transition: all 0.3s ease;
 }
 
-.quiz-back-button:hover {
-  margin-left: 0rem;
+.quiz-back-nav-buttons:hover {
   margin-right: 0.5rem;
+}
+
+.quiz-next-nav-buttons {
+  width: fit-content;
+  height: fit-content;
+  font-size: 1.6rem;
+  padding: 0.3rem 0.75rem; 
+  transition: all 0.3s ease;
+}
+
+.quiz-next-nav-buttons:hover {
+  margin-left: 0.5rem;
+}
+
+
+.nav-button-style {
+  border: solid 2px rgba(255, 255, 255, 0);  
+}
+
+.nav-button-style:hover {
+  border: solid 2px black;
+}
+
+.nav-button-style-dark-mode {
+  border: solid 2px rgba(255, 255, 255, 0);  
+}
+
+.nav-button-style-dark-mode:hover {
+  border: solid 2px white;
+ 
 }

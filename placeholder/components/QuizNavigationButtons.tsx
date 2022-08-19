@@ -11,18 +11,20 @@ function QuizNavigationButtons({ back, next, canProceed }: { back?: string, next
       {back &&
         <div className='quiz-nav-button-container flex-row'>
           <Link href={`/${back}`}>
-            <button className={isDark ? 'button-style-dark-mode quiz-nav-buttons' : 'button-style quiz-nav-buttons'}>&lt;&lt;</button>
+            <button className={isDark ? 'nav-button-style-dark-mode quiz-back-nav-buttons' : 'nav-button-style quiz-back-nav-buttons'}>&lt;&lt;</button>
           </Link>
         </div>
       }
       <div className='quiz-nav-button-container flex-row'>
         <Link href={`/${next}`}>
-          <button disabled={!canProceed} className={isDark ? 'button-style-dark-mode quiz-nav-buttons' : 'button-style quiz-nav-buttons'}>&gt;&gt;</button>
+          <button disabled={!canProceed} className={isDark ? 'nav-button-style-dark-mode quiz-next-nav-buttons' : 'nav-button-style quiz-next-nav-buttons'}>&gt;&gt;</button>
         </Link>
       </div>
     </div>
   )
 
 }
+
+//nav button style used to share styling w global button style
 
 export default QuizNavigationButtons

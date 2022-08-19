@@ -7,7 +7,7 @@
 }
 
 .flexboxDarkMode {
-  background: #20242c;
+  background: #1a202c;
   z-index: 2;
   position: fixed;
   display: flex;
