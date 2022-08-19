@@ -31,9 +31,8 @@ function ExperienceLevel() {
 
   return (
     <div className={styles.container}>
-      <Navbar/>
-      <div className={styles.questionContainer}>
-        <ProgressBar value={10} />
+      <Navbar progressValue={70}/>
+      <div className={styles.formContainer}>
         <div className={styles.title}>
           {level === '' &&
             <h1 className={styles.title}> &#62; I am a <span className={styles.underline}> ___</span> developer.</h1>

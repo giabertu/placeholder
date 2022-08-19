@@ -26,9 +26,8 @@ function Roles() {
 
   return (
     <div className="container flex-column" /* onKeyDown={(event: KeyboardEvent<HTMLImageElement>) => handleKeydown(event)} */>
-      <Navbar />
+      <Navbar progressValue={60}/>
       <div className="question-container flex-column">
-        <ProgressBar value={25} />
         <div className="title-container flex-row">
           { choice === '_' ?
           <h1 className='h1'> &#62; I am a <span className={styles.underline}> ___</span> developer.</h1> :

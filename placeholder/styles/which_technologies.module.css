@@ -2,17 +2,17 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 1.5rem 1.5rem 3rem 1.5rem;
+  padding: 0 1.5rem 5.5rem 1.5rem;
 }
 
 .formContainer {
-  background-color: red;
+  /* background-color: red; */
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 1rem;
   z-index: 1;
-  padding-top: 3rem;
+  padding-top: 7rem;
 }
 
 .title {
@@ -25,11 +25,11 @@
   animation: blink 1.6s step-end infinite;
 }
 
-@keyframes blink{
-  0%{opacity: 1.0;}
-  50%{opacity: 0.0;}
-  100%{opacity: 1.0;}
-  }
+@keyframes blink {
+  0% {opacity: 1.0;}
+  50% {opacity: 0.0;}
+  100% {opacity: 1.0;}
+}
 
 .instruction {
   margin-top: 0.75rem;

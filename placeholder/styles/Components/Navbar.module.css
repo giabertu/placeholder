@@ -8,12 +8,12 @@
 
 .container {
   /* background-color: blue; */
-  width: 95vw;
+  width: 100vw;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  padding: 0 1rem 0.3rem 1rem;
-  border-bottom: 1px black solid;
+  padding: 0.5rem 2rem 0.5rem 2rem;
+  /* border-bottom: 1px black solid; */
   /* background-color: red; */
 }
 

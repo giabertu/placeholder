@@ -5,6 +5,7 @@ import uniqid from 'uniqid';
 import ProgressBar from './ProgressBar';
 import { useAppDispatch, useAppSelector } from '../redux/hooks';
 import { changeDesiredCategory } from '../redux/slices/mentorPreferencesSlice';
+import QuestionnaireButton from './QuestionnaireButton';
 
 function MentorTalk({ choices, descriptions }: { choices: string[], descriptions: string[] }) {
 
@@ -31,12 +32,16 @@ function MentorTalk({ choices, descriptions }: { choices: string[], descriptions
       <h1 className='title'> I'd like to speak to my mentor about {mentorChoices.length ? getStringifiedArray() : <span className="underline">_______</span>}</h1>
       <div className="options-container flex-row">
         <div className="choices-container flex-column">
-          {choices.map((choice: string, index: number) =>
-            <button className={isDark ? 'button-style-dark-mode' : 'button-style'}
-              key={uniqid()}
-              onMouseEnter={() => setCurrentSelection(index)}
-              onMouseLeave={() => setCurrentSelection(null)}
-              onClick={(event) => handleButtonClick(event)}>&gt; {choice}</button>)}
+          {choices.map((text: string, index: number) =>
+              <QuestionnaireButton
+                key={uniqid()}
+                text={text}
+                value={text}
+                onClick={(event) => handleButtonClick(event)}
+                onMouseEnter={() => setCurrentSelection(index)}
+                onMouseLeave={() => setCurrentSelection(null)}
+              />
+              )}
         </div>
         {currentSelection == null ||
           <div className={isDark ? "descriptions-container-dark-mode" : "descriptions-container"}>

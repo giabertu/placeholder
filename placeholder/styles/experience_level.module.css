@@ -1,26 +1,27 @@
 .container {
   display: flex;
   flex-direction: column;
-  padding: 2rem;
-  gap: 20px;
-
+  align-items: center;
+  padding: 1.5rem 1.5rem 0 1.5rem;
+  width: 100vw;
+  /* background-color: violet; */
+  /* height: 100vh; */
 }
 
 .formContainer {
   display: flex;
   flex-direction: column;
-  align-self: center;
-  
-  margin-top: 20px;
+  align-items: left;
   gap: 1rem;
-  width: 60rem;
-  padding: 1.5rem;
-
+  width: 55rem;
+  height: 100%;
+  z-index: 1;
+  padding-top: 7rem;
 }
 
 .title {
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
+  text-align: center;
+  font-size: 1.2rem;
 }
 
 .level {
@@ -33,13 +34,7 @@
   align-items: flex-start;
   font-size: 1rem;
   gap: 1rem;
-
-
-
 }
-
-
-
 
 .btn {
   font-size: 1.2rem;
@@ -48,19 +43,11 @@
   padding-left: 0;
   width: fit-content;
   text-align: left;
-
 }
 
-
-
-
-
-
 .btn:hover {
-  
   outline: solid 2px black;
   padding-left: 0.5rem;
-  
 }
 
 .btnDarkMode {
@@ -71,49 +58,37 @@
   width: fit-content;
   text-align: left;
   transition: all 0.3s ease;
-
 }
-
 
 .btnDarkMode:hover {
   padding-left: 0.5rem;
   outline: solid 2px white;
 }
 
-
-
-
-
 .descriptionContainer {
   display: flex;
   width: 50%;
   position: relative;
-
   left: 25rem;
   bottom: 9.5rem;
   text-align: justify;
-
-
   font-size: 1rem;
-
+  background-color: red;
 }
 
 .description {
   border: solid 0.1rem rgb(229, 229, 229);
   padding: 0.5rem 0.5rem;
-
 }
 
 .underline {
   animation: blink 1s step-end infinite;
-
 }
 
-
-@keyframes blink{
-  0%{opacity: 1.0;}
-  50%{opacity: 0.0;}
-  100%{opacity: 1.0;}
+@keyframes blink {
+  0% {opacity: 1.0;}
+  50% {opacity: 0.0;}
+  100% {opacity: 1.0;}
   }
 
 .navigationBtns {
@@ -123,6 +98,4 @@
   position: absolute;
   top: 40rem;
   left: 70rem;
-  
-
 }

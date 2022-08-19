@@ -23,8 +23,6 @@ function QuizNavigationButtons({ back, next, canProceed }: { back?: string, next
     </div>
   )
 
-
 }
-
 
 export default QuizNavigationButtons
