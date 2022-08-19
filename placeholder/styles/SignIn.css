@@ -12,6 +12,26 @@
   font-size: 1.2rem;
 }
 
+.profile-title-button-container {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  gap: 2.5rem;
+  width: 40rem;
+  height: fit-content;
+  z-index: 1;
+  padding-top: 7rem;
+}
+
+.profile-main-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.5rem 1.5rem 0 1.5rem;
+  /* background-color: violet; */
+  min-height: 100vh;
+}
+
 .profile-container {
   min-width: 40rem;
 }
@@ -29,6 +49,10 @@
   padding: 0.5rem;
 }
 
+.invalid {
+  outline: solid 1px red
+}
+
 .profile-section {
   padding: 1rem;
   min-height: 6rem;
@@ -42,6 +66,9 @@
   padding-top: 0.5rem;
 }
 
+.profile-find-matches {
+  margin-bottom: 2.5rem;
+}
 
 @keyframes fadeInAnimation {
   0% {
