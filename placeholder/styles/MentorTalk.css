@@ -48,7 +48,7 @@
 }
 
 .choices-container {
-  gap: 1rem;
+  gap: 3rem;
   align-items: flex-start;
   width: 50%;
   background-color: red;

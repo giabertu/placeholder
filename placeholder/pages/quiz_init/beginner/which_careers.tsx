@@ -7,7 +7,7 @@ import QuizNavigationButtons from "../../../components/QuizNavigationButtons";
 import { roles } from '../../../utils/constants'
 import styles from '../../../styles/which_careers.module.css'
 import { useAppDispatch, useAppSelector } from "../../../redux/hooks";
-import {beginnerChangedesiredCareers} from '../../../redux/slices/beginnerFormSlice'
+import {beginnerChangedesiredCareers} from '../../../redux/slices/mentorPreferencesSlice'
 import QuestionnaireButton from "../../../components/QuestionnaireButton";
 
 function WhichCareers() {
