@@ -49,6 +49,10 @@
   padding: 0.5rem;
 }
 
+.invalid {
+  outline: solid 1px red
+}
+
 .profile-section {
   padding: 1rem;
   min-height: 6rem;
