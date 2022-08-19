@@ -5,6 +5,7 @@ import type { MentorPreferencesState } from "../types";
 const initialState: MentorPreferencesState = {
   desiredCategories: [],
   desiredTechnologies: [],
+  desiredCareers: []
 };
 
 export const mentorPreferencesSlice = createSlice({

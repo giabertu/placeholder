@@ -3,7 +3,7 @@ import { useColorMode } from '@chakra-ui/react'
 import uniqid from 'uniqid';
 
 import { useAppDispatch, useAppSelector } from '../redux/hooks';
-import { changeDesiredCategory } from '../redux/slices/mentorPreferencesSlice';
+import { changeUserDeveloperField } from '../redux/slices/userInfoSlice';
 import QuestionnaireButton from './QuestionnaireButton';
 
 function Roles({ choices }: { choices: string[] }) {
@@ -17,7 +17,8 @@ function Roles({ choices }: { choices: string[] }) {
   function handleButtonClick(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
     const eventButton = event.target as HTMLButtonElement;
     const buttonText = eventButton.innerText.replace('> ', '');
-    dispatch(changeDesiredCategory(buttonText));
+    console.log(buttonText);
+    dispatch(changeUserDeveloperField(buttonText));
   }
 
   const generateTitle = function () {
@@ -30,20 +31,18 @@ function Roles({ choices }: { choices: string[] }) {
   }
 
   return (
-    <div className="form-container flex-column">
+    <div className="form-container-choices-list-no-description">
       {generateTitle()}
-      <div className="options-container flex-row">
-        <div className="choices-container flex-column">
+        <div className="choices-container-choices-list-no-description">
           {choices.map((text: string) =>
-              <QuestionnaireButton
-                key={uniqid()}
-                text={text}
-                value={text}
-                onClick={(event) => handleButtonClick(event)}
-              />
-              )}
+            <QuestionnaireButton
+              key={uniqid()}
+              text={text}
+              value={text}
+              onClick={(event) => handleButtonClick(event)}
+            />
+          )}
         </div>
-      </div>
     </div>
   )
 }

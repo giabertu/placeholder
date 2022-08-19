@@ -7,13 +7,13 @@ import QuizNavigationButtons from "../../../components/QuizNavigationButtons";
 import { roles } from '../../../utils/constants'
 import styles from '../../../styles/which_careers.module.css'
 import { useAppDispatch, useAppSelector } from "../../../redux/hooks";
-import {beginnerChangeInterestedCareers} from '../../../redux/slices/beginnerFormSlice'
+import {beginnerChangedesiredCareers} from '../../../redux/slices/beginnerFormSlice'
 import QuestionnaireButton from "../../../components/QuestionnaireButton";
 
 function WhichCareers() {
-  
+
   const dispatch = useAppDispatch();
-  const careers = useAppSelector((state) => state.beginnerForm.interestedCareers);
+  const careers = useAppSelector((state) => state.beginnerForm.desiredCareers);
   const {colorMode} = useColorMode();
   const isDark = colorMode === 'dark';
 
@@ -21,7 +21,7 @@ function WhichCareers() {
     const eventButton = event.target as HTMLButtonElement;
     const career = eventButton.innerText.replace('> ', '');
     console.log(career);
-    dispatch(beginnerChangeInterestedCareers(career));
+    dispatch(beginnerChangedesiredCareers(career));
   }
 
   function getStringifiedArray() {
@@ -41,7 +41,7 @@ function WhichCareers() {
 
         <div className={styles.options}>
           {roles.map((role: string) =>
-            
+
             <button className={isDark ? styles.btnDarkMode : styles.btn} key={uniqid()} value={role} onClick={handleCareers}>
               &gt; {role}
 
