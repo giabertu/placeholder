@@ -9,7 +9,8 @@ import UserApi from "../../services/UserApi";
 import { UserType } from "../../lib/models/User";
 import { logos } from '../../utils/logos'
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
-import { changeDesiredCareers, toggleDesiredTechnologies, changeDesiredCategory, setDesiredTechnologies, setDesiredCareers } from "../../redux/slices/mentorPreferencesSlice";
+import { changeDesiredCareers, toggleDesiredTechnologies, changeDesiredCategory, setDesiredTechnologies, setDesiredCareers, setDesiredCategories } from "../../redux/slices/mentorPreferencesSlice";
+import { changeDeveloperField, changeLevel, changePurpose, setExpriencedWithTechnologies } from "../../redux/slices/userInfoSlice";
 
 const styleObject = { verticalAlign: 'middle', marginBottom: '3px' }
 
@@ -22,14 +23,13 @@ function CompleteProfile() {
   const [location, setLocation] = useState('')
   const [showRequired, setShowRequired] = useState(false)
 
-  const desiredTechnologies = useAppSelector(state => state.mentorPreferences.desiredTechnologies)
-  const desiredCareers = useAppSelector(state => state.mentorPreferences.desiredCareers)
+  const { mentorPreferences, userInfo } = useAppSelector(state => state)
+  const { desiredTechnologies, desiredCareers, desiredCategories } = mentorPreferences
+  const { level, developerField, purpose, experiencedWithTechnologies } = userInfo
+
 
   const dispatch = useAppDispatch();
   const ref = useRef(null)
-
-  console.log('Desired careers: ', desiredCareers)
-  console.log('Desired tech: ', desiredTechnologies)
 
   useEffect(() => {
     if (session) {
@@ -41,15 +41,26 @@ function CompleteProfile() {
 
   /*************** REPOPULATE REDUX STATE ****************/
   if (typeof window !== 'undefined') {
-    const res = localStorage.getItem('mentorPreferences');
-    if (res) {
-      const mentorPreferences = JSON.parse(res)
-      console.log('Here are the mentor preferences from local storage', mentorPreferences)
+    const mentorPreferencesStringified = localStorage.getItem('mentorPreferences');
+    const userInfoStringified = localStorage.getItem('userInfo')
+
+    if (mentorPreferencesStringified && userInfoStringified) {
+      const mentorPreferences = JSON.parse(mentorPreferencesStringified)
       dispatch(setDesiredTechnologies(mentorPreferences.desiredTechnologies))
       dispatch(setDesiredCareers(mentorPreferences.desiredCareers))
+      dispatch(setDesiredCategories(mentorPreferences.desiredCategories))
       localStorage.removeItem('mentorPreferences')
+
+      const userInfo = JSON.parse(userInfoStringified)
+      dispatch(changeLevel(userInfo.level))
+      dispatch(setExpriencedWithTechnologies(userInfo.experiencedWithTechnologies))
+      dispatch(changeDeveloperField(userInfo.developerField))
+      dispatch(changePurpose(userInfo.purpose))
+      localStorage.removeItem('userInfo');
     }
   }
+
+  //----------------------------------------------------
 
   function handleUploadClick(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
     if (ref.current) {
@@ -71,7 +82,11 @@ function CompleteProfile() {
         email: session.user.email,
         avatar: imgSrc,
         bio,
-        location
+        location,
+        level,
+        purpose,
+        developerField,
+        experiencedWithTechnologies,
       }
       return user
     }
@@ -84,8 +99,8 @@ function CompleteProfile() {
     const user = getCurrentUserState()
     if (user && shouldUpdateProfile()) {
       setShowRequired(false);
-      const result = await UserApi.updateUserProfile(user)
-      console.log("Here is the old user (before update): ", result)
+      const mentorPreferencesStringifiedult = await UserApi.updateUserProfile(user)
+      console.log("Here is the old user (before update): ", mentorPreferencesStringifiedult)
     } else {
       setShowRequired(true);
     }
@@ -145,7 +160,7 @@ function CompleteProfile() {
             <div className="profile-section flex-row gap-2r align-center">
               <label className="profile-input-label">Eager to learn </label>
               <div>
-                <AvatarGroup size='md' max={4} >
+                <AvatarGroup size='md' max={4} marginRight='2rem' >
                   {desiredTechnologies.map(technology => {
                     if (typeof technology == 'string') {
                       return <Tag>{technology}</Tag>
@@ -159,7 +174,7 @@ function CompleteProfile() {
             <div className="profile-section flex-row gap-2r align-center">
               <label className="profile-input-label">Career interests </label>
               {/* <label className="profile-input-label">{['Front End, Back End, Mobile']}</label> */}
-              <Wrap spacing={2} justify={'center'}>
+              <Wrap spacing={2} justify={'flex-end'}>
                 {desiredCareers.map((career) =>
                   <WrapItem>
                     <Tag key={career} size='md' colorScheme='gray' borderRadius='full'>
