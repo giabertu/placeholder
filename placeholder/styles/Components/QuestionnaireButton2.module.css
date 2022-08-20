@@ -19,12 +19,12 @@
 }
 
 .buttonStyle:hover  {
-  transform: translateX(10px);
+  transform: translateX(0.625rem);
   border: solid 2px black;
 }
 
 
 .buttonStyleDarkMode:hover {
-  transform: translateX(10px);
+  transform: translateX(0.625rem);
   border: solid 2px white;
 }

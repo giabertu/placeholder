@@ -44,8 +44,7 @@
   justify-content: space-between;
   position: relative;
   top: 13vh;
-  
-  /* background-color: blue; */
+
 }
 
 .choices-container {
@@ -57,44 +56,8 @@
 
 }
 
-/* .choices-container:hover {
-  transform: translateX(10px);
-} */
-
-  
 
 
-/* .button-style {
-  font-size: 1.1rem;
-  border: solid 2px rgba(255, 255, 255, 0);
-  padding: 0.25rem 0.75rem;
-  padding-left: 0;
-  width: fit-content;
-  height: fit-content;
-  text-align: left;
-  transition: all 0.3s ease;
-}
-
-.button-style:hover {
-  padding-left: 0.5rem;
-  border: solid 2px black;
-}
-
-.button-style-dark-mode {
-  font-size: 1.1rem;
-  border: solid 2px rgba(255, 255, 255, 0);
-  border: solid 2px white;
-  padding: 0.25rem 0.75rem;
-  padding-left: 0;
-  width: fit-content;
-  text-align: left;
-  transition: all 0.3s ease;
-}
-
-.button-style-dark-mode:hover {
-  padding-left: 0.5rem;
-  border: solid 2px white;
-} */
 
 .descriptions-container {
   display: flex;
