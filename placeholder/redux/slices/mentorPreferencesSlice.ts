@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
-import type { MentorPreferencesState } from "../types";
+import type { MentorPreferencesState, TechnologyObj } from "../types";
 import { StaticImageData } from "next/image";
 
 const initialState: MentorPreferencesState = {
@@ -24,9 +24,9 @@ export const mentorPreferencesSlice = createSlice({
       }
       return state;
     },
-    changeDesiredTechnologies: (state, action: PayloadAction<string>) => {
+    changeDesiredTechnologies: (state, action: PayloadAction<TechnologyObj | string>) => {
       // remove all technologies if user says they're unsure about technology selection
-      if (action.payload === "general") {
+      if (typeof action.payload === "string") {
         if (state.desiredTechnologies.includes("general")) {
           state.desiredTechnologies = [];
           return state;
@@ -36,15 +36,14 @@ export const mentorPreferencesSlice = createSlice({
           return state;
         }
       }
-      const parsedPayload = JSON.parse(action.payload)
       // toggle technology selection
       state.desiredTechnologies = state.desiredTechnologies.filter((x) => x !== "general")
-      const index = state.desiredTechnologies.findIndex((x) => typeof x !== "string" && x.name === parsedPayload.name)
+      const index = state.desiredTechnologies.findIndex((x) => typeof x !== "string" && typeof action.payload !== "string" && x.name === action.payload.name)
       if (index !== -1) {
         state.desiredTechnologies.splice(index, 1);
       }
       else {
-        state.desiredTechnologies.push(parsedPayload);
+        state.desiredTechnologies.push(action.payload);
       }
       return state;
     },

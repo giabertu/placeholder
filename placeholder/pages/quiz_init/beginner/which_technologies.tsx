@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import { useRouter } from 'next/router'
+import React from 'react';
 
 import Navbar from '../../../components/Navbar';
 import styles from '../../../styles/which_technologies.module.css'
@@ -26,10 +25,19 @@ function WhichTechnologies() {
 
   const handleButtonClick = function (event: React.MouseEvent<HTMLButtonElement>) {
     const technology = event.currentTarget.value;
-    dispatch(changeDesiredTechnologies(technology));
+    if (technology === "general") {
+      dispatch(changeDesiredTechnologies(technology));
+      return;
+    }
+    const imgData = logos.find((techData) => techData[0] === technology)![1]
+    const valueObj = {
+      name: technology,
+      imageSrc: imgData.src
+    }
+    dispatch(changeDesiredTechnologies(valueObj));
   }
 
-  const route = mentorChoices.includes("switching careers") || mentorChoices.includes("finding my dream developer role") ? "beginner/which_careers" : "create_profile";
+  const route = mentorChoices.includes("developer careers") ? "beginner/which_careers" : "create_profile";
 
   return (
     <div className={styles.container}>
@@ -39,7 +47,7 @@ function WhichTechnologies() {
         <div className={styles.title}>
           {!technologies.length ? <h1 className={styles.title}> I'd like to become a better <span className={styles.underline}>_______</span> developer</h1>
             : technologies[0] === "general" ? <h1 className={styles.title}> I'd like to become a better developer</h1>
-              : <h1 className={styles.title}> I'd like to become a better {JSON.stringify(technologyNames).replaceAll(",", ", ")} developer</h1>
+            : <h1 className={styles.title}> I'd like to become a better {JSON.stringify(technologyNames).replaceAll(",", ", ")} developer</h1>
           }
         </div>
 
