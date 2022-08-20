@@ -7,7 +7,7 @@ import TechLogo from '../../../components/TechLogo';
 import { logos } from "../../../utils/logos";
 import { useAppSelector, useAppDispatch } from '../../../redux/hooks';
 import QuestionnaireButton from '../../../components/QuestionnaireButton';
-import { changeDesiredTechnologies } from '../../../redux/slices/mentorPreferencesSlice';
+import { toggleDesiredTechnologies } from '../../../redux/slices/mentorPreferencesSlice';
 import { Input, InputGroup, InputLeftAddon, InputLeftElement, useColorMode } from '@chakra-ui/react';
 
 
@@ -17,7 +17,7 @@ function WhichTechnologies() {
   const technologies = useAppSelector((state) => state.mentorPreferences.desiredTechnologies);
   const mentorChoices = useAppSelector((state) => state.mentorPreferences.desiredCategories);
   const technologyNames = technologies.map((techObj) => {
-    if(typeof techObj !== "string") return techObj.name;
+    if (typeof techObj !== "string") return techObj.name;
   });
 
   const { colorMode } = useColorMode();
@@ -26,7 +26,7 @@ function WhichTechnologies() {
   const handleButtonClick = function (event: React.MouseEvent<HTMLButtonElement>) {
     const technology = event.currentTarget.value;
     if (technology === "general") {
-      dispatch(changeDesiredTechnologies(technology));
+      dispatch(toggleDesiredTechnologies(technology));
       return;
     }
     const imgData = logos.find((techData) => techData[0] === technology)![1]
@@ -34,7 +34,7 @@ function WhichTechnologies() {
       name: technology,
       imageSrc: imgData.src
     }
-    dispatch(changeDesiredTechnologies(valueObj));
+    dispatch(toggleDesiredTechnologies(valueObj));
   }
 
   const route = mentorChoices.includes("developer careers") ? "beginner/which_careers" : "create_profile";
@@ -47,7 +47,7 @@ function WhichTechnologies() {
         <div className={styles.title}>
           {!technologies.length ? <h1 className={styles.title}> I'd like to become a better <span className={styles.underline}>_______</span> developer</h1>
             : technologies[0] === "general" ? <h1 className={styles.title}> I'd like to become a better developer</h1>
-            : <h1 className={styles.title}> I'd like to become a better {JSON.stringify(technologyNames).replaceAll(",", ", ")} developer</h1>
+              : <h1 className={styles.title}> I'd like to become a better {JSON.stringify(technologyNames).replaceAll(",", ", ")} developer</h1>
           }
         </div>
 

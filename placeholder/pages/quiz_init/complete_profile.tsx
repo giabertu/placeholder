@@ -9,7 +9,7 @@ import UserApi from "../../services/UserApi";
 import { UserType } from "../../lib/models/User";
 import { logos } from '../../utils/logos'
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
-import { changeDesiredCareers, changeDesiredTechnologies, changeDesiredCategory, setDesiredTechnologies, setDesiredCareers } from "../../redux/slices/mentorPreferencesSlice";
+import { changeDesiredCareers, toggleDesiredTechnologies, changeDesiredCategory, setDesiredTechnologies, setDesiredCareers } from "../../redux/slices/mentorPreferencesSlice";
 
 const styleObject = { verticalAlign: 'middle', marginBottom: '3px' }
 
@@ -45,10 +45,8 @@ function CompleteProfile() {
     if (res) {
       const mentorPreferences = JSON.parse(res)
       console.log('Here are the mentor preferences from local storage', mentorPreferences)
-      // desiredCareers.forEach(career => dispatch(changeDesiredCareers(career)))
       dispatch(setDesiredTechnologies(mentorPreferences.desiredTechnologies))
       dispatch(setDesiredCareers(mentorPreferences.desiredCareers))
-      // dispatch(changeDesiredCategory(JSON.stringify(mentorPreferences.desiredCategories)))
       localStorage.removeItem('mentorPreferences')
     }
   }
