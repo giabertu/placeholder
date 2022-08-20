@@ -3,7 +3,7 @@ import { useColorMode } from '@chakra-ui/react'
 import uniqid from 'uniqid';
 
 import { useAppDispatch, useAppSelector } from '../redux/hooks';
-import { changeUserDeveloperField } from '../redux/slices/userInfoSlice';
+import { changeDeveloperField } from '../redux/slices/userInfoSlice';
 import QuestionnaireButton from './QuestionnaireButton';
 
 function Roles({ choices }: { choices: string[] }) {
@@ -18,16 +18,16 @@ function Roles({ choices }: { choices: string[] }) {
     const eventButton = event.target as HTMLButtonElement;
     const buttonText = eventButton.innerText.replace('> ', '');
     console.log(buttonText);
-    dispatch(changeUserDeveloperField(buttonText));
+    dispatch(changeDeveloperField(buttonText));
   }
 
   const generateTitle = function () {
     if (!selectedField) {
       return (
-        <h1 className='title'> &#62; I am a <span className="underline">____</span> developer.</h1>
+        <h1 className='title'> &#62; I am best described as a <span className="underline">____</span> developer.</h1>
       )
     }
-    return <h1 className='title'> &#62; I am a {selectedField} developer.</h1>
+    return <h1 className='title'> &#62; I am best described as a {selectedField} developer.</h1>
   }
 
   return (
