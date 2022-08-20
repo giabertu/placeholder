@@ -15,9 +15,7 @@ function ExperienceLevel({ choices, descriptions }: { choices: string[], descrip
   const isDark = colorMode === 'dark';
 
   function handleButtonClick(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
-    const eventButton = event.target as HTMLButtonElement;
-    const buttonText = eventButton.innerText.replace('> ', '');
-    dispatch(changeLevel(buttonText));
+    dispatch(changeLevel(event.currentTarget.value));
   }
 
   const generateTitle = function () {
@@ -43,7 +41,7 @@ function ExperienceLevel({ choices, descriptions }: { choices: string[], descrip
               <QuestionnaireButton
                 key={uniqid()}
                 text={text}
-                value={text === "beginner" ? "beginner" : "int_adv"}
+                value={text}
                 onClick={(event) => handleButtonClick(event)}
                 onMouseEnter={() => setCurrentSelection(index)}
                 onMouseLeave={() => setCurrentSelection(null)}

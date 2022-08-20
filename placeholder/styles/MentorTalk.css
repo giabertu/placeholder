@@ -4,7 +4,7 @@
   align-items: center;
   padding: 1.5rem 1.5rem 0 1.5rem;
   /* background-color: violet; */
-  height: 100vh;
+  min-height: 100vh;
 }
 
 .form-container {
@@ -127,6 +127,7 @@
   height: 100%;
   z-index: 1;
   padding-top: 7rem;
+  padding-bottom: 3rem;
 }
 
 .choices-container-choices-list-no-description {
@@ -136,4 +137,32 @@
   flex-direction: column;
   align-items: center;
   width: 50%;
+}
+
+.horizontalRule {
+  width: 100%;
+  text-align: center;
+  border-bottom: 1px solid #000;
+  line-height: 0.1em;
+  margin: 1.2rem 0;
+}
+
+.horizontalRuleDarkMode {
+  width: 100%;
+  text-align: center;
+  border-bottom: 1px solid white;
+  line-height: 0.1em;
+  margin: 1.2rem 0;
+}
+
+.horizontalRuleText {
+  background: #fff;
+  padding: 0 0.4rem;
+  font-size: 1.1rem;
+}
+
+.horizontalRuleTextDarkMode {
+  background: #20242c;
+  padding: 0 0.4rem;
+  font-size: 1.1rem;
 }

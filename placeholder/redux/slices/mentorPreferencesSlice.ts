@@ -36,6 +36,7 @@ export const mentorPreferencesSlice = createSlice({
         }
       }
       // toggle technology selection
+      state.desiredTechnologies = state.desiredTechnologies.filter((x) => x !== "general")
       const index = state.desiredTechnologies.indexOf(action.payload)
       if (index !== -1) {
         state.desiredTechnologies.splice(index, 1);
@@ -46,18 +47,19 @@ export const mentorPreferencesSlice = createSlice({
       return state;
     },
     changeDesiredCareers: (state, action: PayloadAction<string>) => {
-      // remove all technologies if user says they're unsure about technology selection
+      // remove all careers if user says they're unsure about career selection
       if (action.payload === "general") {
         if (state.desiredCareers.includes("general")) {
-          state.desiredTechnologies = [];
+          state.desiredCareers = [];
           return state;
         }
         else {
-          state.desiredTechnologies = ["general"];
+          state.desiredCareers = ["general"];
           return state;
         }
       }
-      // toggle technology selection
+      // toggle career selection
+      state.desiredCareers = state.desiredCareers.filter((x) => x !== "general")
       const index = state.desiredCareers.indexOf(action.payload)
       if (index !== -1) {
         state.desiredCareers.splice(index, 1);

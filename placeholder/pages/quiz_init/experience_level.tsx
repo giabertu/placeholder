@@ -9,7 +9,6 @@ import { useAppSelector } from '../../redux/hooks';
 import UserLevelForm from '../../components/ExperienceLevel';
 
 function ExperienceLevel() {
-  const [selection, setSelection] = useState<number | null>(null)
   const { colorMode } = useColorMode();
   const isDark = colorMode === 'dark';
 
