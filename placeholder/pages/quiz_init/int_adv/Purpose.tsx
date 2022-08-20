@@ -21,13 +21,13 @@ export default function Purpose() {
     dispatch(changePurpose(event.currentTarget.value));
   }
 
-  const subroute = selectedPurpose !== "be mentored" ? "mentee_talk" : "mentor_talk";
+  const subroute = selectedPurpose !== "expanding my programming skillset" ? "which_technologies" : "which_careers";
 
   return (
   <div className="container flex-column">
     <Navbar progressValue={25}/>
     <PurposeForm choices={purposeChoices} />
-    <QuizNavigationButtons back='quiz_init/int_adv/which_technologies' next={`quiz_init/int_adv/${subroute}`} canProceed={Boolean(selectedPurpose)}/>
-  </div >
+    <QuizNavigationButtons back='quiz_init/int_adv/experienced_technologies' next={`quiz_init/int_adv/${subroute}`} canProceed={Boolean(selectedPurpose)}/>
+  </ div>
   )
 }
