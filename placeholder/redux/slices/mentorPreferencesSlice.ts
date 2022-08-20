@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 import type { MentorPreferencesState } from "../types";
+import { StaticImageData } from "next/image";
 
 const initialState: MentorPreferencesState = {
   desiredCategories: [],
@@ -35,14 +36,15 @@ export const mentorPreferencesSlice = createSlice({
           return state;
         }
       }
+      const parsedPayload = JSON.parse(action.payload)
       // toggle technology selection
       state.desiredTechnologies = state.desiredTechnologies.filter((x) => x !== "general")
-      const index = state.desiredTechnologies.indexOf(action.payload)
+      const index = state.desiredTechnologies.findIndex((x) => typeof x !== "string" && x.name === parsedPayload.name)
       if (index !== -1) {
         state.desiredTechnologies.splice(index, 1);
       }
       else {
-        state.desiredTechnologies.push(action.payload);
+        state.desiredTechnologies.push(parsedPayload);
       }
       return state;
     },
