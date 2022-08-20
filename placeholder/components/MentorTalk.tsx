@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import { useColorMode } from '@chakra-ui/react'
-import uniqid from 'uniqid';
+
 
 import { useAppDispatch, useAppSelector } from '../redux/hooks';
 import { changeDesiredCategory } from '../redux/slices/mentorPreferencesSlice';
-import QuestionnaireButton from './QuestionnaireButton';
+import QuestionnaireButton2 from './QuestionnaireButton2';
 
 function MentorTalk({ choices, descriptions }: { choices: string[], descriptions: string[] }) {
 
@@ -32,8 +32,8 @@ function MentorTalk({ choices, descriptions }: { choices: string[], descriptions
       <div className="options-container flex-row">
         <div className="choices-container flex-column">
           {choices.map((text: string, index: number) =>
-              <QuestionnaireButton
-                key={uniqid()}
+              <QuestionnaireButton2
+                key={text}
                 text={text}
                 value={text}
                 onClick={(event) => handleButtonClick(event)}

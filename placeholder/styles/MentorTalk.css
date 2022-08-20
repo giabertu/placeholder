@@ -44,6 +44,7 @@
   justify-content: space-between;
   position: relative;
   top: 13vh;
+  
   /* background-color: blue; */
 }
 
@@ -51,10 +52,19 @@
   gap: 3rem;
   align-items: flex-start;
   width: 50%;
-  /* background-color: red; */
+  padding: 2rem;
+
+
 }
 
-.button-style {
+/* .choices-container:hover {
+  transform: translateX(10px);
+} */
+
+  
+
+
+/* .button-style {
   font-size: 1.1rem;
   border: solid 2px rgba(255, 255, 255, 0);
   padding: 0.25rem 0.75rem;
@@ -73,7 +83,7 @@
 .button-style-dark-mode {
   font-size: 1.1rem;
   border: solid 2px rgba(255, 255, 255, 0);
-  /* border: solid 2px white; */
+  border: solid 2px white;
   padding: 0.25rem 0.75rem;
   padding-left: 0;
   width: fit-content;
@@ -84,7 +94,7 @@
 .button-style-dark-mode:hover {
   padding-left: 0.5rem;
   border: solid 2px white;
-}
+} */
 
 .descriptions-container {
   display: flex;

@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../redux/hooks';
 import { useColorMode } from '@chakra-ui/react';
 import { changeUserLevel } from '../redux/slices/userInfoSlice';
-import QuestionnaireButton from './QuestionnaireButton';
 import uniqid from 'uniqid';
+import QuestionnaireButton2 from './QuestionnaireButton2';
 
 function ExperienceLevel({ choices, descriptions }: { choices: string[], descriptions: string[] }) {
 
@@ -13,8 +13,11 @@ function ExperienceLevel({ choices, descriptions }: { choices: string[], descrip
   const [currentSelection, setCurrentSelection] = useState<number | null>(null)
   const { colorMode } = useColorMode();
   const isDark = colorMode === 'dark';
-
+  
+  const [eventButton, setEventButton] = useState('');
   function handleButtonClick(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
+    event.preventDefault();
+    console.log('CLICK ONCE')
     const eventButton = event.target as HTMLButtonElement;
     const buttonText = eventButton.innerText.replace('> ', '');
     dispatch(changeUserLevel(buttonText));
@@ -40,11 +43,12 @@ function ExperienceLevel({ choices, descriptions }: { choices: string[], descrip
       <div className="options-container flex-row">
         <div className="choices-container flex-column">
           {choices.map((text: string, index: number) =>
-              <QuestionnaireButton
-                key={uniqid()}
+              <QuestionnaireButton2
+                key={text}
                 text={text}
                 value={text === "beginner" ? "beginner" : "int_adv"}
-                onClick={(event) => handleButtonClick(event)}
+                onClick={handleButtonClick}
+                
                 onMouseEnter={() => setCurrentSelection(index)}
                 onMouseLeave={() => setCurrentSelection(null)}
               />
