@@ -1,41 +1,36 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+import { useColorMode } from '@chakra-ui/react'
+
+
 import { useAppDispatch, useAppSelector } from '../redux/hooks';
-import { useColorMode } from '@chakra-ui/react';
-import { changeLevel } from '../redux/slices/userInfoSlice';
+import { changeDesiredCategory } from '../redux/slices/menteePreferencesSlice';
 import QuestionnaireButton2 from './QuestionnaireButton2';
 
-function ExperienceLevel({ choices, descriptions }: { choices: string[], descriptions: string[] }) {
+
+function MenteeTalk({ choices, descriptions }: { choices: string[], descriptions: string[] }) {
 
   const dispatch = useAppDispatch();
-  const selectedLevel = useAppSelector((state) => state.userInfo.level);
+
+  const menteeChoices = useAppSelector((state) => state.menteePreferences.desiredCategories);
 
   const [currentSelection, setCurrentSelection] = useState<number | null>(null)
   const { colorMode } = useColorMode();
   const isDark = colorMode === 'dark';
 
-  const [eventButton, setEventButton] = useState('');
   function handleButtonClick(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
-    dispatch(changeLevel(event.currentTarget.value));
-
+    const eventButton = event.target as HTMLButtonElement;
+    const buttonText = eventButton.innerText.replace('> ', '');
+    dispatch(changeDesiredCategory(buttonText));
   }
 
-  const generateTitle = function () {
-    if (!selectedLevel) {
-      return (
-        <h1 className='title'> &#62; I am a <span className="underline">____</span> developer.</h1>
-      )
-    }
-    if (selectedLevel === "beginner"){
-      return (
-        <h1 className='title'> &#62; I am a {selectedLevel} developer.</h1>
-      )
-    }
-    return <h1 className='title'> &#62; I am an {selectedLevel} developer.</h1>
+  function getStringifiedArray() {
+    return JSON.stringify(menteeChoices).replace(/,/g, ', ');
   }
 
   return (
     <div className="form-container flex-column">
-      {generateTitle()}
+      <h1 className='title'> I'd like to help my mentee {menteeChoices.length ? getStringifiedArray() : <span className="underline">_______</span>}</h1>
+      <h2 className='subtitle'>Choose all that apply</h2>
       <div className="options-container flex-row">
         <div className="choices-container flex-column">
           {choices.map((text: string, index: number) =>
@@ -58,4 +53,4 @@ function ExperienceLevel({ choices, descriptions }: { choices: string[], descrip
   )
 }
 
-export default ExperienceLevel
+export default MenteeTalk;

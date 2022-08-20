@@ -1,12 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
 import mentorPreferencesReducer from "./slices/mentorPreferencesSlice";
+import menteePreferencesSliceReducer from "./slices/menteePreferencesSlice";
 // import nonBeginnerFormReducer from "./slices/menteePreferencesSlice";
 import userInfoSlice from "./slices/userInfoSlice";
 
 export const store = configureStore({
   reducer: {
     mentorPreferences: mentorPreferencesReducer,
-    // nonBeginnerForm: nonBeginnerFormReducer,
+    menteePreferences: menteePreferencesSliceReducer,
     userInfo: userInfoSlice
   },
 })

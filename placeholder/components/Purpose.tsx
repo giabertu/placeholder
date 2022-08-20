@@ -31,7 +31,7 @@ function Purpose({ choices }: { choices: string[] }) {
   return (
     <div className="form-container-choices-list-no-description">
       {generateTitle()}
-        <div className="choices-container-choices-list-no-description">
+        <div className="choices-container-choices-list-no-description-spaced">
           {choices.map((text: string) =>
             <QuestionnaireButton
               key={uniqid()}

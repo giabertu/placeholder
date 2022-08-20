@@ -68,8 +68,6 @@
   align-items: flex-start;
   width: 50%;
   padding: 2rem;
-
-
 }
 
 .descriptions-container {
@@ -106,11 +104,23 @@
   z-index: 1;
   padding-top: 7rem;
   padding-bottom: 3rem;
+  /* background-color: red; */
 }
 
 .choices-container-choices-list-no-description {
+  /* background-color: green; */
   margin-top: 1.5rem;
   gap: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50%;
+}
+
+.choices-container-choices-list-no-description-spaced {
+  /* background-color: green; */
+  margin-top: 6.5rem;
+  gap: 3rem;
   display: flex;
   flex-direction: column;
   align-items: center;
