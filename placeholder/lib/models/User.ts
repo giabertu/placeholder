@@ -1,4 +1,5 @@
 import mongoose from 'mongoose'
+import { TechnologyObj } from '../../redux/types'
 
 //Define new and updated schema
 const userSchema = {
@@ -7,6 +8,13 @@ const userSchema = {
   avatar: String, 
   bio: String, 
   location: String,
+  level: String,
+  purpose: String,
+  developerField: String,
+  experiencedWithTechnologies: [{
+    name : String,
+    imageSrc : String
+    }]
 }
 
 export interface UserType {
@@ -14,7 +22,11 @@ export interface UserType {
   email: string,
   avatar: string,
   bio: string,
-  location: string
+  location: string,
+  level: string,
+  purpose: string,
+  developerField: null | string,
+  experiencedWithTechnologies: TechnologyObj[]
 }
 
 export const User = mongoose.model("User", new mongoose.Schema(userSchema), "users")

@@ -21,6 +21,10 @@ export const userInfoSlice = createSlice({
       state.developerField = action.payload;
       return state;
     },
+    setExpriencedWithTechnologies (state, action: PayloadAction<TechnologyObj[]>) {
+      state.experiencedWithTechnologies = action.payload;
+      return state;
+    },
     changeExperiencedWithTechnologies: (state, action: PayloadAction<TechnologyObj>) => {
       // toggle technology selection
       const index = state.experiencedWithTechnologies.findIndex((x) => x.name === action.payload.name)
@@ -39,5 +43,5 @@ export const userInfoSlice = createSlice({
   }
 })
 
-export const { changeLevel, changeDeveloperField, changeExperiencedWithTechnologies, changePurpose } = userInfoSlice.actions;
+export const { changeLevel, changeDeveloperField, changeExperiencedWithTechnologies, changePurpose, setExpriencedWithTechnologies } = userInfoSlice.actions;
 export default userInfoSlice.reducer;
