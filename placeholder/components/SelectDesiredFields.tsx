@@ -37,7 +37,7 @@ function Roles({ choices }: { choices: string[] }) {
         <div className="choices-container-choices-list-no-description">
           {choices.map((text: string) =>
             <QuestionnaireButton
-              key={uniqid()}
+              key={text}
               text={text}
               value={text}
               onClick={(event) => handleButtonClick(event)}
