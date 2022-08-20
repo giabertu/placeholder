@@ -20,7 +20,7 @@ function QuestionnaireButton({ text, value, onClick, onMouseEnter, onMouseLeave}
 
         
         onClick={(event) => {
-            onClick?.(event);
+            onClick(event);
             setSelected(!selected);
             console.log('click once')
         }}

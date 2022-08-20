@@ -14,10 +14,10 @@ function ExperienceLevel({ choices, descriptions }: { choices: string[], descrip
   const isDark = colorMode === 'dark';
   
   const [eventButton, setEventButton] = useState('');
-  function handleButtonClick(event: React.MouseEvent<HTMLButtonElement, MouseEvent>)
+  function handleButtonClick(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
     dispatch(changeLevel(event.currentTarget.value));
 
-  
+  }
 
   const generateTitle = function () {
     if (!selectedLevel) {
