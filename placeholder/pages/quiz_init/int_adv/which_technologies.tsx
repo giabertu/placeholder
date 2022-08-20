@@ -4,7 +4,7 @@ import Navbar from '../../../components/Navbar';
 import styles from '../../../styles/which_technologies.module.css'
 import QuizNavigationButtons from '../../../components/QuizNavigationButtons';
 import TechLogo from '../../../components/TechLogo';
-import * as logoImages from "../../../utils/logos";
+import { logos } from "../../../utils/logos";
 import { useAppSelector, useAppDispatch } from '../../../redux/hooks';
 import { changeExperiencedWithTechnologies } from '../../../redux/slices/userInfoSlice';
 import QuestionnaireButton from '../../../components/QuestionnaireButton';
@@ -15,6 +15,10 @@ function WhichTechnologies() {
   const dispatch = useAppDispatch();
   const technologies = useAppSelector((state) => state.userInfo.experiencedWithTechnologies);
   const mentorChoices = useAppSelector((state) => state.mentorPreferences.desiredCategories);
+  const technologyNames = technologies.map((techObj) => {
+    if(typeof techObj !== "string") return techObj.name;
+  });
+
   const {colorMode } = useColorMode();
   const isDark = colorMode === 'dark';
 
@@ -30,7 +34,7 @@ function WhichTechnologies() {
       <div className={styles.formContainer}>
         <div className={styles.title}>
           {!technologies.length ? <h1 className={styles.title}> I'm experienced with <span className={styles.underline}>_______</span></h1>
-            : <h1 className={styles.title}> I'm experienced with {JSON.stringify(technologies).replaceAll(",", ", ")}</h1>
+            : <h1 className={styles.title}> I'm experienced with {JSON.stringify(technologyNames).replaceAll(",", ", ")}</h1>
           }
         </div>
 
@@ -47,30 +51,8 @@ function WhichTechnologies() {
         </form>
 
         <div className={styles.logoContainer}>
-          <TechLogo imgSrc={logoImages.react.src} value="react" onClick={handleButtonClick} toLearn={false} />
-          <TechLogo imgSrc={logoImages.JS.src} value="javascript" onClick={handleButtonClick} toLearn={false} />
-          <TechLogo imgSrc={logoImages.TS.src} value="typescript" onClick={handleButtonClick} toLearn={false} />
-          <TechLogo imgSrc={logoImages.angular.src} value="angular" onClick={handleButtonClick} toLearn={false} />
-          <TechLogo imgSrc={logoImages.python.src} value="python" onClick={handleButtonClick} toLearn={false} />
-
-          <TechLogo imgSrc={logoImages.java.src} value="java" onClick={handleButtonClick} toLearn={false} />
-          <TechLogo imgSrc={logoImages.git.src} value="git" onClick={handleButtonClick} toLearn={false} />
-          <TechLogo imgSrc={logoImages.HTML.src} value="HTML" onClick={handleButtonClick} toLearn={false} />
-          <TechLogo imgSrc={logoImages.CSS.src} value="CSS" onClick={handleButtonClick} toLearn={false} />
-          <TechLogo imgSrc={logoImages.node.src} value="Node.js" onClick={handleButtonClick} toLearn={false} />
-
-          <TechLogo imgSrc={logoImages.ruby.src} value="ruby" onClick={handleButtonClick} toLearn={false} />
-          <TechLogo imgSrc={logoImages.rust.src} value="rust" onClick={handleButtonClick} toLearn={false} />
-          <TechLogo imgSrc={logoImages.CPlusPlus.src} value="C++" onClick={handleButtonClick} toLearn={false} />
-          <TechLogo imgSrc={logoImages.CSharp.src} value="C#" onClick={handleButtonClick} toLearn={false} />
-          <TechLogo imgSrc={logoImages.php.src} value="PHP" onClick={handleButtonClick} toLearn={false} />
-
-          <TechLogo imgSrc={logoImages.docker.src} value="docker" onClick={handleButtonClick} toLearn={false} />
-          <TechLogo imgSrc={logoImages.graphQL.src} value="graphQL" onClick={handleButtonClick} toLearn={false} />
-          <TechLogo imgSrc={logoImages.SQL.src} value="SQL" onClick={handleButtonClick} toLearn={false} />
-          <TechLogo imgSrc={logoImages.noSQL.src} value="NoSQL" onClick={handleButtonClick} toLearn={false} />
-
-
+          {logos.map(technology =>
+            <TechLogo key={technology[0]} imgSrc={technology[1].src} value={technology} onClick={handleButtonClick} toLearn={false} />)}
         </div>
 
       </div>

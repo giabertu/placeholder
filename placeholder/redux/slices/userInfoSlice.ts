@@ -22,13 +22,14 @@ export const userInfoSlice = createSlice({
       return state;
     },
     changeExperiencedWithTechnologies: (state, action: PayloadAction<string>) => {
-      // toggle technologies purpose selection
-      const index = state.experiencedWithTechnologies.indexOf(action.payload);
+      const parsedPayload = JSON.parse(action.payload)
+      // toggle technology selection
+      const index = state.experiencedWithTechnologies.findIndex((x) => typeof x !== "string" && x.name === parsedPayload.name)
       if (index !== -1) {
         state.experiencedWithTechnologies.splice(index, 1);
       }
       else {
-        state.experiencedWithTechnologies.push(action.payload);
+        state.experiencedWithTechnologies.push(parsedPayload);
       }
       return state;
     },

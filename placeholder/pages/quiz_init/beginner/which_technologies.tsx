@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import { useRouter } from 'next/router'
+import React from 'react';
 
 import Navbar from '../../../components/Navbar';
 import styles from '../../../styles/which_technologies.module.css'
@@ -29,7 +28,7 @@ function WhichTechnologies() {
     dispatch(changeDesiredTechnologies(technology));
   }
 
-  const route = mentorChoices.includes("switching careers") || mentorChoices.includes("finding my dream developer role") ? "beginner/which_careers" : "create_profile";
+  const route = mentorChoices.includes("developer careers") ? "beginner/which_careers" : "create_profile";
 
   return (
     <div className={styles.container}>
