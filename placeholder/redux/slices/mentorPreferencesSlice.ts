@@ -24,6 +24,10 @@ export const mentorPreferencesSlice = createSlice({
       }
       return state;
     },
+    setDesiredTechnologies(state, action: PayloadAction<TechnologyObj[] | string[]>) {
+      state.desiredTechnologies = action.payload
+      return state;
+    },
     changeDesiredTechnologies: (state, action: PayloadAction<TechnologyObj | string>) => {
       // remove all technologies if user says they're unsure about technology selection
       if (typeof action.payload === "string") {
@@ -45,6 +49,10 @@ export const mentorPreferencesSlice = createSlice({
       else {
         state.desiredTechnologies.push(action.payload);
       }
+      return state;
+    },
+    setDesiredCareers (state, action: PayloadAction<string[]>) {
+      state.desiredCareers = action.payload
       return state;
     },
     changeDesiredCareers: (state, action: PayloadAction<string>) => {
@@ -73,5 +81,5 @@ export const mentorPreferencesSlice = createSlice({
   }
 })
 
-export const { changeDesiredCategory, changeDesiredTechnologies, changeDesiredCareers} = mentorPreferencesSlice.actions;
+export const { changeDesiredCategory, changeDesiredTechnologies, changeDesiredCareers, setDesiredTechnologies, setDesiredCareers} = mentorPreferencesSlice.actions;
 export default mentorPreferencesSlice.reducer;

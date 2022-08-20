@@ -13,7 +13,7 @@
 .quiz-nav-button-container {
   width: 4rem;
   justify-content: center;
-  
+
 }
 
 .quiz-back-nav-buttons {
@@ -21,7 +21,7 @@
   width: fit-content;
   height: fit-content;
   font-size: 1.6rem;
-  padding: 0.3rem 0.75rem; 
+  padding: 0.3rem 0.75rem;
   transition: all 0.3s ease;
 }
 
@@ -33,7 +33,7 @@
   width: fit-content;
   height: fit-content;
   font-size: 1.6rem;
-  padding: 0.3rem 0.75rem; 
+  padding: 0.3rem 0.75rem;
   transition: all 0.3s ease;
 }
 
@@ -43,7 +43,7 @@
 
 
 .nav-button-style {
-  border: solid 2px rgba(255, 255, 255, 0);  
+  border: solid 2px rgba(255, 255, 255, 0);
 }
 
 .nav-button-style:hover {
@@ -51,10 +51,10 @@
 }
 
 .nav-button-style-dark-mode {
-  border: solid 2px rgba(255, 255, 255, 0);  
+  border: solid 2px rgba(255, 255, 255, 0);
 }
 
 .nav-button-style-dark-mode:hover {
   border: solid 2px white;
- 
+
 }

@@ -1,12 +1,13 @@
 import { BuiltInProviderType } from "next-auth/providers"
 import { getProviders, LiteralUnion, ClientSafeProvider, signIn } from "next-auth/react"
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Navbar from "../../components/Navbar";
 import styles from '../../styles/which_technologies.module.css'
 import Typewriter from 'typewriter-effect';
 
 import { LogoGithub, LogoGoogle, Mail } from 'react-ionicons'
 import uniqid from "uniqid";
+import { useAppSelector } from "../../redux/hooks";
 
 const styleObject = { verticalAlign: 'middle', marginBottom: '3px' }
 
@@ -16,10 +17,15 @@ export default function CreateProfile({ providers }: { providers: Record<Literal
   console.log(providers)
   console.log(providers.github)
   const [value, setValue] = useState('');
+  const mentorPreferences = useAppSelector(state => state.mentorPreferences)
+  const userInfo = useAppSelector(state => state.userInfo)
+
+  localStorage.setItem('mentorPreferences', JSON.stringify(mentorPreferences));
+  localStorage.setItem('userInfo', JSON.stringify(userInfo))
 
   return (
     <div className="container flex-column outline align-center">
-      <Navbar />
+      <Navbar progressValue={0} />
 
       <div className="flex-column gap-2r m-top-auto m-bottom-auto">
         <Typewriter
