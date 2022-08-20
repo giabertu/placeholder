@@ -13,6 +13,10 @@ export const mentorPreferencesSlice = createSlice({
   name: "mentor preferences",
   initialState,
   reducers: {
+    setDesiredCategories (state, action: PayloadAction<string[]>) {
+      state.desiredCategories = action.payload;
+      return state
+    },
     changeDesiredCategory: (state, action: PayloadAction<string>) => {
       // toggle mentor purpose selection
       const index = state.desiredCategories.indexOf(action.payload);
@@ -81,5 +85,7 @@ export const mentorPreferencesSlice = createSlice({
   }
 })
 
-export const { changeDesiredCategory, toggleDesiredTechnologies, changeDesiredCareers, setDesiredTechnologies, setDesiredCareers} = mentorPreferencesSlice.actions;
+export const { 
+  changeDesiredCategory, toggleDesiredTechnologies, changeDesiredCareers, setDesiredTechnologies, setDesiredCareers, setDesiredCategories
+  }  = mentorPreferencesSlice.actions;
 export default mentorPreferencesSlice.reducer;
