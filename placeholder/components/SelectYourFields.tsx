@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import { useColorMode } from '@chakra-ui/react'
-import uniqid from 'uniqid';
-
 import { useAppDispatch, useAppSelector } from '../redux/hooks';
+import QuestionnaireButton2 from './QuestionnaireButton2';
 import { changeDeveloperField } from '../redux/slices/userInfoSlice';
-import QuestionnaireButton from './QuestionnaireButton';
+
+
 
 function Roles({ choices }: { choices: string[] }) {
 
@@ -35,8 +35,8 @@ function Roles({ choices }: { choices: string[] }) {
       {generateTitle()}
         <div className="choices-container-choices-list-no-description">
           {choices.map((text: string) =>
-            <QuestionnaireButton
-              key={uniqid()}
+            <QuestionnaireButton2
+              key={text}
               text={text}
               value={text}
               onClick={(event) => handleButtonClick(event)}
