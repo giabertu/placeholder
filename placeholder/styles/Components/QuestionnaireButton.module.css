@@ -7,16 +7,19 @@
   transition: all 0.3s ease;
   position: relative;
   left: 0;
+  
 }
 
 
 #button:hover  {
   left: 0.5rem;
+
   border: solid 2px black;
 }
 
 #buttonDarkMode:hover {
   left: 0.5rem;
+  
   border: solid 2px white;
 }
 

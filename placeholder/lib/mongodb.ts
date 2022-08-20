@@ -1,6 +1,6 @@
 import { MongoClient } from "mongodb"
-import mongoose from "./models/mongoose";
-import { connectMongoose } from "./models/mongoose";
+import mongoose from "./models";
+import { connectMongoose } from "./models";
 
 connectMongoose()
 const uri = process.env.MONGODB_URI;
@@ -13,9 +13,6 @@ if (!uri) {
   clientPromise = client.connect();
 }
 export default clientPromise
-
-// // const users = mongoose.connection.db.collection('users')
-
 
 // var User = mongoose.model("User", new mongoose.Schema({ profile: {name: String, email: String, height: String, length: String, interests: String}, name: String, email:  String, avatar: String}), "users")
 
