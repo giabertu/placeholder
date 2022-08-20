@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../redux/hooks';
 import { useColorMode } from '@chakra-ui/react';
-import { changeUserLevel } from '../redux/slices/userInfoSlice';
-import uniqid from 'uniqid';
+import { changeLevel } from '../redux/slices/userInfoSlice';
 import QuestionnaireButton2 from './QuestionnaireButton2';
 
 function ExperienceLevel({ choices, descriptions }: { choices: string[], descriptions: string[] }) {
@@ -15,13 +14,10 @@ function ExperienceLevel({ choices, descriptions }: { choices: string[], descrip
   const isDark = colorMode === 'dark';
   
   const [eventButton, setEventButton] = useState('');
-  function handleButtonClick(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
-    event.preventDefault();
-    console.log('CLICK ONCE')
-    const eventButton = event.target as HTMLButtonElement;
-    const buttonText = eventButton.innerText.replace('> ', '');
-    dispatch(changeUserLevel(buttonText));
-  }
+  function handleButtonClick(event: React.MouseEvent<HTMLButtonElement, MouseEvent>)
+    dispatch(changeLevel(event.currentTarget.value));
+
+  
 
   const generateTitle = function () {
     if (!selectedLevel) {
@@ -46,9 +42,8 @@ function ExperienceLevel({ choices, descriptions }: { choices: string[], descrip
               <QuestionnaireButton2
                 key={text}
                 text={text}
-                value={text === "beginner" ? "beginner" : "int_adv"}
-                onClick={handleButtonClick}
-                
+                value={text}
+                onClick={(event) => handleButtonClick(event)}
                 onMouseEnter={() => setCurrentSelection(index)}
                 onMouseLeave={() => setCurrentSelection(null)}
               />

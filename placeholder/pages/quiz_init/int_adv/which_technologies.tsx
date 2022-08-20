@@ -17,7 +17,7 @@ function WhichTechnologies() {
   const {colorMode } = useColorMode();
   const isDark = colorMode === 'dark';
 
-  const handleTechnology = function (event: React.MouseEvent<HTMLButtonElement>) {
+  const handleButtonClick = function (event: React.MouseEvent<HTMLButtonElement>) {
     const technology = event.currentTarget.value;
     dispatch(changeExperiencedWithTechnologies(technology));
   }
@@ -28,12 +28,12 @@ function WhichTechnologies() {
       {/* <ProgressBar value={10} /> */}
       <div className={styles.formContainer}>
         <div className={styles.title}>
-          {!technologies.length ? <h1 className={styles.title}> I'm familiar with <span className={styles.underline}>_______</span></h1>
-            : <h1 className={styles.title}> I'm familiar with {JSON.stringify(technologies).replaceAll(",", ", ")}</h1>
+          {!technologies.length ? <h1 className={styles.title}> I'm experienced with <span className={styles.underline}>_______</span></h1>
+            : <h1 className={styles.title}> I'm experienced with {JSON.stringify(technologies).replaceAll(",", ", ")}</h1>
           }
         </div>
 
-        <h2 className={styles.instruction}>Search for the technologies you wish to learn, or choose from the list of popular tech below</h2>
+        <h2 className={styles.instruction}>Search for the technologies you're most familiar with, or choose from the list of popular tech below</h2>
 
         <form>
           {/* <span className={styles.terminalArrow}>&gt;</span> */}
@@ -46,35 +46,35 @@ function WhichTechnologies() {
         </form>
 
         <div className={styles.logoContainer}>
-          <TechLogo imgSrc={logoImages.react.src} value="react" onClick={handleTechnology}/>
-          <TechLogo imgSrc={logoImages.JS.src} value="javascript" onClick={handleTechnology}/>
-          <TechLogo imgSrc={logoImages.TS.src} value="typescript" onClick={handleTechnology}/>
-          <TechLogo imgSrc={logoImages.angular.src} value="angular" onClick={handleTechnology}/>
-          <TechLogo imgSrc={logoImages.python.src} value="python" onClick={handleTechnology}/>
+          <TechLogo imgSrc={logoImages.react.src} value="react" onClick={handleButtonClick} toLearn={false} />
+          <TechLogo imgSrc={logoImages.JS.src} value="javascript" onClick={handleButtonClick} toLearn={false} />
+          <TechLogo imgSrc={logoImages.TS.src} value="typescript" onClick={handleButtonClick} toLearn={false} />
+          <TechLogo imgSrc={logoImages.angular.src} value="angular" onClick={handleButtonClick} toLearn={false} />
+          <TechLogo imgSrc={logoImages.python.src} value="python" onClick={handleButtonClick} toLearn={false} />
 
-          <TechLogo imgSrc={logoImages.java.src} value="java" onClick={handleTechnology}/>
-          <TechLogo imgSrc={logoImages.git.src} value="git" onClick={handleTechnology}/>
-          <TechLogo imgSrc={logoImages.HTML.src} value="HTML" onClick={handleTechnology}/>
-          <TechLogo imgSrc={logoImages.CSS.src} value="CSS" onClick={handleTechnology}/>
-          <TechLogo imgSrc={logoImages.node.src} value="Node.js" onClick={handleTechnology}/>
+          <TechLogo imgSrc={logoImages.java.src} value="java" onClick={handleButtonClick} toLearn={false} />
+          <TechLogo imgSrc={logoImages.git.src} value="git" onClick={handleButtonClick} toLearn={false} />
+          <TechLogo imgSrc={logoImages.HTML.src} value="HTML" onClick={handleButtonClick} toLearn={false} />
+          <TechLogo imgSrc={logoImages.CSS.src} value="CSS" onClick={handleButtonClick} toLearn={false} />
+          <TechLogo imgSrc={logoImages.node.src} value="Node.js" onClick={handleButtonClick} toLearn={false} />
 
-          <TechLogo imgSrc={logoImages.ruby.src} value="ruby" onClick={handleTechnology}/>
-          <TechLogo imgSrc={logoImages.rust.src} value="rust" onClick={handleTechnology}/>
-          <TechLogo imgSrc={logoImages.CPlusPlus.src} value="C++" onClick={handleTechnology}/>
-          <TechLogo imgSrc={logoImages.CSharp.src} value="C#" onClick={handleTechnology}/>
-          <TechLogo imgSrc={logoImages.php.src} value="PHP" onClick={handleTechnology}/>
+          <TechLogo imgSrc={logoImages.ruby.src} value="ruby" onClick={handleButtonClick} toLearn={false} />
+          <TechLogo imgSrc={logoImages.rust.src} value="rust" onClick={handleButtonClick} toLearn={false} />
+          <TechLogo imgSrc={logoImages.CPlusPlus.src} value="C++" onClick={handleButtonClick} toLearn={false} />
+          <TechLogo imgSrc={logoImages.CSharp.src} value="C#" onClick={handleButtonClick} toLearn={false} />
+          <TechLogo imgSrc={logoImages.php.src} value="PHP" onClick={handleButtonClick} toLearn={false} />
 
-          <TechLogo imgSrc={logoImages.docker.src} value="docker" onClick={handleTechnology}/>
-          <TechLogo imgSrc={logoImages.graphQL.src} value="graphQL" onClick={handleTechnology}/>
-          <TechLogo imgSrc={logoImages.SQL.src} value="SQL" onClick={handleTechnology}/>
-          <TechLogo imgSrc={logoImages.noSQL.src} value="NoSQL" onClick={handleTechnology}/>
+          <TechLogo imgSrc={logoImages.docker.src} value="docker" onClick={handleButtonClick} toLearn={false} />
+          <TechLogo imgSrc={logoImages.graphQL.src} value="graphQL" onClick={handleButtonClick} toLearn={false} />
+          <TechLogo imgSrc={logoImages.SQL.src} value="SQL" onClick={handleButtonClick} toLearn={false} />
+          <TechLogo imgSrc={logoImages.noSQL.src} value="NoSQL" onClick={handleButtonClick} toLearn={false} />
 
 
         </div>
 
       </div>
 
-      <QuizNavigationButtons back='quiz_init/beginner/mentor_talk' next="quiz_init/int_adv/purpose" canProceed={Boolean(technologies.length)} />
+      <QuizNavigationButtons back='quiz_init/int_adv/roles' next="quiz_init/int_adv/purpose" canProceed={Boolean(technologies.length)} />
 
     </div>
   )
