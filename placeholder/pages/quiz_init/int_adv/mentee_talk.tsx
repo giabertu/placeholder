@@ -13,7 +13,7 @@ function IntermediateMentorTalk() {
     <div className="container flex-column">
       <Navbar progressValue={25}/>
       <MenteeTalk choices={menteeChoices} descriptions={menteeDescriptions} />
-      <QuizNavigationButtons back='quiz_init/int_adv/Purpose' next="quiz_init/page10" canProceed={Boolean(desiredMentorCategories.length)}/>
+      <QuizNavigationButtons back='quiz_init/int_adv/purpose' next="quiz_init/page10" canProceed={Boolean(desiredMentorCategories.length)}/>
     </div >
   )
 

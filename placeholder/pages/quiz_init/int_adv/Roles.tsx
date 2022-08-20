@@ -17,7 +17,7 @@ function Roles() {
   <div className="container flex-column">
     <Navbar progressValue={25}/>
     <SelectYourFieldsForm choices={rolesChoices} />
-    <QuizNavigationButtons back='quiz_init/experience_level' next="quiz_init/int_adv/which_technologies" canProceed={Boolean(selectedRole)}/>
+    <QuizNavigationButtons back='quiz_init/experience_level' next="quiz_init/int_adv/experienced_technologies" canProceed={Boolean(selectedRole)}/>
   </div >
   )
 }
