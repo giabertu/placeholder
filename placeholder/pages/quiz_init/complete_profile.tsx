@@ -4,9 +4,12 @@ import Typewriter from 'typewriter-effect'
 import { useEffect, useRef, useState } from "react";
 import { Avatar } from "@chakra-ui/avatar";
 import { CloudUploadOutline } from 'react-ionicons'
-import { Box, Divider, SkeletonCircle, SkeletonText } from "@chakra-ui/react";
+import { AvatarGroup, Box, Divider, HStack, SkeletonCircle, SkeletonText, Tag, TagLabel, Wrap, WrapItem } from "@chakra-ui/react";
 import UserApi from "../../services/UserApi";
 import { UserType } from "../../lib/models/User";
+import { logos } from '../../utils/logos'
+import { useAppDispatch, useAppSelector } from "../../redux/hooks";
+import { changeDesiredCareers, changeDesiredTechnologies, changeDesiredCategory, setDesiredTechnologies, setDesiredCareers } from "../../redux/slices/mentorPreferencesSlice";
 
 const styleObject = { verticalAlign: 'middle', marginBottom: '3px' }
 
@@ -19,7 +22,14 @@ function CompleteProfile() {
   const [location, setLocation] = useState('')
   const [showRequired, setShowRequired] = useState(false)
 
+  const desiredTechnologies = useAppSelector(state => state.mentorPreferences.desiredTechnologies)
+  const desiredCareers = useAppSelector(state => state.mentorPreferences.desiredCareers)
+
+  const dispatch = useAppDispatch();
   const ref = useRef(null)
+
+  console.log('Desired careers: ', desiredCareers)
+  console.log('Desired tech: ', desiredTechnologies)
 
   useEffect(() => {
     if (session) {
@@ -27,6 +37,21 @@ function CompleteProfile() {
       session.user?.name == 'undefined' || session.user?.name == null ? setName('') : setName(session.user?.name)
     }
   }, [session])
+
+
+  /*************** REPOPULATE REDUX STATE ****************/
+  if (typeof window !== 'undefined') {
+    const res = localStorage.getItem('mentorPreferences');
+    if (res) {
+      const mentorPreferences = JSON.parse(res)
+      console.log('Here are the mentor preferences from local storage', mentorPreferences)
+      // desiredCareers.forEach(career => dispatch(changeDesiredCareers(career)))
+      dispatch(setDesiredTechnologies(mentorPreferences.desiredTechnologies))
+      dispatch(setDesiredCareers(mentorPreferences.desiredCareers))
+      // dispatch(changeDesiredCategory(JSON.stringify(mentorPreferences.desiredCategories)))
+      localStorage.removeItem('mentorPreferences')
+    }
+  }
 
   function handleUploadClick(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
     if (ref.current) {
@@ -71,7 +96,7 @@ function CompleteProfile() {
   if (status == 'authenticated') {
     return (
       <div className="profile-main-container flex-column outline align-center" >
-        <Navbar />
+        <Navbar progressValue={0} />
         <div className="profile-title-button-container align-center">
           <Typewriter
             options={{ delay: 5, cursor: "" }}
@@ -118,7 +143,37 @@ function CompleteProfile() {
                 type='text' className={!location && showRequired ? 'profile-input invalid' : 'profile-input'}
                 required={true} placeholder='' onChange={(e) => handleInputChange(e, setLocation)}></input>
             </div>
+            <Divider />
+            <div className="profile-section flex-row gap-2r align-center">
+              <label className="profile-input-label">Eager to learn </label>
+              <div>
+                <AvatarGroup size='md' max={4} >
+                  {desiredTechnologies.map(technology => {
+                    if (typeof technology == 'string') {
+                      return <Tag>{technology}</Tag>
+                    }
+                    return <Avatar src={technology.imageSrc} bg='transparent' border='none' borderRadius='none' scale={0.7} minWidth='fit-content' />
+                  })}
+                </AvatarGroup>
+              </div>
+            </div>
+            <Divider />
+            <div className="profile-section flex-row gap-2r align-center">
+              <label className="profile-input-label">Career interests </label>
+              {/* <label className="profile-input-label">{['Front End, Back End, Mobile']}</label> */}
+              <Wrap spacing={2} justify={'center'}>
+                {desiredCareers.map((career) =>
+                  <WrapItem>
+                    <Tag key={career} size='md' colorScheme='gray' borderRadius='full'>
+                      {career[0].toUpperCase() + career.substring(1)}
+                    </Tag>
+                  </WrapItem>
+                )}
+              </Wrap>
+            </div>
+
           </div>
+
           <button className="button-style profile-find-matches" onClick={handleSave} >&gt; Save and Find matches</button>
         </div>
       </div >
@@ -128,7 +183,7 @@ function CompleteProfile() {
   } else {
     return (
       <div className="container flex-column outline align-center" >
-        <Navbar />
+        <Navbar progressValue={0} />
         <div className="flex-column gap-2r m-top-auto m-bottom-auto">
           <div className="profile-container flex-column align-center justify-center">
             <Box padding='6' boxShadow='lg' bg='white' width={'25rem'} height={'25rem'}>
