@@ -24,7 +24,12 @@ function WhichTechnologies() {
 
   const handleButtonClick = function (event: React.MouseEvent<HTMLButtonElement>) {
     const technology = event.currentTarget.value;
-    dispatch(changeExperiencedWithTechnologies(technology));
+    const imgData = logos.find((techData) => techData[0] === technology)![1]
+    const valueObj = {
+      name: technology,
+      imageSrc: imgData.src
+    }
+    dispatch(changeExperiencedWithTechnologies(valueObj));
   }
 
   return (

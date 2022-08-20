@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
-import type { UserInfoState } from "../types";
+import type { TechnologyObj, UserInfoState } from "../types";
 
 const initialState: UserInfoState = {
   level: "",
@@ -21,15 +21,14 @@ export const userInfoSlice = createSlice({
       state.developerField = action.payload;
       return state;
     },
-    changeExperiencedWithTechnologies: (state, action: PayloadAction<string>) => {
-      const parsedPayload = JSON.parse(action.payload)
+    changeExperiencedWithTechnologies: (state, action: PayloadAction<TechnologyObj>) => {
       // toggle technology selection
-      const index = state.experiencedWithTechnologies.findIndex((x) => typeof x !== "string" && x.name === parsedPayload.name)
+      const index = state.experiencedWithTechnologies.findIndex((x) => x.name === action.payload.name)
       if (index !== -1) {
         state.experiencedWithTechnologies.splice(index, 1);
       }
       else {
-        state.experiencedWithTechnologies.push(parsedPayload);
+        state.experiencedWithTechnologies.push(action.payload);
       }
       return state;
     },
