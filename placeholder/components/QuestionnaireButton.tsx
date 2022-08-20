@@ -7,19 +7,31 @@ function QuestionnaireButton({ text, value, onClick, onMouseEnter, onMouseLeave}
   const [selected, setSelected] = useState(false);
   const {colorMode } = useColorMode();
   const isDark = colorMode === 'dark';
+  
 
   return (
       <button
-        className={selected ? styles.buttonSelected : styles.button}
-        id={isDark ? styles.buttonDarkMode : styles.button}
-        style={(isDark && selected) ? {border: 'solid 2px white'} : isDark ? {borderStyle:'solid 2px white'} : {}}
+
+        className={`${selected ? styles.buttonSelected : styles.button} 
+        ${isDark ? styles.buttonStyleDarkMode : styles.buttonStyle}`}
+       
+        style={(isDark && selected) ? {border: 'solid 2px white'} : isDark ? {borderStyle:'solid 2px white'} : {}} 
         value={value}
+
+        
         onClick={(event) => {
             onClick(event);
             setSelected(!selected);
+            console.log('click once')
         }}
-        onMouseEnter={onMouseEnter}
-        onMouseLeave={onMouseLeave}
+        onMouseEnter={() => {
+          onMouseEnter && onMouseEnter()
+        
+        }} 
+
+        onMouseLeave={() => {
+          onMouseLeave && onMouseLeave()  
+        }}
       >
           &#62; {text}
       </button>

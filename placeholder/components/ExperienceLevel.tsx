@@ -2,8 +2,7 @@ import React, { useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../redux/hooks';
 import { useColorMode } from '@chakra-ui/react';
 import { changeLevel } from '../redux/slices/userInfoSlice';
-import QuestionnaireButton from './QuestionnaireButton';
-import uniqid from 'uniqid';
+import QuestionnaireButton2 from './QuestionnaireButton2';
 
 function ExperienceLevel({ choices, descriptions }: { choices: string[], descriptions: string[] }) {
 
@@ -13,9 +12,11 @@ function ExperienceLevel({ choices, descriptions }: { choices: string[], descrip
   const [currentSelection, setCurrentSelection] = useState<number | null>(null)
   const { colorMode } = useColorMode();
   const isDark = colorMode === 'dark';
-
+  
+  const [eventButton, setEventButton] = useState('');
   function handleButtonClick(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
     dispatch(changeLevel(event.currentTarget.value));
+
   }
 
   const generateTitle = function () {
@@ -38,8 +39,8 @@ function ExperienceLevel({ choices, descriptions }: { choices: string[], descrip
       <div className="options-container flex-row">
         <div className="choices-container flex-column">
           {choices.map((text: string, index: number) =>
-              <QuestionnaireButton
-                key={uniqid()}
+              <QuestionnaireButton2
+                key={text}
                 text={text}
                 value={text}
                 onClick={(event) => handleButtonClick(event)}

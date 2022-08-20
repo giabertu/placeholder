@@ -5,6 +5,7 @@ import uniqid from 'uniqid';
 import { useAppDispatch, useAppSelector } from '../redux/hooks';
 import { changeDesiredCareers } from '../redux/slices/mentorPreferencesSlice';
 import QuestionnaireButton from './QuestionnaireButton';
+import QuestionnaireButton2 from './QuestionnaireButton2';
 
 
 function Roles({ choices }: { choices: string[] }) {
@@ -34,8 +35,8 @@ function Roles({ choices }: { choices: string[] }) {
       {generateTitle()}
         <div className="choices-container-choices-list-no-description">
           {choices.map((text: string) =>
-            <QuestionnaireButton
-              key={uniqid()}
+            <QuestionnaireButton2
+              key={text}
               text={text}
               value={text}
               onClick={(event) => handleButtonClick(event)}

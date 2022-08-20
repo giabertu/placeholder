@@ -1,6 +1,5 @@
 .button {
   font-size: 1.1rem;
-  
   padding: 0.25rem 0.75rem;
   width: fit-content;
   text-align: left;
@@ -9,18 +8,15 @@
   transform: translateX(0);
 }
 
+
 .buttonSelected {
-
-  font-size: 1.1rem;
-  padding: 0.25rem 0.75rem;
-  width: fit-content;
-  text-align: left; 
-  transition: all 0.3s ease; 
-  transform: translateX(0.625rem);
-  border: solid 2px black;
- 
+ font-size: 1.1rem;
+ padding: 0.25rem 0.75rem;
+ width: fit-content;
+ text-align: left; 
+ border: solid 2px rgba(255, 255, 255, 0);
+ transition: all 0.3s ease;
 }
-
 
 .buttonStyle:hover  {
   transform: translateX(0.625rem);
@@ -32,12 +28,3 @@
   transform: translateX(0.625rem);
   border: solid 2px white;
 }
-
-
-
-
-
-
-
-
-

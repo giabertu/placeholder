@@ -18,4 +18,7 @@ import SQL from "../public/tech-logos/sql.png"
 import noSQL from "../public/tech-logos/nosql.png"
 import node from "../public/tech-logos/node.png"
 
-export {CPlusPlus, CSharp, CSS, HTML, java, JS, php, rust, react, python, git, TS, docker, ruby, angular, graphQL, SQL, noSQL, node};
+
+const technologies = { CPlusPlus, CSharp, CSS, HTML, java, JS, php, rust, react, python, git, TS, docker, ruby, angular, graphQL, SQL, noSQL, node };
+
+export const logos = Object.entries(technologies);
