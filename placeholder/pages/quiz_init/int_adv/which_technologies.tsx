@@ -14,6 +14,7 @@ function WhichTechnologies() {
 
   const dispatch = useAppDispatch();
   const technologies = useAppSelector((state) => state.userInfo.experiencedWithTechnologies);
+  const mentorChoices = useAppSelector((state) => state.mentorPreferences.desiredCategories);
   const {colorMode } = useColorMode();
   const isDark = colorMode === 'dark';
 

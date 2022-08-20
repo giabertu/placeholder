@@ -16,6 +16,7 @@ function WhichTechnologies() {
 
   const dispatch = useAppDispatch();
   const technologies = useAppSelector((state) => state.mentorPreferences.desiredTechnologies);
+  const mentorChoices = useAppSelector((state) => state.mentorPreferences.desiredCategories)
   const {colorMode } = useColorMode();
   const isDark = colorMode === 'dark';
 
@@ -23,6 +24,8 @@ function WhichTechnologies() {
     const technology = event.currentTarget.value;
     dispatch(changeDesiredTechnologies(technology));
   }
+
+  const route = mentorChoices.includes("switching careers") || mentorChoices.includes("finding my dream developer role") ? "beginner/which_careers" : "create_profile"
 
   return (
     <div className={styles.container}>
@@ -81,7 +84,7 @@ function WhichTechnologies() {
 
       </div>
 
-      <QuizNavigationButtons back='quiz_init/beginner/mentor_talk' next="" canProceed={Boolean(technologies.length)} />
+      <QuizNavigationButtons back='quiz_init/beginner/mentor_talk' next={`quiz_init/${route}`} canProceed={Boolean(technologies.length)} />
 
     </div>
   )
