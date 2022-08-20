@@ -9,6 +9,12 @@ export type MentorPreferencesState = {
   desiredCareers: string[]
 }
 
+export type MenteePreferencesState = {
+  desiredCategories: string[]
+//   desiredTechnologies: (TechnologyObj | string)[]
+//   desiredCareers: string[]
+}
+
 export type UserInfoState = {
   level: string
   developerField: string | null

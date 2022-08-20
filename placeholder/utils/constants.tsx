@@ -26,7 +26,7 @@ export const levelDescriptions = [
 ]
 
 export const int_advChoices = [
-  'expanding my programming skillset', 'advancing in my career', 'writing better code'
+  'expanding my programming skillset', 'advancing in my career'
 ]
 
 export const int_advDescriptions = [
@@ -35,10 +35,18 @@ export const int_advDescriptions = [
   'I am interested in taking my career to the next step or in switching to a different role in which I have less experience. I would like someone to give me interview tips, review my CV and give me advice.',
 
   'I know what I am doing but I would like to improve my coding skills. I would like to have someone more experienced review my code and suggest refactors.',
-
 ]
-
 
 export const rolesChoices = ['frontend', 'backend', 'full stack', 'mobile', 'game', 'data scientist', 'devops', 'web3'];
 
 export const purposeChoices = ['mentor', 'be mentored', 'both mentor and be mentored'];
+
+export const menteeChoices = [
+  'advance their programming skills', 'advance in their developer careers'
+]
+
+export const menteeDescriptions = [
+  'Pass down your developer knowledge to your mentee(s), helping them strengthen their ability to program using the languages you\'re most experienced with',
+
+  'Help out your mentee(s) with their developer careers - whether it be sharing what a developer\'s life is like, helping them land their first dev role, or take their existing dev career to the next level - your advice will be invaluable to them.'
+]
