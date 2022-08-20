@@ -12,10 +12,9 @@ function Roles({ choices }: { choices: string[] }) {
 
   const dispatch = useAppDispatch();
   const selectedFields = useAppSelector((state) => state.mentorPreferences.desiredCareers);
-  const mentorInterest = useAppSelector((state) => state.mentorPreferences.desiredCategories);
 
   const generateTitle = function () {
-    if (!selectedFields) {
+    if (!selectedFields.length) {
       return <h1 className="title"> &#62; I'm interested in a career as a <span className="underline">____</span> developer.</h1>
     }
     if (selectedFields[0] === "general") {
@@ -30,7 +29,6 @@ function Roles({ choices }: { choices: string[] }) {
   function handleButtonClick(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
     dispatch(changeDesiredCareers(event.currentTarget.value));
   }
-
 
   return (
     <div className="form-container-choices-list-no-description">
