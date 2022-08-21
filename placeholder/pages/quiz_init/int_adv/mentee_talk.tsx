@@ -5,18 +5,19 @@ import { menteeChoices, menteeDescriptions } from "../../../utils/constants";
 import { useAppSelector } from "../../../redux/hooks";
 
 
-function IntermediateMentorTalk() {
+function IntermediateMenteeTalk() {
 
-  const desiredMentorCategories = useAppSelector((state) => state.menteePreferences.desiredCategories)
+  const desiredMenteeCategories = useAppSelector((state) => state.menteePreferences.desiredCategories)
+  const route = desiredMenteeCategories.includes("advance their programming skills") ? 'int_adv/which_taught_technologies' : "create_profile"
 
   return (
     <div className="container flex-column">
       <Navbar progressValue={25}/>
       <MenteeTalk choices={menteeChoices} descriptions={menteeDescriptions} />
-      <QuizNavigationButtons back='quiz_init/int_adv/purpose' next="quiz_init/page10" canProceed={Boolean(desiredMentorCategories.length)}/>
+      <QuizNavigationButtons back='quiz_init/int_adv/purpose' next={`quiz_init/${route}`} canProceed={Boolean(desiredMenteeCategories.length)}/>
     </div >
   )
 
 }
 
-export default IntermediateMentorTalk;
+export default IntermediateMenteeTalk;
