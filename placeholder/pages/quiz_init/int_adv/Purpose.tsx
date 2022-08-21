@@ -21,7 +21,7 @@ export default function Purpose() {
     dispatch(changePurpose(event.currentTarget.value));
   }
 
-  const subroute = selectedPurpose !== "expanding my programming skillset" ? "which_technologies" : "which_careers";
+  const subroute = selectedPurpose === "be mentored" ? "mentor_talk" : "mentee_talk";
 
   return (
   <div className="container flex-column">
