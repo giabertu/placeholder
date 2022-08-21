@@ -11,6 +11,14 @@ const userSchema = {
   level: String,
   purpose: String,
   developerField: String,
+  mentorPreferences: {
+    desiredCareers: [String],
+    desiredCategories: [String],
+    desiredTechnologies: [{
+      name: String,
+      imageSrc: String
+    }]
+  },
   experiencedWithTechnologies: [{
     name : String,
     imageSrc : String
@@ -26,6 +34,11 @@ export interface UserType {
   level: string,
   purpose: string,
   developerField: null | string,
+  mentorPreferences: {
+    desiredCareers: string[],
+    desiredCategories: string[],
+    desiredTechnologies: (TechnologyObj | string)[]
+  },
   experiencedWithTechnologies: TechnologyObj[]
 }
 
