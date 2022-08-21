@@ -1,15 +1,15 @@
-import { useSession } from "next-auth/react";
-import Navbar from "../../components/Navbar";
-import Typewriter from 'typewriter-effect'
 import { useEffect, useRef, useState } from "react";
-import { Avatar } from "@chakra-ui/avatar";
+import { useSession } from "next-auth/react";
 import { CloudUploadOutline } from 'react-ionicons'
-import { AvatarGroup, Box, Divider, HStack, SkeletonCircle, SkeletonText, Tag, TagLabel, Wrap, WrapItem } from "@chakra-ui/react";
+import { Avatar } from "@chakra-ui/avatar";
+import { AvatarGroup, Box, Divider, SkeletonCircle, SkeletonText, Tag, Wrap, WrapItem } from "@chakra-ui/react";
+import Typewriter from 'typewriter-effect'
+
+import Navbar from "../../components/Navbar";
 import UserApi from "../../services/UserApi";
 import { UserType } from "../../lib/models/User";
-import { logos } from '../../utils/logos'
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
-import { changeDesiredCareers, toggleDesiredTechnologies, changeDesiredCategory, setDesiredTechnologies, setDesiredCareers, setDesiredCategories } from "../../redux/slices/mentorPreferencesSlice";
+import { setDesiredTechnologies, setDesiredCareers, setDesiredCategories } from "../../redux/slices/mentorPreferencesSlice";
 import { changeDeveloperField, changeLevel, changePurpose, setExpriencedWithTechnologies } from "../../redux/slices/userInfoSlice";
 
 const styleObject = { verticalAlign: 'middle', marginBottom: '3px' }
@@ -87,6 +87,11 @@ function CompleteProfile() {
         purpose,
         developerField,
         experiencedWithTechnologies,
+        mentorPreferences: {
+          desiredCareers,
+          desiredCategories,
+          desiredTechnologies
+        }
       }
       return user
     }
@@ -99,8 +104,8 @@ function CompleteProfile() {
     const user = getCurrentUserState()
     if (user && shouldUpdateProfile()) {
       setShowRequired(false);
-      const mentorPreferencesStringifiedult = await UserApi.updateUserProfile(user)
-      console.log("Here is the old user (before update): ", mentorPreferencesStringifiedult)
+      const userBeforeUpdate = await UserApi.updateUserProfile(user)
+      console.log("Here is the old user (before update): ", userBeforeUpdate)
     } else {
       setShowRequired(true);
     }
@@ -158,33 +163,48 @@ function CompleteProfile() {
             </div>
             <Divider />
             <div className="profile-section flex-row gap-2r align-center">
-              <label className="profile-input-label">Eager to learn </label>
-              <div>
-                <AvatarGroup size='md' max={4} marginRight='2rem' >
-                  {desiredTechnologies.map(technology => {
-                    if (typeof technology == 'string') {
-                      return <Tag>{technology}</Tag>
-                    }
-                    return <Avatar src={technology.imageSrc} bg='transparent' border='none' borderRadius='none' scale={0.7} minWidth='fit-content' />
-                  })}
-                </AvatarGroup>
-              </div>
-            </div>
-            <Divider />
-            <div className="profile-section flex-row gap-2r align-center">
-              <label className="profile-input-label">Career interests </label>
-              {/* <label className="profile-input-label">{['Front End, Back End, Mobile']}</label> */}
+              <label className="profile-input-label">Topics</label>
               <Wrap spacing={2} justify={'flex-end'}>
-                {desiredCareers.map((career) =>
+                {desiredCategories.map((category) =>
                   <WrapItem>
-                    <Tag key={career} size='md' colorScheme='gray' borderRadius='full'>
-                      {career[0].toUpperCase() + career.substring(1)}
+                    <Tag key={category} size='lg' colorScheme='gray' borderRadius='full'>
+                      {category[0].toUpperCase() + category.substring(1)}
                     </Tag>
                   </WrapItem>
                 )}
               </Wrap>
             </div>
-
+            <Divider />
+            {desiredTechnologies.length > 0 &&
+              <div className="profile-section flex-row gap-2r align-center">
+                <label className="profile-input-label">Eager to learn </label>
+                <div>
+                  <AvatarGroup size='md' max={4} marginRight='2rem' >
+                    {desiredTechnologies.map(technology => {
+                      if (typeof technology == 'string') {
+                        return <Tag>{technology}</Tag>
+                      }
+                      return <Avatar src={technology.imageSrc} bg='transparent' border='none' borderRadius='none' scale={0.7} minWidth='fit-content' />
+                    })}
+                  </AvatarGroup>
+                </div>
+              </div>
+            }
+            <Divider />
+            {desiredCareers.length > 0 &&
+              <div className="profile-section flex-row gap-2r align-center">
+                <label className="profile-input-label">Career interests </label>
+                <Wrap spacing={2} justify={'flex-end'}>
+                  {desiredCareers.map((career) =>
+                    <WrapItem>
+                      <Tag key={career} size='md' colorScheme='gray' borderRadius='full'>
+                        {career[0].toUpperCase() + career.substring(1)}
+                      </Tag>
+                    </WrapItem>
+                  )}
+                </Wrap>
+              </div>
+            }
           </div>
 
           <button className="button-style profile-find-matches" onClick={handleSave} >&gt; Save and Find matches</button>
@@ -192,7 +212,10 @@ function CompleteProfile() {
       </div >
     )
   } else if (status === 'unauthenticated') {
-    return <div>You are not authorized here..</div>
+    return (
+      <div className="container flex-column align-center justify-center">
+        <h1>You are not authorized here..</h1>
+      </div>)
   } else {
     return (
       <div className="container flex-column outline align-center" >
