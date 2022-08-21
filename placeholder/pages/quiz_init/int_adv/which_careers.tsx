@@ -9,7 +9,7 @@ function WhichCareers() {
 
   const selectedCareers = useAppSelector((state)=> state.mentorPreferences.desiredCareers);
   const mentorChoices = useAppSelector((state) => state.mentorPreferences.desiredCategories);
-  const route = mentorChoices.includes("learning how to program") ? "quiz_init/beginner/which_technologies" : "quiz_init/beginner/mentor_talk";
+  const route = mentorChoices.includes("expanding my programming skillset") ? "quiz_init/int_adv/which_technologies" : "quiz_init/int_adv/mentor_talk";
 
   const {colorMode } = useColorMode();
   const isDark = colorMode === 'dark';
@@ -17,7 +17,7 @@ function WhichCareers() {
   return (
     <div className="container">
       <Navbar progressValue={25} />
-      <SelectDesiredFieldsForm choices={rolesChoices} beginner={true}/>
+      <SelectDesiredFieldsForm choices={rolesChoices} beginner={false}/>
       <QuizNavigationButtons back={route} next="quiz_init/create_profile" canProceed={Boolean(selectedCareers.length)}/>
     </div>
   )
