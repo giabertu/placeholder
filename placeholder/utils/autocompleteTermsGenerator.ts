@@ -1,12 +1,7 @@
 var fs = require('fs');
 import techData from "./techterms.json";
 
-let options: any = techData.map((tech) => {
-  return {
-    value: tech.tagName,
-    label: tech.tagName
-  }
-});
+let options: any = techData.map((tech) => tech.tagName.replaceAll("-", " "));
 
 options = JSON.stringify(options);
 
