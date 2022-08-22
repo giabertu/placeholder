@@ -1,5 +1,5 @@
 import React from 'react';
-import {MultiChatWindow, useMultiChatLogic, MultiChatSocket, ChatForm} from 'react-chat-engine-advanced'
+import {MultiChatWindow, useMultiChatLogic, MultiChatSocket, UserSearch, ChatForm} from 'react-chat-engine-advanced'
 
 const projectId: string = 'd6620cc4-d139-4ed9-85f7-cea40cd73c40'
 const username: string = 'calpisching'
@@ -24,6 +24,16 @@ function Chat() {
         
       }}
 
+      renderChatForm={() => (
+        <ChatForm 
+          buttonStyle={{
+            border: '1.5px solid black',
+            borderRadius: '0px',
+            width: 'fit-content',
+            color: 'black'
+          }  
+          }/>
+      )}
       
      
       

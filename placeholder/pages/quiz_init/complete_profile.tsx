@@ -4,6 +4,7 @@ import { CloudUploadOutline } from 'react-ionicons'
 import { Avatar } from "@chakra-ui/avatar";
 import { AvatarGroup, Box, Divider, SkeletonCircle, SkeletonText, Tag, Wrap, WrapItem } from "@chakra-ui/react";
 import Typewriter from 'typewriter-effect'
+import uniqid from 'uniqid'
 
 import Navbar from "../../components/Navbar";
 import UserApi from "../../services/UserApi";
@@ -107,17 +108,22 @@ function CompleteProfile() {
   function getCurrentUserState() {
     if (session && session.user && session.user.email) {
       const user: UserType = {
-        name,
+        username: name.toLowerCase().replace(/\s/g, '_'),
         email: session.user.email,
-        avatar: imgSrc,
-        bio,
-        location,
-        level,
-        purpose,
-        developerField,
-        experiencedWithTechnologies,
-        mentorPreferences,
-        menteePreferences
+        first_name: name.split(' ')[0],
+        last_name: name.split(' ').slice(1).join(' '),
+        secret: uniqid(),
+        custom_json: {
+          avatar: imgSrc,
+          bio,
+          location,
+          level,
+          purpose,
+          developerField,
+          experiencedWithTechnologies,
+          mentorPreferences,
+          menteePreferences
+        }
       }
       return user
     }
@@ -228,7 +234,7 @@ function CompleteProfile() {
                 </div>
               </div>
             }
-            {/* <Divider />
+            <Divider />
             {menteePreferences.desiredTechnologies.length > 0 &&
               <div className="profile-section flex-row gap-2r align-center">
                 <label className="profile-input-label">Eager to teach </label>
@@ -243,7 +249,7 @@ function CompleteProfile() {
                   </AvatarGroup>
                 </div>
               </div>
-            } */}
+            }
             <Divider />
             {desiredCareers.length > 0 &&
               <div className="profile-section flex-row gap-2r align-center">
