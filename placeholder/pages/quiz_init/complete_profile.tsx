@@ -14,6 +14,7 @@ import { setDesiredTechnologies, setDesiredCareers, setDesiredCategories } from 
 import { setMenteeDesiredCategories } from "../../redux/slices/menteePreferencesSlice";
 import { changeDeveloperField, changeLevel, changePurpose, setExpriencedWithTechnologies } from "../../redux/slices/userInfoSlice";
 import Axios from "axios";
+import ChatEngineApi from "../../services/ChatEngineApi";
 
 const styleObject = { verticalAlign: 'middle', marginBottom: '3px' }
 
@@ -138,6 +139,8 @@ function CompleteProfile() {
     if (user && shouldUpdateProfile()) {
       setShowRequired(false);
       const userBeforeUpdate = await UserApi.updateUserProfile(user)
+      const chatEngineResponse = await ChatEngineApi.createUser(user);
+      console.log('Here is the chat engine response: ', chatEngineResponse)
       console.log("Here is the old user (before update): ", userBeforeUpdate)
     } else {
       setShowRequired(true);
