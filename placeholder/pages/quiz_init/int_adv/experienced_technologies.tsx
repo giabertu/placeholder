@@ -6,9 +6,10 @@ import QuizNavigationButtons from '../../../components/QuizNavigationButtons';
 import TechLogo from '../../../components/TechLogo';
 import { logos } from "../../../utils/logos";
 import { useAppSelector, useAppDispatch } from '../../../redux/hooks';
-import { changeExperiencedWithTechnologies } from '../../../redux/slices/userInfoSlice';
+import { toggleExperiencedWithTechnologies } from '../../../redux/slices/userInfoSlice';
 import QuestionnaireButton from '../../../components/QuestionnaireButton';
 import { Input, InputGroup, InputLeftAddon, InputLeftElement, useColorMode } from '@chakra-ui/react';
+import AutocompleteInput from '../../../components/AutocompleteInput';
 
 function ExperiencedTechnologies() {
 
@@ -29,7 +30,7 @@ function ExperiencedTechnologies() {
       name: technology,
       imageSrc: imgData.src
     }
-    dispatch(changeExperiencedWithTechnologies(valueObj));
+    dispatch(toggleExperiencedWithTechnologies(valueObj));
   }
 
   return (
@@ -45,15 +46,16 @@ function ExperiencedTechnologies() {
 
         <h2 className={styles.instruction}>Search for the technologies you're most familiar with, or choose from the list of popular tech / programming fields below</h2>
 
-        <form>
+        <AutocompleteInput learnOrLearnt='experienced'/>
+        {/* <form> */}
           {/* <span className={styles.terminalArrow}>&gt;</span> */}
-          <InputGroup width='22em' >
+          {/* <InputGroup width='22em' >
             <InputLeftElement children='>' color={isDark ? 'gray.300' : 'gray.500'}/>
             <Input variant='outline' placeholder='Type technology here...' color={isDark ? 'gray.300' : 'gray.500'} _placeholder={{color: 'inherit'}} focusBorderColor='gray.500'/>
-          </InputGroup>
+          </InputGroup> */}
           {/* <input className={styles.technologiesSearchInput} type="text" placeholder='Type technology here...'></input> */}
 
-        </form>
+        {/* </form> */}
 
         <div className={styles.logoContainer}>
           {logos.map(technology =>
