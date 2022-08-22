@@ -11,8 +11,7 @@ export type MentorPreferencesState = {
 
 export type MenteePreferencesState = {
   desiredCategories: string[]
-//   desiredTechnologies: (TechnologyObj | string)[]
-//   desiredCareers: string[]
+  desiredTechnologies: TechnologyObj[]
 }
 
 export type UserInfoState = {

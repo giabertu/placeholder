@@ -5,6 +5,7 @@ import { StaticImageData } from "next/image";
 
 const initialState: MenteePreferencesState = {
   desiredCategories: [],
+  desiredTechnologies: []
 };
 
 export const menteePreferencesSlice = createSlice({
@@ -25,9 +26,19 @@ export const menteePreferencesSlice = createSlice({
         state.desiredCategories.push(action.payload);
       }
       return state;
+    },
+    changeDesiredTechnologies: (state, action: PayloadAction<TechnologyObj>) => {
+      const index = state.desiredTechnologies.findIndex((x) => x.name === action.payload.name);
+      if (index !== -1) {
+        state.desiredTechnologies.splice(index, 1);
+      }
+      else {
+        state.desiredTechnologies.push(action.payload);
+      }
+      return state;
     }
   }
-})
+});
 
 export const { changeDesiredCategory, setMenteeDesiredCategories } = menteePreferencesSlice.actions;
 export default menteePreferencesSlice.reducer;
