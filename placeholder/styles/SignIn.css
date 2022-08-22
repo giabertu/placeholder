@@ -12,6 +12,10 @@
   font-size: 1.2rem;
 }
 
+.input-sign::placeholder {
+  text-align: center;
+}
+
 .profile-title-button-container {
   display: flex;
   flex-direction: column;
@@ -92,8 +96,4 @@
 
 .input-signin:focus {
   outline: none;
-}
-
-::placeholder {
-  text-align: center;
 }
