@@ -25,7 +25,7 @@ export default function Purpose() {
 
   return (
   <div className="container flex-column">
-    <Navbar progressValue={25}/>
+    <Navbar progressValue={45}/>
     <PurposeForm choices={purposeChoices} />
     <QuizNavigationButtons back='quiz_init/int_adv/experienced_technologies' next={`quiz_init/int_adv/${subroute}`} canProceed={Boolean(selectedPurpose)}/>
   </ div>

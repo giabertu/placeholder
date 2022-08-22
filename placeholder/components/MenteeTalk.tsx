@@ -41,6 +41,7 @@ function MenteeTalk({ choices, descriptions }: { choices: string[], descriptions
                 onClick={(event) => handleButtonClick(event)}
                 onMouseEnter={() => setCurrentSelection(index)}
                 onMouseLeave={() => setCurrentSelection(null)}
+                selected={menteeChoices.includes(text)}
               />
               )}
         </div>

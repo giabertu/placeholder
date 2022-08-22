@@ -46,6 +46,7 @@ function ExperienceLevel({ choices, descriptions }: { choices: string[], descrip
                 onClick={(event) => handleButtonClick(event)}
                 onMouseEnter={() => setCurrentSelection(index)}
                 onMouseLeave={() => setCurrentSelection(null)}
+                selected={selectedLevel.includes(text)}
               />
               )}
         </div>

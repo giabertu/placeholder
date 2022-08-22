@@ -18,7 +18,7 @@ export const levelChoices = [
 ]
 
 export const levelDescriptions = [
-  "I am just starting out as a software developer and aiming to learn basic programming foundations. I have been consistently learning how to program and I want to prepare for the next stage to land my first software developing role.",
+  "I am just starting out as a software developer and aiming to learn basic programming foundations. / I have been consistently learning how to program and I want to prepare for the next stage to land my first software developing role.",
 
   "I am a software developer with at least 2 years of experience in the industry and I have 1 or more language of mastery.",
 

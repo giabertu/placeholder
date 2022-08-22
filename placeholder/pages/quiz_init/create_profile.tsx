@@ -25,7 +25,7 @@ export default function CreateProfile({ providers }: { providers: Record<Literal
 
   return (
     <div className="container flex-column outline align-center">
-      <Navbar progressValue={0} />
+      <Navbar progressValue={100} />
 
       <div className="flex-column gap-2r m-top-auto m-bottom-auto">
         <Typewriter
