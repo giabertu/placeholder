@@ -7,6 +7,7 @@ const userSchema = {
   email:  String, 
   first_name: String,
   last_name: String,
+  secret: String,
   custom_json: {
     avatar: String, 
     bio: String, 
@@ -41,6 +42,7 @@ export interface UserType {
   email: string,
   first_name: string,
   last_name: string,
+  secret: string,
   custom_json: {
     avatar: string,
     bio: string,

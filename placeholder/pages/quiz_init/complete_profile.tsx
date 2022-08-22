@@ -4,6 +4,7 @@ import { CloudUploadOutline } from 'react-ionicons'
 import { Avatar } from "@chakra-ui/avatar";
 import { AvatarGroup, Box, Divider, SkeletonCircle, SkeletonText, Tag, Wrap, WrapItem } from "@chakra-ui/react";
 import Typewriter from 'typewriter-effect'
+import uniqid from 'uniqid'
 
 import Navbar from "../../components/Navbar";
 import UserApi from "../../services/UserApi";
@@ -111,6 +112,7 @@ function CompleteProfile() {
         email: session.user.email,
         first_name: name.split(' ')[0],
         last_name: name.split(' ').slice(1).join(' '),
+        secret: uniqid(),
         custom_json: {
           avatar: imgSrc,
           bio,
