@@ -54,7 +54,7 @@ function WhichTechnologies() {
 
         <h2 className={styles.instruction}>Search for the technologies you wish to learn, or choose from the list of popular tech / programming fields below</h2>
 
-        <AutocompleteInput />
+        <AutocompleteInput learnOrLearnt='to learn'/>
         {/* <Autocomplete /> */}
         {/* <form> */}
           {/* <span className={styles.terminalArrow}>&gt;</span> */}
