@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@ant-design/icons": "^4.7.0",
     "@chakra-ui/icons": "^2.0.8",
     "@chakra-ui/progress": "^2.0.9",
     "@chakra-ui/react": "^2.2.8",
@@ -29,6 +30,8 @@
     "next-auth": "^4.10.3",
     "nodemailer": "^6.7.8",
     "react": "18.2.0",
+    "react-chat-engine": "^1.11.23",
+    "react-chat-engine-advanced": "^0.1.24",
     "react-dom": "18.2.0",
     "react-ionicons": "^4.2.0",
     "react-redux": "^8.0.2",

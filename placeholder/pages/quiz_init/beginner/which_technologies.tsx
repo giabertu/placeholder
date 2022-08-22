@@ -42,7 +42,7 @@ function WhichTechnologies() {
 
   return (
     <div className={styles.container}>
-      <Navbar progressValue={40} />
+      <Navbar progressValue={50} />
       {/* <ProgressBar value={10} /> */}
       <div className={styles.formContainer}>
         <div className={styles.title}>

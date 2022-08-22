@@ -7,7 +7,7 @@ function ProgressBar({ value }: { value: number }) {
   const isDark = colorMode === 'dark';
 
   return (
-    <Progress className={styles.bar} colorScheme={isDark ? "gray" : "blackAlpha"} value={value} />
+    <Progress className={styles.bar} colorScheme={isDark ? "gray" : "blackAlpha"} value={value} height='0.6rem' />
   )
 }
 
