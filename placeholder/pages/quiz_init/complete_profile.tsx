@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useSession } from "next-auth/react";
 import { CloudUploadOutline } from 'react-ionicons'
 import { Avatar } from "@chakra-ui/avatar";
@@ -12,6 +12,7 @@ import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import { setDesiredTechnologies, setDesiredCareers, setDesiredCategories } from "../../redux/slices/mentorPreferencesSlice";
 import { setMenteeDesiredCategories } from "../../redux/slices/menteePreferencesSlice";
 import { changeDeveloperField, changeLevel, changePurpose, setExpriencedWithTechnologies } from "../../redux/slices/userInfoSlice";
+import Axios from "axios";
 
 const styleObject = { verticalAlign: 'middle', marginBottom: '3px' }
 
@@ -80,6 +81,23 @@ function CompleteProfile() {
     }
   }
 
+  function uploadImage(e: React.ChangeEvent<HTMLInputElement>) {
+    if (ref.current && e.target.files?.length) {
+      console.log(e.target.files[0])
+
+      const formData = new FormData()
+      formData.append('file', e.target.files[0])
+      formData.append('upload_preset', 'mk6cejhf')
+
+      Axios.post('https://api.cloudinary.com/v1_1/gianni-bertuzzi/image/upload', formData).then(res => {
+        console.log(res)
+        if (res.data.secure_url) {
+          setImgSrc(res.data.secure_url)
+        }
+      }).catch(error => console.log('There has been an error: ', error))
+    }
+  }
+
   function handleInputChange(e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>, cb: any) {
     console.log(e.target.value)
     cb(e.target.value.trim())
@@ -138,13 +156,7 @@ function CompleteProfile() {
                 <input type='file'
                   className="input-file"
                   hidden={true} ref={ref}
-                  onChange={(e) => {
-                    if (ref.current) {
-                      const input = ref.current as HTMLInputElement
-                      console.log(input.value)
-                      setImgSrc(input.value)
-                    }
-                  }}></input>
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => uploadImage(e)}></input>
                 <CloudUploadOutline style={styleObject} /> Edit
               </button>
             </div>
@@ -216,7 +228,7 @@ function CompleteProfile() {
                 </div>
               </div>
             }
-            <Divider />
+            {/* <Divider />
             {menteePreferences.desiredTechnologies.length > 0 &&
               <div className="profile-section flex-row gap-2r align-center">
                 <label className="profile-input-label">Eager to teach </label>
@@ -231,7 +243,7 @@ function CompleteProfile() {
                   </AvatarGroup>
                 </div>
               </div>
-            }
+            } */}
             <Divider />
             {desiredCareers.length > 0 &&
               <div className="profile-section flex-row gap-2r align-center">
