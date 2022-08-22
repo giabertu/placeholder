@@ -8,6 +8,7 @@ import QuestionnaireButton2 from './QuestionnaireButton2';
 
 function MentorTalk({ choices, descriptions }: { choices: string[], descriptions: string[] }) {
 
+
   const dispatch = useAppDispatch();
 
   const mentorChoices = useAppSelector((state) => state.mentorPreferences.desiredCategories);
@@ -40,6 +41,7 @@ function MentorTalk({ choices, descriptions }: { choices: string[], descriptions
                 onClick={(event) => handleButtonClick(event)}
                 onMouseEnter={() => setCurrentSelection(index)}
                 onMouseLeave={() => setCurrentSelection(null)}
+                selected={mentorChoices.includes(text)}
               />
               )}
         </div>

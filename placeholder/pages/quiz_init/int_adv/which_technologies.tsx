@@ -51,7 +51,7 @@ function WhichTechnologies() {
           }
         </div>
 
-        <h2 className={styles.instruction}>Search for the technologies you wish to improve in, or choose from the list of popular tech / programming fields below</h2>
+        <h2 className={styles.instruction}>Search for the technologies you wish to improve in, or choose from the list of popular tech / programming fields below:</h2>
 
         <AutocompleteInput learnOrLearnt='to learn'/>
         {/* <form> */}

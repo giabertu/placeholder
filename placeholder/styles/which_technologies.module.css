@@ -94,3 +94,14 @@
   padding: 0 0.4rem;
   font-size: 1.1rem;
 }
+
+.subInstruction {
+  font-size: 0.84rem;
+  margin-top: 1.5rem;
+}
+
+.tagContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
