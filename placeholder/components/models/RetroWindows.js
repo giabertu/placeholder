@@ -23,12 +23,12 @@ export function RetroWindows(props) {
           receiveShadow
           geometry={nodes.Object_2.geometry}
           material={materials.None}
-          > <meshNormalMaterial wireframe={true}/></mesh>
+          > <meshNormalMaterial wireframe={true} /></mesh>
         <mesh
           castShadow
           receiveShadow
           material={materials.None}
-          geometry={nodes.Object_3.geometry}><meshNormalMaterial wireframe={true}/>
+          geometry={nodes.Object_3.geometry}><meshNormalMaterial wireframe={true} />
         </mesh>
       </group>
     </group>
