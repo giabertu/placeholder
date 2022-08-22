@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next'
-import { updateUser } from '../../lib/models/queries/user';
+import { updateUser, getUsers} from '../../lib/models/queries/user';
 
 export default async function handleUserRequests(request: NextApiRequest, response: NextApiResponse) {
 
@@ -13,6 +13,12 @@ export default async function handleUserRequests(request: NextApiRequest, respon
       console.log('Update user failed 🔴', error)
       response.status(401).json({message: 'update failed'})
     }
+  } else if (request.method === 'GET') {
+    try {
+      const users = await getUsers();
+      response.status(200).json(users);
+    } catch (error) {
+      console.log('Getting users failed 🔴', error)
+    }
   } 
-
 }

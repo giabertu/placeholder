@@ -13,7 +13,7 @@ export const mentorPreferencesSlice = createSlice({
   name: "mentor preferences",
   initialState,
   reducers: {
-    setDesiredCategories (state, action: PayloadAction<string[]>) {
+    setDesiredCategories (state: MentorPreferencesState, action: PayloadAction<string[]>) {
       state.desiredCategories = action.payload;
       return state
     },
