@@ -40,6 +40,7 @@ function Roles({ choices }: { choices: string[] }) {
               text={text}
               value={text}
               onClick={(event) => handleButtonClick(event)}
+              selected={selectedField === text}
             />
           )}
         </div>

@@ -9,6 +9,7 @@ import { useAppSelector, useAppDispatch } from '../../../redux/hooks';
 import QuestionnaireButton from '../../../components/QuestionnaireButton';
 import { toggleDesiredTechnologies } from '../../../redux/slices/mentorPreferencesSlice';
 import { Input, InputGroup, InputLeftAddon, InputLeftElement, useColorMode } from '@chakra-ui/react';
+import AutocompleteInput from '../../../components/AutocompleteInput';
 
 
 function WhichTechnologies() {
@@ -50,17 +51,18 @@ function WhichTechnologies() {
           }
         </div>
 
-        <h2 className={styles.instruction}>Search for the technologies you wish to improve in, or choose from the list of popular tech / programming fields below</h2>
+        <h2 className={styles.instruction}>Search for the technologies you wish to improve in, or choose from the list of popular tech / programming fields below:</h2>
 
-        <form>
+        <AutocompleteInput learnOrLearnt='to learn'/>
+        {/* <form> */}
           {/* <span className={styles.terminalArrow}>&gt;</span> */}
-          <InputGroup width='22em' >
+          {/* <InputGroup width='22em' >
             <InputLeftElement children='>' color={isDark ? 'gray.300' : 'gray.500'} />
             <Input variant='outline' placeholder='Type technology here...' color={isDark ? 'gray.300' : 'gray.500'} _placeholder={{ color: 'inherit' }} focusBorderColor='gray.500' />
-          </InputGroup>
+          </InputGroup> */}
           {/* <input className={styles.technologiesSearchInput} type="text" placeholder='Type technology here...'></input> */}
 
-        </form>
+        {/* </form> */}
 
         <div className={styles.logoContainer}>
           {logos.map(technology =>

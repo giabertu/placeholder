@@ -29,7 +29,7 @@ export const mentorPreferencesSlice = createSlice({
       return state;
     },
     setDesiredTechnologies(state, action: PayloadAction<TechnologyObj[] | string[]>) {
-      state.desiredTechnologies = action.payload
+      state.desiredTechnologies = action.payload;
       return state;
     },
     toggleDesiredTechnologies: (state, action: PayloadAction<TechnologyObj | string>) => {
@@ -85,7 +85,7 @@ export const mentorPreferencesSlice = createSlice({
   }
 })
 
-export const { 
+export const {
   changeDesiredCategory, toggleDesiredTechnologies, changeDesiredCareers, setDesiredTechnologies, setDesiredCareers, setDesiredCategories
   }  = mentorPreferencesSlice.actions;
 export default mentorPreferencesSlice.reducer;
