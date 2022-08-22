@@ -17,11 +17,12 @@ export default function CreateProfile({ providers }: { providers: Record<Literal
   console.log(providers)
   console.log(providers.github)
   const [value, setValue] = useState('');
-  const mentorPreferences = useAppSelector(state => state.mentorPreferences)
-  const userInfo = useAppSelector(state => state.userInfo)
+  const { mentorPreferences, userInfo, menteePreferences } = useAppSelector(state => state)
+
 
   localStorage.setItem('mentorPreferences', JSON.stringify(mentorPreferences));
   localStorage.setItem('userInfo', JSON.stringify(userInfo))
+  localStorage.setItem('menteePreferences', JSON.stringify(menteePreferences))
 
   return (
     <div className="container flex-column outline align-center">

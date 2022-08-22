@@ -19,6 +19,13 @@ const userSchema = {
       imageSrc: String
     }]
   },
+  menteePreferences: {
+    desiredCategories: [String],
+    desiredTechnologies: [{
+      name: String,
+      imageSrc: String,
+    }]
+  },
   experiencedWithTechnologies: [{
     name : String,
     imageSrc : String
@@ -39,6 +46,10 @@ export interface UserType {
     desiredCategories: string[],
     desiredTechnologies: (TechnologyObj | string)[]
   },
+  menteePreferences: {
+    desiredCategories: string[],
+    desiredTechnologies: TechnologyObj[]
+  }
   experiencedWithTechnologies: TechnologyObj[]
 }
 
