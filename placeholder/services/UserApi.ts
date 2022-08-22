@@ -29,6 +29,7 @@ export default class UserApi {
   }
 
   static async getAllUsers() {
-    
+    const users = await fetch(this.ENDPOINT)
+    return await users.json()
   }
 }
