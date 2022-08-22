@@ -13,9 +13,10 @@
  font-size: 1.1rem;
  padding: 0.25rem 0.75rem;
  width: fit-content;
- text-align: left; 
- border: solid 2px rgba(255, 255, 255, 0);
+ text-align: left;
+ border: solid 2px black;
  transition: all 0.3s ease;
+ transform: translateX(0.625rem);
 }
 
 .buttonStyle:hover  {

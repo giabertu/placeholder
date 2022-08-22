@@ -44,7 +44,7 @@ function ExperiencedTechnologies() {
           }
         </div>
 
-        <h2 className={styles.instruction}>Search for the technologies you're most familiar with, or choose from the list of popular tech / programming fields below</h2>
+        <h2 className={styles.instruction}>Search for the technologies you're most familiar with, or choose from the list of popular tech / programming fields below:</h2>
 
         <AutocompleteInput learnOrLearnt='experienced'/>
         {/* <form> */}
