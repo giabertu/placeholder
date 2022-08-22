@@ -7,5 +7,11 @@ async function updateUser(user: UserType) {
   return res
 }
 
+async function getUsers() {
+  const users = await User.find({});
+  console.log('Here are the users: ', users)
+  return users;
+}
 
-export {updateUser}
+
+export {updateUser, getUsers}

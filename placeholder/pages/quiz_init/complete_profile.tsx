@@ -151,7 +151,7 @@ function CompleteProfile() {
             }} />
           <div className="profile-container flex-column align-center justify-center box-shadow">
             <div className="profile-section flex-row gap-2r align-center">
-              <Avatar size='xl' name='Dan Abrahmov' src={imgSrc} />
+              <Avatar size='xl' src={imgSrc} />
               <button className="button-style" onClick={(e) => handleUploadClick(e)}>
                 <input type='file'
                   className="input-file"

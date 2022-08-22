@@ -27,4 +27,8 @@ export default class UserApi {
     })
     return await response.json()
   }
+
+  static async getAllUsers() {
+    
+  }
 }
