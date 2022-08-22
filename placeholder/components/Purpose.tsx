@@ -1,5 +1,4 @@
 import { useColorMode } from '@chakra-ui/react'
-import uniqid from 'uniqid';
 import { useAppDispatch, useAppSelector } from '../redux/hooks';
 import { changePurpose } from '../redux/slices/userInfoSlice';
 import QuestionnaireButton from './QuestionnaireButton';
@@ -31,16 +30,16 @@ function Purpose({ choices }: { choices: string[] }) {
   return (
     <div className="form-container-choices-list-no-description">
       {generateTitle()}
-        <div className="choices-container-choices-list-no-description-spaced">
-          {choices.map((text: string) =>
-            <QuestionnaireButton
-              key={uniqid()}
-              text={text}
-              value={text}
-              onClick={(event) => handleButtonClick(event)}
-            />
-          )}
-        </div>
+      <div className="choices-container-choices-list-no-description-spaced">
+        {choices.map((text: string) =>
+          <QuestionnaireButton
+            key={text}
+            text={text}
+            value={text}
+            onClick={(event) => handleButtonClick(event)}
+          />
+        )}
+      </div>
     </div>
   )
 }

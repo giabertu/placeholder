@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useSession } from "next-auth/react";
 import { CloudUploadOutline } from 'react-ionicons'
 import { Avatar } from "@chakra-ui/avatar";
@@ -10,7 +10,9 @@ import UserApi from "../../services/UserApi";
 import { UserType } from "../../lib/models/User";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import { setDesiredTechnologies, setDesiredCareers, setDesiredCategories } from "../../redux/slices/mentorPreferencesSlice";
+import { setMenteeDesiredCategories } from "../../redux/slices/menteePreferencesSlice";
 import { changeDeveloperField, changeLevel, changePurpose, setExpriencedWithTechnologies } from "../../redux/slices/userInfoSlice";
+import Axios from "axios";
 
 const styleObject = { verticalAlign: 'middle', marginBottom: '3px' }
 
@@ -23,7 +25,7 @@ function CompleteProfile() {
   const [location, setLocation] = useState('')
   const [showRequired, setShowRequired] = useState(false)
 
-  const { mentorPreferences, userInfo } = useAppSelector(state => state)
+  const { mentorPreferences, userInfo, menteePreferences } = useAppSelector(state => state)
   const { desiredTechnologies, desiredCareers, desiredCategories } = mentorPreferences
   const { level, developerField, purpose, experiencedWithTechnologies } = userInfo
 
@@ -43,13 +45,17 @@ function CompleteProfile() {
   if (typeof window !== 'undefined') {
     const mentorPreferencesStringified = localStorage.getItem('mentorPreferences');
     const userInfoStringified = localStorage.getItem('userInfo')
+    const menteePreferencesStringified = localStorage.getItem('menteePreferences')
 
-    if (mentorPreferencesStringified && userInfoStringified) {
+    if (mentorPreferencesStringified && menteePreferencesStringified && userInfoStringified) {
       const mentorPreferences = JSON.parse(mentorPreferencesStringified)
       dispatch(setDesiredTechnologies(mentorPreferences.desiredTechnologies))
       dispatch(setDesiredCareers(mentorPreferences.desiredCareers))
       dispatch(setDesiredCategories(mentorPreferences.desiredCategories))
       localStorage.removeItem('mentorPreferences')
+
+      const menteePreferences = JSON.parse(menteePreferencesStringified)
+      dispatch(setMenteeDesiredCategories(menteePreferences.desiredCategories))
 
       const userInfo = JSON.parse(userInfoStringified)
       dispatch(changeLevel(userInfo.level))
@@ -62,10 +68,33 @@ function CompleteProfile() {
 
   //----------------------------------------------------
 
+  // function getDesiredCategories() {
+  //   if (mentorPreferences.desiredCategories.length) return desiredCategories
+  //   return menteePreferences.desiredCategories
+  // }
+
+
   function handleUploadClick(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
     if (ref.current) {
       const input = ref.current as HTMLInputElement
       input.click()
+    }
+  }
+
+  function uploadImage(e: React.ChangeEvent<HTMLInputElement>) {
+    if (ref.current && e.target.files?.length) {
+      console.log(e.target.files[0])
+
+      const formData = new FormData()
+      formData.append('file', e.target.files[0])
+      formData.append('upload_preset', 'mk6cejhf')
+
+      Axios.post('https://api.cloudinary.com/v1_1/gianni-bertuzzi/image/upload', formData).then(res => {
+        console.log(res)
+        if (res.data.secure_url) {
+          setImgSrc(res.data.secure_url)
+        }
+      }).catch(error => console.log('There has been an error: ', error))
     }
   }
 
@@ -87,11 +116,8 @@ function CompleteProfile() {
         purpose,
         developerField,
         experiencedWithTechnologies,
-        mentorPreferences: {
-          desiredCareers,
-          desiredCategories,
-          desiredTechnologies
-        }
+        mentorPreferences,
+        menteePreferences
       }
       return user
     }
@@ -100,6 +126,7 @@ function CompleteProfile() {
   function shouldUpdateProfile() {
     return name && bio && location;
   }
+
   async function handleSave() {
     const user = getCurrentUserState()
     if (user && shouldUpdateProfile()) {
@@ -124,18 +151,12 @@ function CompleteProfile() {
             }} />
           <div className="profile-container flex-column align-center justify-center box-shadow">
             <div className="profile-section flex-row gap-2r align-center">
-              <Avatar size='xl' name='Dan Abrahmov' src={imgSrc} />
+              <Avatar size='xl' src={imgSrc} />
               <button className="button-style" onClick={(e) => handleUploadClick(e)}>
                 <input type='file'
                   className="input-file"
                   hidden={true} ref={ref}
-                  onChange={(e) => {
-                    if (ref.current) {
-                      const input = ref.current as HTMLInputElement
-                      console.log(input.value)
-                      setImgSrc(input.value)
-                    }
-                  }}></input>
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => uploadImage(e)}></input>
                 <CloudUploadOutline style={styleObject} /> Edit
               </button>
             </div>
@@ -162,18 +183,35 @@ function CompleteProfile() {
                 required={true} placeholder='' onChange={(e) => handleInputChange(e, setLocation)}></input>
             </div>
             <Divider />
-            <div className="profile-section flex-row gap-2r align-center">
-              <label className="profile-input-label">Topics</label>
-              <Wrap spacing={2} justify={'flex-end'}>
-                {desiredCategories.map((category) =>
-                  <WrapItem>
-                    <Tag key={category} size='lg' colorScheme='gray' borderRadius='full'>
-                      {category[0].toUpperCase() + category.substring(1)}
-                    </Tag>
-                  </WrapItem>
-                )}
-              </Wrap>
-            </div>
+            {desiredCategories.length > 0 &&
+              <div className="profile-section flex-row gap-2r align-center">
+                <label className="profile-input-label">Mentor Topics</label>
+                <Wrap spacing={2} justify={'flex-end'}>
+                  {desiredCategories.map((category) =>
+                    <WrapItem>
+                      <Tag key={category} size='lg' colorScheme='gray' borderRadius='full'>
+                        {category[0].toUpperCase() + category.substring(1)}
+                      </Tag>
+                    </WrapItem>
+                  )}
+                </Wrap>
+              </div>
+            }
+            <Divider />
+            {menteePreferences.desiredCategories.length > 0 &&
+              <div className="profile-section flex-row gap-2r align-center">
+                <label className="profile-input-label">Mentee Topics</label>
+                <Wrap spacing={2} justify={'flex-end'}>
+                  {menteePreferences.desiredCategories.map((category) =>
+                    <WrapItem>
+                      <Tag key={category} size='lg' colorScheme='gray' borderRadius='full'>
+                        {category[0].toUpperCase() + category.substring(1)}
+                      </Tag>
+                    </WrapItem>
+                  )}
+                </Wrap>
+              </div>
+            }
             <Divider />
             {desiredTechnologies.length > 0 &&
               <div className="profile-section flex-row gap-2r align-center">
@@ -190,6 +228,22 @@ function CompleteProfile() {
                 </div>
               </div>
             }
+            {/* <Divider />
+            {menteePreferences.desiredTechnologies.length > 0 &&
+              <div className="profile-section flex-row gap-2r align-center">
+                <label className="profile-input-label">Eager to teach </label>
+                <div>
+                  <AvatarGroup size='md' max={4} marginRight='2rem' >
+                    {desiredTechnologies.map(technology => {
+                      if (typeof technology == 'string') {
+                        return <Tag>{technology}</Tag>
+                      }
+                      return <Avatar src={technology.imageSrc} bg='transparent' border='none' borderRadius='none' scale={0.7} minWidth='fit-content' />
+                    })}
+                  </AvatarGroup>
+                </div>
+              </div>
+            } */}
             <Divider />
             {desiredCareers.length > 0 &&
               <div className="profile-section flex-row gap-2r align-center">
@@ -224,7 +278,7 @@ function CompleteProfile() {
           <div className="profile-container flex-column align-center justify-center">
             <Box padding='6' boxShadow='lg' bg='white' width={'25rem'} height={'25rem'}>
               <SkeletonCircle size='10' />
-              <SkeletonText mt='4' noOfLines={8} spacing='4' />
+              <SkeletonText mt='4' noOfLines={12} spacing='4' />
             </Box>
           </div>
         </div>
