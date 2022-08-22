@@ -1,7 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 import type { MenteePreferencesState, TechnologyObj } from "../types";
-import { StaticImageData } from "next/image";
 
 const initialState: MenteePreferencesState = {
   desiredCategories: [],
@@ -23,7 +22,7 @@ export const menteePreferencesSlice = createSlice({
       }
       return state;
     },
-    changeDesiredTechnologies: (state, action: PayloadAction<TechnologyObj>) => {
+    toggleDesiredTechnologies: (state, action: PayloadAction<TechnologyObj>) => {
       const index = state.desiredTechnologies.findIndex((x) => x.name === action.payload.name);
       if (index !== -1) {
         state.desiredTechnologies.splice(index, 1);
@@ -36,5 +35,5 @@ export const menteePreferencesSlice = createSlice({
   }
 });
 
-export const { changeDesiredCategory } = menteePreferencesSlice.actions;
+export const { changeDesiredCategory, toggleDesiredTechnologies } = menteePreferencesSlice.actions;
 export default menteePreferencesSlice.reducer;
