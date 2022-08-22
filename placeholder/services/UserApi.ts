@@ -16,4 +16,20 @@ export default class UserApi {
     })
     return await response.json()
   }
+
+  static async getCloudinaryUrl(formData: FormData) {
+    const response = await fetch('https://api.cloudinary.com/v1_1/gianni-bertuzzi/image/upload', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: formData
+    })
+    return await response.json()
+  }
+
+  static async getAllUsers() {
+    const users = await fetch(this.ENDPOINT)
+    return await users.json()
+  }
 }

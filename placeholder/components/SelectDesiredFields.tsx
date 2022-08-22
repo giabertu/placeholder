@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { useColorMode } from '@chakra-ui/react'
-import uniqid from 'uniqid';
 
 import { useAppDispatch, useAppSelector } from '../redux/hooks';
 import { changeDesiredCareers } from '../redux/slices/mentorPreferencesSlice';
@@ -40,22 +39,23 @@ function Roles({ choices, beginner }: { choices: string[], beginner: boolean }) 
   return (
     <div className="form-container-choices-list-no-description">
       {beginner ? generateTitleBeginner() : generateTitleInt_Adv()}
-        <div className="choices-container-choices-list-no-description">
-          {choices.map((text: string) =>
-            <QuestionnaireButton2
-              key={text}
-              text={text}
-              value={text}
-              onClick={(event) => handleButtonClick(event)}
-            />
-          )}
-        </div>
-        {beginner && (
-          <>
-            <h2 className={isDark ? "horizontalRuleDarkMode" : "horizontalRule"}><span className={isDark ? "horizontalRuleTextDarkMode" : "horizontalRuleText"}>OR</span></h2>
-            <QuestionnaireButton text="I'm unsure at this stage" value="general" onClick={handleButtonClick} />
-          </>
+      <div className="choices-container-choices-list-no-description">
+        {choices.map((text: string) =>
+          <QuestionnaireButton2
+            key={text}
+            text={text}
+            value={text}
+            onClick={(event) => handleButtonClick(event)}
+            selected={selectedFields.includes(text)}
+          />
         )}
+      </div>
+      {beginner && (
+        <>
+          <h2 className={isDark ? "horizontalRuleDarkMode" : "horizontalRule"}><span className={isDark ? "horizontalRuleTextDarkMode" : "horizontalRuleText"}>OR</span></h2>
+          <QuestionnaireButton text="I'm unsure at this stage" value="general" onClick={handleButtonClick} />
+        </>
+      )}
     </div>
   )
 }

@@ -11,6 +11,10 @@ export const menteePreferencesSlice = createSlice({
   name: "mentee preferences",
   initialState,
   reducers: {
+    setMenteeDesiredCategories(state, action: PayloadAction<string[]>) {
+      state.desiredCategories = action.payload;
+      return state;
+    },
     changeDesiredCategory: (state, action: PayloadAction<string>) => {
       // toggle mentee purpose selection
       const index = state.desiredCategories.indexOf(action.payload);
