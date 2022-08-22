@@ -15,7 +15,7 @@ function QuestionnaireButton2({ text, value, onClick, onMouseEnter, onMouseLeave
         ${isDark ? styles.buttonStyleDarkMode : styles.buttonStyle}
       ` }
 
-        // style={(isDark && selected) ? {border: 'solid 2px white'} : isDark ? {borderStyle:'solid 2px white'} : {}}
+        style={(isDark && selected) ? {border: 'solid 2px white'} : isDark ? {borderStyle:'solid 2px white'} : {}}
         value={value}
         onClick={(event) => {
             onClick?.(event);

@@ -1,7 +1,7 @@
 import { useColorMode } from '@chakra-ui/react'
 import { useAppDispatch, useAppSelector } from '../redux/hooks';
 import { changePurpose } from '../redux/slices/userInfoSlice';
-import QuestionnaireButton from './QuestionnaireButton';
+import QuestionnaireButton2 from './QuestionnaireButton2';
 
 function Purpose({ choices }: { choices: string[] }) {
 
@@ -32,11 +32,12 @@ function Purpose({ choices }: { choices: string[] }) {
       {generateTitle()}
       <div className="choices-container-choices-list-no-description-spaced">
         {choices.map((text: string) =>
-          <QuestionnaireButton
+          <QuestionnaireButton2
             key={text}
             text={text}
             value={text}
             onClick={(event) => handleButtonClick(event)}
+            selected={selectedPurpose === {text}}
           />
         )}
       </div>

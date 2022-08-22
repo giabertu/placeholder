@@ -46,6 +46,7 @@ function Roles({ choices, beginner }: { choices: string[], beginner: boolean }) 
             text={text}
             value={text}
             onClick={(event) => handleButtonClick(event)}
+            selected={selectedFields.includes(text)}
           />
         )}
       </div>

@@ -16,7 +16,7 @@ function WhichCareers() {
 
   return (
     <div className="container">
-      <Navbar progressValue={25} />
+      <Navbar progressValue={75} />
       <SelectDesiredFieldsForm choices={rolesChoices} beginner={true}/>
       <QuizNavigationButtons back={route} next="quiz_init/create_profile" canProceed={Boolean(selectedCareers.length)}/>
     </div>
