@@ -27,11 +27,13 @@ const CustomChatCard = (props: CustomChatCardProps) => {
   if (!props.chat) return <div />;
 
   const otherMember = getOtherUser(props.chat, props.username);
-  props.allUsers.forEach(user => {
-    if (user.username === otherMember?.username) {
-      otherMember.avatar = user.custom_json.avatar
-    }
-  })
+  if (otherMember) {
+    props.allUsers.forEach(user => {
+      if (user.username === otherMember?.username) {
+        otherMember.avatar = user.custom_json.avatar
+      }
+    })
+  }
 
 
   const firstName = otherMember ? otherMember.first_name : "";
