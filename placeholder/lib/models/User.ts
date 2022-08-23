@@ -1,4 +1,6 @@
 import mongoose from 'mongoose'
+import { PersonObject } from 'react-chat-engine-advanced'
+
 import { TechnologyObj } from '../../redux/types'
 
 //Define new and updated schema
@@ -62,6 +64,25 @@ export interface UserType {
     experiencedWithTechnologies: TechnologyObj[]
   }
 }
+
+// export type UserContextType {
+//   user: UserType;
+//   setUser: (u: UserType | undefined) => void;
+// }
+
+// export const UserContext = createContext<UserContextInterface>({
+//   user: undefined,
+//   setUser: () => {}
+// });
+
+// export const UserContextProvider = (props: UserContextInterface) => {
+//   const [user, setUser] = useState<UserType | undefined>(undefined);
+//   const value = { user, setUser};
+
+//   return ..
+
+// }
+
 
 export const User = mongoose.model("User", new mongoose.Schema(userSchema), "users")
 
