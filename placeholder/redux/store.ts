@@ -4,6 +4,8 @@ import menteePreferencesSliceReducer from "./slices/menteePreferencesSlice";
 // import nonBeginnerFormReducer from "./slices/menteePreferencesSlice";
 import userInfoSlice from "./slices/userInfoSlice";
 import darkModeSlice from "./slices/darkModeSlice";
+// import registeredUserSlice from "./slices/registeredUserSlice";
+
 
 export const store = configureStore({
   reducer: {
@@ -11,6 +13,9 @@ export const store = configureStore({
     menteePreferences: menteePreferencesSliceReducer,
     userInfo: userInfoSlice,
     darkMode: darkModeSlice
+
+    // registeredUser: registeredUserSlice
+
   },
 })
 

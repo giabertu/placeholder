@@ -20,3 +20,8 @@ export type UserInfoState = {
   experiencedWithTechnologies: TechnologyObj[],
   purpose: string,
 }
+
+// export type RegisteredUserState = {
+//   username: string,
+//   secret: string
+// }

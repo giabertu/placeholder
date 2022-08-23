@@ -17,6 +17,7 @@ export default function Navbar({ progressValue }: { progressValue: number }) {
 
   }
   const { colorMode } = useColorMode();
+
   const isDark = colorMode === 'dark';
 
   return (
@@ -25,7 +26,7 @@ export default function Navbar({ progressValue }: { progressValue: number }) {
         <QuizCompanyName />
         <ColorModeToggle />
       </div>
-      <ProgressBar value={progressValue} />
+      {progressValue ? <ProgressBar value={progressValue}/> : isDark ? <div className={styles.borderDivDarkMode}/> : <div className={styles.borderDiv}/>}
     </div>
   )
 }

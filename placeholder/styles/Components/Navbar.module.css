@@ -4,6 +4,7 @@
   background-color: #fff;
   z-index: 2;
   position: fixed;
+  /* border-bottom: 1px #1a202c solid; */
 }
 
 .flexboxDarkMode {
@@ -25,9 +26,20 @@
   /* background-color: red; */
 }
 
-
-
 .name {
   align-self: center;
 }
 
+.borderDiv {
+  width: 100%;
+  height: 1px;
+  align-self: center;
+  background-color: #1a202c;
+}
+
+.borderDivDarkMode {
+  width: 100%;
+  height: 1px;
+  align-self: center;
+  background-color: #fff;
+}

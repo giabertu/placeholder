@@ -1,3 +1,4 @@
+
 import mongoose, { Schema, Types } from 'mongoose'
 import { TechnologyObj } from '../../redux/types'
 
@@ -95,5 +96,6 @@ try {
 }
 
 export const User = model;
+
 
 
