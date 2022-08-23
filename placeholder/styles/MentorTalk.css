@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 1.5rem 1.5rem 0 1.5rem;
+  padding: 0rem 1.5rem 0 1.5rem;
   /* background-color: violet; */
   min-height: 100vh;
 }
@@ -78,7 +78,7 @@
   text-align: justify;
   box-shadow: 0px 0px 1px rgb(0, 0, 0);
   padding: 1.2rem 2rem;
-  
+
 }
 
 .descriptions-container-dark-mode {
@@ -90,7 +90,7 @@
   text-align: justify;
   box-shadow: 0px 0px 1px white;
   /* line-height: 1.7rem; */
- 
+
 }
 
 .info-tag {
