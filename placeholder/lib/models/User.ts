@@ -63,6 +63,14 @@ export interface UserType {
   }
 }
 
+export interface ChatEngineUser {
+  username: string,
+  email: string,
+  first_name: string,
+  last_name: string,
+  secret: string,
+}
+
 let model;
 try {
   model = mongoose.model('User')
