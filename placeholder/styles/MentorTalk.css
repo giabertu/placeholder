@@ -171,3 +171,21 @@
   border: solid rgb(0, 0, 0) 2px;
   margin-left: 0.5rem;
 }
+
+.typewriter-cursor {
+  font-size: 1.4rem;
+  animation: inandout 1s linear 0s infinite;
+}
+
+@keyframes inandout {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
