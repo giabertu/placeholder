@@ -10,19 +10,10 @@ import { authOptions } from "../api/auth/[...nextauth]";
 
 export default function Profile({ user, chatEngineUser }: { user: UserType, chatEngineUser: ChatEngineUser }) {
 
-  /*   async function getUsers() {
-      const users = await UserApi.getAllUsers();
-      console.log(users);
-    }
-    g etUsers(); */
-
   return (
     <div>
       <div className="profile-main-container flex-column outline align-center">
         <Navbar progressValue={0} />
-
-        {/* MAKE IT TO A NON EDITABLE PROFILE, SO SWITCH THE INPUTS WITH P TAGS AND REMOVE EDIT/SAVE INFO BUTTON*/}
-        {/* <ProfileEditable user={user} /> */}
         <ProfileNotEditable user={user} chatEngineUser={chatEngineUser} />
       </div>
     </div>

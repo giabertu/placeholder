@@ -1,4 +1,4 @@
-import mongoose from 'mongoose'
+import mongoose, { Schema, Types } from 'mongoose'
 import { TechnologyObj } from '../../redux/types'
 
 //Define new and updated schema
@@ -9,6 +9,14 @@ const userSchema = {
   last_name: String,
   secret: String,
   custom_json: {
+    mentors: [{
+      type: Schema.Types.ObjectId,
+      ref: "User"
+    }],
+    mentees: [{
+      type: Schema.Types.ObjectId,
+      ref: "User"
+    }], 
     avatar: String, 
     bio: String, 
     location: String,
@@ -44,6 +52,8 @@ export interface UserType {
   last_name: string,
   secret: string,
   custom_json: {
+    mentors: Types.ObjectId[],
+    mentees: Types.ObjectId[],
     avatar: string,
     bio: string,
     location: string,
@@ -64,11 +74,17 @@ export interface UserType {
 }
 
 export interface ChatEngineUser {
+  id: number,
   username: string,
   email: string,
   first_name: string,
   last_name: string,
   secret: string,
+  is_authenticated: boolean,
+  avatar: null | string,
+  custom_json: any,
+  is_online: boolean,
+  create: string,
 }
 
 let model;

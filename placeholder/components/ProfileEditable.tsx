@@ -1,4 +1,4 @@
-import { Divider, Wrap, WrapItem, Tag, AvatarGroup } from "@chakra-ui/react"
+import { Divider, Wrap, WrapItem, Tag, AvatarGroup, AvatarBadge } from "@chakra-ui/react"
 import Axios from "axios"
 import { useRef, useState } from "react"
 import { Avatar } from '@chakra-ui/react'
@@ -7,6 +7,7 @@ import uniqid from "uniqid"
 import { UserType } from "../lib/models/User"
 import UserApi from "../services/UserApi"
 import Typewriter from 'typewriter-effect'
+import { useAppSelector } from "../redux/hooks"
 
 
 const styleObject = { verticalAlign: 'middle', marginBottom: '3px' }
@@ -52,6 +53,8 @@ function ProfileEditable({ user }: { user: UserType }) {
       last_name: name.split(' ').slice(1).join(' '),
       secret: uniqid(),
       custom_json: {
+        mentors: user.custom_json.mentors,
+        mentees: user.custom_json.mentees,
         avatar: imgSrc,
         bio,
         location,
@@ -94,7 +97,7 @@ function ProfileEditable({ user }: { user: UserType }) {
 
 
   const { mentorPreferences, menteePreferences } = user.custom_json
-
+  const isDark = useAppSelector(state => state.darkMode)
 
   const ref = useRef(null)
 
@@ -109,13 +112,13 @@ function ProfileEditable({ user }: { user: UserType }) {
         }} />
       <div className="profile-container flex-column align-center justify-center box-shadow">
         <div className="profile-section flex-row gap-2r align-center">
-          <Avatar size='xl' src={imgSrc} />
-          <button className="button-style" onClick={(e) => handleUploadClick(e)}>
+          <Avatar size='xl' src={imgSrc}><AvatarBadge boxSize='0.4em' border='none' right='0.25em' bottom='0.2em' outline={'solid 1px white'} bg={'green.500'} /></Avatar>
+          <button className={isDark ? "button-style-dark" : 'button-style'} onClick={(e) => handleUploadClick(e)}>
             <input type='file'
               className="input-file"
               hidden={true} ref={ref}
               onChange={(e: React.ChangeEvent<HTMLInputElement>) => uploadImage(e)}></input>
-            <CloudUploadOutline style={styleObject} /> Edit
+            <CloudUploadOutline style={styleObject} color={isDark ? 'white' : 'black'} /> Edit
           </button>
         </div>
         <Divider />
@@ -231,7 +234,7 @@ function ProfileEditable({ user }: { user: UserType }) {
           </>
         }
       </div>
-      <button className="button-style profile-find-matches" onClick={handleSave} >&gt; Save Information</button>
+      <button className={isDark ? "button-style-dark profile-find-matches" : "button-style profile-find-matches"} onClick={handleSave} >&gt; Save Information</button>
     </div>
   )
 
