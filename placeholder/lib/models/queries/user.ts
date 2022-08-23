@@ -7,6 +7,13 @@ async function updateUser(user: UserType) {
   return res
 }
 
+async function getOneUser(email: string) {
+  console.log('Do we ge insie getOneUser? Yes!')
+  const res = await User.findOne({email});
+  console.log('Response in server: ' , res)
+  return res
+}
+
 async function getUsers() {
   const users = await User.find({});
   console.log('Here are the users: ', users)
@@ -14,4 +21,4 @@ async function getUsers() {
 }
 
 
-export {updateUser, getUsers}
+export {updateUser, getUsers, getOneUser}
