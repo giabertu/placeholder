@@ -36,6 +36,7 @@ class ChatEngineApi {
       },
       body: JSON.stringify({username, secret})
     })
+    console.log('Response: ', res)
     return await res.json()
   }
 

@@ -1,23 +1,25 @@
-import CPlusPlus from "../public/tech-logos/C++.png"
-import CSharp from "../public/tech-logos/Csharp.png"
-import CSS from "../public/tech-logos/css.png"
-import HTML from "../public/tech-logos/html.png"
-import Java from "../public/tech-logos/java.png"
-import JavaScript from "../public/tech-logos/JS.png"
-import PHP from "../public/tech-logos/php.png"
-import Rust from "../public/tech-logos/rust.png"
-import React from "../public/tech-logos/react.png"
-import Python from "../public/tech-logos/python.png"
-import Git from "../public/tech-logos/git.png"
-import TypeScript from "../public/tech-logos/TS2.png"
-import Docker from "../public/tech-logos/docker.png"
-import Ruby from "../public/tech-logos/ruby.png"
-import Angular from "../public/tech-logos/angular.png"
-import GraphQL from "../public/tech-logos/graphql.png"
-import SQL from "../public/tech-logos/sql.png"
-import NoSQL from "../public/tech-logos/nosql.png"
-import Node from "../public/tech-logos/node.png"
 
-const technologies = { "C++": CPlusPlus, "C#": CSharp, CSS, HTML, Java, JavaScript, PHP, Rust, React, Python, Git, TypeScript, Docker, Ruby, Angular, GraphQL, SQL, NoSQL, "Node.js": Node };
+
+const technologies = {
+  "C++": 'https://res.cloudinary.com/gianni-bertuzzi/image/upload/v1661282173/C_yxtcj9.png',
+  "C#": 'https://res.cloudinary.com/gianni-bertuzzi/image/upload/v1661282172/Csharp_fuw0kp.png',
+  'CSS': 'https://res.cloudinary.com/gianni-bertuzzi/image/upload/v1661282172/css_cont9k.png',
+  'HTML': 'https://res.cloudinary.com/gianni-bertuzzi/image/upload/v1661282172/html_oaro9a.png',
+  'Java': 'https://res.cloudinary.com/gianni-bertuzzi/image/upload/v1661282172/java_mssb7b.png',
+  'JavaScript': 'https://res.cloudinary.com/gianni-bertuzzi/image/upload/v1661282172/JS_wrm6ar.png',
+  'PHP': 'https://res.cloudinary.com/gianni-bertuzzi/image/upload/v1661282172/php_g44wyb.png',
+  'Rust': 'https://res.cloudinary.com/gianni-bertuzzi/image/upload/v1661282171/rust_hpmxei.png',
+  'React': 'https://res.cloudinary.com/gianni-bertuzzi/image/upload/v1661282172/react_ymrxxf.png',
+  'Python': 'https://res.cloudinary.com/gianni-bertuzzi/image/upload/v1661282171/python_l5ad9s.png',
+  'Git': 'https://res.cloudinary.com/gianni-bertuzzi/image/upload/v1661282172/git_vhpt9k.png',
+  'TypeScript': 'https://res.cloudinary.com/gianni-bertuzzi/image/upload/v1661282172/TS2_s51pmw.png',
+  'Docker': 'https://res.cloudinary.com/gianni-bertuzzi/image/upload/v1661282172/docker_g0e4i3.png',
+  'Ruby': 'https://res.cloudinary.com/gianni-bertuzzi/image/upload/v1661282171/ruby_unbkph.png',
+  'Angular': 'https://res.cloudinary.com/gianni-bertuzzi/image/upload/v1661282172/angular_vx9ypw.png',
+  'GraphQL': 'https://res.cloudinary.com/gianni-bertuzzi/image/upload/v1661282171/graphql_bzzlzs.png',
+  'SQL': 'https://res.cloudinary.com/gianni-bertuzzi/image/upload/v1661282171/sql_bqomko.png',
+  'NoSQL': 'https://res.cloudinary.com/gianni-bertuzzi/image/upload/v1661282171/nosql_lafvkw.png',
+  "Node.js": 'https://res.cloudinary.com/gianni-bertuzzi/image/upload/v1661282171/node_wfq4xo.png'
+};
 
 export const logos = Object.entries(technologies);
