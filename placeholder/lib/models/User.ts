@@ -1,4 +1,6 @@
 import mongoose from 'mongoose'
+import { PersonObject } from 'react-chat-engine-advanced'
+
 import { TechnologyObj } from '../../redux/types'
 
 //Define new and updated schema
@@ -71,5 +73,6 @@ try {
 }
 
 export const User = model;
+
 
 
