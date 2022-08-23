@@ -1,7 +1,7 @@
 
 import { color, useColorMode } from '@chakra-ui/react';
 
-import {MultiChatWindow, useMultiChatLogic, MultiChatSocket, ChatCard, ChatCardProps} from 'react-chat-engine-advanced'
+import { MultiChatWindow, useMultiChatLogic, MultiChatSocket, ChatCard, ChatCardProps } from 'react-chat-engine-advanced'
 import Navbar from '../../components/Navbar';
 import styles from '../../styles/chat.module.css'
 import { current } from '@reduxjs/toolkit';
@@ -31,45 +31,46 @@ function Chat({ currentUser, allUsers }: { allUsers: UserType[], currentUser: Us
     return allUsers.map(user => user.secret)
   }
 
-  
 
-  const chatProps = useMultiChatLogic(projectId, currentUser.username, currentUser.secret, )
+
+  const chatProps = useMultiChatLogic(projectId, currentUser.username, currentUser.secret,)
 
 
   if (typeof window !== 'undefined') return (
     <div className={styles.container}>
-      <Navbar progressValue={0}/>
+      <Navbar progressValue={0} />
 
-    <div className={styles.chatContainer}>
-    <MultiChatSocket {...chatProps} />
-      <MultiChatWindow {...chatProps}
+      <div className={styles.chatContainer}>
+        <MultiChatSocket {...chatProps} />
+        <MultiChatWindow {...chatProps}
 
-      style={{ 
-        height: '80vh',
-        width: '80vw',
-        fontFamily: 'monospace',
-        boxShadow: '0 5px 15px rgba(0, 0, 0, 0.19)'
-        // boxShadow: '0 10px 40px 0 rgba(0,0,0,.2)'
-       
-      }}
+          style={{
+            height: '80vh',
+            width: '80vw',
+            fontFamily: 'monospace',
+            boxShadow: '0 5px 15px rgba(0, 0, 0, 0.19)'
+            // boxShadow: '0 10px 40px 0 rgba(0,0,0,.2)'
 
-      renderChatCard={(props: ChatCardProps) => (
-        <CustomChatCard 
-        {...props}
-        username={chatProps.username} 
-        onChatCardClick={chatProps.onChatCardClick}
-        isActive={
-          props.chat !== undefined &&
-          chatProps.activeChatId === props.chat.id
-        }
-        chat={props.chat}
+          }}
+
+          renderChatCard={(props: ChatCardProps) => (
+            <CustomChatCard
+              {...props}
+              username={chatProps.username}
+              allUsers={allUsers}
+              onChatCardClick={chatProps.onChatCardClick}
+              isActive={
+                props.chat !== undefined &&
+                chatProps.activeChatId === props.chat.id
+              }
+              chat={props.chat}
+            />
+          )}
+
+
         />
-      )}  
 
-      
-      />
-     
-    </div>
+      </div>
     </div>
   )
 
