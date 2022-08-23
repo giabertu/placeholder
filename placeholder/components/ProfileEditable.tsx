@@ -232,7 +232,6 @@ function ProfileEditable({ user }: { user: UserType }) {
         }
       </div>
       <button className="button-style profile-find-matches" onClick={handleSave} >&gt; Save Information</button>
-      <Avatar src={typeof mentorPreferences.desiredTechnologies[0] !== 'string' ? mentorPreferences.desiredTechnologies[0].imageSrc : ''} />
     </div>
   )
 

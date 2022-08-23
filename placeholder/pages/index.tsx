@@ -160,7 +160,7 @@ const Home: NextPage = () => {
       </div>
       <div className={styles.canvasContainer + ' outline'}>
         <Canvas >
-          <OrbitControls target={[-1, 0, 4]} enableZoom={false} autoRotate={true} autoRotateSpeed={1.5} enableDamping={true} minPolarAngle={Math.PI / 2} maxPolarAngle={Math.PI / 2} />
+          <OrbitControls target={[-1, 0, 4]} enableZoom={false} autoRotate={true} enablePan={false} autoRotateSpeed={1.5} enableDamping={true} minPolarAngle={Math.PI / 2} maxPolarAngle={Math.PI / 2} />
           <ambientLight intensity={0.5} />
           <directionalLight
             color={"white"}

@@ -15,6 +15,14 @@ async function getOneUser(email: string) {
   return res
 }
 
+async function getUserById(id: string) {
+  console.log('Do we ge insie getUserById? Yes!')
+  //@ts-ignore
+  const res = await User.findById(id)
+  console.log('Response in server: ' , res) 
+  return res
+}
+
 async function getUsers() {
     //@ts-ignore
     const users = await User.find({});
@@ -23,4 +31,4 @@ async function getUsers() {
 }
 
 
-export {updateUser, getUsers, getOneUser}
+export {updateUser, getUsers, getOneUser, getUserById}

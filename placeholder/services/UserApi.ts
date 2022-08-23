@@ -37,6 +37,20 @@ export default class UserApi {
     return await response.json()
     // return await response.json()
   }
+  
+  static async getUserById(id: string) {
+    console.log('Here is the email: ', id)
+    const response = await fetch(`${process.env.SERVER}${this.USER_ENDPOINT}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({id}),
+    })
+    console.log('Response in userApi: ' , response)
+    return await response.json()
+    // return await response.json()
+  }
 
   static async getCloudinaryUrl(formData: FormData) {
     const response = await fetch('https://api.cloudinary.com/v1_1/gianni-bertuzzi/image/upload', {
