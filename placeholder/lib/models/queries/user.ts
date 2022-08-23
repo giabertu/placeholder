@@ -7,11 +7,20 @@ async function updateUser(user: UserType) {
   return res
 }
 
+async function getOneUser(email: string) {
+  console.log('Do we ge insie getOneUser? Yes!')
+  //@ts-ignore
+  const res = await User.findOne({email});
+  console.log('Response in server: ' , res)
+  return res
+}
+
 async function getUsers() {
-  const users = await User.find({});
-  console.log('Here are the users: ', users)
-  return users;
+    //@ts-ignore
+    const users = await User.find({});
+    console.log('Here are the users: ', users)
+    return users;
 }
 
 
-export {updateUser, getUsers}
+export {updateUser, getUsers, getOneUser}

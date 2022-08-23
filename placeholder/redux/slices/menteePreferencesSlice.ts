@@ -39,5 +39,5 @@ export const menteePreferencesSlice = createSlice({
   }
 });
 
-export const { changeDesiredCategory, toggleDesiredTechnologies } = menteePreferencesSlice.actions;
+export const { changeDesiredCategory, toggleDesiredTechnologies, setMenteeDesiredCategories } = menteePreferencesSlice.actions;
 export default menteePreferencesSlice.reducer;
