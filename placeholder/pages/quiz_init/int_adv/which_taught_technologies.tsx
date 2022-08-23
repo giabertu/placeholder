@@ -33,7 +33,7 @@ export default function teach_which_technologies() {
         </div>
 
       </div>
-      <QuizNavigationButtons back='quiz_init/int_adv/mentor_talk' next={`quiz_init/page10`} canProceed={Boolean(selectedTechnologies.length)} />
+      <QuizNavigationButtons back='quiz_init/int_adv/mentor_talk' next={`quiz_init/create_profile`} canProceed={Boolean(selectedTechnologies.length)} />
     </div>
   )
 }
