@@ -63,6 +63,13 @@ export interface UserType {
   }
 }
 
-export const User = mongoose.model("User", new mongoose.Schema(userSchema), "users")
+let model;
+try {
+  model = mongoose.model('User')
+} catch (error) {
+  model = mongoose.model('User', new mongoose.Schema(userSchema), "users")
+}
+
+export const User = model;
 
 

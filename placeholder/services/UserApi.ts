@@ -50,7 +50,7 @@ export default class UserApi {
   }
 
   static async getAllUsers() {
-    const users = await fetch(this.USERS_ENDPOINT)
+    const users = await fetch(`${process.env.SERVER}${this.USERS_ENDPOINT}`)
     return await users.json()
   }
 }

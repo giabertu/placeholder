@@ -65,7 +65,7 @@ const Home: NextPage = () => {
         setExtraTerminalLines([...extraTerminalLines, "enter email"]);
       }
       else if (inputElementRef.current.value === 'git init') {
-        signIn('github', { callbackUrl: '/' })
+        signIn('github', { callbackUrl: '/dashboard/profile' })
       } else if (inputElementRef.current.value === 'google init') {
         signIn('google', { callbackUrl: '/' })
       }

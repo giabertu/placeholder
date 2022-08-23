@@ -1,5 +1,4 @@
 import { MongoClient } from "mongodb"
-import mongoose from "./models";
 import { connectMongoose } from "./models";
 
 connectMongoose()
@@ -14,27 +13,3 @@ if (!uri) {
 }
 export default clientPromise
 
-// var User = mongoose.model("User", new mongoose.Schema({ profile: {name: String, email: String, height: String, length: String, interests: String}, name: String, email:  String, avatar: String}), "users")
-
-// async function example() {
-//   const user = await User.findOne({name: 'giabertu'})
-//   console.log('Here is the user: ', user)
-
-//   const newUser = new User({
-//     name: 'Bill',
-//     email: 'bill@initech.com',
-//     avatar: 'https://i.imgur.com/dM7Thhn.png'
-//   });
-//   await newUser.save();
-  
-//   const profile = {
-//     name: 'gianni',
-//     email: 'hello@gmail.com',
-//     height: '5 feet',
-//     length: 'box',
-//     interests: 'littering'
-//   }
-//   await User.findOneAndUpdate({name: 'giabertu'}, {profile: profile} )
-
-// }
-// example()
