@@ -1,7 +1,7 @@
 
 import { color, useColorMode } from '@chakra-ui/react';
 
-import {MultiChatWindow, useMultiChatLogic, MultiChatSocket, ChatForm, MessageForm, ChatList, MessageList, ChatSettings} from 'react-chat-engine-advanced'
+import {MultiChatWindow, useMultiChatLogic, MultiChatSocket, ChatCard, ChatCardProps} from 'react-chat-engine-advanced'
 import Navbar from '../../components/Navbar';
 import styles from '../../styles/chat.module.css'
 import { current } from '@reduxjs/toolkit';
@@ -12,6 +12,7 @@ import React from 'react';
 import { UserType } from '../../lib/models/User';
 import UserApi from '../../services/UserApi';
 import { authOptions } from '../api/auth/[...nextauth]';
+import CustomChatCard from '../../components/ChatCard';
 
 
 const projectId: string = 'd6620cc4-d139-4ed9-85f7-cea40cd73c40'
@@ -30,7 +31,9 @@ function Chat({ currentUser, allUsers }: { allUsers: UserType[], currentUser: Us
     return allUsers.map(user => user.secret)
   }
 
-  const chatProps = useMultiChatLogic(projectId, currentUser.username, currentUser.secret)
+  
+
+  const chatProps = useMultiChatLogic(projectId, currentUser.username, currentUser.secret, )
 
 
   if (typeof window !== 'undefined') return (
@@ -49,7 +52,23 @@ function Chat({ currentUser, allUsers }: { allUsers: UserType[], currentUser: Us
         // boxShadow: '0 10px 40px 0 rgba(0,0,0,.2)'
        
       }}
+
+      renderChatCard={(props: ChatCardProps) => (
+        <CustomChatCard 
+        {...props}
+        username={chatProps.username} 
+        onChatCardClick={chatProps.onChatCardClick}
+        isActive={
+          props.chat !== undefined &&
+          chatProps.activeChatId === props.chat.id
+        }
+        chat={props.chat}
+        />
+      )}  
+
+      
       />
+     
     </div>
     </div>
   )
