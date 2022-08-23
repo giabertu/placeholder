@@ -1,0 +1,16 @@
+.carousel-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* background-color: red; */
+}
+
+.carousel-title {
+  margin-top: 400px;
+}
+
+.carousel-image {
+  width: 300px;
+  height: 300px;
+  justify-self: center;
+}

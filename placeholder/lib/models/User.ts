@@ -6,13 +6,13 @@ import { TechnologyObj } from '../../redux/types'
 //Define new and updated schema
 const userSchema = {
   username: String,
-  email:  String, 
+  email:  String,
   first_name: String,
   last_name: String,
   secret: String,
   custom_json: {
-    avatar: String, 
-    bio: String, 
+    avatar: String,
+    bio: String,
     location: String,
     level: String,
     purpose: String,
@@ -40,6 +40,7 @@ const userSchema = {
 }
 
 export interface UserType {
+  _id: string,
   username: string,
   email: string,
   first_name: string,

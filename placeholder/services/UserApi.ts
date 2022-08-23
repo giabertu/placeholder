@@ -2,12 +2,12 @@ import { UserType } from "../lib/models/User";
 
 
 export default class UserApi {
-  
+
   static USERS_ENDPOINT = '/api/users'
   static USER_ENDPOINT = '/api/user'
-  
+
   constructor() {}
-  
+
 
   static async getUserProfile(email: string) {
 
@@ -37,7 +37,7 @@ export default class UserApi {
     return await response.json()
     // return await response.json()
   }
-  
+
   static async getUserById(id: string) {
     console.log('Here is the email: ', id)
     const response = await fetch(`${process.env.SERVER}${this.USER_ENDPOINT}`, {
@@ -64,10 +64,10 @@ export default class UserApi {
   }
 
   static async getChatEngineUser({username, secret}: {username: string, secret: string}) {
-    
+
   }
 
-  static async getAllUsers() {
+  static async getAllUsers(): Promise<UserType[]> {
     const users = await fetch(`${process.env.SERVER}${this.USERS_ENDPOINT}`)
     return await users.json()
   }
