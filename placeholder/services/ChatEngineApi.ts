@@ -21,14 +21,22 @@ class ChatEngineApi {
         first_name: user.first_name,
         last_name: user.last_name,
         email: user.email,
-        secret: user.secret
+        secret: user.secret,
       }),
     })
     return await res.json();
   }
 
   static async getChatEngineUser({username, secret}: {username: string, secret: string}) {
-    
+    const res = await fetch(this.USER_URL, {
+      method: 'PUT',
+      headers : {
+        'Content-type': 'application/json',
+        'PRIVATE-KEY' : 'e3c4f715-cacd-4a8c-a00a-038a9849edff'
+      },
+      body: JSON.stringify({username, secret})
+    })
+    return await res.json()
   }
 
 }

@@ -3,27 +3,18 @@ import { unstable_getServerSession } from "next-auth";
 import Navbar from "../../components/Navbar";
 import ProfileEditable from "../../components/ProfileEditable";
 import ProfileNotEditable from "../../components/ProfileNotEditable";
-import { UserType } from "../../lib/models/User";
+import { ChatEngineUser, UserType } from "../../lib/models/User";
 import ChatEngineApi from "../../services/ChatEngineApi";
 import UserApi from "../../services/UserApi";
 import { authOptions } from "../api/auth/[...nextauth]";
 
-export default function Profile({ user }: { user: UserType }) {
-
-  /*   async function getUsers() {
-      const users = await UserApi.getAllUsers();
-      console.log(users);
-    }
-    g etUsers(); */
+export default function Profile({ user, chatEngineUser }: { user: UserType, chatEngineUser: ChatEngineUser }) {
 
   return (
     <div>
       <div className="profile-main-container flex-column outline align-center">
         <Navbar progressValue={0} />
-
-        {/* MAKE IT TO A NON EDITABLE PROFILE, SO SWITCH THE INPUTS WITH P TAGS AND REMOVE EDIT/SAVE INFO BUTTON*/}
-        {/* <ProfileEditable user={user} /> */}
-        <ProfileNotEditable user={user} />
+        <ProfileNotEditable user={user} chatEngineUser={chatEngineUser} />
       </div>
     </div>
   )
@@ -46,10 +37,11 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
   if (id && typeof id == 'string') {
     const user = await UserApi.getUserById(id)
-    //const chatEngineUser = await ChatEngineApi.getChatEngineUser({ username: user.username, secret: user.secret })
+    const chatEngineUser = await ChatEngineApi.getChatEngineUser({ username: user.username, secret: user.secret })
     return {
       props: {
-        user
+        user,
+        chatEngineUser
       }
     }
   } else {
