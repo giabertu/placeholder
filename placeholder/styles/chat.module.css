@@ -8,4 +8,31 @@
 .chatContainer {
   display: flex;
   margin-top: 5rem;
+  
 }
+
+.autocomplete {
+  width: 100%;
+  margin: 0 1rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  font-size: 1.3rem;
+  
+
+
+
+}
+
+.dropdown {
+  background-color: white;
+  height: fit-content;
+  padding: 20px 10px;
+  
+}
+
+.inputSearch {
+  display: flex;
+  
+  
+}
+
