@@ -4,13 +4,15 @@ import { Tag, TagLabel, TagLeftIcon, TagRightIcon, TagCloseButton, HStack } from
 import Navbar from "../../../components/Navbar";
 import { useAppDispatch, useAppSelector } from "../../../redux/hooks";
 import { AddIcon } from "@chakra-ui/icons";
+import TechTag from "../../../components/TechTag";
+import QuizNavigationButtons from "../../../components/QuizNavigationButtons";
 
 export default function teach_which_technologies() {
 
   const dispatch = useAppDispatch();
-  // const experiencedWithTechnologies = useAppSelector((state) => state.userInfo.experiencedWithTechnologies);
-  const experiencedWithTechnologies = [{name: "C++"}, {name: "Javascript"}, {name: "Python"}, {name: "C#"}, {name: "Python"}, {name: "Rust"}, {name: "PHP"}];
+  const experiencedWithTechnologies = useAppSelector((state) => state.userInfo.experiencedWithTechnologies);
   const selectedTechnologies = useAppSelector((state) => state.menteePreferences.desiredTechnologies);
+  const technologyNames = selectedTechnologies.map((techObj) => techObj.name);
 
   return (
     <div className={styles.container}>
@@ -18,25 +20,20 @@ export default function teach_which_technologies() {
       <div className={styles.formContainer}>
         <div className={styles.title}>
           {!selectedTechnologies.length ? <h1 className={styles.title}> I'd like to be a <span className={styles.underline}>_______</span> mentor</h1>
-            : <h1 className={styles.title}> I'd like to become a better {JSON.stringify(selectedTechnologies).replaceAll(",", ", ")} developer</h1>
+            : <h1 className={styles.title}> I'd like to be a {JSON.stringify(technologyNames).replaceAll(",", ", ")} mentor </h1>
           }
         </div>
         <h2 className={styles.instruction}>From the technologies you have experience with, select those which you wish to help your mentees with:</h2>
         <p className={styles.subInstruction}>Tap on the technologies you wish to teach</p>
 
-        {/* <HStack spacing={4} style={{maxWidth: "40vw"}} shouldWrapChildren={true} wrap={true}> */}
         <div className={styles.tagContainer}>
           {experiencedWithTechnologies.map((technology) => (
-            <Tag size={"lg"} key={technology.name} variant='subtle' colorScheme='cyan'>
-
-              <TagLeftIcon boxSize='12px' as={AddIcon} />
-              <TagLabel>{technology.name}</TagLabel>
-            </Tag>
+            <TechTag technology={technology}/>
           ))}
         </div>
-        {/* </HStack> */}
 
       </div>
+      <QuizNavigationButtons back='quiz_init/int_adv/mentor_talk' next={`quiz_init/create_profile`} canProceed={Boolean(selectedTechnologies.length)} />
     </div>
   )
 }

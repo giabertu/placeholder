@@ -3,10 +3,16 @@ import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import Typewriter from 'typewriter-effect';
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useRef, useEffect, useState, Suspense } from 'react';
 import { useRouter } from 'next/router'
 import { useSession, signIn, signOut } from 'next-auth/react'
 import { Avatar } from '@chakra-ui/avatar';
+import { Canvas } from '@react-three/fiber';
+import Workbench from '../components/models/Workbench'
+import ComputerTerminal from '../components/models/ComputerTerminal'
+import { OrbitControls, PresentationControls, TransformControls } from '@react-three/drei';
+import { RetroWindows } from '../components/models/RetroWindows'
+
 
 // import techData from "../utils/autocompleteTermsGenerator"
 // console.log(techData);
@@ -59,7 +65,7 @@ const Home: NextPage = () => {
         setExtraTerminalLines([...extraTerminalLines, "enter email"]);
       }
       else if (inputElementRef.current.value === 'git init') {
-        signIn('github', { callbackUrl: '/' })
+        signIn('github', { callbackUrl: '/dashboard/profile' })
       } else if (inputElementRef.current.value === 'google init') {
         signIn('google', { callbackUrl: '/' })
       }
@@ -152,7 +158,23 @@ const Home: NextPage = () => {
           </div>
         }
       </div>
-    </div>
+      <div className={styles.canvasContainer + ' outline'}>
+        <Canvas >
+          <OrbitControls target={[-1, 0, 4]} enableZoom={false} autoRotate={true} autoRotateSpeed={1.5} enableDamping={true} minPolarAngle={Math.PI / 2} maxPolarAngle={Math.PI / 2} />
+          <ambientLight intensity={0.5} />
+          <directionalLight
+            color={"white"}
+            intensity={0.5}
+            position={[-20, 100, 50]}
+          />
+          <Suspense>
+            {/* <Workbench scale={[7, 7, 7]} position={[0, -5, -15]} />*/}
+            <RetroWindows scale={[7, 7, 7]} position={[0, 0, 2]} />
+            {/* <RetroWindows scale={[25, 25, 25]} position={[-5, 5, -20]} /> */}
+          </Suspense>
+        </Canvas>
+      </div>
+    </div >
 
   )
 }

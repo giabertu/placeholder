@@ -70,12 +70,6 @@ function CompleteProfile() {
 
   //----------------------------------------------------
 
-  // function getDesiredCategories() {
-  //   if (mentorPreferences.desiredCategories.length) return desiredCategories
-  //   return menteePreferences.desiredCategories
-  // }
-
-
   function handleUploadClick(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
     if (ref.current) {
       const input = ref.current as HTMLInputElement
@@ -191,82 +185,92 @@ function CompleteProfile() {
                 type='text' className={!location && showRequired ? 'profile-input invalid' : 'profile-input'}
                 required={true} placeholder='' onChange={(e) => handleInputChange(e, setLocation)}></input>
             </div>
-            <Divider />
             {desiredCategories.length > 0 &&
-              <div className="profile-section flex-row gap-2r align-center">
-                <label className="profile-input-label">Mentor Topics</label>
-                <Wrap spacing={2} justify={'flex-end'}>
-                  {desiredCategories.map((category) =>
-                    <WrapItem>
-                      <Tag key={category} size='lg' colorScheme='gray' borderRadius='full'>
-                        {category[0].toUpperCase() + category.substring(1)}
-                      </Tag>
-                    </WrapItem>
-                  )}
-                </Wrap>
-              </div>
+              <>
+                <Divider />
+                <div className="profile-section flex-row gap-2r align-center">
+                  <label className="profile-input-label">Mentor Topics</label>
+                  <Wrap spacing={2} justify={'flex-end'}>
+                    {desiredCategories.map((category) =>
+                      <WrapItem>
+                        <Tag key={category} size='lg' colorScheme='gray' borderRadius='full'>
+                          {category[0].toUpperCase() + category.substring(1)}
+                        </Tag>
+                      </WrapItem>
+                    )}
+                  </Wrap>
+                </div>
+              </>
             }
-            <Divider />
             {menteePreferences.desiredCategories.length > 0 &&
-              <div className="profile-section flex-row gap-2r align-center">
-                <label className="profile-input-label">Mentee Topics</label>
-                <Wrap spacing={2} justify={'flex-end'}>
-                  {menteePreferences.desiredCategories.map((category) =>
-                    <WrapItem>
-                      <Tag key={category} size='lg' colorScheme='gray' borderRadius='full'>
-                        {category[0].toUpperCase() + category.substring(1)}
-                      </Tag>
-                    </WrapItem>
-                  )}
-                </Wrap>
-              </div>
+              <>
+                <Divider />
+                <div className="profile-section flex-row gap-2r align-center">
+                  <label className="profile-input-label">Mentee Topics</label>
+                  <Wrap spacing={2} justify={'flex-end'}>
+                    {menteePreferences.desiredCategories.map((category) =>
+                      <WrapItem>
+                        <Tag key={category} size='lg' colorScheme='gray' borderRadius='full'>
+                          {category[0].toUpperCase() + category.substring(1)}
+                        </Tag>
+                      </WrapItem>
+                    )}
+                  </Wrap>
+                </div>
+              </>
             }
-            <Divider />
             {desiredTechnologies.length > 0 &&
-              <div className="profile-section flex-row gap-2r align-center">
-                <label className="profile-input-label">Eager to learn </label>
-                <div>
-                  <AvatarGroup size='md' max={4} marginRight='2rem' >
-                    {desiredTechnologies.map(technology => {
-                      if (typeof technology == 'string') {
-                        return <Tag>{technology}</Tag>
-                      }
-                      return <Avatar src={technology.imageSrc} bg='transparent' border='none' borderRadius='none' scale={0.7} minWidth='fit-content' />
-                    })}
-                  </AvatarGroup>
+              <>
+                <Divider />
+                <div className="profile-section flex-row gap-2r align-center">
+                  <label className="profile-input-label">Eager to learn </label>
+                  <div>
+                    <AvatarGroup size='md' max={4} marginRight='2rem' >
+                      {desiredTechnologies.map(technology => {
+                        if (typeof technology == 'string') {
+                          return <Tag>{technology}</Tag>
+                        }
+                        return <Avatar src={technology.imageSrc} bg='transparent' border='none' borderRadius='none' scale={0.7} minWidth='fit-content' />
+                      })}
+                    </AvatarGroup>
+                  </div>
                 </div>
-              </div>
+              </>
             }
-            <Divider />
             {menteePreferences.desiredTechnologies.length > 0 &&
-              <div className="profile-section flex-row gap-2r align-center">
-                <label className="profile-input-label">Eager to teach </label>
-                <div>
-                  <AvatarGroup size='md' max={4} marginRight='2rem' >
-                    {desiredTechnologies.map(technology => {
-                      if (typeof technology == 'string') {
-                        return <Tag>{technology}</Tag>
-                      }
-                      return <Avatar src={technology.imageSrc} bg='transparent' border='none' borderRadius='none' scale={0.7} minWidth='fit-content' />
-                    })}
-                  </AvatarGroup>
+              <>
+                <Divider />
+                <div className="profile-section flex-row gap-2r align-center">
+                  <label className="profile-input-label">Eager to teach </label>
+                  <div>
+                    <AvatarGroup size='md' max={4} marginRight='2rem' >
+                      {desiredTechnologies.map(technology => {
+                        if (typeof technology == 'string') {
+                          return <Tag>{technology}</Tag>
+                        }
+                        return <Avatar src={technology.imageSrc} bg='transparent' border='none' borderRadius='none' scale={0.7} minWidth='fit-content' />
+                      })}
+                    </AvatarGroup>
+                  </div>
                 </div>
-              </div>
+              </>
             }
-            <Divider />
             {desiredCareers.length > 0 &&
-              <div className="profile-section flex-row gap-2r align-center">
-                <label className="profile-input-label">Career interests </label>
-                <Wrap spacing={2} justify={'flex-end'}>
-                  {desiredCareers.map((career) =>
-                    <WrapItem>
-                      <Tag key={career} size='md' colorScheme='gray' borderRadius='full'>
-                        {career[0].toUpperCase() + career.substring(1)}
-                      </Tag>
-                    </WrapItem>
-                  )}
-                </Wrap>
-              </div>
+              <>
+                <Divider />
+                <div className="profile-section flex-row gap-2r align-center">
+                  <label className="profile-input-label">Career interests </label>
+                  <Wrap spacing={2} justify={'flex-end'}>
+                    {desiredCareers.map((career) =>
+                      <WrapItem>
+                        <Tag key={career} size='md' colorScheme='gray' borderRadius='full'>
+                          {career[0].toUpperCase() + career.substring(1)}
+                        </Tag>
+                      </WrapItem>
+                    )}
+                  </Wrap>
+                </div>
+              </>
             }
           </div>
 

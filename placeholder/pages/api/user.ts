@@ -1,9 +1,11 @@
 import { NextApiRequest, NextApiResponse } from 'next'
-import { updateUser, getUsers} from '../../lib/models/queries/user';
+import { getOneUser, updateUser} from '../../lib/models/queries/user';
 
 export default async function handleUserRequests(request: NextApiRequest, response: NextApiResponse) {
 
   const user = request.body.user;
+  const email = request.body.email
+
   console.log('Request: ', request.body)
   if (request.method === 'PUT') {
     try {
@@ -13,12 +15,13 @@ export default async function handleUserRequests(request: NextApiRequest, respon
       console.log('Update user failed 🔴', error)
       response.status(401).json({message: 'update failed'})
     }
-  } else if (request.method === 'GET') {
+  } else if(request.method === 'POST') {
     try {
-      const users = await getUsers();
-      response.status(200).json(users);
+        const userGiven = await getOneUser(email);
+        response.status(200).json(userGiven);
+
     } catch (error) {
-      console.log('Getting users failed 🔴', error)
+      console.log('User fetch failed 🔴', error)
     }
-  } 
+  }
 }

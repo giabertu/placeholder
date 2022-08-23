@@ -4,7 +4,6 @@ import styles from "../styles/Components/QuestionnaireButton2.module.css";
 
 function QuestionnaireButton2({ text, value, onClick, onMouseEnter, onMouseLeave, selected}: {text: string, value: string, onClick: (event: React.MouseEvent<HTMLButtonElement>) => void, onMouseEnter?: () => void, onMouseLeave?: () => void, selected: boolean }) {
 
-  // const [selected, setSelected] = useState(false);
   const {colorMode } = useColorMode();
   const isDark = colorMode === 'dark';
   // const [animation, setAnimation] = useState(false);
@@ -19,7 +18,6 @@ function QuestionnaireButton2({ text, value, onClick, onMouseEnter, onMouseLeave
         value={value}
         onClick={(event) => {
             onClick?.(event);
-            // setSelected(!selected);
             console.log('click once')
         }}
         onMouseEnter={() => {
@@ -29,7 +27,6 @@ function QuestionnaireButton2({ text, value, onClick, onMouseEnter, onMouseLeave
 
         onMouseLeave={() => {
         onMouseLeave && onMouseLeave()
-
 
         }}
       >

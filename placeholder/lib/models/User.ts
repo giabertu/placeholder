@@ -65,25 +65,14 @@ export interface UserType {
   }
 }
 
-// export type UserContextType {
-//   user: UserType;
-//   setUser: (u: UserType | undefined) => void;
-// }
+let model;
+try {
+  model = mongoose.model('User')
+} catch (error) {
+  model = mongoose.model('User', new mongoose.Schema(userSchema), "users")
+}
 
-// export const UserContext = createContext<UserContextInterface>({
-//   user: undefined,
-//   setUser: () => {}
-// });
+export const User = model;
 
-// export const UserContextProvider = (props: UserContextInterface) => {
-//   const [user, setUser] = useState<UserType | undefined>(undefined);
-//   const value = { user, setUser};
-
-//   return ..
-
-// }
-
-
-export const User = mongoose.model("User", new mongoose.Schema(userSchema), "users")
 
 
