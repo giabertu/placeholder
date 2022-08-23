@@ -1,17 +1,17 @@
-import { Divider, Wrap, WrapItem, Tag, AvatarGroup } from "@chakra-ui/react"
+import { Divider, Wrap, WrapItem, Tag, AvatarGroup, AvatarBadge } from "@chakra-ui/react"
 import Axios from "axios"
 import { useRef, useState } from "react"
 import { Avatar } from '@chakra-ui/react'
 import { SendSharp } from "react-ionicons"
 import uniqid from "uniqid"
-import { UserType } from "../lib/models/User"
+import { ChatEngineUser, UserType } from "../lib/models/User"
 import UserApi from "../services/UserApi"
 import Typewriter from 'typewriter-effect'
 
 
 const styleObject = { verticalAlign: 'middle', marginBottom: '3px' }
 
-function ProfileNotEditable({ user }: { user: UserType }) {
+function ProfileNotEditable({ user, chatEngineUser }: { user: UserType, chatEngineUser: ChatEngineUser }) {
 
 
   function handleUploadClick(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
@@ -52,6 +52,8 @@ function ProfileNotEditable({ user }: { user: UserType }) {
       last_name: name.split(' ').slice(1).join(' '),
       secret: uniqid(),
       custom_json: {
+        mentors: user.custom_json.mentors,
+        mentees: user.custom_json.mentees,
         avatar: imgSrc,
         bio,
         location,
@@ -97,19 +99,14 @@ function ProfileNotEditable({ user }: { user: UserType }) {
 
 
   const ref = useRef(null)
+  console.log('ChatEngine User', chatEngineUser)
 
 
   return (
     <div className="profile-title-button-container align-center">
-      {/* <Typewriter
-        options={{ delay: 5, cursor: "" }}
-        onInit={(typewriter) => {
-          typewriter
-            .typeString("<h1>Review your profile</h1>").start()
-        }} /> */}
       <div className="profile-container flex-column align-center justify-center box-shadow">
         <div className="profile-section flex-row gap-2r align-center">
-          <Avatar size='xl' src={imgSrc} />
+          <Avatar size='xl' src={imgSrc}><AvatarBadge boxSize='0.4em' border='none' right='0.25em' bottom='0.2em' outline={'solid 1px white'} bg={chatEngineUser.is_online ? 'green.500' : 'gray.500'} /></Avatar>
           <button className="button-style"> <SendSharp style={styleObject} /> Message</button>
         </div>
         <Divider />

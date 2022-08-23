@@ -77,7 +77,7 @@ function CompleteProfile() {
     }
   }
 
-  function uploadImage(e: React.ChangeEvent<HTMLInputElement>) {
+  async function uploadImage(e: React.ChangeEvent<HTMLInputElement>) {
     if (ref.current && e.target.files?.length) {
       console.log(e.target.files[0])
 
@@ -102,6 +102,7 @@ function CompleteProfile() {
 
   function getCurrentUserState() {
     if (session && session.user && session.user.email) {
+
       const user: UserType = {
         username: name.toLowerCase().replace(/\s/g, '_'),
         email: session.user.email,
@@ -109,6 +110,8 @@ function CompleteProfile() {
         last_name: name.split(' ').slice(1).join(' '),
         secret: uniqid(),
         custom_json: {
+          mentors: [],
+          mentees: [],
           avatar: imgSrc,
           bio,
           location,
@@ -129,13 +132,15 @@ function CompleteProfile() {
   }
 
   async function handleSave() {
-    const user = getCurrentUserState()
-    if (user && shouldUpdateProfile()) {
-      setShowRequired(false);
-      const userBeforeUpdate = await UserApi.updateUserProfile(user)
-      const chatEngineResponse = await ChatEngineApi.createUser(user);
-      console.log('Here is the chat engine response: ', chatEngineResponse)
-      console.log("Here is the old user (before update): ", userBeforeUpdate)
+    if (shouldUpdateProfile()) {
+      const user = getCurrentUserState();
+      if (user) {
+        setShowRequired(false);
+        const userBeforeUpdate = await UserApi.updateUserProfile(user)
+        const chatEngineResponse = await ChatEngineApi.createUser(user);
+        console.log('Here is the chat engine response: ', chatEngineResponse)
+        console.log("Here is the old user (before update): ", userBeforeUpdate)
+      }
     } else {
       setShowRequired(true);
     }
