@@ -63,6 +63,10 @@ export default class UserApi {
     return await response.json()
   }
 
+  static async getChatEngineUser({username, secret}: {username: string, secret: string}) {
+    
+  }
+
   static async getAllUsers() {
     const users = await fetch(`${process.env.SERVER}${this.USERS_ENDPOINT}`)
     return await users.json()

@@ -27,6 +27,10 @@ class ChatEngineApi {
     return await res.json();
   }
 
+  static async getChatEngineUser({username, secret}: {username: string, secret: string}) {
+    
+  }
+
 }
 
 export default ChatEngineApi;

@@ -75,6 +75,16 @@
   margin-bottom: 2.5rem;
 }
 
+.profile-p {
+  font-size: 1.2rem;
+}
+
+.profile-bio {
+  font-size: 1.1rem;
+  max-width: 17rem;
+  text-align: right;
+}
+
 @keyframes fadeInAnimation {
   0% {
     opacity: 0;
