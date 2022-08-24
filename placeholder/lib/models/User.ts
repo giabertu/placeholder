@@ -27,11 +27,8 @@ const userSchema = {
     mentorPreferences: {
       desiredCareers: [String],
       desiredCategories: [String],
-      desiredTechnologies: [{
-        name: String,
-        imageSrc: String
-      }]
-    },
+      desiredTechnologies: [Schema.Types.Mixed]
+      },
     menteePreferences: {
       desiredCategories: [String],
       desiredTechnologies: [{
@@ -47,15 +44,15 @@ const userSchema = {
 }
 
 export interface UserType {
-  _id: string,
+  _id?: Types.ObjectId
   username: string,
   email: string,
   first_name: string,
   last_name: string,
   secret: string,
   custom_json: {
-    mentors: Types.ObjectId[],
-    mentees: Types.ObjectId[],
+    mentors: (Types.ObjectId | undefined)[],
+    mentees: (Types.ObjectId | undefined)[],
     avatar: string,
     bio: string,
     location: string,
@@ -93,7 +90,7 @@ let model;
 try {
   model = mongoose.model('User')
 } catch (error) {
-  model = mongoose.model('User', new mongoose.Schema(userSchema), "users")
+  model = mongoose.model('User', new mongoose.Schema<UserType>(userSchema), "users")
 }
 
 export const User = model;

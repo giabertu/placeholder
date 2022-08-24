@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next'
-import { getOneUser, getUserById, updateUser} from '../../lib/models/queries/user';
+import { findByIdAndRemove, getOneUser, getUserById, updateUser} from '../../lib/models/queries/user';
 
 export default async function handleUserRequests(request: NextApiRequest, response: NextApiResponse) {
 
@@ -28,5 +28,12 @@ export default async function handleUserRequests(request: NextApiRequest, respon
     } catch (error) {
       console.log('User fetch failed 🔴', error)
     }
+  } else if (request.method == 'DELETE') {
+    try {
+        const res = await findByIdAndRemove(id);
+        response.status(200).json(res);
+      } catch (error) {
+    console.log('User fetch failed 🔴', error)
+  } 
   }
 }
