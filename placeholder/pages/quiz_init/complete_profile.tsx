@@ -11,7 +11,7 @@ import UserApi from "../../services/UserApi";
 import { UserType } from "../../lib/models/User";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import { setDesiredTechnologies, setDesiredCareers, setDesiredCategories } from "../../redux/slices/mentorPreferencesSlice";
-import { setMenteeDesiredCategories } from "../../redux/slices/menteePreferencesSlice";
+import { setMenteeDesiredCategories, setMenteeDesiredTechnologies } from "../../redux/slices/menteePreferencesSlice";
 import { changeDeveloperField, changeLevel, changePurpose, setExpriencedWithTechnologies } from "../../redux/slices/userInfoSlice";
 import Axios from "axios";
 import ChatEngineApi from "../../services/ChatEngineApi";
@@ -58,6 +58,7 @@ function CompleteProfile() {
 
       const menteePreferences = JSON.parse(menteePreferencesStringified)
       dispatch(setMenteeDesiredCategories(menteePreferences.desiredCategories))
+      dispatch(setMenteeDesiredTechnologies(menteePreferences.desiredTechnologies))
 
       const userInfo = JSON.parse(userInfoStringified)
       dispatch(changeLevel(userInfo.level))
@@ -190,6 +191,36 @@ function CompleteProfile() {
                 type='text' className={!location && showRequired ? 'profile-input invalid' : 'profile-input'}
                 required={true} placeholder='' onChange={(e) => handleInputChange(e, setLocation)}></input>
             </div>
+            {developerField &&
+              <>
+                <Divider />
+                <div className="profile-section flex-row gap-2r align-center">
+                  <label className="profile-input-label">Developer Expertise</label>
+                  <Wrap spacing={2} justify={'flex-end'}>
+                    <Tag key={developerField} size='md' colorScheme='gray' borderRadius='full'>
+                      {developerField[0].toUpperCase() + developerField.substring(1)}
+                    </Tag>
+                  </Wrap>
+                </div>
+              </>
+            }
+            {experiencedWithTechnologies.length > 0 &&
+              <>
+                <Divider />
+                <div className="profile-section flex-row gap-2r align-center">
+                  <label className="profile-input-label">Experienced in</label>
+                  <AvatarGroup size='md' max={4} marginRight='2rem' >
+                    {experiencedWithTechnologies.map(technology => {
+                      if (typeof technology == 'string') {
+                        return <Tag>{technology}</Tag>
+                      }
+                      return <Avatar src={technology.imageSrc} bg='transparent' border='none' borderRadius='none' scale={0.7} minWidth='fit-content' />
+                    })}
+                  </AvatarGroup>
+                </div>
+              </>
+            }
+
             {desiredCategories.length > 0 &&
               <>
                 <Divider />
@@ -215,7 +246,7 @@ function CompleteProfile() {
                   <Wrap spacing={2} justify={'flex-end'}>
                     {menteePreferences.desiredCategories.map((category) =>
                       <WrapItem>
-                        <Tag key={category} size='lg' colorScheme='gray' borderRadius='full'>
+                        <Tag key={category} size='lg' colorScheme='gray' borderRadius='full' textAlign={'center'} width={'fit-content'}>
                           {category[0].toUpperCase() + category.substring(1)}
                         </Tag>
                       </WrapItem>
@@ -249,7 +280,7 @@ function CompleteProfile() {
                   <label className="profile-input-label">Eager to teach </label>
                   <div>
                     <AvatarGroup size='md' max={4} marginRight='2rem' >
-                      {desiredTechnologies.map(technology => {
+                      {menteePreferences.desiredTechnologies.map(technology => {
                         if (typeof technology == 'string') {
                           return <Tag>{technology}</Tag>
                         }
