@@ -2,12 +2,12 @@ import { UserType } from "../lib/models/User";
 
 
 export default class UserApi {
-  
+
   static USERS_ENDPOINT = '/api/users'
   static USER_ENDPOINT = '/api/user'
-  
+
   constructor() {}
-  
+
 
   static async updateUserProfile(user: UserType) {
     const response = await fetch(this.USER_ENDPOINT, {
@@ -33,7 +33,7 @@ export default class UserApi {
     return await response.json()
     // return await response.json()
   }
-  
+
   static async getUserById(id: string) {
     console.log('Here is the email: ', id)
     const response = await fetch(`${process.env.SERVER}${this.USER_ENDPOINT}`, {
