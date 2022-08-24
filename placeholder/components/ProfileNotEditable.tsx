@@ -1,104 +1,24 @@
 import { Divider, Wrap, WrapItem, Tag, AvatarGroup, AvatarBadge } from "@chakra-ui/react"
-import Axios from "axios"
-import { useRef, useState } from "react"
+import { useState } from "react"
 import { Avatar } from '@chakra-ui/react'
 import { SendSharp } from "react-ionicons"
-import uniqid from "uniqid"
+
 import { ChatEngineUser, UserType } from "../lib/models/User"
-import UserApi from "../services/UserApi"
-import Typewriter from 'typewriter-effect'
+import { useAppSelector } from "../redux/hooks"
+
 
 
 const styleObject = { verticalAlign: 'middle', marginBottom: '3px' }
 
 function ProfileNotEditable({ user, chatEngineUser }: { user: UserType, chatEngineUser: ChatEngineUser }) {
 
+  const [imgSrc, name] = [user.custom_json.avatar, user.first_name + " " + user.last_name]
+  const { bio, location } = user.custom_json
 
-  function handleUploadClick(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
-    if (ref.current) {
-      const input = ref.current as HTMLInputElement
-      input.click()
-    }
-  }
-
-  function uploadImage(e: React.ChangeEvent<HTMLInputElement>) {
-    if (ref.current && e.target.files?.length) {
-      console.log(e.target.files[0])
-
-      const formData = new FormData()
-      formData.append('file', e.target.files[0])
-      formData.append('upload_preset', 'mk6cejhf')
-
-      Axios.post('https://api.cloudinary.com/v1_1/gianni-bertuzzi/image/upload', formData).then(res => {
-        console.log(res)
-        if (res.data.secure_url) {
-          setImgSrc(res.data.secure_url)
-        }
-      }).catch(error => console.log('There has been an error: ', error))
-    }
-  }
-
-  function handleInputChange(e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>, cb: any) {
-    console.log(e.target.value)
-    cb(e.target.value.trim())
-    shouldUpdateProfile() && setShowRequired(false)
-  }
-
-  function getCurrentUserState() {
-    const newUser: UserType = {
-      username: name.toLowerCase().replace(/\s/g, '_'),
-      email: user.email,
-      first_name: name.split(' ')[0],
-      last_name: name.split(' ').slice(1).join(' '),
-      secret: uniqid(),
-      custom_json: {
-        mentors: user.custom_json.mentors,
-        mentees: user.custom_json.mentees,
-        avatar: imgSrc,
-        bio,
-        location,
-        level: user.custom_json.level,
-        purpose: user.custom_json.purpose,
-        developerField: user.custom_json.developerField,
-        experiencedWithTechnologies: user.custom_json.experiencedWithTechnologies,
-        mentorPreferences,
-        menteePreferences
-      }
-    }
-    return newUser
-  }
-
-  function shouldUpdateProfile() {
-    return name && bio && location;
-  }
-
-  async function handleSave() {
-    const user = getCurrentUserState()
-    if (user && shouldUpdateProfile()) {
-      setShowRequired(false);
-      const userBeforeUpdate = await UserApi.updateUserProfile(user)
-      //Update user in chatEngine ...
-      // const chatEngineResponse = await ChatEngineApi.createUser(user);
-      // console.log('Here is the chat engine response: ', chatEngineResponse)
-      console.log("Here is the old user (before update): ", userBeforeUpdate)
-    } else {
-      setShowRequired(true);
-    }
-  }
-
-
-
-  const [imgSrc, setImgSrc] = useState(user.custom_json.avatar)
-  const [name, setName] = useState(user.first_name + " " + user.last_name)
-  const [bio, setBio] = useState(user.custom_json.bio)
-  const [location, setLocation] = useState(user.custom_json.location)
-  const [showRequired, setShowRequired] = useState(false)
+  const isDark = useAppSelector(state => state.darkMode)
 
 
   const { mentorPreferences, menteePreferences } = user.custom_json
-
-
-  const ref = useRef(null)
   console.log('ChatEngine User', chatEngineUser)
 
 
@@ -107,7 +27,7 @@ function ProfileNotEditable({ user, chatEngineUser }: { user: UserType, chatEngi
       <div className="profile-container flex-column align-center justify-center box-shadow">
         <div className="profile-section flex-row gap-2r align-center">
           <Avatar size='xl' src={imgSrc}><AvatarBadge boxSize='0.4em' border='none' right='0.25em' bottom='0.2em' outline={'solid 1px white'} bg={chatEngineUser.is_online ? 'green.500' : 'gray.500'} /></Avatar>
-          <button className="button-style"> <SendSharp style={styleObject} /> Message</button>
+          <button className={isDark ? "button-style-dark" : 'button-style'}> <SendSharp style={styleObject} color={isDark ? 'white' : 'black'} /> Message</button>
         </div>
         <Divider />
         <div className="profile-section flex-row gap-2r align-center">
@@ -215,7 +135,7 @@ function ProfileNotEditable({ user, chatEngineUser }: { user: UserType, chatEngi
           </>
         }
       </div>
-      <button className="button-style profile-find-matches" onClick={handleSave} ></button>
+      <button className="button-style profile-find-matches"></button>
     </div>
   )
 
