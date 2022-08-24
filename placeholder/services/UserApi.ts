@@ -55,7 +55,7 @@ export default class UserApi {
       },
       body: JSON.stringify({id}),
     })
-    console.log('Response in userApi: ' , response)
+    // console.log('Response in userApi: ' , response)
     return await response.json()
     // return await response.json()
   }

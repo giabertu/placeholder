@@ -167,32 +167,14 @@ export default class MatchService {
 
       console.log('These are all users: ', allUsers);
       //Remove the current user from all users and users that are not here to mentor
-      const potentialMentees = allUsers.filter(user => user.secret !== userToMatch.secret && user.custom_json.purpose == 'be mentored' || user.custom_json.purpose == 'both mentor and be mentored')
+      const potentialMentees = allUsers.filter(user => user.secret !== userToMatch.secret && user.custom_json.purpose == 'be mentored' || user.custom_json.purpose == 'both mentor and be mentored' || user.custom_json.purpose == '')
       console.log('These are all users that want to be mentored: ', potentialMentees)
 
       //Create array of users and scores:
       const menteeScores = potentialMentees.map(mentee => ({mentee, score: 0}))
 
       console.log('menteeScores array created 🟢: ', menteeScores)
-      /***
-       *  Matching criteria: 
-       * 
-       *  mentor topics -> mentee topics (what userToMatch wants to learn) = desiredCategories
-       *  mentorPreferences.desiredTechnologies -> menteePreferences.desiredTechnologies
-       *  mentorPreferences.desiredCareers -> developerField
-       * 
-       */
-
-      /**
-       *  Mentor topics: 
-       * ['learning how to program', 'developer careers'] (beginners)
-       * ['expanding my programming skillset', 'advancing in my career'] (int-adv)
-       *
-       *  Mentee topics: 
-       *  ['advance their programming skills', 'advance in their developer careers']
-       */
-
-
+      
       menteeScores.forEach(menteeScores => {
         const {mentorPreferences} = menteeScores.mentee.custom_json
         // console.log('Here is the mentee prefe: ', menteePreferences.desiredCategories)
