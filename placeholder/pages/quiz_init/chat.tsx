@@ -1,4 +1,4 @@
-import {MultiChatWindow, useMultiChatLogic, MultiChatSocket, ChatCard, ChatCardProps, ChatHeaderProps} from 'react-chat-engine-advanced'
+import {MultiChatWindow, useMultiChatLogic, MultiChatSocket, ChatCardProps, ChatHeaderProps} from 'react-chat-engine-advanced'
 
 import Navbar from '../../components/Navbar';
 import styles from '../../styles/chat.module.css'
@@ -12,7 +12,9 @@ import UserApi from '../../services/UserApi';
 import { authOptions } from '../api/auth/[...nextauth]';
 import CustomChatCard from '../../components/ChatCard';
 import UserSearch from '../../components/UserSearch';
-import ChatHeader from '../../components/ChatHeader'
+import ChatHeader from '../../components/ChatHeader';
+import MatchesList from '../../components/ChatForm';
+
 
 
 const projectId: string = 'd6620cc4-d139-4ed9-85f7-cea40cd73c40'
@@ -38,7 +40,7 @@ function Chat({ currentUser, allUsers }: { allUsers: UserType[], currentUser: Us
 
   if (typeof window !== 'undefined') return (
     <div className={styles.container}>
-      <Navbar progressValue={0} />
+      <Navbar progressValue={0} prevValue={0} />
 
 
     <div className={styles.chatContainer} >
@@ -55,15 +57,20 @@ function Chat({ currentUser, allUsers }: { allUsers: UserType[], currentUser: Us
       }}
 
 
+      // renderChatForm={() => (
+      //   <UserSearch
+      //     username={chatProps.username}
+      //     secret={chatProps.secret}
+      //     onSelect={(chatId: number) =>
+      //       chatProps.onChatCardClick(chatId)
+      //     }
+      //   />
+      // )}
+
       renderChatForm={() => (
-        <UserSearch
-          username={chatProps.username}
-          secret={chatProps.secret}
-          onSelect={(chatId: number) =>
-            chatProps.onChatCardClick(chatId)
-          }
-        />
+        <MatchesList />
       )}
+      
 
       renderChatCard={(props: ChatCardProps) => (
         <CustomChatCard 

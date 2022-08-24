@@ -78,3 +78,12 @@
   background-color: red;
   width: 200px
 }
+
+.colorMode {
+  display: flex;
+  flex-direction: row-reverse;
+  position: absolute;
+  
+ 
+  
+}

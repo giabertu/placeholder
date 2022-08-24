@@ -14,7 +14,6 @@ function ProgressBar({ value, prevValue }: { value: number, prevValue: number })
     if (current < value) {
       setTimeout(() => {
         setCurrent((prev) => {
-          console.log('prev', prev)
           return prev = prev + delta/50
         })
       }, 20)
