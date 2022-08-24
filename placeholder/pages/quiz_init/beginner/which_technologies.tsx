@@ -44,7 +44,7 @@ function WhichTechnologies() {
 
   return (
     <div className={styles.container}>
-      <Navbar progressValue={50} />
+      <Navbar progressValue={50} prevValue={30}/>
       {/* <ProgressBar value={10} /> */}
       <div className={styles.formContainer}>
         <div className={styles.title}>
@@ -80,7 +80,7 @@ function WhichTechnologies() {
       </div>
 
       
-      <QuizNavigationButtons next={`quiz_init/${route}`} canProceed={Boolean(technologies.length)} />
+      <QuizNavigationButtons next={`quiz_init/${route}`} canProceed={Boolean(technologies.length)} progressValue={50} />
 
     </div>
   )

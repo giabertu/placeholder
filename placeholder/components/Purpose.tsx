@@ -36,7 +36,7 @@ function Purpose({ choices }: { choices: string[] }) {
             text={text}
             value={text}
             onClick={(event) => handleButtonClick(event)}
-            selected={selectedPurpose === {text}}
+            selected={selectedPurpose === text}
           />
         )}
       </div>

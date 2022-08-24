@@ -41,7 +41,7 @@ function WhichTechnologies() {
 
   return (
     <div className={styles.container}>
-      <Navbar progressValue={30} />
+      <Navbar progressValue={80} prevValue={70} />
       <div className={styles.formContainer}>
         <div className={styles.title}>
           {!technologies.length ? <h1 className={styles.title}> I'd like to become a better <span className={styles.underline}>_______</span> developer</h1>
@@ -69,7 +69,7 @@ function WhichTechnologies() {
         </div>
 
       </div>
-      <QuizNavigationButtons next={`quiz_init/${route}`} canProceed={Boolean(technologies.length)} />
+      <QuizNavigationButtons next={`quiz_init/${route}`} canProceed={Boolean(technologies.length)} progressValue={80}/>
 
       
 
