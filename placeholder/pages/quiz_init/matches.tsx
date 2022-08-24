@@ -9,7 +9,9 @@ import { GetServerSideProps } from "next";
 import ProfileNotEditable from "../../components/ProfileNotEditable"
 import ChatEngineApi from '../../services/ChatEngineApi';
 import { ChatEngineUser } from '../../lib/models/User';
-import MatchedUserCard from '../../components/MatchedUserCard';
+import MatchedMenteeCard from '../../components/MatchedMenteeCard';
+import MatchedMentorCard from '../../components/MatchedMentorCard';
+import Typewriter from 'typewriter-effect';
 
 export const getServerSideProps: GetServerSideProps = async () => {
   const matches = await UserApi.getAllUsers();
@@ -27,49 +29,50 @@ export const getServerSideProps: GetServerSideProps = async () => {
 }
 
 function Matches({matchedUsersInfo}: {matchedUsersInfo: {user: UserType, chatEngineUser: ChatEngineUser}[]}) {
-  // console.log("yooooooooooooo:", matches);
-
-  // const [matches, setMatches] = useState<UserType[]>(users);
-
-  // useEffect(() => {
-  //   (async () => {
-  //     console.log("yo");
-  //     console.log("hello: ", users);
-  //     setMatches(foundMatches);
-  //   })();
-  // }, []);
-
+  matchedUsersInfo = matchedUsersInfo.filter((user) => user.user.custom_json.purpose === "both mentor and be mentored" || user.user.custom_json.purpose === "mentor")
+  // matchedUsersInfo = matchedUsersInfo.filter((user) => user.user.custom_json.purpose === "be mentored" || user.user.custom_json.purpose === "" || user.user.custom_json.purpose === "both mentor and be mentored")
 
   return (
     <div className='carousel-container'>
       <Navbar />
-      {/* <h1 className='carousel-title'>{matches.length}</h1> */}
+      <h1 className='carousel-title'>Your mentee matches</h1>
+      {/* <Typewriter
+          options={{
+            delay: 30,
+            cursorClassName: "typewriter-cursor"
+            // cursor: "|"
+          }}
+          onInit={(typewriter) => {
+            typewriter
+              .typeString('<h1 style="display: inline;">Finding you the best matches for your preferences...</h1>')
+              .start();
+          }}
+        /> */}
       <Splide hasTrack={ false } aria-label="..." options={{
-        // width: "80vw",
+        width: "80vw",
         // fixedWidth: "70vw",
       }}>
         <div className="custom-wrapper">
           <SplideTrack>
           {matchedUsersInfo.map((matchedUserInfo) => (
-            <SplideSlide key={matchedUserInfo.user._id} style={{display: "flex", justifyContent: "center"}}>
-              <MatchedUserCard matchedUser={matchedUserInfo}/>
+            <SplideSlide key={matchedUserInfo.user.email} style={{display: "flex", justifyContent: "center"}}>
+              {/* <MatchedMenteeCard matchedUser={matchedUserInfo}/> */}
+              <MatchedMentorCard matchedUser={matchedUserInfo}/>
               {/* <ProfileNotEditable user={matchedUserInfo.user} chatEngineUser={matchedUserInfo.chatEngineUser}/> */}
               {/* <h1>hello</h1> */}
             </SplideSlide>
-          ))};
+          ))}
           </SplideTrack>
 
           <div className="splide__arrows">
             <button className="splide__arrow splide__arrow--prev"><ArrowForwardIcon /></button>
             <button className="splide__arrow splide__arrow--next"><ArrowForwardIcon /></button>
           </div>
-
           <div className="splide__arrows" />
+          {/* <div className="splide__pagination" style={{marginTop: "-4rem"}} /> */}
 
         </div>
-
       </Splide>
-
     </div>
   )
 }

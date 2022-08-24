@@ -5,6 +5,8 @@ import Navbar from '../../components/Navbar';
 import { Progress } from '@chakra-ui/react'
 import { EditIcon } from '@chakra-ui/icons'
 import IconMessage from '../../components/IconMessage';
+import { useRouter } from 'next/router'
+
 
 
 function FindingMatches () {
@@ -13,9 +15,12 @@ function FindingMatches () {
   const [showFirstMessage, setShowFirstMessage] = useState(false);
   const [showSecondMessage, setShowSecondMessage] = useState(false);
   const [showProgressbar, setShowProgressbar] = useState(false);
+  const router = useRouter();
 
   console.log(progressValue)
   useEffect(() => {
+
+    router.prefetch("/quiz_init/matches");
 
     setTimeout(() => {
       function increment() {
@@ -42,6 +47,11 @@ function FindingMatches () {
     setTimeout(() => {
       setShowSecondMessage(true);
     }, 4800)
+
+    setTimeout(() => {
+      console.log("hello")
+      router.push("/quiz_init/matches")
+    }, 10000)
 
   }, []);
 
