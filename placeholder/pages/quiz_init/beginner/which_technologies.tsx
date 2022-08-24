@@ -33,7 +33,7 @@ function WhichTechnologies() {
     const imgData = logos.find((techData) => techData[0] === technology)![1]
     const valueObj = {
       name: technology,
-      imageSrc: imgData.src
+      imageSrc: imgData
     }
     dispatch(toggleDesiredTechnologies(valueObj));
   }
@@ -54,21 +54,21 @@ function WhichTechnologies() {
 
         <h2 className={styles.instruction}>Search for the technologies you wish to learn, or choose from the list of popular tech / programming fields below:</h2>
 
-        <AutocompleteInput learnOrLearnt='to learn'/>
+        <AutocompleteInput learnOrLearnt='to learn' />
         {/* <Autocomplete /> */}
         {/* <form> */}
-          {/* <span className={styles.terminalArrow}>&gt;</span> */}
-          {/* <InputGroup width='22em' >
+        {/* <span className={styles.terminalArrow}>&gt;</span> */}
+        {/* <InputGroup width='22em' >
             <InputLeftElement children='>' color={isDark ? 'gray.300' : 'gray.500'} />
             <Input variant='outline' placeholder='Type technology here...' color={isDark ? 'gray.300' : 'gray.500'} _placeholder={{ color: 'inherit' }} focusBorderColor='gray.500' />
           </InputGroup> */}
-          {/* <input className={styles.technologiesSearchInput} type="text" placeholder='Type technology here...'></input> */}
+        {/* <input className={styles.technologiesSearchInput} type="text" placeholder='Type technology here...'></input> */}
 
         {/* </form> */}
 
         <div className={styles.logoContainer}>
           {logos.map(technology =>
-            <TechLogo key={technology[0]} imgSrc={technology[1].src} value={technology} onClick={handleButtonClick} toLearn={true} />)}
+            <TechLogo key={technology[0]} imgSrc={technology[1]} value={technology} onClick={handleButtonClick} toLearn={true} />)}
         </div>
 
         <h2 className={isDark ? styles.horizontalRuleDarkMode : styles.horizontalRule}><span className={isDark ? styles.horizontalRuleTextDarkMode : styles.horizontalRuleText}>OR</span></h2>
