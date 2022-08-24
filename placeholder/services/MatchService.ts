@@ -1,6 +1,6 @@
 
 import { Types } from "mongoose";
-import { User, UserType } from "../lib/models/User";
+import { UserType } from "../lib/models/User";
 import UserApi from "./UserApi";
 
 
@@ -140,39 +140,25 @@ export default class MatchService {
     return [];
   }
 
-  static async getFirstNMentees(userToMatch: UserType, nOfMentees = 3): Promise<(Types.ObjectId | undefined)[]> {
-    const menteeScores = await MatchService.findMentees(userToMatch);
-
-    console.log('menteeScores sorted: ', menteeScores)
-
-    if (menteeScores.length) {
-      const menteesWanted = menteeScores.slice(0, nOfMentees)
-
-      console.log('menteesScores spliced with amount given ' + nOfMentees + ' : ', menteesWanted)
-
-      return menteesWanted.map(mentee => mentee.mentee._id)
-    }
-    return [];
-  }
-
-
+  
+  
   static async findMentees(userToMatch: UserType){
-
+    
     const {menteePreferences, purpose, developerField} = userToMatch.custom_json
     if (purpose == 'mentor' || purpose == 'both mentor and be mentored') {
       console.log('userToMatch wants to Mentor 🟢')
       const {desiredCategories, desiredTechnologies} = menteePreferences
       //Get all users
       const allUsers = await UserApi.getAllUsersFromClient();
-
+      
       console.log('These are all users: ', allUsers);
       //Remove the current user from all users and users that are not here to mentor
       const potentialMentees = allUsers.filter(user => user.secret !== userToMatch.secret && user.custom_json.purpose == 'be mentored' || user.custom_json.purpose == 'both mentor and be mentored' || user.custom_json.purpose == '')
       console.log('These are all users that want to be mentored: ', potentialMentees)
-
+      
       //Create array of users and scores:
       const menteeScores = potentialMentees.map(mentee => ({mentee, score: 0}))
-
+      
       console.log('menteeScores array created 🟢: ', menteeScores)
       
       menteeScores.forEach(menteeScores => {
@@ -200,9 +186,9 @@ export default class MatchService {
           menteeScores.score = 0;
         }
       })
-
+      
       console.log('mentorScores after categories matching: ', menteeScores)
-
+      
       /**
        * desiredTechnologies and menteePreferences.desiredTechnologies
        */
@@ -225,13 +211,13 @@ export default class MatchService {
           //Mentee didn't specify technologies to teach
         })
       }
-
+      
       console.log('menteeScores after technologies matching: ', menteeScores)
-
+      
       /**
        * desiredCareers and developerField
        */
-
+      
       if (developerField) {
         menteeScores.forEach(menteeScore => {
           const {mentorPreferences} = menteeScore.mentee.custom_json;
@@ -242,12 +228,27 @@ export default class MatchService {
         })
       }
       console.log('menteeScores after careers matching: ', menteeScores)
-
+      
       return menteeScores.sort((a, b) => b.score - a.score)
     } else {
       console.log('userToMatch doesn\'t want to mentor 🔴, returning []')
-    return [];
+      return [];
     }
   }
 
+  static async getFirstNMentees(userToMatch: UserType, nOfMentees = 3): Promise<(Types.ObjectId | undefined)[]> {
+    const menteeScores = await MatchService.findMentees(userToMatch);
+
+    console.log('menteeScores sorted: ', menteeScores)
+
+    if (menteeScores.length) {
+      const menteesWanted = menteeScores.slice(0, nOfMentees)
+
+      console.log('menteesScores spliced with amount given ' + nOfMentees + ' : ', menteesWanted)
+
+      return menteesWanted.map(mentee => mentee.mentee._id)
+    }
+    return [];
+  }
+  
 }

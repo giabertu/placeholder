@@ -6,11 +6,16 @@ import { Progress } from '@chakra-ui/react'
 import { EditIcon } from '@chakra-ui/icons'
 import IconMessage from '../../components/IconMessage';
 import { useRouter } from 'next/router'
+import { GetServerSideProps } from 'next';
+import { unstable_getServerSession } from 'next-auth';
+import UserApi from '../../services/UserApi';
+import { authOptions } from '../api/auth/[...nextauth]';
+import { UserType } from '../../lib/models/User';
 import { useAppSelector } from '../../redux/hooks';
 
 
 
-function FindingMatches () {
+function FindingMatches({ user }: { user: UserType }) {
 
   const [progressValue, setProgressValue] = useState(0);
   const [showFirstMessage, setShowFirstMessage] = useState(false);
@@ -30,7 +35,7 @@ function FindingMatches () {
       function increment() {
         setProgressValue((prev) => prev + 0.1923076923
         );
-    };
+      };
 
       const increaseProgress = setInterval(increment, 12.5);
 
@@ -53,14 +58,15 @@ function FindingMatches () {
     }, 4800)
 
     setTimeout(() => {
-      router.push(nextPage)
+      console.log("hello")
+      router.push({ pathname: "/quiz_init/matches", query: { user: JSON.stringify(user) } }, "/quiz_init/matches")
     }, 10000)
 
   }, []);
 
   return (
     <div className={styles.container}>
-      <Navbar progressValue={0}/>
+      <Navbar progressValue={0} />
       <div className={styles.formContainer}>
         <Typewriter
           options={{
@@ -87,3 +93,32 @@ function FindingMatches () {
 };
 
 export default FindingMatches
+
+export const getServerSideProps: GetServerSideProps = async (context) => {
+
+  const session = await unstable_getServerSession(context.req, context.res, authOptions)
+
+  if (!session) {
+    return {
+      redirect: {
+        destination: '/',
+        permanent: false,
+      }
+    }
+  }
+
+  if (session && session.user && session.user.email) {
+    const user = await UserApi.getOneUser(session.user.email)
+    return {
+      props: {
+        user
+      }
+    }
+  }
+  return {
+    redirect: {
+      destination: '/',
+      permanent: false,
+    }
+  }
+}

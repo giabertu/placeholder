@@ -10,6 +10,7 @@ import { Avatar } from '@chakra-ui/avatar';
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls, PresentationControls, TransformControls } from '@react-three/drei';
 import { RetroWindows } from '../components/models/RetroWindows'
+import ColorModeToggle from '../components/ColorModeToggle';
 
 
 // import techData from "../utils/autocompleteTermsGenerator"
@@ -171,6 +172,9 @@ const Home: NextPage = () => {
             {/* <RetroWindows scale={[25, 25, 25]} position={[-5, 5, -20]} /> */}
           </Suspense>
         </Canvas>
+      </div>
+      <div className={styles.colorMode}>
+        <ColorModeToggle />
       </div>
     </div >
 

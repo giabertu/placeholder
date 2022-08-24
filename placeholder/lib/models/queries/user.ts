@@ -1,5 +1,7 @@
 import {User, UserType} from '../User'
 import {Types } from 'mongoose'
+import { Account } from '../Account'
+import { Session } from '../Session'
 
 async function updateUser(user: UserType) {
   console.log('Here is the user in queries' , user)
@@ -34,7 +36,10 @@ async function getUsers() {
 async function findByIdAndRemove(id: Types.ObjectId) {
   console.log('Do we ge insie getUserById? Yes!')
   const res = await User.findByIdAndRemove(id)
-  console.log('Response in server: ' , res) 
+  console.log('Response in server: ' , res)
+  Account.findOneAndRemove({userId}).then(res => console.log('Account Removed: ', res)).catch(err => console.log(err))
+  Session.findOneAndRemove({userId}).then(res => console.log('Session Removed: ', res)).catch(err => console.log(err))
+
   return res
 }
 
