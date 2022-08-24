@@ -1,8 +1,7 @@
-import { Avatar, AvatarBadge, AvatarGroup, Box, Button, chakra, Flex, Icon, Image, Tag, Text } from '@chakra-ui/react';
+import { Avatar, AvatarBadge, AvatarGroup, Box, Button, chakra, Flex, Icon, Tag, Text } from '@chakra-ui/react';
 import React from 'react'
-import { ArrowForwardIcon, EmailIcon } from '@chakra-ui/icons';
 import { GoRocket, GoLocation } from "react-icons/go";
-import { GiChart } from "react-icons/gi"
+import { GiBrain, GiChart } from "react-icons/gi"
 import { BiCodeAlt, BiQuestionMark } from "react-icons/bi"
 import { FaChalkboardTeacher } from "react-icons/fa"
 import { IoSendSharp, IoAddSharp } from "react-icons/io5"
@@ -22,6 +21,7 @@ function MatchedUserCard({ matchedUser }: {matchedUser: {user: UserType, chatEng
 
   const desiredTechnologies = matchedUser.user.custom_json.mentorPreferences.desiredTechnologies;
   const desiredCareers = matchedUser.user.custom_json.mentorPreferences.desiredCareers;
+  const experiencedWithTechnologies = matchedUser.user.custom_json.experiencedWithTechnologies;
 
   // console.log(matchedUser.user.first_name, desiredTechnologies)
 
@@ -32,7 +32,7 @@ function MatchedUserCard({ matchedUser }: {matchedUser: {user: UserType, chatEng
         bg: "#1a202c",
       }}
       p={50}
-      maxWidth="40vw"
+      maxWidth="35vw"
       // w="full"
       alignItems="center"
       justifyContent="center"
@@ -148,6 +148,31 @@ function MatchedUserCard({ matchedUser }: {matchedUser: {user: UserType, chatEng
       >
         {matchedUser.user.custom_json.bio}
       </chakra.p>
+
+      {Boolean(experiencedWithTechnologies.length) &&
+      <Flex
+        alignItems="center"
+        mt={4}
+        color="gray.700"
+        _dark={{
+          color: "gray.200",
+        }}
+      >
+        <Icon as={GiBrain} h={6} w={6} mr={2} />
+        <chakra.h3 px={2} fontSize="sm" fontWeight="hairline">
+          <Text display="inline" fontWeight="extrabold">Experienced with</Text>
+        </chakra.h3>
+        <AvatarGroup size='sm' max={7} marginLeft='0.4rem' >
+                {experiencedWithTechnologies.map(technology => {
+                  if (typeof technology == 'string') {
+                    return <Tag>{technology}</Tag>
+                  }
+                  return <Avatar src={technology.imageSrc} bg='transparent' border='none' borderRadius='none' scale={0.7} minWidth='fit-content' />
+                })}
+        </AvatarGroup>
+      </Flex>
+      }
+
 
       <Flex
         alignItems="center"

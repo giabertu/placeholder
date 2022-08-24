@@ -15,7 +15,7 @@ function IntermediateMenteeTalk() {
       <Navbar progressValue={50}/>
       <MenteeTalk choices={menteeChoices} descriptions={menteeDescriptions} />
       <QuizNavigationButtons next={`quiz_init/${route}`} canProceed={Boolean(desiredMenteeCategories.length)}/>
-      
+
     </div >
   )
 
