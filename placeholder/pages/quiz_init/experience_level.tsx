@@ -18,7 +18,7 @@ function ExperienceLevel() {
     <div className="container">
       <Navbar progressValue={10}/>
       <UserLevelForm choices={levelChoices} descriptions={levelDescriptions} />
-      <QuizNavigationButtons back='/' next={`quiz_init/${route}/${subroute}`} canProceed={Boolean(selectedLevel)}/>
+      <QuizNavigationButtons next={`quiz_init/${route}/${subroute}`} canProceed={Boolean(selectedLevel)}/>
     </div>
   )
 }

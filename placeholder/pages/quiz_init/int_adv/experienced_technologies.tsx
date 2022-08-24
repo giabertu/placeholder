@@ -63,7 +63,8 @@ function ExperiencedTechnologies() {
 
       </div>
 
-      <QuizNavigationButtons back='quiz_init/int_adv/roles' next="quiz_init/int_adv/purpose" canProceed={Boolean(technologies.length)} />
+      
+      <QuizNavigationButtons next="quiz_init/int_adv/purpose" canProceed={Boolean(technologies.length)} />
 
     </div>
   )

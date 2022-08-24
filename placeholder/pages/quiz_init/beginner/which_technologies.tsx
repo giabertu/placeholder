@@ -79,7 +79,8 @@ function WhichTechnologies() {
 
       </div>
 
-      <QuizNavigationButtons back='quiz_init/beginner/mentor_talk' next={`quiz_init/${route}`} canProceed={Boolean(technologies.length)} />
+      
+      <QuizNavigationButtons next={`quiz_init/${route}`} canProceed={Boolean(technologies.length)} />
 
     </div>
   )
