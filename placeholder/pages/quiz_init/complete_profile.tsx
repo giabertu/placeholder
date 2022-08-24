@@ -130,8 +130,8 @@ function CompleteProfile() {
       user.custom_json.mentors = await MatchService.getFirstNMentors(user, 5);
       console.log('mentors id: ', user.custom_json.mentors)
       //Call MatchService.findMentees()
-      user.custom_json.mentees = [];
-
+      user.custom_json.mentees = await MatchService.getFirstNMentees(user, 5)
+      console.log('mentees id: ', user.custom_json.mentees)
       //Return user
       return user
     }

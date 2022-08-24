@@ -140,9 +140,25 @@ export default class MatchService {
     return [];
   }
 
+  static async getFirstNMentees(userToMatch: UserType, nOfMentees = 3): Promise<(Types.ObjectId | undefined)[]> {
+    const menteeScores = await MatchService.findMentees(userToMatch);
+
+    console.log('menteeScores sorted: ', menteeScores)
+
+    if (menteeScores.length) {
+      const menteesWanted = menteeScores.slice(0, nOfMentees)
+
+      console.log('menteesScores spliced with amount given ' + nOfMentees + ' : ', menteesWanted)
+
+      return menteesWanted.map(mentee => mentee.mentee._id)
+    }
+    return [];
+  }
+
 
   static async findMentees(userToMatch: UserType){
-    const {menteePreferences, purpose} = userToMatch.custom_json
+
+    const {menteePreferences, purpose, developerField} = userToMatch.custom_json
     if (purpose == 'mentor' || purpose == 'both mentor and be mentored') {
       console.log('userToMatch wants to Mentor 🟢')
       const {desiredCategories, desiredTechnologies} = menteePreferences
@@ -180,77 +196,74 @@ export default class MatchService {
       menteeScores.forEach(menteeScores => {
         const {mentorPreferences} = menteeScores.mentee.custom_json
         // console.log('Here is the mentee prefe: ', menteePreferences.desiredCategories)
-        if (menteePreferences.desiredCategories.length) {
+        if (mentorPreferences.desiredCategories.length) {
           desiredCategories.forEach(topic => {
             // console.log('Here is the topic: ', topic)
-            if (topic === 'learning how to program' && menteePreferences.desiredCategories.includes('advance their programming skills')) {
-              mentorScore.score = mentorScore.score + 1;
+            if (topic === 'advance their programming skills' && menteePreferences.desiredCategories.includes('learning how to program')) {
+              menteeScores.score++;
               // console.log('updating score because of advance their programming skills of ' + mentorScore.mentor.email, mentorScore.score)
-            } else if (topic === 'expanding my programming skillset' &&  menteePreferences.desiredCategories.includes('advance their programming skills')) {
-              mentorScore.score = mentorScore.score + 1;
+            } else if (topic === 'advance their programming skills' &&  menteePreferences.desiredCategories.includes('expanding my programming skillset')) {
+              menteeScores.score++;
               // console.log('updating score because of advance their programming skills of ' + mentorScore.mentor.email, mentorScore.score)
             }
-            else if (topic === 'developer careers' && menteePreferences.desiredCategories.includes('advance in their developer careers')) {
-              mentorScore.score = mentorScore.score + 1; 
+            else if (topic === 'advance in their developer careers' && menteePreferences.desiredCategories.includes('developer careers')) {
+              menteeScores.score++; 
               // console.log('updating score because of advance their dev carrer of ' + mentorScore.mentor.email, mentorScore.score)
-            } else if (topic === 'advancing in my career' && menteePreferences.desiredCategories.includes('advance in their developer careers')) {
-              mentorScore.score = mentorScore.score + 1; 
+            } else if (topic === 'advance in their developer careers' && menteePreferences.desiredCategories.includes('advancing in my career')) {
+              menteeScores.score++; 
               // console.log('updating score because of advance their dev carrer of ' + mentorScore.mentor.email, mentorScore.score)
             }
           })
         } else {
-          mentorScore.score = 0;
+          menteeScores.score = 0;
         }
       })
 
-      console.log('mentorScores after categories matching: ', mentorScores)
+      console.log('mentorScores after categories matching: ', menteeScores)
 
       /**
        * desiredTechnologies and menteePreferences.desiredTechnologies
        */
       if (desiredTechnologies.length) {
         console.log('Desired tech: ', desiredTechnologies)
-        mentorScores.forEach(mentorScore => {
-          const {menteePreferences} = mentorScore.mentor.custom_json
-          console.log('Potential mentor: ', mentorScore.mentor)
-          if (menteePreferences.desiredTechnologies.length) {
+        menteeScores.forEach(menteeScore => {
+          const {mentorPreferences} = menteeScore.mentee.custom_json
+          console.log('Potential mentee: ', menteeScore.mentee)
+          if (mentorPreferences.desiredTechnologies.length) {
             desiredTechnologies.forEach(technology => {
               console.log('Technology in desiredTech ', technology)
-              if (typeof technology == 'string') {
-                mentorScore.score++;
-              } else if (menteePreferences.desiredTechnologies.find(tech => tech.name == technology.name)){
-                mentorScore.score++;
-                console.log('updating tech score of ' + mentorScore.mentor.email, mentorScore.score)
+              if (typeof mentorPreferences.desiredTechnologies[0] === 'string') {
+                menteeScore.score++;
+              } else if (mentorPreferences.desiredTechnologies.find(tech => typeof tech !== 'string' && tech.name == technology.name)){
+                menteeScore.score++;
+                console.log('updating tech score of ' + menteeScore.mentee.email, menteeScore.score)
               }
             })
           }
-          //Mentor didn't specify technologies to teach
+          //Mentee didn't specify technologies to teach
         })
       }
 
-      console.log('mentorScores after technologies matching: ', mentorScores)
+      console.log('menteeScores after technologies matching: ', menteeScores)
 
       /**
        * desiredCareers and developerField
        */
 
-      if (desiredCareers.length) {
-        mentorScores.forEach(mentorScore => {
-          const {developerField} = mentorScore.mentor.custom_json;
-          desiredCareers.forEach(topic => {
-            if (developerField == topic){
-              mentorScore.score++;
-              console.log('updatin score because of devField of ' + mentorScore.mentor.email, mentorScore.score)
-            }
-          })
+      if (developerField) {
+        menteeScores.forEach(menteeScore => {
+          const {mentorPreferences} = menteeScore.mentee.custom_json;
+          if (mentorPreferences.desiredCareers.includes(developerField)){
+            menteeScore.score++
+            console.log('updatin score because of devField of ' + menteeScore.mentee.email, menteeScore.score)
+          }
         })
       }
+      console.log('menteeScores after careers matching: ', menteeScores)
 
-      console.log('mentorScores after careers matching: ', mentorScores)
-
-      return mentorScores.sort((a, b) => b.score - a.score)
+      return menteeScores.sort((a, b) => b.score - a.score)
     } else {
-      console.log('userToMatch doesn\'t to be mentored 🔴, returning []')
+      console.log('userToMatch doesn\'t want to mentor 🔴, returning []')
     return [];
     }
   }
