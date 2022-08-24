@@ -45,7 +45,7 @@ function MatchedUserCard({ matchedUser, ownUser }: { matchedUser: { user: UserTy
         bg: "#1a202c",
       }}
       p={50}
-      maxWidth="40vw"
+      maxWidth="41vw"
       // w="full"
       alignItems="center"
       justifyContent="center"
