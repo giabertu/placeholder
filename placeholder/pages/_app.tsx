@@ -4,6 +4,8 @@ import '../styles/utilityClasses.css'
 import '../styles/components/QuizNavigationButtons.css'
 import '../styles/SignIn.css'
 import '../styles/IconMessage.css'
+import '../styles/dashboard.css'
+import '../styles/chat.css'
 import '../styles/matches.css'
 import '@splidejs/react-splide/css/sea-green';
 

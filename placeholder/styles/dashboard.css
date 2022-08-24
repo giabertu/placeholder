@@ -1,0 +1,15 @@
+.button-container {
+  width: 10rem;
+  background-color: white;
+}
+
+.back-button:hover {
+  margin-left: 0;
+  margin-right: 0.5rem;
+}
+
+.title-buttons-container {
+  background-color: white;
+  padding: 2rem;
+  min-width: 40rem;
+}

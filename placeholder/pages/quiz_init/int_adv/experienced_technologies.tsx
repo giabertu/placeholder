@@ -17,10 +17,10 @@ function ExperiencedTechnologies() {
   const technologies = useAppSelector((state) => state.userInfo.experiencedWithTechnologies);
   const mentorChoices = useAppSelector((state) => state.mentorPreferences.desiredCategories);
   const technologyNames = technologies.map((techObj) => {
-    if(typeof techObj !== "string") return techObj.name;
+    if (typeof techObj !== "string") return techObj.name;
   });
 
-  const {colorMode } = useColorMode();
+  const { colorMode } = useColorMode();
   const isDark = colorMode === 'dark';
 
   const handleButtonClick = function (event: React.MouseEvent<HTMLButtonElement>) {
@@ -35,7 +35,7 @@ function ExperiencedTechnologies() {
 
   return (
     <div className={styles.container}>
-      <Navbar progressValue={40}/>
+      <Navbar progressValue={40} />
       {/* <ProgressBar value={10} /> */}
       <div className={styles.formContainer}>
         <div className={styles.title}>
@@ -46,14 +46,14 @@ function ExperiencedTechnologies() {
 
         <h2 className={styles.instruction}>Search for the technologies you're most familiar with, or choose from the list of popular tech / programming fields below:</h2>
 
-        <AutocompleteInput learnOrLearnt='experienced'/>
+        <AutocompleteInput learnOrLearnt='experienced' />
         {/* <form> */}
-          {/* <span className={styles.terminalArrow}>&gt;</span> */}
-          {/* <InputGroup width='22em' >
+        {/* <span className={styles.terminalArrow}>&gt;</span> */}
+        {/* <InputGroup width='22em' >
             <InputLeftElement children='>' color={isDark ? 'gray.300' : 'gray.500'}/>
             <Input variant='outline' placeholder='Type technology here...' color={isDark ? 'gray.300' : 'gray.500'} _placeholder={{color: 'inherit'}} focusBorderColor='gray.500'/>
           </InputGroup> */}
-          {/* <input className={styles.technologiesSearchInput} type="text" placeholder='Type technology here...'></input> */}
+        {/* <input className={styles.technologiesSearchInput} type="text" placeholder='Type technology here...'></input> */}
 
         {/* </form> */}
 

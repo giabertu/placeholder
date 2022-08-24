@@ -34,6 +34,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const session = await unstable_getServerSession(context.req, context.res, authOptions)
 
   if (!session) {
+    console.log('SESSION DOESNT EXIST', session)
     return {
       redirect: {
         destination: '/',
@@ -50,6 +51,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       }
     }
   } else {
+    console.log('EITHER SESSION, USER OR EMAIL DONT EXIST', session)
     return {
       redirect: {
         destination: '/',

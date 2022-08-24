@@ -96,7 +96,7 @@ function ProfileEditable({ user }: { user: UserType }) {
   const [showRequired, setShowRequired] = useState(false)
 
 
-  const { mentorPreferences, menteePreferences } = user.custom_json
+  const { mentorPreferences, menteePreferences, developerField, experiencedWithTechnologies } = user.custom_json
   const isDark = useAppSelector(state => state.darkMode)
 
   const ref = useRef(null)
@@ -143,6 +143,35 @@ function ProfileEditable({ user }: { user: UserType }) {
             type='text' className={!location && showRequired ? 'profile-input invalid' : 'profile-input'}
             required={true} placeholder='' defaultValue={location} onChange={(e) => handleInputChange(e, setLocation)}></input>
         </div>
+        {developerField &&
+          <>
+            <Divider />
+            <div className="profile-section flex-row gap-2r align-center">
+              <label className="profile-input-label">Developer Expertise</label>
+              <Wrap spacing={2} justify={'flex-end'}>
+                <Tag key={developerField} size='md' colorScheme='gray' borderRadius='full'>
+                  {developerField[0].toUpperCase() + developerField.substring(1)}
+                </Tag>
+              </Wrap>
+            </div>
+          </>
+        }
+        {experiencedWithTechnologies.length > 0 &&
+          <>
+            <Divider />
+            <div className="profile-section flex-row gap-2r align-center">
+              <label className="profile-input-label">Experienced in</label>
+              <AvatarGroup size='md' max={4} marginRight='2rem' >
+                {experiencedWithTechnologies.map(technology => {
+                  if (typeof technology == 'string') {
+                    return <Tag>{technology}</Tag>
+                  }
+                  return <Avatar src={technology.imageSrc} bg='transparent' border='none' borderRadius='none' scale={0.7} minWidth='fit-content' />
+                })}
+              </AvatarGroup>
+            </div>
+          </>
+        }
         {mentorPreferences.desiredCategories.length > 0 &&
           <>
             <Divider />

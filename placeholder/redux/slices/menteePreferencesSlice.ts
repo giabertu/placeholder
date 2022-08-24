@@ -26,6 +26,10 @@ export const menteePreferencesSlice = createSlice({
       }
       return state;
     },
+    setMenteeDesiredTechnologies(state, action: PayloadAction<TechnologyObj[]>) {
+      state.desiredTechnologies = action.payload;
+      return state;
+    },
     toggleDesiredTechnologies: (state, action: PayloadAction<TechnologyObj>) => {
       const index = state.desiredTechnologies.findIndex((x) => x.name === action.payload.name);
       if (index !== -1) {
@@ -39,5 +43,5 @@ export const menteePreferencesSlice = createSlice({
   }
 });
 
-export const { changeDesiredCategory, toggleDesiredTechnologies, setMenteeDesiredCategories } = menteePreferencesSlice.actions;
+export const { changeDesiredCategory, toggleDesiredTechnologies, setMenteeDesiredCategories, setMenteeDesiredTechnologies } = menteePreferencesSlice.actions;
 export default menteePreferencesSlice.reducer;

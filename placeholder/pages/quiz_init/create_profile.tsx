@@ -5,7 +5,7 @@ import Navbar from "../../components/Navbar";
 import styles from '../../styles/which_technologies.module.css'
 import Typewriter from 'typewriter-effect';
 
-import {GithubFilled, GoogleOutlined, MailOutlined} from '@ant-design/icons'
+import { GithubFilled, GoogleOutlined, MailOutlined } from '@ant-design/icons'
 
 import { useAppSelector } from "../../redux/hooks";
 import { Input, InputGroup, useColorMode } from "@chakra-ui/react";
@@ -22,11 +22,11 @@ export default function CreateProfile({ providers }: { providers: Record<Literal
   const { colorMode } = useColorMode();
   const isDark = colorMode === 'dark';
 
-
-  localStorage.setItem('mentorPreferences', JSON.stringify(mentorPreferences));
-  localStorage.setItem('userInfo', JSON.stringify(userInfo))
-  localStorage.setItem('menteePreferences', JSON.stringify(menteePreferences))
-
+  if (typeof window !== 'undefined') {
+    localStorage.setItem('mentorPreferences', JSON.stringify(mentorPreferences));
+    localStorage.setItem('userInfo', JSON.stringify(userInfo))
+    localStorage.setItem('menteePreferences', JSON.stringify(menteePreferences))
+  }
   return (
     <div className="container flex-column outline align-center">
       <Navbar progressValue={100} />
@@ -48,7 +48,7 @@ export default function CreateProfile({ providers }: { providers: Record<Literal
                 <button
                   className="button-style flex-row align-center"
                   onClick={() => signIn(provider.id, { callbackUrl: '/quiz_init/complete_profile' })}>
-                  <span>&gt; Sign in with </span>&nbsp;{provider.name == 'GitHub' ? <GithubFilled style={styleObject}/> : <GoogleOutlined style={styleObject} />}&nbsp;{provider.name}
+                  <span>&gt; Sign in with </span>&nbsp;{provider.name == 'GitHub' ? <GithubFilled style={styleObject} /> : <GoogleOutlined style={styleObject} />}&nbsp;{provider.name}
                 </button>
               </div>
             }
@@ -60,7 +60,7 @@ export default function CreateProfile({ providers }: { providers: Record<Literal
                   setValue(e.target.value)
                 }} /> */}
                 <InputGroup>
-                  <Input 
+                  <Input
                     placeholder='Type in email...'
                     color={isDark ? 'gray.300' : 'gray.500'}
                     value={value}

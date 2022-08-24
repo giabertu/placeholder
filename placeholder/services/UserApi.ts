@@ -24,7 +24,7 @@ export default class UserApi {
     return await response.json()
   }
 
-  static async getOneUser(email: string) {
+  static async getOneUser(email: string): Promise<UserType> {
     console.log('Here is the email: ', email)
     const response = await fetch(`${process.env.SERVER}${this.USER_ENDPOINT}`, {
       method: 'POST',
