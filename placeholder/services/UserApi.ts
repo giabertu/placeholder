@@ -1,3 +1,4 @@
+import { Types } from "mongoose";
 import { UserType } from "../lib/models/User";
 
 
@@ -9,10 +10,6 @@ export default class UserApi {
   constructor() {}
 
 
-  static async getUserProfile(email: string) {
-
-  }
-
   static async updateUserProfile(user: UserType) {
     const response = await fetch(this.USER_ENDPOINT, {
       method: 'PUT',
@@ -22,6 +19,17 @@ export default class UserApi {
       body: JSON.stringify({user: user})
     })
     return await response.json()
+  }
+
+  static async findByIdAndRemove(id: Types.ObjectId | undefined) {
+    const response = await fetch(`${process.env.SERVER}${this.USER_ENDPOINT}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({id}),
+    }) 
+    console.log('Here is the response: ', response)
   }
 
   static async getOneUser(email: string): Promise<UserType> {
@@ -47,7 +55,7 @@ export default class UserApi {
       },
       body: JSON.stringify({id}),
     })
-    console.log('Response in userApi: ' , response)
+    // console.log('Response in userApi: ' , response)
     return await response.json()
     // return await response.json()
   }
@@ -63,12 +71,13 @@ export default class UserApi {
     return await response.json()
   }
 
-  static async getChatEngineUser({username, secret}: {username: string, secret: string}) {
-
-  }
-
   static async getAllUsers(): Promise<UserType[]> {
     const users = await fetch(`${process.env.SERVER}${this.USERS_ENDPOINT}`)
+    return await users.json()
+  }
+
+  static async getAllUsersFromClient(): Promise<UserType[]> {
+    const users = await fetch(this.USERS_ENDPOINT)
     return await users.json()
   }
 }

@@ -1,4 +1,5 @@
 import {User, UserType} from '../User'
+import {Types } from 'mongoose'
 
 async function updateUser(user: UserType) {
   console.log('Here is the user in queries' , user)
@@ -30,5 +31,11 @@ async function getUsers() {
     return users;
 }
 
+async function findByIdAndRemove(id: Types.ObjectId) {
+  console.log('Do we ge insie getUserById? Yes!')
+  const res = await User.findByIdAndRemove(id)
+  console.log('Response in server: ' , res) 
+  return res
+}
 
-export {updateUser, getUsers, getOneUser, getUserById}
+export {updateUser, getUsers, getOneUser, getUserById, findByIdAndRemove}

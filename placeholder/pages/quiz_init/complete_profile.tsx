@@ -15,6 +15,8 @@ import { setMenteeDesiredCategories, setMenteeDesiredTechnologies } from "../../
 import { changeDeveloperField, changeLevel, changePurpose, setExpriencedWithTechnologies } from "../../redux/slices/userInfoSlice";
 import Axios from "axios";
 import ChatEngineApi from "../../services/ChatEngineApi";
+import Link from "next/link";
+import MatchService from "../../services/MatchService";
 
 const styleObject = { verticalAlign: 'middle', marginBottom: '3px' }
 
@@ -102,9 +104,8 @@ function CompleteProfile() {
     shouldUpdateProfile() && setShowRequired(false)
   }
 
-  function getCurrentUserState() {
+  async function getCurrentUserState() {
     if (session && session.user && session.user.email) {
-
       const user: UserType = {
         username: name.toLowerCase().replace(/\s/g, '_'),
         email: session.user.email,
@@ -125,6 +126,14 @@ function CompleteProfile() {
           menteePreferences
         }
       }
+
+      //Call MatchService.findMentors()
+      user.custom_json.mentors = await MatchService.getFirstNMentors(user, 5);
+      console.log('mentors id: ', user.custom_json.mentors)
+      //Call MatchService.findMentees()
+      user.custom_json.mentees = await MatchService.getFirstNMentees(user, 5)
+      console.log('mentees id: ', user.custom_json.mentees)
+      //Return user
       return user
     }
   }
@@ -135,7 +144,7 @@ function CompleteProfile() {
 
   async function handleSave() {
     if (shouldUpdateProfile()) {
-      const user = getCurrentUserState();
+      const user = await getCurrentUserState();
       if (user) {
         setShowRequired(false);
         const userBeforeUpdate = await UserApi.updateUserProfile(user)
@@ -175,13 +184,13 @@ function CompleteProfile() {
               <label className="profile-input-label" >Name </label>
               <input
                 type='text' defaultValue={name}
-                className={`${!name && showRequired ? 'profile-input-invalid' : 'profile-input'} ${isDark ? 'profile-input-dark' : 'profile-input-light'}`}  required={true} spellCheck={false} onChange={(e) => handleInputChange(e, setName)}></input>
+                className={`${!name && showRequired ? 'profile-input-invalid' : 'profile-input'} ${isDark ? 'profile-input-dark' : 'profile-input-light'}`} required={true} spellCheck={false} onChange={(e) => handleInputChange(e, setName)}></input>
             </div>
             <Divider />
             <div className="profile-section flex-row gap-2r align-center">
               <label className="profile-input-label">Bio </label>
               <textarea
-                className={`${!bio && showRequired ? 'profile-input profile-textarea invalid' : 'profile-input profile-textarea'} ${isDark ? 'profile-input-dark' : 'profile-input-light'}` }
+                className={`${!bio && showRequired ? 'profile-input profile-textarea invalid' : 'profile-input profile-textarea'} ${isDark ? 'profile-input-dark' : 'profile-input-light'}`}
                 rows={4.5} cols={22} required={true} placeholder={'What should people know about you?'}
                 onChange={(e) => handleInputChange(e, setBio)}></textarea>
             </div>
