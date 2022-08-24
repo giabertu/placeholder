@@ -9,7 +9,8 @@ import { GetServerSideProps } from "next";
 import ProfileNotEditable from "../../components/ProfileNotEditable"
 import ChatEngineApi from '../../services/ChatEngineApi';
 import { ChatEngineUser } from '../../lib/models/User';
-import MatchedUserCard from '../../components/MatchedMenteeCard';
+import MatchedMenteeCard from '../../components/MatchedMenteeCard';
+import MatchedMentorCard from '../../components/MatchedMentorCard';
 import Typewriter from 'typewriter-effect';
 
 export const getServerSideProps: GetServerSideProps = async () => {
@@ -28,12 +29,14 @@ export const getServerSideProps: GetServerSideProps = async () => {
 }
 
 function Matches({matchedUsersInfo}: {matchedUsersInfo: {user: UserType, chatEngineUser: ChatEngineUser}[]}) {
+  matchedUsersInfo = matchedUsersInfo.filter((user) => user.user.custom_json.purpose === "both mentor and be mentored" || user.user.custom_json.purpose === "mentor")
+  // matchedUsersInfo = matchedUsersInfo.filter((user) => user.user.custom_json.purpose === "be mentored" || user.user.custom_json.purpose === "" || user.user.custom_json.purpose === "both mentor and be mentored")
 
   return (
     <div className='carousel-container'>
       <Navbar />
       <h1 className='carousel-title'>Your mentee matches</h1>
-      <Typewriter
+      {/* <Typewriter
           options={{
             delay: 30,
             cursorClassName: "typewriter-cursor"
@@ -44,7 +47,7 @@ function Matches({matchedUsersInfo}: {matchedUsersInfo: {user: UserType, chatEng
               .typeString('<h1 style="display: inline;">Finding you the best matches for your preferences...</h1>')
               .start();
           }}
-        />
+        /> */}
       <Splide hasTrack={ false } aria-label="..." options={{
         width: "80vw",
         // fixedWidth: "70vw",
@@ -53,11 +56,12 @@ function Matches({matchedUsersInfo}: {matchedUsersInfo: {user: UserType, chatEng
           <SplideTrack>
           {matchedUsersInfo.map((matchedUserInfo) => (
             <SplideSlide key={matchedUserInfo.user.email} style={{display: "flex", justifyContent: "center"}}>
-              <MatchedUserCard matchedUser={matchedUserInfo}/>
+              {/* <MatchedMenteeCard matchedUser={matchedUserInfo}/> */}
+              <MatchedMentorCard matchedUser={matchedUserInfo}/>
               {/* <ProfileNotEditable user={matchedUserInfo.user} chatEngineUser={matchedUserInfo.chatEngineUser}/> */}
               {/* <h1>hello</h1> */}
             </SplideSlide>
-          ))};
+          ))}
           </SplideTrack>
 
           <div className="splide__arrows">

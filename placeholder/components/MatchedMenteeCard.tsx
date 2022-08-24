@@ -13,12 +13,13 @@ import { ChatEngineUser, User, UserType } from '../lib/models/User';
 function MatchedUserCard({ matchedUser }: {matchedUser: {user: UserType, chatEngineUser: ChatEngineUser}}) {
 
   const preferenceGenerator = function() {
-    if (matchedUser.user.custom_json.mentorPreferences.desiredCategories.length === 2) return " learn about programming and developer careers"
-    else if (matchedUser.user.custom_json.mentorPreferences.desiredCategories.includes("learning how to program")) return " learn how to program"
+    if (desiredCategories.length === 2) return " learn about programming and developer careers"
+    else if (desiredCategories.includes("learning how to program")) return " learn how to program"
     // else if (matchedUser.user.custom_json.mentorPreferences.desiredCategories.includes("developer careers")) return "speak about developer careers"
-    else return "speak about developer careers"
+    else return "learn about developer careers"
   }
 
+  const desiredCategories = matchedUser.user.custom_json.mentorPreferences.desiredCategories;
   const desiredTechnologies = matchedUser.user.custom_json.mentorPreferences.desiredTechnologies;
   const desiredCareers = matchedUser.user.custom_json.mentorPreferences.desiredCareers;
   const experiencedWithTechnologies = matchedUser.user.custom_json.experiencedWithTechnologies;
@@ -188,7 +189,7 @@ function MatchedUserCard({ matchedUser }: {matchedUser: {user: UserType, chatEng
         </chakra.h3>
       </Flex>
 
-      {matchedUser.user.custom_json.mentorPreferences.desiredCategories.includes("learning how to program") &&
+      {desiredCategories.includes("learning how to program") &&
       <Flex
         alignItems="center"
         mt={4}
@@ -216,7 +217,7 @@ function MatchedUserCard({ matchedUser }: {matchedUser: {user: UserType, chatEng
       </Flex>
       }
 
-      {matchedUser.user.custom_json.mentorPreferences.desiredCategories.includes("developer careers") &&
+      {desiredCategories.includes("developer careers") &&
       <Flex
         alignItems="center"
         mt={4}
@@ -229,7 +230,7 @@ function MatchedUserCard({ matchedUser }: {matchedUser: {user: UserType, chatEng
         {desiredCareers.length === 0 ? <Icon as={BiQuestionMark} h={6} w={6} mr={2} /> : <Icon as={ImBubbles3} h={6} w={6} mr={2} /> }
 
         <chakra.h3 px={2} fontSize="sm" fontWeight="hairline">
-          {desiredTechnologies.length === 0 ? <Box> <Text display="inline" fontWeight="extrabold">Unsure</Text><Text display="inline"> about what kind of developer they'd like to speak to</Text></Box>: "Wants to know more about " + matchedUser.user.custom_json.mentorPreferences.desiredCareers.toString() + " careers"}
+          {desiredTechnologies.length === 0 ? <Box><Text display="inline" fontWeight="extrabold">Unsure</Text><Text display="inline"> about what kind of developer they'd like to speak to</Text></Box>: "Wants to know more about " + matchedUser.user.custom_json.mentorPreferences.desiredCareers.toString().replaceAll(",", ", ") + " careers"}
         </chakra.h3>
       </Flex>
       }
@@ -243,9 +244,9 @@ function MatchedUserCard({ matchedUser }: {matchedUser: {user: UserType, chatEng
           color: "gray.200",
         }}
       >
-        <Button leftIcon={<IoSendSharp />} colorScheme='cyan' variant='outline'>
+        {/* <Button leftIcon={<IoSendSharp />} colorScheme='cyan' variant='outline'>
           Message now
-        </Button>
+        </Button> */}
         <Button leftIcon={<IoAddSharp />} colorScheme='cyan' variant='outline'>
           Add mentee
         </Button>

@@ -20,6 +20,8 @@ function FindingMatches () {
   console.log(progressValue)
   useEffect(() => {
 
+    router.prefetch("/quiz_init/matches");
+
     setTimeout(() => {
       function increment() {
         setProgressValue((prev) => prev + 0.1923076923
@@ -47,8 +49,8 @@ function FindingMatches () {
     }, 4800)
 
     setTimeout(() => {
+      console.log("hello")
       router.push("/quiz_init/matches")
-      setShowSecondMessage(true);
     }, 10000)
 
   }, []);

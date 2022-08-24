@@ -3,7 +3,7 @@ import React from 'react'
 import { GoRocket, GoLocation } from "react-icons/go";
 import { GiBrain, GiChart } from "react-icons/gi"
 import { BiCodeAlt, BiQuestionMark } from "react-icons/bi"
-import { FaChalkboardTeacher } from "react-icons/fa"
+import { FaChalkboardTeacher, FaGraduationCap } from "react-icons/fa"
 import { IoSendSharp, IoAddSharp } from "react-icons/io5"
 import { ImBubbles3 } from "react-icons/im"
 import { ChatEngineUser, User, UserType } from '../lib/models/User';
@@ -13,14 +13,14 @@ import { ChatEngineUser, User, UserType } from '../lib/models/User';
 function MatchedUserCard({ matchedUser }: {matchedUser: {user: UserType, chatEngineUser: ChatEngineUser}}) {
 
   const preferenceGenerator = function() {
-    if (matchedUser.user.custom_json.mentorPreferences.desiredCategories.length === 2) return " learn about programming and developer careers"
-    else if (matchedUser.user.custom_json.mentorPreferences.desiredCategories.includes("learning how to program")) return " learn how to program"
+    if (desiredCategories.length === 2) return <Box><Text display="inline" fontWeight="extrabold">Programming</Text><Text display="inline"> and </Text><Text display="inline" fontWeight="extrabold">developer careers</Text><Text display="inline"> mentor </Text></Box>
+    else if (desiredCategories.includes("advance their programming skills")) return <Box><Text display="inline" fontWeight="extrabold">Programming</Text><Text display="inline"> mentor </Text></Box>
     // else if (matchedUser.user.custom_json.mentorPreferences.desiredCategories.includes("developer careers")) return "speak about developer careers"
-    else return "speak about developer careers"
+    else return <Box><Text display="inline" fontWeight="extrabold">Developer careers</Text><Text display="inline"> mentor </Text></Box>
   }
 
-  const desiredTechnologies = matchedUser.user.custom_json.mentorPreferences.desiredTechnologies;
-  const desiredCareers = matchedUser.user.custom_json.mentorPreferences.desiredCareers;
+  const desiredCategories = matchedUser.user.custom_json.menteePreferences.desiredCategories;
+  const desiredTechnologies = matchedUser.user.custom_json.menteePreferences.desiredTechnologies;
   const experiencedWithTechnologies = matchedUser.user.custom_json.experiencedWithTechnologies;
 
   // console.log(matchedUser.user.first_name, desiredTechnologies)
@@ -32,7 +32,7 @@ function MatchedUserCard({ matchedUser }: {matchedUser: {user: UserType, chatEng
         bg: "#1a202c",
       }}
       p={50}
-      maxWidth="35vw"
+      maxWidth="40vw"
       // w="full"
       alignItems="center"
       justifyContent="center"
@@ -128,7 +128,7 @@ function MatchedUserCard({ matchedUser }: {matchedUser: {user: UserType, chatEng
       <Box py={4} px={6} _dark={{
           bg: "#1a202c",
         }}>
-      <chakra.h1
+      {/* <chakra.h1
         fontSize="xl"
         fontWeight="bold"
         color="gray.800"
@@ -136,8 +136,8 @@ function MatchedUserCard({ matchedUser }: {matchedUser: {user: UserType, chatEng
           color: "white",
         }}
       >
-        {matchedUser.user.first_name} {matchedUser.user.last_name}
-      </chakra.h1>
+        {matchedUser.user.email}
+      </chakra.h1> */}
 
       <chakra.p
         py={2}
@@ -149,7 +149,20 @@ function MatchedUserCard({ matchedUser }: {matchedUser: {user: UserType, chatEng
         {matchedUser.user.custom_json.bio}
       </chakra.p>
 
-      {Boolean(experiencedWithTechnologies.length) &&
+      <Flex
+        alignItems="center"
+        mt={4}
+        color="gray.700"
+        _dark={{
+          color: "gray.200",
+        }}
+      >
+        <Icon as={FaGraduationCap} h={6} w={6} mr={2} />
+        <chakra.h3 px={2} fontSize="sm" fontWeight="hairline">
+          {preferenceGenerator()}
+        </chakra.h3>
+      </Flex>
+
       <Flex
         alignItems="center"
         mt={4}
@@ -171,8 +184,6 @@ function MatchedUserCard({ matchedUser }: {matchedUser: {user: UserType, chatEng
                 })}
         </AvatarGroup>
       </Flex>
-      }
-
 
       <Flex
         alignItems="center"
@@ -182,13 +193,21 @@ function MatchedUserCard({ matchedUser }: {matchedUser: {user: UserType, chatEng
           color: "gray.200",
         }}
       >
-        <Icon as={GoRocket} h={6} w={6} mr={2} />
+        <Icon as={GiBrain} h={6} w={6} mr={2} />
         <chakra.h3 px={2} fontSize="sm" fontWeight="hairline">
-          Wants to <Text display="inline" fontWeight="extrabold"> {preferenceGenerator()} </Text>
+          <Text display="inline" fontWeight="extrabold">Experienced with</Text>
         </chakra.h3>
+        <AvatarGroup size='sm' max={7} marginLeft='0.4rem' >
+                {experiencedWithTechnologies.map(technology => {
+                  if (typeof technology == 'string') {
+                    return <Tag>{technology}</Tag>
+                  }
+                  return <Avatar src={technology.imageSrc} bg='transparent' border='none' borderRadius='none' scale={0.7} minWidth='fit-content' />
+                })}
+        </AvatarGroup>
       </Flex>
 
-      {matchedUser.user.custom_json.mentorPreferences.desiredCategories.includes("learning how to program") &&
+      {desiredCategories.includes("learning how to program") &&
       <Flex
         alignItems="center"
         mt={4}
@@ -216,7 +235,7 @@ function MatchedUserCard({ matchedUser }: {matchedUser: {user: UserType, chatEng
       </Flex>
       }
 
-      {matchedUser.user.custom_json.mentorPreferences.desiredCategories.includes("developer careers") &&
+      {desiredCategories.includes("developer careers") &&
       <Flex
         alignItems="center"
         mt={4}
@@ -243,11 +262,11 @@ function MatchedUserCard({ matchedUser }: {matchedUser: {user: UserType, chatEng
           color: "gray.200",
         }}
       >
-        <Button leftIcon={<IoSendSharp />} colorScheme='cyan' variant='outline'>
+        {/* <Button leftIcon={<IoSendSharp />} colorScheme='cyan' variant='outline'>
           Message now
-        </Button>
+        </Button> */}
         <Button leftIcon={<IoAddSharp />} colorScheme='cyan' variant='outline'>
-          Add mentee
+          Add mentor
         </Button>
       </Flex>
     </Box>
