@@ -160,7 +160,7 @@ function CompleteProfile() {
   if (status == 'authenticated') {
     return (
       <div className="profile-main-container flex-column outline align-center" >
-        <Navbar progressValue={0} />
+        <Navbar progressValue={0} prevValue={0} />
         <div className="profile-title-button-container align-center">
           <Typewriter
             options={{ delay: 5, cursor: "" }}
@@ -291,8 +291,8 @@ function CompleteProfile() {
                   <div>
                     <AvatarGroup size='md' max={4} marginRight='2rem' >
                       {menteePreferences.desiredTechnologies.map(technology => {
-                        if (typeof technology == 'string') {
-                          return <Tag>{technology}</Tag>
+                        if (technology.imageSrc === '') {
+                          return <Tag>{technology.name}</Tag>
                         }
                         return <Avatar src={technology.imageSrc} bg='transparent' border='none' borderRadius='none' scale={0.7} minWidth='fit-content' />
                       })}
@@ -332,7 +332,7 @@ function CompleteProfile() {
   } else {
     return (
       <div className="container flex-column outline align-center" >
-        <Navbar progressValue={0} />
+        <Navbar progressValue={0} prevValue={0} />
         <div className="flex-column gap-2r m-top-auto m-bottom-auto">
           <div className="profile-container flex-column align-center justify-center">
             <Box padding='6' boxShadow='lg' bg='white' width={'25rem'} height={'25rem'}>
