@@ -29,7 +29,6 @@ class ChatEngineApi {
 
   static async getChatEngineUser({username, secret}: {username: string, secret: string}) {
     try {
-
       const res = await fetch(`${this.CHAT_ENGINE_URL}users/`, {
         method: 'PUT',
         headers : {
