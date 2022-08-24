@@ -28,7 +28,7 @@ function ExperiencedTechnologies() {
     const imgData = logos.find((techData) => techData[0] === technology)![1]
     const valueObj = {
       name: technology,
-      imageSrc: imgData.src
+      imageSrc: imgData
     }
     dispatch(toggleExperiencedWithTechnologies(valueObj));
   }
@@ -59,7 +59,7 @@ function ExperiencedTechnologies() {
 
         <div className={styles.logoContainer}>
           {logos.map(technology =>
-            <TechLogo key={technology[0]} imgSrc={technology[1].src} value={technology} onClick={handleButtonClick} toLearn={false} />)}
+            <TechLogo key={technology[0]} imgSrc={technology[1]} value={technology} onClick={handleButtonClick} toLearn={false} />)}
         </div>
 
       </div>

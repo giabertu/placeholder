@@ -7,17 +7,25 @@ import { UserType } from "../../lib/models/User";
 
 import { GetServerSideProps } from "next";
 import ProfileNotEditable from "../../components/ProfileNotEditable"
+import ChatEngineApi from '../../services/ChatEngineApi';
+import { ChatEngineUser } from '../../lib/models/User';
 
 export const getServerSideProps: GetServerSideProps = async () => {
   const matches = await UserApi.getAllUsers();
+  const matchedUsersInfo = await Promise.all(matches.map(async (match) => {
+    return {
+      user: match,
+      chatEnginerUser: await ChatEngineApi.getChatEngineUser({ username: match.username, secret: match.secret })
+    }
+  }));
   return {
     props: {
-      matches
+      matchedUsersInfo
     }
   };
 }
 
-function Matches({matches}: {matches: UserType[]}) {
+function Matches({matchedUsersInfo}: {matchedUsersInfo: {user: UserType, chatEnginerUser: ChatEngineUser}[]}) {
   // console.log("yooooooooooooo:", matches);
 
   // const [matches, setMatches] = useState<UserType[]>(users);
@@ -34,16 +42,16 @@ function Matches({matches}: {matches: UserType[]}) {
   return (
     <div className='carousel-container'>
       <Navbar />
-      <h1 className='carousel-title'>{matches.length}</h1>
+      {/* <h1 className='carousel-title'>{matches.length}</h1> */}
       <Splide hasTrack={ false } aria-label="..." options={{
         // width: "80vw",
         // fixedWidth: "70vw",
       }}>
         <div className="custom-wrapper">
           <SplideTrack>
-          {matches.map((match) => (
-            <SplideSlide key={match._id} style={{display: "flex", justifyContent: "center"}}>
-              <ProfileNotEditable user={match}/>
+          {matchedUsersInfo.map((matchedUserInfo) => (
+            <SplideSlide key={matchedUserInfo.user._id} style={{display: "flex", justifyContent: "center"}}>
+              <ProfileNotEditable user={matchedUserInfo.user} chatEngineUser={matchedUserInfo.chatEnginerUser}/>
               {/* <h1>hello</h1> */}
             </SplideSlide>
           ))};
