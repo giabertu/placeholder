@@ -32,7 +32,7 @@ function WhichTechnologies() {
     const imgData = logos.find((techData) => techData[0] === technology)![1]
     const valueObj = {
       name: technology,
-      imageSrc: imgData.src
+      imageSrc: imgData
     }
     dispatch(toggleDesiredTechnologies(valueObj));
   }
@@ -65,7 +65,7 @@ function WhichTechnologies() {
 
         <div className={styles.logoContainer}>
           {logos.map(technology =>
-            <TechLogo key={technology[0]} imgSrc={technology[1].src} value={technology} onClick={handleButtonClick} toLearn={true} />)}
+            <TechLogo key={technology[0]} imgSrc={technology[1]} value={technology} onClick={handleButtonClick} toLearn={true} />)}
         </div>
 
       </div>

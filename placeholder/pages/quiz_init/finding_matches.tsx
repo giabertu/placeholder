@@ -21,7 +21,7 @@ function FindingMatches () {
       function increment() {
         setProgressValue((prev) => prev + 0.1923076923
         );
-      };
+    };
 
       const increaseProgress = setInterval(increment, 12.5);
 
