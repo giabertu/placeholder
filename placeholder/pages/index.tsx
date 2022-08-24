@@ -8,8 +8,6 @@ import { useRouter } from 'next/router'
 import { useSession, signIn, signOut } from 'next-auth/react'
 import { Avatar } from '@chakra-ui/avatar';
 import { Canvas } from '@react-three/fiber';
-import Workbench from '../components/models/Workbench'
-import ComputerTerminal from '../components/models/ComputerTerminal'
 import { OrbitControls, PresentationControls, TransformControls } from '@react-three/drei';
 import { RetroWindows } from '../components/models/RetroWindows'
 
@@ -65,9 +63,9 @@ const Home: NextPage = () => {
         setExtraTerminalLines([...extraTerminalLines, "enter email"]);
       }
       else if (inputElementRef.current.value === 'git init') {
-        signIn('github', { callbackUrl: '/dashboard/profile' })
+        signIn('github', { callbackUrl: '/dashboard' })
       } else if (inputElementRef.current.value === 'google init') {
-        signIn('google', { callbackUrl: '/' })
+        signIn('google', { callbackUrl: '/dashboard' })
       }
       else if (enteringEmail) {
         signIn('email', { redirect: false, email: inputElementRef.current.value, callbackUrl: '/' })
