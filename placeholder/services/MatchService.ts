@@ -1,3 +1,5 @@
+
+import { Types } from "mongoose";
 import { User, UserType } from "../lib/models/User";
 import UserApi from "./UserApi";
 
@@ -91,7 +93,7 @@ export default class MatchService {
     }
   }
 
-  static async getFirstNMentors(userToMatch: UserType, nOfMentors = 3) {
+  static async getFirstNMentors(userToMatch: UserType, nOfMentors = 3): Promise<(Types.ObjectId | undefined)[]> {
     const mentorScores = await MatchService.findMentors(userToMatch);
     if (mentorScores.length) {
       const mentorsWanted = mentorScores.slice(0, nOfMentors)

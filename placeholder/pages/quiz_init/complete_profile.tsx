@@ -16,6 +16,7 @@ import { changeDeveloperField, changeLevel, changePurpose, setExpriencedWithTech
 import Axios from "axios";
 import ChatEngineApi from "../../services/ChatEngineApi";
 import Link from "next/link";
+import MatchService from "../../services/MatchService";
 
 const styleObject = { verticalAlign: 'middle', marginBottom: '3px' }
 
@@ -102,7 +103,7 @@ function CompleteProfile() {
     shouldUpdateProfile() && setShowRequired(false)
   }
 
-  function getCurrentUserState() {
+  async function getCurrentUserState() {
     if (session && session.user && session.user.email) {
       const user: UserType = {
         username: name.toLowerCase().replace(/\s/g, '_'),
@@ -126,8 +127,9 @@ function CompleteProfile() {
       }
 
       //Call MatchService.findMentors()
-
+      user.custom_json.mentors = await MatchService.getFirstNMentors(user, 5);
       //Call MatchService.findMentees()
+      user.custom_json.mentees = [];
 
       //Return user
       return user
@@ -140,7 +142,7 @@ function CompleteProfile() {
 
   async function handleSave() {
     if (shouldUpdateProfile()) {
-      const user = getCurrentUserState();
+      const user = await getCurrentUserState();
       if (user) {
         setShowRequired(false);
         const userBeforeUpdate = await UserApi.updateUserProfile(user)
