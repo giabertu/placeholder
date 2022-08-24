@@ -1,7 +1,9 @@
 
 import { color, useColorMode } from '@chakra-ui/react';
 
-import { MultiChatWindow, useMultiChatLogic, MultiChatSocket, ChatCard, ChatCardProps } from 'react-chat-engine-advanced'
+
+import {MultiChatWindow, useMultiChatLogic, MultiChatSocket, ChatCard, ChatCardProps, ChatHeaderProps} from 'react-chat-engine-advanced'
+
 import Navbar from '../../components/Navbar';
 import styles from '../../styles/chat.module.css'
 import { current } from '@reduxjs/toolkit';
@@ -13,6 +15,8 @@ import { UserType } from '../../lib/models/User';
 import UserApi from '../../services/UserApi';
 import { authOptions } from '../api/auth/[...nextauth]';
 import CustomChatCard from '../../components/ChatCard';
+import UserSearch from '../../components/UserSearch';
+import ChatHeader from '../../components/ChatHeader'
 
 
 const projectId: string = 'd6620cc4-d139-4ed9-85f7-cea40cd73c40'
@@ -40,35 +44,56 @@ function Chat({ currentUser, allUsers }: { allUsers: UserType[], currentUser: Us
     <div className={styles.container}>
       <Navbar progressValue={0} />
 
-      <div className={styles.chatContainer}>
-        <MultiChatSocket {...chatProps} />
-        <MultiChatWindow {...chatProps}
 
-          style={{
-            height: '80vh',
-            width: '80vw',
-            fontFamily: 'monospace',
-            boxShadow: '0 5px 15px rgba(0, 0, 0, 0.19)'
-            // boxShadow: '0 10px 40px 0 rgba(0,0,0,.2)'
+    <div className={styles.chatContainer} >
+    <MultiChatSocket {...chatProps} />
+      <MultiChatWindow {...chatProps}
 
-          }}
+      style={{
+        height: '80vh',
+        width: '80vw',
+        fontFamily: 'monospace',
+        boxShadow: '0 5px 15px rgba(0, 0, 0, 0.19)'
+        // boxShadow: '0 10px 40px 0 rgba(0,0,0,.2)'
 
-          renderChatCard={(props: ChatCardProps) => (
-            <CustomChatCard
-              {...props}
-              username={chatProps.username}
-              allUsers={allUsers}
-              onChatCardClick={chatProps.onChatCardClick}
-              isActive={
-                props.chat !== undefined &&
-                chatProps.activeChatId === props.chat.id
-              }
-              chat={props.chat}
-            />
-          )}
+      }}
 
+
+      renderChatForm={() => (
+        <UserSearch
+          username={chatProps.username}
+          secret={chatProps.secret}
+          onSelect={(chatId: number) =>
+            chatProps.onChatCardClick(chatId)
+          }
+        />
+      )}
+
+      renderChatCard={(props: ChatCardProps) => (
+        <CustomChatCard 
+        {...props}
+        allUsers={allUsers}
+        username={chatProps.username} 
+        onChatCardClick={chatProps.onChatCardClick}
+        isActive={
+          props.chat !== undefined &&
+          chatProps.activeChatId === props.chat.id
+        }
+        chat={props.chat}
+        />
+      )}
+
+      renderChatHeader={(props: ChatHeaderProps) => (
+        <ChatHeader
+          {...props}
+          chat={chatProps.chat}
+          username={chatProps.username}
+          secret={chatProps.secret}
+        />
+      )}
 
         />
+
 
       </div>
     </div>
