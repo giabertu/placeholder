@@ -11,6 +11,7 @@ import { unstable_getServerSession } from 'next-auth';
 import UserApi from '../../services/UserApi';
 import { authOptions } from '../api/auth/[...nextauth]';
 import { UserType } from '../../lib/models/User';
+import { useAppSelector } from '../../redux/hooks';
 
 
 
@@ -22,10 +23,13 @@ function FindingMatches({ user }: { user: UserType }) {
   const [showProgressbar, setShowProgressbar] = useState(false);
   const router = useRouter();
 
+  const userPurpose = useAppSelector((state) => state.userInfo.purpose);
+  const nextPage = userPurpose === "be mentored" ? "mentor_matches" : "mentee_matches";
+
   console.log(progressValue)
   useEffect(() => {
 
-    router.prefetch("/quiz_init/matches");
+    router.prefetch(nextPage);
 
     setTimeout(() => {
       function increment() {
@@ -55,7 +59,7 @@ function FindingMatches({ user }: { user: UserType }) {
 
     setTimeout(() => {
       console.log("hello")
-      router.push({ pathname: "/quiz_init/matches", query: { user: JSON.stringify(user) } }, "/quiz_init/matches")
+      router.push({ pathname: nextPage, query: { user: JSON.stringify(user) } }, nextPage)
     }, 10000)
 
   }, []);

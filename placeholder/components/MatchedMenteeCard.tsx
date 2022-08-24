@@ -8,16 +8,20 @@ import { IoSendSharp, IoAddSharp } from "react-icons/io5"
 import { ImBubbles3 } from "react-icons/im"
 import { ChatEngineUser, User, UserType } from '../lib/models/User';
 import ChatEngineApi from '../services/ChatEngineApi';
+import { useAppDispatch } from '../redux/hooks';
+import { addMenteeId } from '../redux/slices/menteeIdsSlice';
 
 
 
 function MatchedUserCard({ matchedUser, ownUser }: { matchedUser: { user: UserType, chatEngineUser: ChatEngineUser }, ownUser: { username: string | undefined, secret: string | undefined } }) {
 
+  const dispatch = useAppDispatch();
+
   async function handleAddMentee() {
     if (ownUser.username && ownUser.secret) {
-
       const result = await ChatEngineApi.getOrCreateChat(ownUser.username, ownUser.secret, matchedUser.chatEngineUser.username)
       console.log('Here is the result from getOrCreateChat: ', result)
+      matchedUser.user._id && dispatch(addMenteeId(matchedUser.user._id))
       return true;
     }
     console.log('username and/or secret undefined')
@@ -45,7 +49,7 @@ function MatchedUserCard({ matchedUser, ownUser }: { matchedUser: { user: UserTy
         bg: "#1a202c",
       }}
       p={50}
-      maxWidth="40vw"
+      maxWidth="41vw"
       // w="full"
       alignItems="center"
       justifyContent="center"
