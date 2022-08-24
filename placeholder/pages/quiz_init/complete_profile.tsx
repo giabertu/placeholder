@@ -15,6 +15,7 @@ import { setMenteeDesiredCategories, setMenteeDesiredTechnologies } from "../../
 import { changeDeveloperField, changeLevel, changePurpose, setExpriencedWithTechnologies } from "../../redux/slices/userInfoSlice";
 import Axios from "axios";
 import ChatEngineApi from "../../services/ChatEngineApi";
+import Link from "next/link";
 
 const styleObject = { verticalAlign: 'middle', marginBottom: '3px' }
 
@@ -103,6 +104,7 @@ function CompleteProfile() {
 
   function getCurrentUserState() {
     if (session && session.user && session.user.email) {
+
 
       const user: UserType = {
         username: name.toLowerCase().replace(/\s/g, '_'),
@@ -309,8 +311,9 @@ function CompleteProfile() {
               </>
             }
           </div>
-
-          <button className="button-style profile-find-matches" onClick={handleSave} >&gt; Save and Find matches</button>
+          <Link href={'/quiz_init/finding_matches'}>
+            <button className="button-style profile-find-matches" onClick={handleSave} >&gt; Save and Find matches</button>
+          </Link>
         </div>
       </div >
     )

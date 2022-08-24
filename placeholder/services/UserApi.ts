@@ -9,10 +9,6 @@ export default class UserApi {
   constructor() {}
   
 
-  static async getUserProfile(email: string) {
-
-  }
-
   static async updateUserProfile(user: UserType) {
     const response = await fetch(this.USER_ENDPOINT, {
       method: 'PUT',
@@ -63,9 +59,7 @@ export default class UserApi {
     return await response.json()
   }
 
-  static async getChatEngineUser({username, secret}: {username: string, secret: string}) {
-    
-  }
+
 
   static async getAllUsers() {
     const users = await fetch(`${process.env.SERVER}${this.USERS_ENDPOINT}`)
