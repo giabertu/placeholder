@@ -318,9 +318,9 @@ function CompleteProfile() {
               </>
             }
           </div>
-          <Link href={'/quiz_init/finding_matches'}>
-            <button className="button-style profile-find-matches" onClick={handleSave} >&gt; Save and Find matches</button>
-          </Link>
+          {/* <Link href={'/quiz_init/finding_matches'}> */}
+          <button className="button-style profile-find-matches" onClick={handleSave} >&gt; Save and Find matches</button>
+          {/* </Link> */}
         </div>
       </div >
     )
