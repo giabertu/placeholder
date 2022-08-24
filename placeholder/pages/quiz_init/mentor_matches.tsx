@@ -104,7 +104,13 @@ function Matches({ matchedUsersInfo }: { matchedUsersInfo: { user: UserType, cha
         </div>
       </Splide>
 
-      <MatchesNavigationButton href="dashboard" text="Go to your dashboard" />
+      {user?.custom_json.level === 'beginner' &&
+        <MatchesNavigationButton href="../dashboard" text="Go to your dashboard" />
+      }
+      {user?.custom_json.purpose === 'both mentor and be mentored' &&
+        <MatchesNavigationButton href='/mentee_matches' text='Show matched mentees' />
+
+      }
 
     </div>
   )
