@@ -4,7 +4,7 @@ import {
   PersonObject,
   Avatar,
 } from "react-chat-engine-advanced";
-import axios from "axios";
+import styles from '../styles/chat.module.css'
 
 interface CustomChatHeaderProps extends ChatHeaderProps {
   chat?: ChatObject;
@@ -27,21 +27,21 @@ const ChatHeader = (props: CustomChatHeaderProps) => {
     props.chat && getOtherUser(props.chat, props.username);
 
     return (
-      <div className="ce-custom-chat-header">
+      <div className={styles.header}>
       {otherMember && (
         <div>
           <Avatar
-            className="ce-custom-header-avatar"
+            className={styles.headerAvatar}
             avatarUrl={otherMember?.avatar}
             username={otherMember?.username}
             isOnline={otherMember?.is_online}
           />
 
-          <div className="ce-custom-header-text">
-            <div className="ce-custom-header-title">
+          <div className={styles.headerText}>
+            <div className={styles.title}>
               {otherMember.first_name} {otherMember.last_name}
             </div>
-            <div className="ce-custom-header-subtitle">
+            <div className={styles.title}>
               {otherMember.is_online ? "Online" : "Offline"}
             </div>
           </div>

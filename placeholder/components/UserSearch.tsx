@@ -1,7 +1,7 @@
 import { AutoComplete, Input } from "antd";
 import type { SelectProps } from "antd/es/select";
 import axios from "axios";
-import { useEffect, useRef, useState } from "react";
+import { SetStateAction, useEffect, useRef, useState } from "react";
 import { PersonObject, Avatar } from "react-chat-engine-advanced";
 import styles from '../styles/chat.module.css'
 
@@ -67,7 +67,7 @@ function UserSearch(props: CustomChatFormProps) {
   };
 
   const onSelect = (value: string) => {
-    setLoading(true);
+    // setLoading(true);
 
     const headers = {
       "Project-ID": 'd6620cc4-d139-4ed9-85f7-cea40cd73c40',
@@ -81,10 +81,10 @@ function UserSearch(props: CustomChatFormProps) {
       .put("https://api.chatengine.io/chats/", data, { headers })
       .then((r) => {
         props.onSelect(r.data.id);
-        setLoading(false);
+        // setLoading(false);
         setQuery("");
       })
-      .catch(() => setLoading(false));
+      .catch();
   };
 
 
@@ -94,6 +94,7 @@ return (
       dropdownMatchSelectWidth={280}
       className={styles.autocomplete}
       dropdownClassName={styles.dropdown}
+      
     
       options={options}
       onSelect={onSelect}
@@ -104,7 +105,8 @@ return (
         size="large"
         placeholder="Chats"
         enterButton
-        loading={loading}
+
+        // loading={loading}
         className={styles.inputSearch}
         
           
