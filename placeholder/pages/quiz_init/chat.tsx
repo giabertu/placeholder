@@ -1,4 +1,4 @@
-import {MultiChatWindow, useMultiChatLogic, MultiChatSocket, ChatCardProps, ChatHeaderProps} from 'react-chat-engine-advanced'
+import {MultiChatWindow, useMultiChatLogic, MultiChatSocket, ChatCardProps, ChatHeaderProps, PeopleSettings} from 'react-chat-engine-advanced'
 
 import Navbar from '../../components/Navbar';
 import styles from '../../styles/chat.module.css'
@@ -18,8 +18,6 @@ import MatchesList from '../../components/ChatForm';
 
 
 const projectId: string = 'd6620cc4-d139-4ed9-85f7-cea40cd73c40'
-// const username: string = 'calpisching'
-// const password: string = 'poiuyt321'
 
 
 
@@ -56,17 +54,6 @@ function Chat({ currentUser, allUsers }: { allUsers: UserType[], currentUser: Us
 
       }}
 
-
-      // renderChatForm={() => (
-      //   <UserSearch
-      //     username={chatProps.username}
-      //     secret={chatProps.secret}
-      //     onSelect={(chatId: number) =>
-      //       chatProps.onChatCardClick(chatId)
-      //     }
-      //   />
-      // )}
-
       renderChatForm={() => (
         <MatchesList />
       )}
@@ -93,6 +80,10 @@ function Chat({ currentUser, allUsers }: { allUsers: UserType[], currentUser: Us
           username={chatProps.username}
           secret={chatProps.secret}
         />
+      )}
+
+      renderPeopleSettings={() => (
+        <div></div>
       )}
 
         />
