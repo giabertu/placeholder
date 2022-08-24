@@ -1,7 +1,3 @@
-
-import { color, useColorMode } from '@chakra-ui/react';
-
-
 import {MultiChatWindow, useMultiChatLogic, MultiChatSocket, ChatCard, ChatCardProps, ChatHeaderProps} from 'react-chat-engine-advanced'
 
 import Navbar from '../../components/Navbar';

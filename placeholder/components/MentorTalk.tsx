@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useColorMode } from '@chakra-ui/react'
+
 
 
 import { useAppDispatch, useAppSelector } from '../redux/hooks';
@@ -14,8 +14,7 @@ function MentorTalk({ choices, descriptions }: { choices: string[], descriptions
   const mentorChoices = useAppSelector((state) => state.mentorPreferences.desiredCategories);
 
   const [currentSelection, setCurrentSelection] = useState<number | null>(null)
-  const { colorMode } = useColorMode();
-  const isDark = colorMode === 'dark';
+  const isDark = useAppSelector(state => state.darkMode)
 
   function handleButtonClick(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
     const eventButton = event.target as HTMLButtonElement;

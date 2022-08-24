@@ -1,4 +1,4 @@
-import { useColorMode } from '@chakra-ui/react';
+
 import React, {useState} from 'react'
 import Navbar from '../../../components/Navbar';
 import QuizNavigationButtons from '../../../components/QuizNavigationButtons';
@@ -13,8 +13,7 @@ export default function Purpose() {
   const dispatch = useAppDispatch();
   const selectedPurpose = useAppSelector((state) => state.userInfo.purpose)
 
-  const {colorMode } = useColorMode();
-  const isDark = colorMode === 'dark';
+  
 
   function handlePurpose(event: React.MouseEvent<HTMLButtonElement>) {
     event.preventDefault();
@@ -27,7 +26,7 @@ export default function Purpose() {
   <div className="container flex-column">
     <Navbar progressValue={45}/>
     <PurposeForm choices={purposeChoices} />
-    <QuizNavigationButtons back='quiz_init/int_adv/experienced_technologies' next={`quiz_init/int_adv/${subroute}`} canProceed={Boolean(selectedPurpose)}/>
+    <QuizNavigationButtons next={`quiz_init/int_adv/${subroute}`} canProceed={Boolean(selectedPurpose)}/>
   </ div>
   )
 }
