@@ -22,3 +22,9 @@
   height: 300px;
   justify-self: center;
 }
+
+.matches-navigation-button-container {
+  position: fixed;
+  right: 60px;
+  bottom: 20px;
+}

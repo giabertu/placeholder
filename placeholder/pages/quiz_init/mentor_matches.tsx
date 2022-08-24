@@ -7,12 +7,11 @@ import { UserType } from "../../lib/models/User";
 import { useRouter } from 'next/router';
 
 import { GetServerSideProps } from "next";
-import ProfileNotEditable from "../../components/ProfileNotEditable"
 import ChatEngineApi from '../../services/ChatEngineApi';
 import { ChatEngineUser } from '../../lib/models/User';
-import MatchedMenteeCard from '../../components/MatchedMenteeCard';
 import MatchedMentorCard from '../../components/MatchedMentorCard';
 import Typewriter from 'typewriter-effect';
+import MatchesNavigationButton from '../../components/MatchesNavigationButton';
 import { Types } from 'mongoose';
 
 export const getServerSideProps: GetServerSideProps = async () => {
@@ -86,6 +85,9 @@ function Matches({ matchedUsersInfo }: { matchedUsersInfo: { user: UserType, cha
 
         </div>
       </Splide>
+
+      <MatchesNavigationButton href="dashboard" text="Go to your dashboard" />
+
     </div>
   )
 }
