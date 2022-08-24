@@ -53,7 +53,7 @@ function Matches({matchedUsersInfo}: {matchedUsersInfo: {user: UserType, chatEng
         // fixedWidth: "70vw",
       }}>
         <div className="custom-wrapper">
-          <SplideTrack>
+          <SplideTrack >
           {matchedUsersInfo.map((matchedUserInfo) => (
             <SplideSlide key={matchedUserInfo.user.email} style={{display: "flex", justifyContent: "center"}}>
               {/* <MatchedMenteeCard matchedUser={matchedUserInfo}/> */}
