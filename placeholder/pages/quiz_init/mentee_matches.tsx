@@ -6,12 +6,13 @@ import UserApi from '../../services/UserApi';
 import { UserType } from "../../lib/models/User";
 
 import { GetServerSideProps } from "next";
-import ProfileNotEditable from "../../components/ProfileNotEditable"
 import ChatEngineApi from '../../services/ChatEngineApi';
 import { ChatEngineUser } from '../../lib/models/User';
 import MatchedMenteeCard from '../../components/MatchedMenteeCard';
-import MatchedMentorCard from '../../components/MatchedMentorCard';
+import MatchesNavigationButton from '../../components/MatchesNavigationButton';
 import Typewriter from 'typewriter-effect';
+import { useAppSelector } from '../../redux/hooks';
+import Link from 'next/link';
 
 export const getServerSideProps: GetServerSideProps = async () => {
   const matches = await UserApi.getAllUsers();
@@ -29,8 +30,9 @@ export const getServerSideProps: GetServerSideProps = async () => {
 }
 
 function Matches({matchedUsersInfo}: {matchedUsersInfo: {user: UserType, chatEngineUser: ChatEngineUser}[]}) {
-  matchedUsersInfo = matchedUsersInfo.filter((user) => user.user.custom_json.purpose === "both mentor and be mentored" || user.user.custom_json.purpose === "mentor")
-  // matchedUsersInfo = matchedUsersInfo.filter((user) => user.user.custom_json.purpose === "be mentored" || user.user.custom_json.purpose === "" || user.user.custom_json.purpose === "both mentor and be mentored")
+  // matchedUsersInfo = matchedUsersInfo.filter((user) => user.user.custom_json.purpose === "both mentor and be mentored" || user.user.custom_json.purpose === "mentor")
+  matchedUsersInfo = matchedUsersInfo.filter((user) => user.user.custom_json.purpose === "be mentored" || user.user.custom_json.purpose === "" || user.user.custom_json.purpose === "both mentor and be mentored");
+  const userPurpose = useAppSelector((state) => state.userInfo.purpose);
 
   return (
     <div className='carousel-container'>
@@ -56,8 +58,8 @@ function Matches({matchedUsersInfo}: {matchedUsersInfo: {user: UserType, chatEng
           <SplideTrack>
           {matchedUsersInfo.map((matchedUserInfo) => (
             <SplideSlide key={matchedUserInfo.user.email} style={{display: "flex", justifyContent: "center"}}>
-              {/* <MatchedMenteeCard matchedUser={matchedUserInfo}/> */}
-              <MatchedMentorCard matchedUser={matchedUserInfo}/>
+              <MatchedMenteeCard matchedUser={matchedUserInfo}/>
+              {/* <MatchedMentorCard matchedUser={matchedUserInfo}/> */}
               {/* <ProfileNotEditable user={matchedUserInfo.user} chatEngineUser={matchedUserInfo.chatEngineUser}/> */}
               {/* <h1>hello</h1> */}
             </SplideSlide>
@@ -73,6 +75,12 @@ function Matches({matchedUsersInfo}: {matchedUsersInfo: {user: UserType, chatEng
 
         </div>
       </Splide>
+
+      {userPurpose === "mentor and be mentored" ?
+          <MatchesNavigationButton href="quiz_init/mentor_matches" text="Go to your mentor matches" />
+        :
+          <MatchesNavigationButton href="dashboard" text="Go to your dashboard" />
+      }
     </div>
   )
 }

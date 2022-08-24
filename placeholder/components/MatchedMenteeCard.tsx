@@ -33,7 +33,7 @@ function MatchedUserCard({ matchedUser }: {matchedUser: {user: UserType, chatEng
         bg: "#1a202c",
       }}
       p={50}
-      maxWidth="40vw"
+      maxWidth="41vw"
       // w="full"
       alignItems="center"
       justifyContent="center"
