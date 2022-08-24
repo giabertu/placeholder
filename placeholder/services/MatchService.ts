@@ -14,15 +14,20 @@ export default class MatchService {
 
     const {mentorPreferences, purpose} = userToMatch.custom_json
     if (purpose == 'be mentored' || purpose == 'both mentor and be mentored') {
+      console.log('userToMatch wants to be mentored 🟢')
       const {desiredCareers, desiredCategories, desiredTechnologies} = mentorPreferences
       //Get all users
       const allUsers = await UserApi.getAllUsers();
+
+      console.log('These are all users: ', allUsers);
       //Remove the current user from all users and users that are not here to mentor
       const potentialMentors = allUsers.filter(user => user.secret !== userToMatch.secret && user.custom_json.purpose == 'mentor' || user.custom_json.purpose == 'both mentor and be mentored')
+      console.log('These are all users that want to mentor: ', potentialMentors)
 
       //Create array of users and scores:
       const mentorScores = potentialMentors.map(mentor => ({mentor, score: 0}))
 
+      console.log('mentoScores array created 🟢: ', mentorScores)
       /***
        *  Matching criteria: 
        * 
@@ -55,6 +60,8 @@ export default class MatchService {
         }
       })
 
+      console.log('mentorScores after categories matching: ', mentorScores)
+
       /**
        * desiredTechnologies and menteePreferences.desiredTechnologies
        */
@@ -73,6 +80,9 @@ export default class MatchService {
           //Mentor didn't specify technologies to teach
         })
       }
+
+      console.log('mentorScores after technologies matching: ', mentorScores)
+
       /**
        * desiredCareers and developerField
        */
@@ -87,16 +97,26 @@ export default class MatchService {
           })
         })
       }
+
+      console.log('mentorScores after careers matching: ', mentorScores)
+
       return mentorScores.sort((a, b) => b.score - a.score)
     } else {
+      console.log('userToMatch doesn\'t to be mentored 🔴, returning []')
     return [];
     }
   }
 
   static async getFirstNMentors(userToMatch: UserType, nOfMentors = 3): Promise<(Types.ObjectId | undefined)[]> {
     const mentorScores = await MatchService.findMentors(userToMatch);
+
+    console.log('mentorScores sorted: ', mentorScores)
+
     if (mentorScores.length) {
       const mentorsWanted = mentorScores.slice(0, nOfMentors)
+
+      console.log('mentorScores spliced with amount given ' + nOfMentors + ' : ', mentorsWanted)
+
       return mentorsWanted.map(mentor => mentor.mentor._id)
     }
     return [];

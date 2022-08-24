@@ -27,11 +27,8 @@ const userSchema = {
     mentorPreferences: {
       desiredCareers: [String],
       desiredCategories: [String],
-      desiredTechnologies: [{
-        name: String,
-        imageSrc: String
-      }]
-    },
+      desiredTechnologies: [Schema.Types.Mixed]
+      },
     menteePreferences: {
       desiredCategories: [String],
       desiredTechnologies: [{

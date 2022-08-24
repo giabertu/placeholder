@@ -1,3 +1,4 @@
+import { Types } from "mongoose";
 import { UserType } from "../lib/models/User";
 
 
@@ -18,6 +19,17 @@ export default class UserApi {
       body: JSON.stringify({user: user})
     })
     return await response.json()
+  }
+
+  static async findByIdAndRemove(id: Types.ObjectId | undefined) {
+    const response = await fetch(`${process.env.SERVER}${this.USER_ENDPOINT}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({id}),
+    }) 
+    console.log('Here is the response: ', response)
   }
 
   static async getOneUser(email: string): Promise<UserType> {
