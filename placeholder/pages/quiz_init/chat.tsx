@@ -48,7 +48,7 @@ function Chat({ currentUser, allUsers }: { allUsers: UserType[], currentUser: Us
       style={{
         height: '80vh',
         width: '80vw',
-        fontFamily: 'monospace',
+        fontFamily: 'Consolas',
         boxShadow: '0 5px 15px rgba(0, 0, 0, 0.19)'
         // boxShadow: '0 10px 40px 0 rgba(0,0,0,.2)'
 
