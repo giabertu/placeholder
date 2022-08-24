@@ -4,6 +4,7 @@
   background-color: #fff;
   z-index: 2;
   position: fixed;
+  top: 0;
   /* border-bottom: 1px #1a202c solid; */
 }
 
@@ -13,6 +14,7 @@
   position: fixed;
   display: flex;
   flex-direction: column;
+  top: 0;
 }
 
 .container {

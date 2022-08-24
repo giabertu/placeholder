@@ -1,19 +1,29 @@
-import { Avatar, AvatarBadge, Box, chakra, Flex, Icon, Image, Text } from '@chakra-ui/react';
+import { Avatar, AvatarBadge, AvatarGroup, Box, Button, chakra, Flex, Icon, Image, Tag, Text } from '@chakra-ui/react';
 import React from 'react'
-import { EmailIcon } from '@chakra-ui/icons';
+import { ArrowForwardIcon, EmailIcon } from '@chakra-ui/icons';
 import { GoRocket, GoLocation } from "react-icons/go";
 import { GiChart } from "react-icons/gi"
-import { BiCodeAlt } from "react-icons/bi"
+import { BiCodeAlt, BiQuestionMark } from "react-icons/bi"
+import { FaChalkboardTeacher } from "react-icons/fa"
+import { IoSendSharp, IoAddSharp } from "react-icons/io5"
+import { ImBubbles3 } from "react-icons/im"
 import { ChatEngineUser, User, UserType } from '../lib/models/User';
+
 
 
 function MatchedUserCard({ matchedUser }: {matchedUser: {user: UserType, chatEngineUser: ChatEngineUser}}) {
 
   const preferenceGenerator = function() {
-    if (matchedUser.user.custom_json.mentorPreferences.desiredCategories.length === 2) return " about programming and developer careers"
-    else if (matchedUser.user.custom_json.mentorPreferences.desiredCategories.includes("learning how to program")) return " how to program"
-    else return "about developer careers"
+    if (matchedUser.user.custom_json.mentorPreferences.desiredCategories.length === 2) return " learn about programming and developer careers"
+    else if (matchedUser.user.custom_json.mentorPreferences.desiredCategories.includes("learning how to program")) return " learn how to program"
+    // else if (matchedUser.user.custom_json.mentorPreferences.desiredCategories.includes("developer careers")) return "speak about developer careers"
+    else return "speak about developer careers"
   }
+
+  const desiredTechnologies = matchedUser.user.custom_json.mentorPreferences.desiredTechnologies;
+  const desiredCareers = matchedUser.user.custom_json.mentorPreferences.desiredCareers;
+
+  // console.log(matchedUser.user.first_name, desiredTechnologies)
 
   return (
     <Flex
@@ -22,19 +32,22 @@ function MatchedUserCard({ matchedUser }: {matchedUser: {user: UserType, chatEng
         bg: "#1a202c",
       }}
       p={50}
-      w="full"
+      maxWidth="40vw"
+      // w="full"
       alignItems="center"
       justifyContent="center"
     >
       <Box
-        border="1px white solid"
+        // border="1px white solid"
         borderRadius="md"
-        w="sm"
+        // minW={420}
+        // maxW={420}
         mx="auto"
         bg="white"
         _dark={{
           bg: "gray.800",
-          shadow: "none"
+          // shadow: "none"
+          boxShadow: "0px 0px 5px #fff"
         }}
         shadow="lg"
         // rounded="md"
@@ -53,6 +66,7 @@ function MatchedUserCard({ matchedUser }: {matchedUser: {user: UserType, chatEng
               // display="block"
               // fontWeight="bold"
               color="#1a202c"
+              marginBottom={2}
               _dark={{
                 color: "#fff",
               }}
@@ -63,22 +77,22 @@ function MatchedUserCard({ matchedUser }: {matchedUser: {user: UserType, chatEng
             <chakra.h2 fontSize="md">
                 {matchedUser.user.username}
               </chakra.h2>
-              <Icon as={GoLocation} h={4} w={4} mr={-3} />
+              <Icon as={GoLocation} h={4} w={4} mr={-2.5} />
               <chakra.h2 fontSize="md">
                 {matchedUser.user.custom_json.location[0].toUpperCase() + matchedUser.user.custom_json.location.slice(1)}
               </chakra.h2>
             </Flex>
           </Flex>
 
-          <chakra.h1 mx={3} color="white" fontWeight="bold" fontSize="lg" _dark={{
+          {/* <chakra.h1 mx={3} color="white" fontWeight="bold" fontSize="lg" _dark={{
             color: "#1a202c",
           }}>
             {matchedUser.user.custom_json.developerField}
-          </chakra.h1>
+          </chakra.h1> */}
         </Flex>
 
         {matchedUser.user.custom_json.level === "beginner" &&
-        <Flex alignItems="center" px={6} py={3} bg="gray.900" _dark={{
+        <Flex justifyContent="center" alignItems="center" px={6} py={3} bg="gray.600" _dark={{
             bg: "#fff",
           }}>
           <Icon as={GiChart} h={6} w={6} color="white" _dark={{
@@ -95,7 +109,7 @@ function MatchedUserCard({ matchedUser }: {matchedUser: {user: UserType, chatEng
         }
 
         {matchedUser.user.custom_json.level !== "beginner" &&
-        <Flex alignItems="center" px={6} py={3} bg="gray.900" _dark={{
+        <Flex justifyContent="center" alignItems="center" px={6} py={3} bg="gray.500" _dark={{
             bg: "#fff",
           }}>
           <Icon as={BiCodeAlt} h={6} w={6} color="white" _dark={{
@@ -105,7 +119,7 @@ function MatchedUserCard({ matchedUser }: {matchedUser: {user: UserType, chatEng
           <chakra.h1 mx={3} color="white" fontWeight="bold" fontSize="md" _dark={{
             color: "#1a202c",
           }}>
-            {matchedUser.user.custom_json.level} {matchedUser.user.custom_json.developerField}
+            {matchedUser.user.custom_json.level[0].toUpperCase() + matchedUser.user.custom_json.level.slice(1)} - {matchedUser.user.custom_json.developerField} developer
             {/* {matchedUser.user.custom_json.developerField} */}
           </chakra.h1>
         </Flex>
@@ -145,11 +159,11 @@ function MatchedUserCard({ matchedUser }: {matchedUser: {user: UserType, chatEng
       >
         <Icon as={GoRocket} h={6} w={6} mr={2} />
         <chakra.h3 px={2} fontSize="sm" fontWeight="hairline">
-          Wants to learn <Text display="inline" fontWeight="extrabold"> {preferenceGenerator()} </Text>
-
+          Wants to <Text display="inline" fontWeight="extrabold"> {preferenceGenerator()} </Text>
         </chakra.h3>
       </Flex>
 
+      {matchedUser.user.custom_json.mentorPreferences.desiredCategories.includes("learning how to program") &&
       <Flex
         alignItems="center"
         mt={4}
@@ -158,12 +172,26 @@ function MatchedUserCard({ matchedUser }: {matchedUser: {user: UserType, chatEng
           color: "gray.200",
         }}
       >
-        <Icon as={EmailIcon} h={6} w={6} mr={2} />
+      {desiredTechnologies.length === 0 ? <Icon as={BiQuestionMark} h={6} w={6} mr={2} /> : <Icon as={FaChalkboardTeacher} h={6} w={6} mr={2} /> }
+        <chakra.h3 px={2} fontSize="sm" fontWeight="hairline">
+          {/* The "general" string is not being successfully uploaded to the DB, so in the interim we replace checking for general with checking if length === 0 below */}
+          {/* {desiredTechnologies.includes("general") ? "Unsure of which technologies to start learning" : "Technologies of interest:"} */}
+          {desiredTechnologies.length === 0 ? <Box> <Text display="inline" fontWeight="extrabold">Unsure</Text> <Text display="inline"> of which technologies to start learning </Text> </Box>: "Technologies of interest:"}
 
-        <chakra.h1 px={2} fontSize="sm">
-          California
-        </chakra.h1>
+        </chakra.h3>
+        {desiredTechnologies.length === 0 ||
+        <AvatarGroup size='sm' max={7} marginLeft='0.4rem' >
+                {desiredTechnologies.map(technology => {
+                  if (typeof technology == 'string') {
+                    return <Tag>{technology}</Tag>
+                  }
+                  return <Avatar src={technology.imageSrc} bg='transparent' border='none' borderRadius='none' scale={0.7} minWidth='fit-content' />
+                })}
+        </AvatarGroup>}
       </Flex>
+      }
+
+      {matchedUser.user.custom_json.mentorPreferences.desiredCategories.includes("developer careers") &&
       <Flex
         alignItems="center"
         mt={4}
@@ -172,11 +200,30 @@ function MatchedUserCard({ matchedUser }: {matchedUser: {user: UserType, chatEng
           color: "gray.200",
         }}
       >
-        <Icon as={EmailIcon} h={6} w={6} mr={2} />
 
-        <chakra.h1 px={2} fontSize="sm">
-          patterson@example.com
-        </chakra.h1>
+        {desiredCareers.length === 0 ? <Icon as={BiQuestionMark} h={6} w={6} mr={2} /> : <Icon as={ImBubbles3} h={6} w={6} mr={2} /> }
+
+        <chakra.h3 px={2} fontSize="sm" fontWeight="hairline">
+          {desiredTechnologies.length === 0 ? <Box> <Text display="inline" fontWeight="extrabold">Unsure</Text><Text display="inline"> about what kind of developer they'd like to speak to</Text></Box>: "Wants to know more about " + matchedUser.user.custom_json.mentorPreferences.desiredCareers.toString() + " careers"}
+        </chakra.h3>
+      </Flex>
+      }
+
+      <Flex
+        justifyContent="center"
+        mt={6}
+        color="gray.700"
+        gap={3}
+        _dark={{
+          color: "gray.200",
+        }}
+      >
+        <Button leftIcon={<IoSendSharp />} colorScheme='cyan' variant='outline'>
+          Message now
+        </Button>
+        <Button leftIcon={<IoAddSharp />} colorScheme='cyan' variant='outline'>
+          Add mentee
+        </Button>
       </Flex>
     </Box>
   </Box>
