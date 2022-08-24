@@ -33,7 +33,7 @@ function Chat({ currentUser, allUsers }: { allUsers: UserType[], currentUser: Us
 
 
 
-  const chatProps = useMultiChatLogic(projectId, currentUser.username, currentUser.secret,)
+  const chatProps = useMultiChatLogic(projectId, currentUser.username, currentUser.secret)
 
 
   if (typeof window !== 'undefined') return (
@@ -79,6 +79,7 @@ function Chat({ currentUser, allUsers }: { allUsers: UserType[], currentUser: Us
           chat={chatProps.chat}
           username={chatProps.username}
           secret={chatProps.secret}
+          
         />
       )}
 

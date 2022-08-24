@@ -117,7 +117,7 @@
   font-family: 'Space Mono' !important;
 }
 
-.ce-avatar {
+/* .ce-avatar {
   background-color: black !important;
 
   box-shadow: rgba(211, 189, 190, 0.35) 0px 2px 7px !important;
@@ -126,7 +126,7 @@
 
 .ce-avatar-dot {
   background-color: black !important;
-}
+} */
 
 .ce-chat-card-title {
   font-family: 'monospace' !important;
@@ -210,6 +210,10 @@
   display: flex !important;
   align-items: center !important;
   flex-direction: column !important;
+}
+
+.ce-ice-breaker-gif {
+  display: none;
 }
 
 .ce-ice-breaker-text {
