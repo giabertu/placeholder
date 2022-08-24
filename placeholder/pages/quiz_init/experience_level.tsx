@@ -1,4 +1,3 @@
-import { useColorMode } from '@chakra-ui/react';
 import React, { useState } from 'react';
 import ColorModeToggle from '../../components/ColorModeToggle';
 import Navbar from '../../components/Navbar'
@@ -9,8 +8,7 @@ import { useAppSelector } from '../../redux/hooks';
 import UserLevelForm from '../../components/ExperienceLevel';
 
 function ExperienceLevel() {
-  const { colorMode } = useColorMode();
-  const isDark = colorMode === 'dark';
+  
 
   const selectedLevel = useAppSelector((state) => state.userInfo.level);
 

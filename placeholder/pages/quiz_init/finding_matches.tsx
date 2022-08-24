@@ -47,7 +47,7 @@ function FindingMatches () {
 
   return (
     <div className={styles.container}>
-      <Navbar />
+      <Navbar progressValue={0}/>
       <div className={styles.formContainer}>
         <Typewriter
           options={{

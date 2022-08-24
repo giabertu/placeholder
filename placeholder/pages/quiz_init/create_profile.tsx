@@ -8,7 +8,7 @@ import Typewriter from 'typewriter-effect';
 import { GithubFilled, GoogleOutlined, MailOutlined } from '@ant-design/icons'
 
 import { useAppSelector } from "../../redux/hooks";
-import { Input, InputGroup, useColorMode } from "@chakra-ui/react";
+import { Input, InputGroup } from "@chakra-ui/react";
 
 const styleObject = { verticalAlign: 'middle', marginBottom: '3px' }
 
@@ -19,8 +19,7 @@ export default function CreateProfile({ providers }: { providers: Record<Literal
   console.log(providers.github)
   const [value, setValue] = useState('');
   const { mentorPreferences, userInfo, menteePreferences } = useAppSelector(state => state)
-  const { colorMode } = useColorMode();
-  const isDark = colorMode === 'dark';
+  const isDark = useAppSelector(state => state.darkMode)
 
   if (typeof window !== 'undefined') {
     localStorage.setItem('mentorPreferences', JSON.stringify(mentorPreferences));
@@ -46,7 +45,7 @@ export default function CreateProfile({ providers }: { providers: Record<Literal
             if (provider.name !== 'Email') {
               return <div key={provider.name}>
                 <button
-                  className="button-style flex-row align-center"
+                  className={isDark ? "button-style-dark flex-row align-center" : "button-style flex-row align-center"}
                   onClick={() => signIn(provider.id, { callbackUrl: '/quiz_init/complete_profile' })}>
                   <span>&gt; Sign in with </span>&nbsp;{provider.name == 'GitHub' ? <GithubFilled style={styleObject} /> : <GoogleOutlined style={styleObject} />}&nbsp;{provider.name}
                 </button>
@@ -62,7 +61,9 @@ export default function CreateProfile({ providers }: { providers: Record<Literal
                 <InputGroup>
                   <Input
                     placeholder='Type in email...'
-                    color={isDark ? 'gray.300' : 'gray.500'}
+                    _placeholder={{ color: isDark ? 'gray.300' : 'gray.500'}}
+                    borderColor={isDark ? 'gray.300' : 'gray.500'}
+                    marginBottom='0.5rem'
                     value={value}
                     onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                       console.log(e.target.value)
@@ -70,7 +71,7 @@ export default function CreateProfile({ providers }: { providers: Record<Literal
                     }} />
                 </InputGroup>
                 <button
-                  className="button-style"
+                  className={isDark ? "button-style-dark " : "button-style "}
                   onClick={() => {
                     console.log('Button onClick', value);
                     signIn('email', { redirect: false, email: value, callbackUrl: '/quiz_init/complete_profile' })

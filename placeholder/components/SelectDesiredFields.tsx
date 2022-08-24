@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useColorMode } from '@chakra-ui/react'
+
 
 import { useAppDispatch, useAppSelector } from '../redux/hooks';
 import { changeDesiredCareers } from '../redux/slices/mentorPreferencesSlice';
@@ -29,8 +29,7 @@ function Roles({ choices, beginner }: { choices: string[], beginner: boolean }) 
     return <h1 className="title"> &#62; I'd like to get career advice from a {JSON.stringify(selectedFields).replaceAll(",", ", ")} developer.</h1>
   }
 
-  const { colorMode } = useColorMode();
-  const isDark = colorMode === 'dark';
+  const isDark = useAppSelector(state => state.darkMode)
 
   function handleButtonClick(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
     dispatch(changeDesiredCareers(event.currentTarget.value));

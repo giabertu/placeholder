@@ -1,4 +1,4 @@
-import { useColorMode } from '@chakra-ui/react'
+
 import { useAppDispatch, useAppSelector } from '../redux/hooks';
 import { changePurpose } from '../redux/slices/userInfoSlice';
 import QuestionnaireButton2 from './QuestionnaireButton2';
@@ -8,8 +8,7 @@ function Purpose({ choices }: { choices: string[] }) {
   const dispatch = useAppDispatch();
   const selectedPurpose = useAppSelector((state) => state.userInfo.purpose);
 
-  const { colorMode } = useColorMode();
-  const isDark = colorMode === 'dark';
+  const isDark = useAppSelector(state => state.darkMode)
 
   function handleButtonClick(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
     const eventButton = event.target as HTMLButtonElement;

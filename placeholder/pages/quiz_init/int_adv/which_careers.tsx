@@ -3,7 +3,7 @@ import Navbar from "../../../components/Navbar";
 import { rolesChoices } from '../../../utils/constants'
 import SelectDesiredFieldsForm from "../../../components/SelectDesiredFields";
 import { useAppSelector } from "../../../redux/hooks";
-import { useColorMode } from "@chakra-ui/react";
+
 
 function WhichCareers() {
 
@@ -11,8 +11,7 @@ function WhichCareers() {
   const mentorChoices = useAppSelector((state) => state.mentorPreferences.desiredCategories);
   const route = mentorChoices.includes("expanding my programming skillset") ? "quiz_init/int_adv/which_technologies" : "quiz_init/int_adv/mentor_talk";
 
-  const {colorMode } = useColorMode();
-  const isDark = colorMode === 'dark';
+  
 
   return (
     <div className="container">

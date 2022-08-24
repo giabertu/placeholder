@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useSession } from "next-auth/react";
-import { CloudUploadOutline } from 'react-ionicons'
+import { CloudUploadOutlined } from '@ant-design/icons'
 import { Avatar } from "@chakra-ui/avatar";
 import { AvatarGroup, Box, Divider, SkeletonCircle, SkeletonText, Tag, Wrap, WrapItem } from "@chakra-ui/react";
 import Typewriter from 'typewriter-effect'
@@ -30,6 +30,7 @@ function CompleteProfile() {
   const { mentorPreferences, userInfo, menteePreferences } = useAppSelector(state => state)
   const { desiredTechnologies, desiredCareers, desiredCategories } = mentorPreferences
   const { level, developerField, purpose, experiencedWithTechnologies } = userInfo
+  const isDark = useAppSelector(state => state.darkMode)
 
 
   const dispatch = useAppDispatch();
@@ -166,7 +167,7 @@ function CompleteProfile() {
                   className="input-file"
                   hidden={true} ref={ref}
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) => uploadImage(e)}></input>
-                <CloudUploadOutline style={styleObject} /> Edit
+                <CloudUploadOutlined style={styleObject} /> Edit
               </button>
             </div>
             <Divider />
@@ -174,13 +175,13 @@ function CompleteProfile() {
               <label className="profile-input-label" >Name </label>
               <input
                 type='text' defaultValue={name}
-                className={!name && showRequired ? 'profile-input invalid' : 'profile-input'} required={true} spellCheck={false} onChange={(e) => handleInputChange(e, setName)}></input>
+                className={`${!name && showRequired ? 'profile-input-invalid' : 'profile-input'} ${isDark ? 'profile-input-dark' : 'profile-input-light'}`}  required={true} spellCheck={false} onChange={(e) => handleInputChange(e, setName)}></input>
             </div>
             <Divider />
             <div className="profile-section flex-row gap-2r align-center">
               <label className="profile-input-label">Bio </label>
               <textarea
-                className={!bio && showRequired ? 'profile-input profile-textarea invalid' : 'profile-input profile-textarea'}
+                className={`${!bio && showRequired ? 'profile-input profile-textarea invalid' : 'profile-input profile-textarea'} ${isDark ? 'profile-input-dark' : 'profile-input-light'}` }
                 rows={4.5} cols={22} required={true} placeholder={'What should people know about you?'}
                 onChange={(e) => handleInputChange(e, setBio)}></textarea>
             </div>
@@ -188,7 +189,7 @@ function CompleteProfile() {
             <div className="profile-section flex-row gap-2r align-center">
               <label className="profile-input-label">Location </label>
               <input
-                type='text' className={!location && showRequired ? 'profile-input invalid' : 'profile-input'}
+                type='text' className={`${!location && showRequired ? 'profile-input invalid' : 'profile-input'} ${isDark ? 'profile-input-dark' : 'profile-input-light'}`}
                 required={true} placeholder='' onChange={(e) => handleInputChange(e, setLocation)}></input>
             </div>
             {developerField &&
@@ -310,7 +311,7 @@ function CompleteProfile() {
             }
           </div>
 
-          <button className="button-style profile-find-matches" onClick={handleSave} >&gt; Save and Find matches</button>
+          <button className={`${"profile-find-matches"} ${isDark ? 'button-style-dark' : 'button-style'}`} onClick={handleSave} >&gt; Save and Find matches</button>
         </div>
       </div >
     )

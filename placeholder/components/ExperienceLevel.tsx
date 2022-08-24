@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../redux/hooks';
-import { useColorMode } from '@chakra-ui/react';
+
 import { changeLevel } from '../redux/slices/userInfoSlice';
 import QuestionnaireButton2 from './QuestionnaireButton2';
 
@@ -10,8 +10,7 @@ function ExperienceLevel({ choices, descriptions }: { choices: string[], descrip
   const selectedLevel = useAppSelector((state) => state.userInfo.level);
 
   const [currentSelection, setCurrentSelection] = useState<number | null>(null)
-  const { colorMode } = useColorMode();
-  const isDark = colorMode === 'dark';
+  const isDark = useAppSelector(state => state.darkMode)
 
   const [eventButton, setEventButton] = useState('');
   function handleButtonClick(event: React.MouseEvent<HTMLButtonElement, MouseEvent>) {

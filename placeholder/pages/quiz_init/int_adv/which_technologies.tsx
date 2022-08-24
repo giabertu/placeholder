@@ -8,7 +8,7 @@ import { logos } from "../../../utils/logos";
 import { useAppSelector, useAppDispatch } from '../../../redux/hooks';
 import QuestionnaireButton from '../../../components/QuestionnaireButton';
 import { toggleDesiredTechnologies } from '../../../redux/slices/mentorPreferencesSlice';
-import { Input, InputGroup, InputLeftAddon, InputLeftElement, useColorMode } from '@chakra-ui/react';
+import { Input, InputGroup, InputLeftAddon, InputLeftElement } from '@chakra-ui/react';
 import AutocompleteInput from '../../../components/AutocompleteInput';
 
 
@@ -21,8 +21,7 @@ function WhichTechnologies() {
     if (typeof techObj !== "string") return techObj.name;
   });
 
-  const { colorMode } = useColorMode();
-  const isDark = colorMode === 'dark';
+  
 
   const handleButtonClick = function (event: React.MouseEvent<HTMLButtonElement>) {
     const technology = event.currentTarget.value;

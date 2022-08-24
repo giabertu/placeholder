@@ -1,4 +1,3 @@
-import { useColorMode } from "@chakra-ui/react";
 import Navbar from "../../../components/Navbar";
 import QuizNavigationButtons from "../../../components/QuizNavigationButtons";
 import { rolesChoices } from '../../../utils/constants'
@@ -10,8 +9,7 @@ function Roles() {
 
   const selectedRole = useAppSelector((state) => state.userInfo.developerField)
 
-  const { colorMode } = useColorMode();
-  const isDark = colorMode === 'dark';
+  
 
   return (
     <div className="container flex-column">
