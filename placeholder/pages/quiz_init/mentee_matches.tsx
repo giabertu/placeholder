@@ -58,6 +58,16 @@ function Matches({ matchedUsersInfo }: { matchedUsersInfo: { user: UserType, cha
 
   const router = useRouter();
   const [user, setUser] = useState<UserType | null>(null)
+  const menteeIds = useAppSelector(state => state.menteeIds);
+
+  async function handleUpdateUserMentees() {
+    if (user) {
+      user.custom_json.mentees = menteeIds
+      const res = await UserApi.updateUserProfile(user)
+      console.log('Check that user mentees (in db) is equal to menteeIds state in redux: ', res)
+    }
+  }
+
 
   useEffect(() => {
     if (router.query.user && typeof router.query.user === 'string') {
@@ -113,9 +123,9 @@ function Matches({ matchedUsersInfo }: { matchedUsersInfo: { user: UserType, cha
       </Splide>
 
       {userPurpose === "mentor and be mentored" ?
-        <MatchesNavigationButton href="quiz_init/mentor_matches" text="Go to your mentor matches" />
+        <MatchesNavigationButton onClick={handleUpdateUserMentees} href="quiz_init/mentor_matches" text="Go to your mentor matches" />
         :
-        <MatchesNavigationButton href="../dashboard" text="Go to your dashboard" />
+        <MatchesNavigationButton onClick={handleUpdateUserMentees} href="../dashboard" text="Go to your dashboard" />
       }
     </div>
   )

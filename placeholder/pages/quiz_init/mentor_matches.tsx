@@ -15,6 +15,7 @@ import MatchesNavigationButton from '../../components/MatchesNavigationButton';
 import { Types } from 'mongoose';
 import { unstable_getServerSession } from 'next-auth';
 import { authOptions } from '../api/auth/[...nextauth]';
+import { useAppSelector } from '../../redux/hooks';
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const session = await unstable_getServerSession(context.req, context.res, authOptions)
@@ -51,6 +52,7 @@ function Matches({ matchedUsersInfo }: { matchedUsersInfo: { user: UserType, cha
 
   const router = useRouter();
   const [user, setUser] = useState<UserType | null>(null)
+  const mentorIds = useAppSelector(state => state.mentorIds)
 
   useEffect(() => {
     if (router.query.user && typeof router.query.user === 'string') {
@@ -58,6 +60,15 @@ function Matches({ matchedUsersInfo }: { matchedUsersInfo: { user: UserType, cha
       setUser(ownUser)
     }
   }, [router.query])
+
+
+  async function handleUpdateUserMentors() {
+    if (user) {
+      user.custom_json.mentors = mentorIds
+      const res = await UserApi.updateUserProfile(user)
+      console.log('Check that user mentees (in db) is equal to menteeIds state in redux: ', res)
+    }
+  }
 
   matchedUsersInfo = matchedUsersInfo.filter((user) => user.user.custom_json.purpose === "both mentor and be mentored" || user.user.custom_json.purpose === "mentor")
   // matchedUsersInfo = matchedUsersInfo.filter((user) => user.user.custom_json.purpose === "be mentored" || user.user.custom_json.purpose === "" || user.user.custom_json.purpose === "both mentor and be mentored")
@@ -105,10 +116,10 @@ function Matches({ matchedUsersInfo }: { matchedUsersInfo: { user: UserType, cha
       </Splide>
 
       {user?.custom_json.level === 'beginner' &&
-        <MatchesNavigationButton href="../dashboard" text="Go to your dashboard" />
+        <MatchesNavigationButton onClick={handleUpdateUserMentors} href="../dashboard" text="Go to your dashboard" />
       }
       {user?.custom_json.purpose === 'both mentor and be mentored' &&
-        <MatchesNavigationButton href='/mentee_matches' text='Show matched mentees' />
+        <MatchesNavigationButton onClick={handleUpdateUserMentors} href='/mentee_matches' text='Show matched mentees' />
 
       }
 
