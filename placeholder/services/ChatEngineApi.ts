@@ -45,22 +45,27 @@ class ChatEngineApi {
     return false;
   }
 
-  static async getOrCreateChat({ownUsername, ownSecret, usernameToChat}: {ownUsername: string, ownSecret: string, usernameToChat: string}) {
-    const res = await fetch(`${this.CHAT_ENGINE_URL}chats/`, {
-      method: 'PUT',
-      headers : {
-        'Content-type': 'application/json',
-        'Project-ID' : 'd6620cc4-d139-4ed9-85f7-cea40cd73c40',
-        'User-Name' : ownUsername,
-        'User-Secret' : ownSecret,
-      },
-      body: JSON.stringify({
-        usernames: [usernameToChat],
-        title: 'My Chat',
-        is_direct_chat: true
-      }) 
-    })
-    return await res.json();
+  static async getOrCreateChat(ownUsername: string, ownSecret: string, usernameToChat: string) {
+
+    if (ownUsername && ownSecret){
+
+      const res = await fetch(`${this.CHAT_ENGINE_URL}chats/`, {
+        method: 'PUT',
+        headers : {
+          'Content-type': 'application/json',
+          'Project-ID' : 'd6620cc4-d139-4ed9-85f7-cea40cd73c40',
+          'User-Name' : ownUsername,
+          'User-Secret' : ownSecret,
+        },
+        body: JSON.stringify({
+          usernames: [usernameToChat],
+          title: 'My Chat',
+          is_direct_chat: true
+        }) 
+      })
+      return await res.json();
+    }
+    return false;
   }
 }
 

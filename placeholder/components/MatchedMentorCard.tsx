@@ -1,31 +1,41 @@
-import { Avatar, AvatarBadge, AvatarGroup, Box, Button, chakra, Flex, Icon, Image, Tag, Text } from '@chakra-ui/react';
+import { Avatar, AvatarBadge, AvatarGroup, Box, Button, chakra, Flex, Icon, Tag, Text } from '@chakra-ui/react';
 import React from 'react'
-import { ArrowForwardIcon, EmailIcon } from '@chakra-ui/icons';
 import { GoRocket, GoLocation } from "react-icons/go";
-import { GiChart } from "react-icons/gi"
+import { GiBrain, GiChart } from "react-icons/gi"
 import { BiCodeAlt, BiQuestionMark } from "react-icons/bi"
-import { FaChalkboardTeacher } from "react-icons/fa"
+import { FaChalkboardTeacher, FaGraduationCap } from "react-icons/fa"
 import { IoSendSharp, IoAddSharp } from "react-icons/io5"
 import { ImBubbles3 } from "react-icons/im"
 import { ChatEngineUser, User, UserType } from '../lib/models/User';
+import ChatEngineApi from '../services/ChatEngineApi';
 
 
 
-function MatchedUserCard({ matchedUser }: { matchedUser: { user: UserType, chatEngineUser: ChatEngineUser } }) {
+function MatchedUserCard({ matchedUser, ownUser }: { matchedUser: { user: UserType, chatEngineUser: ChatEngineUser }, ownUser: { username: string | undefined, secret: string | undefined } }) {
 
-  function handleAddMentee() {
 
+  async function handleAddMentor() {
+    if (ownUser.username && ownUser.secret) {
+
+      const result = await ChatEngineApi.getOrCreateChat(ownUser.username, ownUser.secret, matchedUser.chatEngineUser.username)
+      console.log('Here is the result from getOrCreateChat: ', result)
+      return true;
+    }
+    console.log('username and/or secret undefined')
+    return false;
   }
+
 
   const preferenceGenerator = function () {
-    if (matchedUser.user.custom_json.mentorPreferences.desiredCategories.length === 2) return " learn about programming and developer careers"
-    else if (matchedUser.user.custom_json.mentorPreferences.desiredCategories.includes("learning how to program")) return " learn how to program"
+    if (desiredCategories.length === 2) return <Box><Text display="inline" fontWeight="extrabold">Programming</Text><Text display="inline"> and </Text><Text display="inline" fontWeight="extrabold">developer careers</Text><Text display="inline"> mentor </Text></Box>
+    else if (desiredCategories.includes("advance their programming skills")) return <Box><Text display="inline" fontWeight="extrabold">Programming</Text><Text display="inline"> mentor </Text></Box>
     // else if (matchedUser.user.custom_json.mentorPreferences.desiredCategories.includes("developer careers")) return "speak about developer careers"
-    else return "speak about developer careers"
+    else return <Box><Text display="inline" fontWeight="extrabold">Developer careers</Text><Text display="inline"> mentor </Text></Box>
   }
 
-  const desiredTechnologies = matchedUser.user.custom_json.mentorPreferences.desiredTechnologies;
-  const desiredCareers = matchedUser.user.custom_json.mentorPreferences.desiredCareers;
+  const desiredCategories = matchedUser.user.custom_json.menteePreferences.desiredCategories;
+  const desiredTechnologies = matchedUser.user.custom_json.menteePreferences.desiredTechnologies;
+  const experiencedWithTechnologies = matchedUser.user.custom_json.experiencedWithTechnologies;
 
   // console.log(matchedUser.user.first_name, desiredTechnologies)
 
@@ -132,16 +142,16 @@ function MatchedUserCard({ matchedUser }: { matchedUser: { user: UserType, chatE
         <Box py={4} px={6} _dark={{
           bg: "#1a202c",
         }}>
-          <chakra.h1
-            fontSize="xl"
-            fontWeight="bold"
-            color="gray.800"
-            _dark={{
-              color: "white",
-            }}
-          >
-            {matchedUser.user.first_name} {matchedUser.user.last_name}
-          </chakra.h1>
+          {/* <chakra.h1
+        fontSize="xl"
+        fontWeight="bold"
+        color="gray.800"
+        _dark={{
+          color: "white",
+        }}
+      >
+        {matchedUser.user.email}
+      </chakra.h1> */}
 
           <chakra.p
             py={2}
@@ -161,13 +171,57 @@ function MatchedUserCard({ matchedUser }: { matchedUser: { user: UserType, chatE
               color: "gray.200",
             }}
           >
-            <Icon as={GoRocket} h={6} w={6} mr={2} />
+            <Icon as={FaGraduationCap} h={6} w={6} mr={2} />
             <chakra.h3 px={2} fontSize="sm" fontWeight="hairline">
-              Wants to <Text display="inline" fontWeight="extrabold"> {preferenceGenerator()} </Text>
+              {preferenceGenerator()}
             </chakra.h3>
           </Flex>
 
-          {matchedUser.user.custom_json.mentorPreferences.desiredCategories.includes("learning how to program") &&
+          <Flex
+            alignItems="center"
+            mt={4}
+            color="gray.700"
+            _dark={{
+              color: "gray.200",
+            }}
+          >
+            <Icon as={GiBrain} h={6} w={6} mr={2} />
+            <chakra.h3 px={2} fontSize="sm" fontWeight="hairline">
+              <Text display="inline" fontWeight="extrabold">Experienced with</Text>
+            </chakra.h3>
+            <AvatarGroup size='sm' max={7} marginLeft='0.4rem' >
+              {experiencedWithTechnologies.map(technology => {
+                if (typeof technology == 'string') {
+                  return <Tag>{technology}</Tag>
+                }
+                return <Avatar src={technology.imageSrc} bg='transparent' border='none' borderRadius='none' scale={0.7} minWidth='fit-content' />
+              })}
+            </AvatarGroup>
+          </Flex>
+
+          <Flex
+            alignItems="center"
+            mt={4}
+            color="gray.700"
+            _dark={{
+              color: "gray.200",
+            }}
+          >
+            <Icon as={GiBrain} h={6} w={6} mr={2} />
+            <chakra.h3 px={2} fontSize="sm" fontWeight="hairline">
+              <Text display="inline" fontWeight="extrabold">Experienced with</Text>
+            </chakra.h3>
+            <AvatarGroup size='sm' max={7} marginLeft='0.4rem' >
+              {experiencedWithTechnologies.map(technology => {
+                if (typeof technology == 'string') {
+                  return <Tag>{technology}</Tag>
+                }
+                return <Avatar src={technology.imageSrc} bg='transparent' border='none' borderRadius='none' scale={0.7} minWidth='fit-content' />
+              })}
+            </AvatarGroup>
+          </Flex>
+
+          {desiredCategories.includes("learning how to program") &&
             <Flex
               alignItems="center"
               mt={4}
@@ -195,7 +249,7 @@ function MatchedUserCard({ matchedUser }: { matchedUser: { user: UserType, chatE
             </Flex>
           }
 
-          {matchedUser.user.custom_json.mentorPreferences.desiredCategories.includes("developer careers") &&
+          {desiredCategories.includes("developer careers") &&
             <Flex
               alignItems="center"
               mt={4}
@@ -205,7 +259,7 @@ function MatchedUserCard({ matchedUser }: { matchedUser: { user: UserType, chatE
               }}
             >
 
-              {desiredCareers.length === 0 ? <Icon as={BiQuestionMark} h={6} w={6} mr={2} /> : <Icon as={ImBubbles3} h={6} w={6} mr={2} />}
+              {/* {desiredCareers.length === 0 ? <Icon as={BiQuestionMark} h={6} w={6} mr={2} /> : <Icon as={ImBubbles3} h={6} w={6} mr={2} />} */}
 
               <chakra.h3 px={2} fontSize="sm" fontWeight="hairline">
                 {desiredTechnologies.length === 0 ? <Box> <Text display="inline" fontWeight="extrabold">Unsure</Text><Text display="inline"> about what kind of developer they'd like to speak to</Text></Box> : "Wants to know more about " + matchedUser.user.custom_json.mentorPreferences.desiredCareers.toString() + " careers"}
@@ -222,11 +276,11 @@ function MatchedUserCard({ matchedUser }: { matchedUser: { user: UserType, chatE
               color: "gray.200",
             }}
           >
-            <Button leftIcon={<IoSendSharp />} colorScheme='cyan' variant='outline'>
-              Message now
-            </Button>
-            <Button leftIcon={<IoAddSharp />} colorScheme='cyan' variant='outline' onClick={handleAddMentee}>
-              Add mentee
+            {/* <Button leftIcon={<IoSendSharp />} colorScheme='cyan' variant='outline'>
+          Message now
+        </Button> */}
+            <Button leftIcon={<IoAddSharp />} colorScheme='cyan' variant='outline' onClick={handleAddMentor}>
+              Add mentor
             </Button>
           </Flex>
         </Box>

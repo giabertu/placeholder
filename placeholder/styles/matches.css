@@ -10,7 +10,11 @@
 }
 
 .carousel-title {
-  margin-top: 400px;
+  margin-top: 7rem;
+  font-size: 1.3rem;
+  font-weight: 100;
+  margin-bottom: -4rem;
+  z-index: 1;
 }
 
 .carousel-image {
