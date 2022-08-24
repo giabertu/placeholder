@@ -59,9 +59,7 @@ export default class UserApi {
     return await response.json()
   }
 
-
-
-  static async getAllUsers() {
+  static async getAllUsers(): Promise<UserType[]> {
     const users = await fetch(`${process.env.SERVER}${this.USERS_ENDPOINT}`)
     return await users.json()
   }

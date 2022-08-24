@@ -104,8 +104,6 @@ function CompleteProfile() {
 
   function getCurrentUserState() {
     if (session && session.user && session.user.email) {
-
-
       const user: UserType = {
         username: name.toLowerCase().replace(/\s/g, '_'),
         email: session.user.email,
@@ -126,6 +124,12 @@ function CompleteProfile() {
           menteePreferences
         }
       }
+
+      //Call MatchService.findMentors()
+
+      //Call MatchService.findMentees()
+
+      //Return user
       return user
     }
   }
