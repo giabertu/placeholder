@@ -9,13 +9,14 @@ import { GetServerSideProps } from "next";
 import ProfileNotEditable from "../../components/ProfileNotEditable"
 import ChatEngineApi from '../../services/ChatEngineApi';
 import { ChatEngineUser } from '../../lib/models/User';
+import MatchedUserCard from '../../components/MatchedUserCard';
 
 export const getServerSideProps: GetServerSideProps = async () => {
   const matches = await UserApi.getAllUsers();
   const matchedUsersInfo = await Promise.all(matches.map(async (match) => {
     return {
       user: match,
-      chatEnginerUser: await ChatEngineApi.getChatEngineUser({ username: match.username, secret: match.secret })
+      chatEngineUser: await ChatEngineApi.getChatEngineUser({ username: match.username, secret: match.secret })
     }
   }));
   return {
@@ -25,7 +26,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
   };
 }
 
-function Matches({matchedUsersInfo}: {matchedUsersInfo: {user: UserType, chatEnginerUser: ChatEngineUser}[]}) {
+function Matches({matchedUsersInfo}: {matchedUsersInfo: {user: UserType, chatEngineUser: ChatEngineUser}[]}) {
   // console.log("yooooooooooooo:", matches);
 
   // const [matches, setMatches] = useState<UserType[]>(users);
@@ -51,7 +52,8 @@ function Matches({matchedUsersInfo}: {matchedUsersInfo: {user: UserType, chatEng
           <SplideTrack>
           {matchedUsersInfo.map((matchedUserInfo) => (
             <SplideSlide key={matchedUserInfo.user._id} style={{display: "flex", justifyContent: "center"}}>
-              <ProfileNotEditable user={matchedUserInfo.user} chatEngineUser={matchedUserInfo.chatEnginerUser}/>
+              <MatchedUserCard matchedUser={matchedUserInfo}/>
+              {/* <ProfileNotEditable user={matchedUserInfo.user} chatEngineUser={matchedUserInfo.chatEngineUser}/> */}
               {/* <h1>hello</h1> */}
             </SplideSlide>
           ))};
