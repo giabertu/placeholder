@@ -13,6 +13,7 @@ import { ChatEngineUser } from '../../lib/models/User';
 import MatchedMenteeCard from '../../components/MatchedMenteeCard';
 import MatchedMentorCard from '../../components/MatchedMentorCard';
 import Typewriter from 'typewriter-effect';
+import { Types } from 'mongoose';
 
 export const getServerSideProps: GetServerSideProps = async () => {
   const matches = await UserApi.getAllUsers();
