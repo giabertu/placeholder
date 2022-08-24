@@ -13,7 +13,17 @@ async function updateUser(user: UserType) {
 async function getOneUser(email: string) {
   console.log('Do we ge insie getOneUser? Yes!')
   //@ts-ignore
-  const res = await User.findOne({email});
+  const res = await User.findOne({email}).populate({
+    path: 'custom_json',
+    populate: [
+      {
+        path: 'mentors',
+      },
+      {
+        path: 'mentees',
+      }
+    ]
+  });
   console.log('Response in server: ' , res)
   return res
 }
@@ -37,8 +47,8 @@ async function findByIdAndRemove(id: Types.ObjectId) {
   console.log('Do we ge insie getUserById? Yes!')
   const res = await User.findByIdAndRemove(id)
   console.log('Response in server: ' , res)
-  Account.findOneAndRemove({userId}).then(res => console.log('Account Removed: ', res)).catch(err => console.log(err))
-  Session.findOneAndRemove({userId}).then(res => console.log('Session Removed: ', res)).catch(err => console.log(err))
+  Account.findOneAndRemove({userId: id}).then(res => console.log('Account Removed: ', res)).catch(err => console.log(err))
+  Session.findOneAndRemove({userId: id}).then(res => console.log('Session Removed: ', res)).catch(err => console.log(err))
 
   return res
 }
