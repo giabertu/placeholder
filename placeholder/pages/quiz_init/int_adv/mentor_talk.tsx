@@ -14,7 +14,8 @@ function IntermediateMentorTalk() {
     <div className="container flex-column">
       <Navbar progressValue={25}/>
       <MentorTalk choices={int_advChoices} descriptions={int_advDescriptions} />
-      <QuizNavigationButtons back='quiz_init/int_adv/purpose' next={`quiz_init/int_adv/${subroute}`} canProceed={Boolean(mentorChoices.length)}/>
+      <QuizNavigationButtons next={`quiz_init/int_adv/${subroute}`} canProceed={Boolean(mentorChoices.length)}/>
+     
     </div >
   )
 }

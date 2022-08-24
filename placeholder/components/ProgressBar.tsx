@@ -5,9 +5,12 @@ import styles from "../styles/Components/ProgressBar.module.css";
 function ProgressBar({ value }: { value: number }) {
   const {colorMode} = useColorMode();
   const isDark = colorMode === 'dark';
+  
+
+
 
   return (
-    <Progress className={styles.bar} colorScheme={isDark ? "gray" : "blackAlpha"} value={value} height='0.6rem' />
+    <Progress className={styles.bar} colorScheme={isDark ? "gray" : "blackAlpha"} value={value} height='0.6rem' transition='all 1s ease-out 1s' />
   )
 }
 

@@ -44,13 +44,27 @@
   padding: 0.5em 0.2rem;
   animation: fadeInAnimation linear 2s;
   font-size: 1.2rem;
+  
+  
+}
+
+.profile-input-light {
+  background-color: white;
   outline: solid 1px rgb(162, 162, 162);
+}
+
+.profile-input-dark {
+  background-color: #3a404c;
 }
 
 .profile-textarea {
   font-size: 1rem;
   resize: none;
   padding: 0.5rem;
+}
+
+.profile-input-dark::placeholder {
+  color: lightgray
 }
 
 .invalid {

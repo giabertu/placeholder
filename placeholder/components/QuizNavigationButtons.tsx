@@ -1,20 +1,22 @@
 import Link from 'next/link';
-import { color, useColorMode, useColorModeValue } from '@chakra-ui/react'
+import {useColorMode} from '@chakra-ui/react'
+import {useRouter} from 'next/router'
 
-function QuizNavigationButtons({ back, next, canProceed }: { back?: string, next: string, canProceed: boolean }) {
+function QuizNavigationButtons({  next, canProceed }: {  next: string, canProceed: boolean }) {
 
   const { colorMode } = useColorMode();
   const isDark = colorMode === 'dark';
+  const router = useRouter()
 
   return (
     <div className='flex-row quiz-nav-buttons-container'>
-      {back &&
+      {/* {back && */}
         <div className='quiz-nav-button-container flex-row'>
-          <Link href={`/${back}`}>
-            <button className={isDark ? 'nav-button-style-dark-mode quiz-back-nav-buttons' : 'nav-button-style quiz-back-nav-buttons'}>&lt;&lt;</button>
-          </Link>
+          {/* <Link href={`/${back}`}> */}
+            <button className={isDark ? 'nav-button-style-dark-mode quiz-back-nav-buttons' : 'nav-button-style quiz-back-nav-buttons'} onClick={() => router.back()}>&lt;&lt;</button>
+          {/* </Link> */}
         </div>
-      }
+      
       <div className='quiz-nav-button-container flex-row'>
         <Link href={`/${next}`}>
           <button disabled={!canProceed} className={isDark ? 'nav-button-style-dark-mode quiz-next-nav-buttons' : 'nav-button-style quiz-next-nav-buttons'}>&gt;&gt;</button>
