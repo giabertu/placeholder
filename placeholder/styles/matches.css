@@ -3,6 +3,10 @@
   flex-direction: column;
   align-items: center;
   /* background-color: red; */
+  justify-content: center;
+  /* min-height: 100vh; */
+  height: 96vh;
+  max-width: 100vw;
 }
 
 .carousel-title {
