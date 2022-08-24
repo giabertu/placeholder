@@ -16,7 +16,7 @@ export default function teach_which_technologies() {
 
   return (
     <div className={styles.container}>
-      <Navbar progressValue={40}/>
+      <Navbar progressValue={60} prevValue={50}/>
       <div className={styles.formContainer}>
         <div className={styles.title}>
           {!selectedTechnologies.length ? <h1 className={styles.title}> I'd like to be a <span className={styles.underline}>_______</span> mentor</h1>
@@ -33,7 +33,7 @@ export default function teach_which_technologies() {
         </div>
 
       </div>
-      <QuizNavigationButtons next={`quiz_init/create_profile`} canProceed={Boolean(selectedTechnologies.length)} />
+      <QuizNavigationButtons next={`quiz_init/create_profile`} canProceed={Boolean(selectedTechnologies.length)} progressValue={60}/>
       
     </div>
   )

@@ -22,10 +22,12 @@ export default function Purpose() {
   const subroute = selectedPurpose === "be mentored" ? "mentor_talk" : "mentee_talk";
 
   return (
-    <div className="container flex-column">
-      <Navbar progressValue={45} />
-      <PurposeForm choices={purposeChoices} />
-      <QuizNavigationButtons next={`quiz_init/int_adv/${subroute}`} canProceed={Boolean(selectedPurpose)} />
-    </ div>
+
+  <div className="container flex-column">
+    <Navbar progressValue={40} prevValue={30}/>
+    <PurposeForm choices={purposeChoices} />
+    <QuizNavigationButtons next={`quiz_init/int_adv/${subroute}`} canProceed={Boolean(selectedPurpose)} progressValue={40}/>
+  </ div>
+
   )
 }

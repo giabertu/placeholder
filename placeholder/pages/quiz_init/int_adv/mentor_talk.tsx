@@ -12,9 +12,9 @@ function IntermediateMentorTalk() {
 
   return (
     <div className="container flex-column">
-      <Navbar progressValue={25}/>
+      <Navbar progressValue={70} prevValue={60}/>
       <MentorTalk choices={int_advChoices} descriptions={int_advDescriptions} />
-      <QuizNavigationButtons next={`quiz_init/int_adv/${subroute}`} canProceed={Boolean(mentorChoices.length)}/>
+      <QuizNavigationButtons next={`quiz_init/int_adv/${subroute}`} canProceed={Boolean(mentorChoices.length)} progressValue={70}/>
      
     </div >
   )

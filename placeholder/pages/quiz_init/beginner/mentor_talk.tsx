@@ -11,9 +11,9 @@ function BeginnerMentorTalk() {
 
   return (
     <div className="container">
-      <Navbar progressValue={30}/>
+      <Navbar progressValue={30} prevValue={10}/>
       <MentorTalkForm choices={beginnerChoices} descriptions={beginnerDescriptions} />
-      <QuizNavigationButtons  next={`quiz_init/beginner/${subroute}`} canProceed={Boolean(mentorChoices.length)}/>
+      <QuizNavigationButtons  next={`quiz_init/beginner/${subroute}`} canProceed={Boolean(mentorChoices.length)} progressValue={30}/>
     </div>
   )
 

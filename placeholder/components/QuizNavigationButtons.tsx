@@ -2,7 +2,7 @@ import Link from 'next/link';
 import {useColorMode} from '@chakra-ui/react'
 import {useRouter} from 'next/router'
 
-function QuizNavigationButtons({  next, canProceed }: {  next: string, canProceed: boolean }) {
+function QuizNavigationButtons({  next, canProceed , progressValue}: {  next: string, canProceed: boolean, progressValue: number }) {
 
   const { colorMode } = useColorMode();
   const isDark = colorMode === 'dark';
@@ -18,7 +18,10 @@ function QuizNavigationButtons({  next, canProceed }: {  next: string, canProcee
         </div>
       
       <div className='quiz-nav-button-container flex-row'>
-        <Link href={`/${next}`}>
+        <Link href={{
+          pathname: `/${next}`,
+          query: '' + progressValue ,
+        }}>
           <button disabled={!canProceed} className={isDark ? 'nav-button-style-dark-mode quiz-next-nav-buttons' : 'nav-button-style quiz-next-nav-buttons'}>&gt;&gt;</button>
         </Link>
       </div>
@@ -26,6 +29,8 @@ function QuizNavigationButtons({  next, canProceed }: {  next: string, canProcee
   )
 
 }
+//passing params to link 
+
 
 //nav button style used to share styling w global button style
 

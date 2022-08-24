@@ -34,7 +34,7 @@ function ExperiencedTechnologies() {
 
   return (
     <div className={styles.container}>
-      <Navbar progressValue={40} />
+      <Navbar progressValue={30} prevValue={20} />
       {/* <ProgressBar value={10} /> */}
       <div className={styles.formContainer}>
         <div className={styles.title}>
@@ -64,7 +64,7 @@ function ExperiencedTechnologies() {
       </div>
 
       
-      <QuizNavigationButtons next="quiz_init/int_adv/purpose" canProceed={Boolean(technologies.length)} />
+      <QuizNavigationButtons next="quiz_init/int_adv/purpose" canProceed={Boolean(technologies.length)} progressValue={30}/>
 
     </div>
   )

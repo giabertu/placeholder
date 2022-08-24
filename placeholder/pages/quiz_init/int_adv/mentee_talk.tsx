@@ -12,9 +12,9 @@ function IntermediateMenteeTalk() {
 
   return (
     <div className="container flex-column">
-      <Navbar progressValue={50}/>
+      <Navbar progressValue={50} prevValue={40}/>
       <MenteeTalk choices={menteeChoices} descriptions={menteeDescriptions} />
-      <QuizNavigationButtons next={`quiz_init/${route}`} canProceed={Boolean(desiredMenteeCategories.length)}/>
+      <QuizNavigationButtons next={`quiz_init/${route}`} canProceed={Boolean(desiredMenteeCategories.length)} progressValue={50}/>
 
     </div >
   )

@@ -7,7 +7,7 @@ import { useAppDispatch } from "../redux/hooks";
 import { setDarkMode } from "../redux/slices/darkModeSlice";
 
 
-export default function Navbar({ progressValue }: { progressValue?: number }) {
+export default function Navbar({ progressValue, prevValue }: { progressValue?: number , prevValue: number}) {
 
   if (typeof window !== 'undefined') {
     const item = localStorage.getItem('chakra-ui-color-mode');
@@ -20,13 +20,15 @@ export default function Navbar({ progressValue }: { progressValue?: number }) {
 
   const isDark = colorMode === 'dark';
 
+
+
   return (
     <div className={isDark ? styles.flexboxDarkMode : styles.flexbox}>
       <div className={styles.container}>
         <QuizCompanyName />
         <ColorModeToggle />
       </div>
-      {progressValue ? <ProgressBar value={progressValue} /> : isDark ? <div className={styles.borderDivDarkMode} /> : <div className={styles.borderDiv} />}
+      {progressValue ? <ProgressBar value={progressValue} prevValue={prevValue} /> : isDark ? <div className={styles.borderDivDarkMode} /> : <div className={styles.borderDiv} />}
     </div>
   )
 }
