@@ -112,7 +112,7 @@ function Matches({ matchedUsersInfo, currentUser }: { matchedUsersInfo: { user: 
           <SplideTrack>
             {matchedUsersInfo.map((matchedUserInfo) => (
               <SplideSlide key={matchedUserInfo.user.email} style={{ display: "flex", justifyContent: "center", backgroundColor: "transparent", padding: "0.5rem 0.5rem" }}>
-                <MatchedMenteeCard  matchedUser={matchedUserInfo} handleAddMentee={handleAddMentee} selectedMenteeIds={menteeIds}/>
+                <MatchedMenteeCard matchedUser={matchedUserInfo} handleAddMentee={handleAddMentee} selectedMenteeIds={menteeIds} />
                 {/* <MatchedMentorCard matchedUser={matchedUserInfo}/> */}
                 {/* <ProfileNotEditable user={matchedUserInfo.user} chatEngineUser={matchedUserInfo.chatEngineUser}/> */}
                 {/* <h1>hello</h1> */}
@@ -130,7 +130,7 @@ function Matches({ matchedUsersInfo, currentUser }: { matchedUsersInfo: { user: 
         </div>
       </Splide>
 
-      {userPurpose === "both mentor and be mentored" ?
+      {user.custom_json.purpose === "both mentor and be mentored" ?
         <MatchesNavigationButton onClick={handleUpdateUserMentees} href="mentor_matches" text="Go to your mentor matches" />
         :
         <MatchesNavigationButton onClick={handleUpdateUserMentees} href="../dashboard" text="Go to your dashboard" />
