@@ -13,20 +13,7 @@ import { addMenteeId } from '../redux/slices/menteeIdsSlice';
 
 
 
-function MatchedUserCard({ matchedUser, ownUser }: { matchedUser: { user: UserType, chatEngineUser: ChatEngineUser }, ownUser: { username: string | undefined, secret: string | undefined } }) {
-
-  const dispatch = useAppDispatch();
-
-  async function handleAddMentee() {
-    if (ownUser.username && ownUser.secret) {
-      const result = await ChatEngineApi.getOrCreateChat(ownUser.username, ownUser.secret, matchedUser.chatEngineUser.username)
-      console.log('Here is the result from getOrCreateChat: ', result)
-      matchedUser.user._id && dispatch(addMenteeId(matchedUser.user._id))
-      return true;
-    }
-    console.log('username and/or secret undefined')
-    return false;
-  }
+function MatchedUserCard({ matchedUser, ownUser, handleAddMentee }: { matchedUser: { user: UserType, chatEngineUser: ChatEngineUser }, ownUser: { username: string | undefined, secret: string | undefined }, handleAddMentee: any }) {
 
   const preferenceGenerator = function () {
     if (desiredCategories.length === 2) return " learn about programming and developer careers"
@@ -263,7 +250,7 @@ function MatchedUserCard({ matchedUser, ownUser }: { matchedUser: { user: UserTy
             {/* <Button leftIcon={<IoSendSharp />} colorScheme='cyan' variant='outline'>
           Message now
         </Button> */}
-            <Button leftIcon={<IoAddSharp />} colorScheme='cyan' variant='outline' onClick={handleAddMentee}>
+            <Button leftIcon={<IoAddSharp />} colorScheme='cyan' variant='outline' onClick={() => handleAddMentee(matchedUser)}>
               Add mentee
             </Button>
           </Flex>

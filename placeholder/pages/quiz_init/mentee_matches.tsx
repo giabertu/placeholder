@@ -17,9 +17,9 @@ import { useRouter } from 'next/router';
 import MatchService from '../../services/MatchService';
 import { unstable_getServerSession } from 'next-auth';
 import { authOptions } from '../api/auth/[...nextauth]';
+import { Types } from 'mongoose';
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  // const matches = await UserApi.getAllUsers();
 
   const session = await unstable_getServerSession(context.req, context.res, authOptions)
 
@@ -46,29 +46,47 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   }));
   return {
     props: {
-      matchedUsersInfo
+      matchedUsersInfo,
+      currentUser: user
     }
   };
 }
 
-function Matches({ matchedUsersInfo }: { matchedUsersInfo: { user: UserType, chatEngineUser: ChatEngineUser }[] }) {
-  // matchedUsersInfo = matchedUsersInfo.filter((user) => user.user.custom_json.purpose === "both mentor and be mentored" || user.user.custom_json.purpose === "mentor")
+function Matches({ matchedUsersInfo, currentUser }: { matchedUsersInfo: { user: UserType, chatEngineUser: ChatEngineUser }[], currentUser: UserType }) {
+
+
   matchedUsersInfo = matchedUsersInfo.filter((user) => user.user.custom_json.purpose === "be mentored" || user.user.custom_json.purpose === "" || user.user.custom_json.purpose === "both mentor and be mentored");
   const userPurpose = useAppSelector((state) => state.userInfo.purpose);
 
-  const router = useRouter();
-  const [user, setUser] = useState<UserType | null>(null)
+  const [user, setUser] = useState<UserType>(currentUser)
+  const [menteeIds, setMenteeIds] = useState<Types.ObjectId[]>([])
 
-  useEffect(() => {
-    if (router.query.user && typeof router.query.user === 'string') {
-      const ownUser = JSON.parse(router.query.user)
-      setUser(ownUser)
+  console.log(currentUser)
+
+
+  async function handleAddMentee(matchedUser: { user: UserType, chatEngineUser: ChatEngineUser }) {
+    if (user.username && user.secret) {
+      console.log('These are the parameters that we are going to pass to getOrCreateChat: ', user.username, user.secret, matchedUser.chatEngineUser.username)
+      const result = await ChatEngineApi.getOrCreateChat(user.username, user.secret, matchedUser.chatEngineUser.username)
+      console.log('Here is the result from getOrCreateChat: ', result)
+      console.log('Here is the matchedUser id: ', matchedUser.user._id)
+      if (matchedUser.user._id) {
+        setMenteeIds(menteeIds.concat([matchedUser.user._id]))
+        console.log('menteeIds updated!')
+      } else console.log('menteeIds not updated :(')
+      return true;
     }
-  }, [router.query])
+    console.log('username and/or secret undefined')
+    return false;
+  }
 
-  useEffect(() => {
 
-  })
+  async function handleUpdateUserMentees() {
+    console.log('Here is the current menteeIds: ', menteeIds)
+    user.custom_json.mentees = menteeIds
+    const res = await UserApi.updateUserProfile(user)
+    console.log('Check that user mentees (in db) is equal to menteeIds state in redux: ', res)
+  }
 
   return (
     <div className='carousel-container'>
@@ -94,7 +112,7 @@ function Matches({ matchedUsersInfo }: { matchedUsersInfo: { user: UserType, cha
           <SplideTrack>
             {matchedUsersInfo.map((matchedUserInfo) => (
               <SplideSlide key={matchedUserInfo.user.email} style={{  display: "flex", justifyContent: "center", backgroundColor: "transparent", padding: "0.5rem 0.5rem"  }}>
-                <MatchedMenteeCard matchedUser={matchedUserInfo} ownUser={{ username: user?.username, secret: user?.secret }} />
+                <MatchedMenteeCard handleAddMentee={handleAddMentee} matchedUser={matchedUserInfo} ownUser={{ username: user?.username, secret: user?.secret }} />
                 {/* <MatchedMentorCard matchedUser={matchedUserInfo}/> */}
                 {/* <ProfileNotEditable user={matchedUserInfo.user} chatEngineUser={matchedUserInfo.chatEngineUser}/> */}
                 {/* <h1>hello</h1> */}
