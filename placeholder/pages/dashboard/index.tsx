@@ -10,14 +10,43 @@ import { Canvas } from "@react-three/fiber"
 import { Suspense } from "react"
 import { RetroWindows } from "../../components/models/RetroWindows"
 import NotDoneQuiz from "../../components/NotDoneQuiz"
+import styles from '../../styles/Home.module.css'
+import Navbar from "../../components/Navbar"
+import { Button, Tab, TabList, TabPanel, TabPanels, Tabs } from "@chakra-ui/react"
 
 
+const menuButtonStyle = {
+  borderRadius: 0,
+  fontSize: '1.3rem',
+
+}
 
 export default function Dashboard({ user, isAllowed }: { user: UserType, isAllowed: boolean }) {
 
   if (isAllowed) return (
     <div>
       <h1>You are allowed here!! {user.email}</h1>
+      <Navbar />
+      <div className="flex-row menu-container gap-2r justify-center ">
+        <Button borderRadius={'none'} style={menuButtonStyle} >Matches</Button>
+        <Button style={menuButtonStyle}>My Profile</Button>
+        <Button style={menuButtonStyle}>Messages</Button>
+        <Button style={menuButtonStyle}>Logout</Button>
+      </div>
+      <div className={styles.canvasContainer + ' outline'}>
+        <Canvas >
+          <OrbitControls target={[-1, 0, 4]} enableZoom={false} autoRotate={true} enablePan={false} autoRotateSpeed={1.5} enableDamping={true} minPolarAngle={Math.PI / 2} maxPolarAngle={Math.PI / 2} />
+          <ambientLight intensity={0.5} />
+          <directionalLight
+            color={"white"}
+            intensity={0.5}
+            position={[-20, 100, 50]}
+          />
+          <Suspense>
+            <RetroWindows scale={[7, 7, 7]} position={[0, 0, 2]} />
+          </Suspense>
+        </Canvas>
+      </div>
     </div>
   )
   return (<NotDoneQuiz />)
