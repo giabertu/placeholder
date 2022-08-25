@@ -104,13 +104,7 @@ function ProfileEditable({ user }: { user: UserType }) {
 
   return (
     <div className="profile-title-button-container align-center">
-      <Typewriter
-        options={{ delay: 5, cursor: "" }}
-        onInit={(typewriter) => {
-          typewriter
-            .typeString("<h1>Review your profile</h1>").start()
-        }} />
-      <div className="profile-container flex-column align-center justify-center box-shadow">
+      <div className="dashboard-profile-container flex-column align-center justify-center box-shadow">
         <div className="profile-section flex-row gap-2r align-center">
           <Avatar size='xl' src={imgSrc}><AvatarBadge boxSize='0.4em' border='none' right='0.25em' bottom='0.2em' outline={'solid 1px white'} bg={'green.500'} /></Avatar>
           <button className={isDark ? "button-style-dark" : 'button-style'} onClick={(e) => handleUploadClick(e)}>

@@ -16,6 +16,7 @@ import { Button, Tab, TabList, TabPanel, TabPanels, Tabs } from "@chakra-ui/reac
 import { CgProfile } from 'react-icons/cg'
 import Chat from "../quiz_init/chat"
 import ComputerBackground from "../../components/ComputerBackground"
+import ProfileEditable from "../../components/ProfileEditable"
 
 const menuButtonStyle = {
   borderRadius: 0,
@@ -30,18 +31,25 @@ export default function Dashboard({ user, allUsers, isAllowed }: { user: UserTyp
 
   if (isAllowed) return (
     <div className="flex-column justify-center align-center gap-2r">
-      <DashboardNavbar />
+      <DashboardNavbar setCurrent={setCurrent} />
       {/* <div className="flex-row menu-container gap-2r ">
         <Button borderRadius={'none'} style={menuButtonStyle} >Matches</Button>
         <Button style={menuButtonStyle}><CgProfile /> Profile </Button>
         <Button style={menuButtonStyle}>Messages</Button>
         <Button style={menuButtonStyle}>Logout</Button>
       </div> */}
-      <div className="">
-        <Suspense fallback={<div>Loading...</div>}>
-          <Chat currentUser={user} allUsers={allUsers} />
-        </Suspense>
-      </div>
+      {/* {current === 0 && } */}
+      {current === 1 && <ProfileEditable user={user} />}
+      {current === 2 &&
+        <div className="">
+          <h1 className="">Messages</h1>
+          <Suspense fallback={<div>Loading...</div>}>
+            <Chat currentUser={user} allUsers={allUsers} />
+          </Suspense>
+        </div>
+      }
+      {/* {current === 3 && }
+      } */}
       <ComputerBackground />
     </div >
   )
