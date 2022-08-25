@@ -12,7 +12,10 @@ export default function teach_which_technologies() {
   const dispatch = useAppDispatch();
   const experiencedWithTechnologies = useAppSelector((state) => state.userInfo.experiencedWithTechnologies);
   const selectedTechnologies = useAppSelector((state) => state.menteePreferences.desiredTechnologies);
+  const userPurpose = useAppSelector((state) => state.userInfo.purpose);
   const technologyNames = selectedTechnologies.map((techObj) => techObj.name);
+
+  const route = userPurpose === "both mentor and be mentored" ? "int_adv/mentor_talk" : "create_profile";
 
   return (
     <div className={styles.container}>
@@ -33,8 +36,8 @@ export default function teach_which_technologies() {
         </div>
 
       </div>
-      <QuizNavigationButtons next={`quiz_init/create_profile`} canProceed={Boolean(selectedTechnologies.length)} progressValue={60}/>
-      
+      <QuizNavigationButtons next={`quiz_init/${route}`} canProceed={Boolean(selectedTechnologies.length)} progressValue={60}/>
+
     </div>
   )
 }

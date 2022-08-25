@@ -48,12 +48,14 @@ function MatchedUserCard({ matchedUser, ownUser }: { matchedUser: { user: UserTy
 
   return (
     <Flex
+      // bg="#fff"
       bg="#fff"
+
       _dark={{
         bg: "#1a202c",
       }}
-      p={50}
-      maxWidth="41vw"
+      // p={50}
+      maxWidth="35vw"
       // w="full"
       alignItems="center"
       justifyContent="center"
@@ -149,17 +151,17 @@ function MatchedUserCard({ matchedUser, ownUser }: { matchedUser: { user: UserTy
       <Box py={4} px={6} _dark={{
           bg: "#1a202c",
         }}>
-      <chakra.h1
+      {/* <chakra.h1
         fontSize="xl"
         fontWeight="bold"
         color="gray.800"
         _dark={{
           color: "white",
         }}
-      >
+      > */}
         {/* {matchedUser.user.first_name} {matchedUser.user.last_name} */}
-        Bio
-      </chakra.h1>
+        {/* Bio */}
+      {/* </chakra.h1> */}
 
       <chakra.p
         py={2}

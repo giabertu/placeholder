@@ -17,6 +17,7 @@ import Axios from "axios";
 import ChatEngineApi from "../../services/ChatEngineApi";
 import Link from "next/link";
 import MatchService from "../../services/MatchService";
+import { Router, useRouter } from "next/router";
 
 const styleObject = { verticalAlign: 'middle', marginBottom: '3px' }
 
@@ -37,6 +38,8 @@ function CompleteProfile() {
 
   const dispatch = useAppDispatch();
   const ref = useRef(null)
+
+  const router = useRouter();
 
   useEffect(() => {
     if (session) {
@@ -155,6 +158,7 @@ function CompleteProfile() {
     } else {
       setShowRequired(true);
     }
+    router.push("finding_matches")
   }
 
   if (status == 'authenticated') {

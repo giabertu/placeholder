@@ -46,7 +46,7 @@ function Matches({ matchedUsersInfo }: { matchedUsersInfo: { user: UserType, cha
   return (
     <div className='carousel-container'>
       <Navbar />
-      <h1 className='carousel-title'>Your mentee matches</h1>
+      <h1 className='carousel-title'>Your mentor matches</h1>
       {/* <Typewriter
           options={{
             delay: 30,
@@ -59,14 +59,14 @@ function Matches({ matchedUsersInfo }: { matchedUsersInfo: { user: UserType, cha
               .start();
           }}
         /> */}
-      <Splide hasTrack={false} aria-label="..." options={{
-        width: "80vw",
+      <Splide hasTrack={false} style={{marginTop: "6rem", backgroundColor: "transparent", padding: "2rem 0.5rem"  }} aria-label="..." options={{
+        width: "75vw",
         // fixedWidth: "70vw",
       }}>
         <div className="custom-wrapper">
           <SplideTrack>
             {matchedUsersInfo.map((matchedUserInfo) => (
-              <SplideSlide key={matchedUserInfo.user.email} style={{ display: "flex", justifyContent: "center" }}>
+              <SplideSlide key={matchedUserInfo.user.email} style={{ display: "flex", justifyContent: "center", backgroundColor: "transparent", padding: "0.5rem 0.5rem" }}>
                 {/* <MatchedMenteeCard matchedUser={matchedUserInfo}/> */}
                 <MatchedMentorCard matchedUser={matchedUserInfo} ownUser={{ username: user?.username, secret: user?.secret }} />
                 {/* <ProfileNotEditable user={matchedUserInfo.user} chatEngineUser={matchedUserInfo.chatEngineUser}/> */}

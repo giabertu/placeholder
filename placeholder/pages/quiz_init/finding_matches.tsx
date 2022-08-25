@@ -24,7 +24,7 @@ function FindingMatches({ user }: { user: UserType }) {
   const router = useRouter();
 
   const userPurpose = useAppSelector((state) => state.userInfo.purpose);
-  const nextPage = userPurpose === "be mentored" ? "/quiz_init/mentor_matches" : "quiz_init/mentee_matches";
+  const nextPage = userPurpose === "be mentored" ? "mentor_matches" : "mentee_matches";
 
   console.log(progressValue)
   useEffect(() => {
@@ -47,20 +47,20 @@ function FindingMatches({ user }: { user: UserType }) {
 
     setTimeout(() => {
       setShowProgressbar(true);
-    }, 1800)
+    }, 1800);
 
     setTimeout(() => {
       setShowFirstMessage(true);
-    }, 3000)
+    }, 3000);
 
     setTimeout(() => {
       setShowSecondMessage(true);
-    }, 4800)
+    }, 4800);
 
     setTimeout(() => {
       console.log("hello")
-      router.push({ pathname: "/quiz_init/matches", query: { user: JSON.stringify(user) } }, "/quiz_init/matches")
-    }, 10000)
+      router.push({ pathname: nextPage, query: { user: JSON.stringify(user) } }, nextPage)
+    }, 10000);
 
   }, []);
 
