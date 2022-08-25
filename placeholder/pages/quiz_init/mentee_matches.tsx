@@ -112,7 +112,7 @@ function Matches({ matchedUsersInfo, currentUser }: { matchedUsersInfo: { user: 
           <SplideTrack>
             {matchedUsersInfo.map((matchedUserInfo) => (
               <SplideSlide key={matchedUserInfo.user.email} style={{ display: "flex", justifyContent: "center", backgroundColor: "transparent", padding: "0.5rem 0.5rem" }}>
-                <MatchedMenteeCard handleAddMentee={handleAddMentee} matchedUser={matchedUserInfo} ownUser={{ username: user?.username, secret: user?.secret }} />
+                <MatchedMenteeCard  matchedUser={matchedUserInfo} handleAddMentee={handleAddMentee} selectedMenteeIds={menteeIds}/>
                 {/* <MatchedMentorCard matchedUser={matchedUserInfo}/> */}
                 {/* <ProfileNotEditable user={matchedUserInfo.user} chatEngineUser={matchedUserInfo.chatEngineUser}/> */}
                 {/* <h1>hello</h1> */}

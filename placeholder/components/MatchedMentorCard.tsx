@@ -1,10 +1,10 @@
 import { Avatar, AvatarBadge, AvatarGroup, Box, Button, chakra, Flex, Icon, Tag, Text } from '@chakra-ui/react';
 import React from 'react'
 import { GoRocket, GoLocation } from "react-icons/go";
-import { GiBrain, GiChart } from "react-icons/gi"
+import { GiBrain, GiChart, GiPartyPopper } from "react-icons/gi"
 import { BiCodeAlt, BiQuestionMark } from "react-icons/bi"
 import { FaChalkboardTeacher, FaGraduationCap, FaHandsHelping } from "react-icons/fa"
-import { IoSendSharp, IoAddSharp } from "react-icons/io5"
+import { IoSendSharp, IoAddSharp, IoCloseSharp } from "react-icons/io5"
 import { ImBubbles3 } from "react-icons/im"
 import { ChatEngineUser, User, UserType } from '../lib/models/User';
 import ChatEngineApi from '../services/ChatEngineApi';
@@ -14,7 +14,7 @@ import { Types } from 'mongoose';
 
 
 
-function MatchedUserCard({ matchedUser, ownUser, handleAddMentor }: { matchedUser: { user: UserType, chatEngineUser: ChatEngineUser }, ownUser: { username: string | undefined, secret: string | undefined }, handleAddMentor: any }) {
+function MatchedUserCard({ matchedUser, handleAddMentor, selectedMentorIds }: { matchedUser: { user: UserType, chatEngineUser: ChatEngineUser }, handleAddMentor: any, selectedMentorIds: Types.ObjectId[] }) {
 
 
   // const preferenceGenerator = function() {
@@ -34,6 +34,7 @@ function MatchedUserCard({ matchedUser, ownUser, handleAddMentor }: { matchedUse
   const desiredCategories = matchedUser.user.custom_json.menteePreferences.desiredCategories;
   const desiredTechnologies = matchedUser.user.custom_json.menteePreferences.desiredTechnologies;
   const experiencedWithTechnologies = matchedUser.user.custom_json.experiencedWithTechnologies;
+  const userId = matchedUser.user._id!;
 
   // console.log(matchedUser.user.first_name, desiredTechnologies)
 
@@ -286,8 +287,8 @@ function MatchedUserCard({ matchedUser, ownUser, handleAddMentor }: { matchedUse
             {/* <Button leftIcon={<IoSendSharp />} colorScheme='cyan' variant='outline'>
           Message now
         </Button> */}
-            <Button leftIcon={<IoAddSharp />} colorScheme='cyan' variant='outline' onClick={() => handleAddMentor(matchedUser)}>
-              Add mentor
+            <Button leftIcon={ selectedMentorIds.includes(userId) ? <GiPartyPopper /> : <IoAddSharp />} style={{cursor: "pointer", transition: 'color 0.4s ease-out, background-color 0.4s ease-out'}} colorScheme={ selectedMentorIds.includes(userId) ? "whatsapp" : 'cyan'} variant='outline' onClick={() => handleAddMentor(matchedUser)}>
+             {selectedMentorIds.includes(userId) ? "Mentor added!" : "Add mentor"}
             </Button>
           </Flex>
         </Box>
