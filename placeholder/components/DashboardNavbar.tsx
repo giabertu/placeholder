@@ -6,6 +6,8 @@ import ProgressBar from "./ProgressBar";
 import { useAppDispatch } from "../redux/hooks";
 import { setDarkMode } from "../redux/slices/darkModeSlice";
 import { MessageFilled, MessageOutlined } from "@ant-design/icons";
+import { IoLogOutOutline, IoPeopleSharp } from "react-icons/io5";
+import { CgProfile } from "react-icons/cg";
 
 
 export default function DashboardNavbar({ progressValue, prevValue, onClick }: { progressValue?: number, prevValue?: number, onClick: (event: React.MouseEvent<HTMLButtonElement>) => void }) {
@@ -27,8 +29,11 @@ export default function DashboardNavbar({ progressValue, prevValue, onClick }: {
     <div className={isDark ? styles.flexboxDarkMode : styles.flexbox}>
       <div className={styles.container}>
         <QuizCompanyName />
-        <MessageOutlined style={{ fontSize: '23px' }} onClick={onClick}
-        />
+        <IoPeopleSharp style={{fontSize: '25px', position: 'fixed', marginTop: '0.47rem', right: '16.8rem'}} onClick={onClick}/>
+        <CgProfile style={{fontSize: '25px', position: 'fixed', marginTop: '0.47rem', right: '13rem'}} onClick={onClick}/>
+        <MessageOutlined style={{ fontSize: '23px' }} onClick={onClick}/>
+        <IoLogOutOutline style={{fontSize: '30px', marginTop: '0.35rem', position: 'fixed', right: '5.5rem'}} onClick={onClick}/>
+
         <ColorModeToggle />
       </div>
       {progressValue && prevValue ? <ProgressBar value={progressValue} prevValue={prevValue} /> : isDark ? <div className={styles.borderDivDarkMode} /> : <div className={styles.borderDiv} />}
