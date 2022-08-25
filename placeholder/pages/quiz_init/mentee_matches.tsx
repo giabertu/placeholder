@@ -32,7 +32,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     }
   }
 
-  //@ts-ignore  
+  //@ts-ignore
   const user = await UserApi.getOneUser(session.user.email)
   console.log('Here is the user inside the server: ', user)
 
@@ -86,14 +86,14 @@ function Matches({ matchedUsersInfo }: { matchedUsersInfo: { user: UserType, cha
               .start();
           }}
         /> */}
-      <Splide hasTrack={false} aria-label="..." options={{
-        width: "80vw",
+      <Splide hasTrack={false} style={{marginTop: "6rem", backgroundColor: "transparent", padding: "2rem 0.5rem"  }} aria-label="..." options={{
+        width: "75vw",
         // fixedWidth: "70vw",
       }}>
         <div className="custom-wrapper">
           <SplideTrack>
             {matchedUsersInfo.map((matchedUserInfo) => (
-              <SplideSlide key={matchedUserInfo.user.email} style={{ display: "flex", justifyContent: "center" }}>
+              <SplideSlide key={matchedUserInfo.user.email} style={{  display: "flex", justifyContent: "center", backgroundColor: "transparent", padding: "0.5rem 0.5rem"  }}>
                 <MatchedMenteeCard matchedUser={matchedUserInfo} ownUser={{ username: user?.username, secret: user?.secret }} />
                 {/* <MatchedMentorCard matchedUser={matchedUserInfo}/> */}
                 {/* <ProfileNotEditable user={matchedUserInfo.user} chatEngineUser={matchedUserInfo.chatEngineUser}/> */}
@@ -112,10 +112,10 @@ function Matches({ matchedUsersInfo }: { matchedUsersInfo: { user: UserType, cha
         </div>
       </Splide>
 
-      {userPurpose === "mentor and be mentored" ?
-        <MatchesNavigationButton href="quiz_init/mentor_matches" text="Go to your mentor matches" />
+      {userPurpose === "both mentor and be mentored" ?
+        <MatchesNavigationButton href="mentor_matches" text="Go to your mentor matches" />
         :
-        <MatchesNavigationButton href="../dashboard" text="Go to your dashboard" />
+          <MatchesNavigationButton href="../dashboard" text="Go to your dashboard" />
       }
     </div>
   )

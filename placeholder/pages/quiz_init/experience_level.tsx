@@ -8,7 +8,7 @@ import { useAppSelector } from '../../redux/hooks';
 import UserLevelForm from '../../components/ExperienceLevel';
 
 function ExperienceLevel() {
-  
+
 
   const selectedLevel = useAppSelector((state) => state.userInfo.level);
 

@@ -47,20 +47,20 @@ function FindingMatches({ user }: { user: UserType }) {
 
     setTimeout(() => {
       setShowProgressbar(true);
-    }, 1800)
+    }, 1800);
 
     setTimeout(() => {
       setShowFirstMessage(true);
-    }, 3000)
+    }, 3000);
 
     setTimeout(() => {
       setShowSecondMessage(true);
-    }, 4800)
+    }, 4800);
 
     setTimeout(() => {
       console.log("hello")
       router.push({ pathname: nextPage, query: { user: JSON.stringify(user) } }, nextPage)
-    }, 10000)
+    }, 10000);
 
   }, []);
 
