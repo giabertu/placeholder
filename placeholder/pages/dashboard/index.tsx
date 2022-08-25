@@ -7,14 +7,15 @@ import { Redirect } from "next/dist/lib/load-custom-routes"
 import Typewriter from 'typewriter-effect'
 import { OrbitControls } from "@react-three/drei"
 import { Canvas } from "@react-three/fiber"
-import { Suspense } from "react"
+import { Suspense, useState } from "react"
 import { RetroWindows } from "../../components/models/RetroWindows"
 import NotDoneQuiz from "../../components/NotDoneQuiz"
 import Navbar from "../../components/Navbar"
 import DashboardNavbar from "../../components/DashboardNavbar"
-import styles from '../../styles/Home.module.css'
 import { Button, Tab, TabList, TabPanel, TabPanels, Tabs } from "@chakra-ui/react"
 import { CgProfile } from 'react-icons/cg'
+import Chat from "../quiz_init/chat"
+import ComputerBackground from "../../components/ComputerBackground"
 
 const menuButtonStyle = {
   borderRadius: 0,
@@ -22,33 +23,27 @@ const menuButtonStyle = {
   display: 'flex',
 }
 
-export default function Dashboard({ user, isAllowed }: { user: UserType, isAllowed: boolean }) {
+export default function Dashboard({ user, allUsers, isAllowed }: { user: UserType, allUsers: UserType[], isAllowed: boolean }) {
+
+  const [current, setCurrent] = useState(0)
+
 
   if (isAllowed) return (
-    <div>
-      <h1>You are allowed here!! {user.email}</h1>
+    <div className="flex-column justify-center align-center gap-2r">
       <DashboardNavbar />
-      <div className="flex-row menu-container gap-2r ">
+      {/* <div className="flex-row menu-container gap-2r ">
         <Button borderRadius={'none'} style={menuButtonStyle} >Matches</Button>
         <Button style={menuButtonStyle}><CgProfile /> Profile </Button>
         <Button style={menuButtonStyle}>Messages</Button>
         <Button style={menuButtonStyle}>Logout</Button>
+      </div> */}
+      <div className="">
+        <Suspense fallback={<div>Loading...</div>}>
+          <Chat currentUser={user} allUsers={allUsers} />
+        </Suspense>
       </div>
-      <div className={styles.canvasContainer + ' outline'}>
-        <Canvas >
-          <OrbitControls target={[-1, 0, 4]} enableZoom={false} autoRotate={true} enablePan={false} autoRotateSpeed={1.5} enableDamping={true} minPolarAngle={Math.PI / 2} maxPolarAngle={Math.PI / 2} />
-          <ambientLight intensity={0.5} />
-          <directionalLight
-            color={"white"}
-            intensity={0.5}
-            position={[-20, 100, 50]}
-          />
-          <Suspense>
-            <RetroWindows scale={[7, 7, 7]} position={[0, 0, 2]} />
-          </Suspense>
-        </Canvas>
-      </div>
-    </div>
+      <ComputerBackground />
+    </div >
   )
   return (<NotDoneQuiz />)
 }
@@ -72,9 +67,11 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     const user = await UserApi.getOneUser(session.user.email)
     console.log('Here is the user inside the server: ', user)
     if (user.custom_json.level) {
+      const allUsers = await UserApi.getAllUsers();
       return {
         props: {
           user,
+          allUsers,
           isAllowed: true,
         }
       }

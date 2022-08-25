@@ -27,6 +27,12 @@
   font-family: 'Consolas' !important;
 }
 
+.ce-message-list {
+  overflow: hidden !important;
+}
+
+
+
 .ce-message-form {
   padding-top: 0.25rem !important;
   padding-bottom: 0.3rem !important;
@@ -38,21 +44,21 @@
   position: absolute;
   bottom: 0px !important;
   /* border-radius: 2.063rem !important; */
-  border: 1px gray solid !important;
+  /* border: 1px gray solid !important; */
 
 
 }
 
 .ce-message-form-input {
-  border: 1px solid white;
+  /* border: 1px solid white; */
   /* width: calc((100% - 24px) - 116px); */
   width: 80% !important;
-  outline: none;
+
+  /* outline: none !important; */
   font-size: 0.938rem;
   font-family: 'Consolas' !important;
-  padding-left: 0.75rem !important;
-  padding-right: 0.75rem !important;
-
+  /* padding-left: 0.75rem !important; */
+  /* padding-right: 0.75rem !important; */
   resize: none;
   overflow: hidden;
   position: relative;
@@ -69,30 +75,35 @@
 
 #ce-send-message-button {
   cursor: pointer;
-  font-family: 'Consolas' !important;
-  display: inline-block;
+
+  font-family: '' !important;
+  display: none !important;
+  position: absolute !important;
+  right: 0.5rem;
+  top: 0.5rem;
   border-radius: 0 !important;
   /* padding: 6px 14px !important; */
   padding: 0.4rem 0.75rem !important;
   color: white;
   font-size: 1.1rem !important;
   transition: all 0.33s ease 0s;
-  position: relative;
-  bottom: 0px !important;
-  left: 3.2rem !important;
-  background-color: green !important;
+  /* position: relative; */
+  /* bottom: 0px !important; */
+  /* left: 3.2rem !important; */
+  background-color: rgb(1, 163, 1) !important;
 }
 
 
+/* .ce-message-form-input::before {
+  content: '>'
+} */
 
 .ce-attachment-input {
-  /* height: 50px !important;
-  width: 50px !important; */
-  display: inline;
+  display: none !important;
   padding: 0.375rem 0.625rem !important;
-  position: relative;
+  position: absolute;
   top: 0.2rem !important;
-  left: 3rem !important;
+  right: 0rem !important;
   bottom: 0 !important;
 }
 
@@ -241,3 +252,17 @@
   right: 9.4rem;
   transform: rotateY(180deg);
 }
+
+.ce-chat-feed-column,
+.ce-chat-list-column,
+.ce-chat-list,
+.ce-chat-settings-column {
+  /* width: 20rem !important; */
+  overflow: hidden !important;
+}
+
+.ce-chat-settings {
+  /* display: none; */
+}
+
+.ce-chat-list-column {}
