@@ -52,7 +52,7 @@ function DashboardMenteeProfile({ profile }: { profile: { user: UserType, chatEn
             <AvatarBadge boxSize='0.4em' border='none' right='0.25em' bottom='0.2em' outline={'solid 1px white'} bg={profile.chatEngineUser.is_online ? 'green.500' : 'gray.500'} />
           </Avatar>
         </Flex>
-        <Flex flexDirection="column" gap="0.6rem" mt={2} alignItems="center">
+        <Flex flexDirection="column" gap="0.6rem" mt={2} mb={2} alignItems="center">
 
           <Flex flexDirection="column" gap="0.1rem" alignItems="center">
             <Heading fontSize='xl'>
@@ -95,7 +95,7 @@ function DashboardMenteeProfile({ profile }: { profile: { user: UserType, chatEn
           }
         </Flex>
 
-        <Stack mt={8} direction={'row'} spacing={3} position="absolute" bottom={"40px"}>
+        <Stack mt={9} direction={'row'} spacing={3} position="absolute" bottom={"15px"}>
           <Button
             leftIcon={<BsPersonCircle />}
             flex={1}
