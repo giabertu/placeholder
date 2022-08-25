@@ -10,7 +10,7 @@ import { IoLogOutOutline, IoPeopleSharp } from "react-icons/io5";
 import { CgProfile } from "react-icons/cg";
 
 
-export default function DashboardNavbar({ progressValue, prevValue, onClick }: { progressValue?: number, prevValue?: number, onClick: (event: React.MouseEvent<HTMLButtonElement>) => void }) {
+export default function DashboardNavbar({ progressValue, prevValue, setCurrent }: { progressValue?: number, prevValue?: number, setCurrent: any }) {
 
   if (typeof window !== 'undefined') {
     const item = localStorage.getItem('chakra-ui-color-mode');
@@ -29,10 +29,10 @@ export default function DashboardNavbar({ progressValue, prevValue, onClick }: {
     <div className={isDark ? styles.flexboxDarkMode : styles.flexbox}>
       <div className={styles.container}>
         <QuizCompanyName />
-        <IoPeopleSharp style={{fontSize: '25px', position: 'fixed', marginTop: '0.47rem', right: '16.8rem'}} onClick={onClick}/>
-        <CgProfile style={{fontSize: '25px', position: 'fixed', marginTop: '0.47rem', right: '13rem'}} onClick={onClick}/>
-        <MessageOutlined style={{ fontSize: '23px' }} onClick={onClick}/>
-        <IoLogOutOutline style={{fontSize: '30px', marginTop: '0.35rem', position: 'fixed', right: '5.5rem'}} onClick={onClick}/>
+        <IoPeopleSharp style={{ fontSize: '25px', position: 'fixed', marginTop: '0.47rem', right: '16.8rem', cursor: 'pointer' }} onClick={() => setCurrent(0)} className='navbar-icon' />
+        <CgProfile style={{ fontSize: '25px', position: 'fixed', marginTop: '0.47rem', right: '13rem', cursor: 'pointer' }} onClick={() => setCurrent(1)} className='navbar-icon' />
+        <MessageOutlined style={{ fontSize: '23px', cursor: 'pointer' }} onClick={() => setCurrent(2)} className={'navbar-icon'} />
+        <IoLogOutOutline style={{ fontSize: '30px', marginTop: '0.35rem', position: 'fixed', right: '5.5rem', cursor: 'pointer' }} className='navbar-icon' onClick={() => setCurrent(3)} />
 
         <ColorModeToggle />
       </div>
