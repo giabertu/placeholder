@@ -51,8 +51,8 @@ export interface UserType {
   last_name: string,
   secret: string,
   custom_json: {
-    mentors: (Types.ObjectId | undefined)[],
-    mentees: (Types.ObjectId | undefined)[],
+    mentors: (Types.ObjectId | undefined | UserType)[],
+    mentees: (Types.ObjectId | undefined | UserType)[],
     avatar: string,
     bio: string,
     location: string,

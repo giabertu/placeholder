@@ -35,7 +35,7 @@
 .inputSearch {
   display: flex; 
   background-color: white;
-  font-family: 'Space Mono';
+  font-family: 'Consolas';
   color: black;
   
 }
@@ -73,5 +73,5 @@
 .title {
   color: black;
   font-size: 0.9rem;
-  font-family: 'Space Mono';
+  font-family: 'Consolas';
 }

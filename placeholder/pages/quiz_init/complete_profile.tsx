@@ -323,8 +323,9 @@ function CompleteProfile() {
               </>
             }
           </div>
-
-          <button className={`${"profile-find-matches"} ${isDark ? 'button-style-dark' : 'button-style'}`} onClick={handleSave} >&gt; Save and Find matches</button>
+          <Link href={'/quiz_init/finding_matches'}>
+            <button className={`${"profile-find-matches"} ${isDark ? 'button-style-dark' : 'button-style'}`} onClick={handleSave} >&gt; Save and Find matches</button>
+          </Link>
         </div>
       </div >
     )

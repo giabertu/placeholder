@@ -13,12 +13,34 @@ import MatchesNavigationButton from '../../components/MatchesNavigationButton';
 import Typewriter from 'typewriter-effect';
 import { useAppSelector } from '../../redux/hooks';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
+import MatchService from '../../services/MatchService';
+import { unstable_getServerSession } from 'next-auth';
+import { authOptions } from '../api/auth/[...nextauth]';
 
-export const getServerSideProps: GetServerSideProps = async () => {
-  const matches = await UserApi.getAllUsers();
-  const matchedUsersInfo = await Promise.all(matches.map(async (match) => {
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  // const matches = await UserApi.getAllUsers();
+
+  const session = await unstable_getServerSession(context.req, context.res, authOptions)
+
+  if (!session) {
+    return {
+      redirect: {
+        destination: '/',
+        permanent: false,
+      }
+    }
+  }
+
+  //@ts-ignore
+  const user = await UserApi.getOneUser(session.user.email)
+  console.log('Here is the user inside the server: ', user)
+
+  // const matches = await MatchService.getFirstNMentees(user, 5)
+  const matchedUsersInfo = await Promise.all(user.custom_json.mentees.map(async (match) => {
     return {
       user: match,
+      //@ts-ignore
       chatEngineUser: await ChatEngineApi.getChatEngineUser({ username: match.username, secret: match.secret })
     }
   }));
@@ -29,10 +51,24 @@ export const getServerSideProps: GetServerSideProps = async () => {
   };
 }
 
-function Matches({matchedUsersInfo}: {matchedUsersInfo: {user: UserType, chatEngineUser: ChatEngineUser}[]}) {
+function Matches({ matchedUsersInfo }: { matchedUsersInfo: { user: UserType, chatEngineUser: ChatEngineUser }[] }) {
   // matchedUsersInfo = matchedUsersInfo.filter((user) => user.user.custom_json.purpose === "both mentor and be mentored" || user.user.custom_json.purpose === "mentor")
   matchedUsersInfo = matchedUsersInfo.filter((user) => user.user.custom_json.purpose === "be mentored" || user.user.custom_json.purpose === "" || user.user.custom_json.purpose === "both mentor and be mentored");
   const userPurpose = useAppSelector((state) => state.userInfo.purpose);
+
+  const router = useRouter();
+  const [user, setUser] = useState<UserType | null>(null)
+
+  useEffect(() => {
+    if (router.query.user && typeof router.query.user === 'string') {
+      const ownUser = JSON.parse(router.query.user)
+      setUser(ownUser)
+    }
+  }, [router.query])
+
+  useEffect(() => {
+
+  })
 
   return (
     <div className='carousel-container'>
@@ -56,14 +92,14 @@ function Matches({matchedUsersInfo}: {matchedUsersInfo: {user: UserType, chatEng
       }}>
         <div className="custom-wrapper">
           <SplideTrack>
-          {matchedUsersInfo.map((matchedUserInfo) => (
-            <SplideSlide key={matchedUserInfo.user.email} style={{ display: "flex", justifyContent: "center", backgroundColor: "transparent", padding: "0.5rem 0.5rem" }}>
-              <MatchedMenteeCard matchedUser={matchedUserInfo}/>
-              {/* <MatchedMentorCard matchedUser={matchedUserInfo}/> */}
-              {/* <ProfileNotEditable user={matchedUserInfo.user} chatEngineUser={matchedUserInfo.chatEngineUser}/> */}
-              {/* <h1>hello</h1> */}
-            </SplideSlide>
-          ))}
+            {matchedUsersInfo.map((matchedUserInfo) => (
+              <SplideSlide key={matchedUserInfo.user.email} style={{  display: "flex", justifyContent: "center", backgroundColor: "transparent", padding: "0.5rem 0.5rem"  }}>
+                <MatchedMenteeCard matchedUser={matchedUserInfo} ownUser={{ username: user?.username, secret: user?.secret }} />
+                {/* <MatchedMentorCard matchedUser={matchedUserInfo}/> */}
+                {/* <ProfileNotEditable user={matchedUserInfo.user} chatEngineUser={matchedUserInfo.chatEngineUser}/> */}
+                {/* <h1>hello</h1> */}
+              </SplideSlide>
+            ))}
           </SplideTrack>
 
           <div className="splide__arrows">
@@ -77,7 +113,7 @@ function Matches({matchedUsersInfo}: {matchedUsersInfo: {user: UserType, chatEng
       </Splide>
 
       {userPurpose === "both mentor and be mentored" ?
-          <MatchesNavigationButton href="mentor_matches" text="Go to your mentor matches" />
+        <MatchesNavigationButton href="mentor_matches" text="Go to your mentor matches" />
         :
           <MatchesNavigationButton href="../dashboard" text="Go to your dashboard" />
       }

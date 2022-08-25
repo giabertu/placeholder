@@ -8,17 +8,22 @@ import { IoSendSharp, IoAddSharp } from "react-icons/io5"
 import { ImBubbles3 } from "react-icons/im"
 import { ChatEngineUser, User, UserType } from '../lib/models/User';
 import ChatEngineApi from '../services/ChatEngineApi';
+import { useAppDispatch, useAppSelector } from '../redux/hooks';
+import { addMentorId } from '../redux/slices/mentorIdsSlice';
 
 
 
 function MatchedUserCard({ matchedUser, ownUser }: { matchedUser: { user: UserType, chatEngineUser: ChatEngineUser }, ownUser: { username: string | undefined, secret: string | undefined } }) {
 
+  const dispatch = useAppDispatch();
 
   async function handleAddMentor() {
     if (ownUser.username && ownUser.secret) {
 
       const result = await ChatEngineApi.getOrCreateChat(ownUser.username, ownUser.secret, matchedUser.chatEngineUser.username)
       console.log('Here is the result from getOrCreateChat: ', result)
+      console.log('Here is the matchedUser id: ', matchedUser.user._id)
+      matchedUser.user._id && dispatch(addMentorId(matchedUser.user._id))
       return true;
     }
     console.log('username and/or secret undefined')

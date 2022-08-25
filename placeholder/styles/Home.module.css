@@ -54,11 +54,32 @@
 
 .input::placeholder {
   text-align: left;
+  color: white
 }
+
 
 .input:focus {
   outline: none;
 }
+
+.inputDark {
+  padding-top: 0.7em;
+  animation: fadeInAnimation linear 4s;
+  background-color: transparent;
+  /* outline: solid 1px rgb(107, 107, 107); */
+  /* animation-iteration-count: 1; */
+  /* animation-fill-mode: forwards; */
+}
+
+.inputDark::placeholder {
+  text-align: left;
+  color: black
+}
+
+.inputDark:focus {
+  outline: none;
+}
+
 
 @keyframes fadeInAnimation {
   0% {
@@ -80,9 +101,13 @@
 }
 
 .colorMode {
-  display: flex;
-  flex-direction: row-reverse;
+  
+  
   position: absolute;
+  left: 129.5rem;
+  bottom: 21rem 
+
+
   
  
   

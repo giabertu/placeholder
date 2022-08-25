@@ -33,7 +33,7 @@ function Chat({ currentUser, allUsers }: { allUsers: UserType[], currentUser: Us
 
 
 
-  const chatProps = useMultiChatLogic(projectId, currentUser.username, currentUser.secret,)
+  const chatProps = useMultiChatLogic(projectId, currentUser.username, currentUser.secret)
 
 
   if (typeof window !== 'undefined') return (
@@ -48,7 +48,7 @@ function Chat({ currentUser, allUsers }: { allUsers: UserType[], currentUser: Us
       style={{
         height: '80vh',
         width: '80vw',
-        fontFamily: 'monospace',
+        fontFamily: 'Consolas',
         boxShadow: '0 5px 15px rgba(0, 0, 0, 0.19)'
         // boxShadow: '0 10px 40px 0 rgba(0,0,0,.2)'
 
@@ -79,6 +79,7 @@ function Chat({ currentUser, allUsers }: { allUsers: UserType[], currentUser: Us
           chat={chatProps.chat}
           username={chatProps.username}
           secret={chatProps.secret}
+          
         />
       )}
 

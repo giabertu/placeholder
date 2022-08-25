@@ -12,12 +12,29 @@ import { ChatEngineUser } from '../../lib/models/User';
 import MatchedMentorCard from '../../components/MatchedMentorCard';
 import Typewriter from 'typewriter-effect';
 import MatchesNavigationButton from '../../components/MatchesNavigationButton';
+import { Types } from 'mongoose';
+import { unstable_getServerSession } from 'next-auth';
+import { authOptions } from '../api/auth/[...nextauth]';
 
-export const getServerSideProps: GetServerSideProps = async () => {
-  const matches = await UserApi.getAllUsers();
-  const matchedUsersInfo = await Promise.all(matches.map(async (match) => {
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const session = await unstable_getServerSession(context.req, context.res, authOptions)
+
+  if (!session) {
+    return {
+      redirect: {
+        destination: '/',
+        permanent: false,
+      }
+    }
+  }
+  //@ts-ignore  
+  const user = await UserApi.getOneUser(session.user.email)
+  console.log('Here is the user inside the server: ', user)
+  console.log('Here are the mentors: ', user.custom_json.mentors)
+  const matchedUsersInfo = await Promise.all(user.custom_json.mentors.map(async (match) => {
     return {
       user: match,
+      //@ts-ignore
       chatEngineUser: await ChatEngineApi.getChatEngineUser({ username: match.username, secret: match.secret })
     }
   }));
@@ -29,6 +46,8 @@ export const getServerSideProps: GetServerSideProps = async () => {
 }
 
 function Matches({ matchedUsersInfo }: { matchedUsersInfo: { user: UserType, chatEngineUser: ChatEngineUser }[] }) {
+
+  console.log(matchedUsersInfo)
 
   const router = useRouter();
   const [user, setUser] = useState<UserType | null>(null)
@@ -64,6 +83,7 @@ function Matches({ matchedUsersInfo }: { matchedUsersInfo: { user: UserType, cha
         // fixedWidth: "70vw",
       }}>
         <div className="custom-wrapper">
+
           <SplideTrack>
             {matchedUsersInfo.map((matchedUserInfo) => (
               <SplideSlide key={matchedUserInfo.user.email} style={{ display: "flex", justifyContent: "center", backgroundColor: "transparent", padding: "0.5rem 0.5rem" }}>
@@ -73,6 +93,7 @@ function Matches({ matchedUsersInfo }: { matchedUsersInfo: { user: UserType, cha
                 {/* <h1>hello</h1> */}
               </SplideSlide>
             ))}
+
           </SplideTrack>
 
           <div className="splide__arrows">

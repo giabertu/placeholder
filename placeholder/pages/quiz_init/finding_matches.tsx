@@ -24,7 +24,7 @@ function FindingMatches({ user }: { user: UserType }) {
   const router = useRouter();
 
   const userPurpose = useAppSelector((state) => state.userInfo.purpose);
-  const nextPage = userPurpose === "be mentored" ? "mentor_matches" : "mentee_matches";
+  const nextPage = userPurpose === "be mentored" || userPurpose === '' ? "mentor_matches" : "mentee_matches";
 
   console.log(progressValue)
   useEffect(() => {

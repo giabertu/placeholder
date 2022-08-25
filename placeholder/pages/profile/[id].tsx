@@ -13,7 +13,7 @@ export default function Profile({ user, chatEngineUser }: { user: UserType, chat
   return (
     <div>
       <div className="profile-main-container flex-column outline align-center">
-        <Navbar progressValue={0} />
+        <Navbar progressValue={0} prevValue={0}/>
         <ProfileNotEditable user={user} chatEngineUser={chatEngineUser} />
       </div>
     </div>
