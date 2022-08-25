@@ -21,9 +21,9 @@ import { BsPersonCircle } from "react-icons/bs"
 import { ChatEngineUser, UserType } from '../lib/models/User';
 import { GoLocation } from 'react-icons/go';
 
-function DashboardMentorProfile( {profile}: { profile: { user: UserType, chatEngineUser: ChatEngineUser } } ) {
+function DashboardMenteeProfile( {profile}: { profile: { user: UserType, chatEngineUser: ChatEngineUser } } ) {
 
-  // const desiredCategories = profile.user.custom_json.mentorPreferences.;
+  const desiredCategories = profile.user.custom_json.mentorPreferences.desiredCategories;
   const desiredTechnologies = profile.user.custom_json.mentorPreferences.desiredTechnologies;
   const location = profile.user.custom_json.location;
 
@@ -40,7 +40,7 @@ function DashboardMentorProfile( {profile}: { profile: { user: UserType, chatEng
         p={6}
         textAlign={'center'}>
 
-        <Flex  alignItems="center" justifyContent="space-evenly">
+        <Flex alignItems="center" justifyContent="space-evenly">
           <Avatar
             size='lg'
             src={profile.user.custom_json.avatar}
@@ -64,21 +64,7 @@ function DashboardMentorProfile( {profile}: { profile: { user: UserType, chatEng
               </Flex>
             </Flex>
 
-              <Flex
-                justifyContent="center"
-                alignItems="center"
-                // mt={4}
-                _dark={{
-                  color: "gray.200",
-                }}
-              >
-              {/* <Icon as={FaGraduationCap} h={6} w={6} mr={2} /> */}
-              {/* <chakra.h3 px={2} fontSize="sm" fontWeight="hairline"> */}
-              <Text display="inline" fontWeight="extrabold">{developerField![0].toUpperCase() + developerField!.slice(1)} developer</Text>
-            {/* </chakra.h3> */}
-          </Flex>
-
-        {desiredTechnologies &&
+        {Boolean(desiredTechnologies.length) &&
         <Flex
           justifyContent="center"
           alignItems="center"
@@ -89,7 +75,7 @@ function DashboardMentorProfile( {profile}: { profile: { user: UserType, chatEng
         >
         {/* <Icon as={FaGraduationCap} h={6} w={6} mr={2} /> */}
         {/* <chakra.h3 px={2} fontSize="sm" fontWeight="hairline"> */}
-          <Text display="inline" fontWeight="extrabold">Teaching</Text>
+          <Text display="inline" fontWeight="extrabold">Wants to learn</Text>
         {/* </chakra.h3> */}
           <AvatarGroup size='sm' max={7} marginLeft='0.4rem' >
             {desiredTechnologies.map(technology => {
@@ -102,16 +88,10 @@ function DashboardMentorProfile( {profile}: { profile: { user: UserType, chatEng
         </Flex>
         }
 
-        {desiredCategories.includes("advance in their developer careers") &&
-          <Text display="inline" fontWeight="extrabold" position="relative" top="1.2rem">Providing career guidance</Text>
+        {desiredCategories.includes("developer careers") &&
+          <Text display="inline" fontWeight="extrabold" position="relative" top="0.5rem">Would like to speak about developer careers</Text>
         }
-
         </Flex>
-
-
-
-
-
 
         <Stack mt={8} direction={'row'} spacing={3} position="absolute" bottom={"40px"}>
           <Button
@@ -148,4 +128,4 @@ function DashboardMentorProfile( {profile}: { profile: { user: UserType, chatEng
   );
 }
 
-export default DashboardMentorProfile
+export default DashboardMenteeProfile

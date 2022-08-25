@@ -1,4 +1,6 @@
-import DashboardProfile from "../../components/DashboardProfileMentor";
+// import DashboardProfile from "../../components/DashboardProfileMentor";
+import DashboardProfile from "../../components/DashboardProfileMentee";
+
 
 import React from 'react'
 import { GetServerSideProps } from "next";
@@ -24,7 +26,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
 function testpage( {allUsers}: {allUsers: {user: UserType, chatEngineUser: ChatEngineUser}[]}) {
   console.log("oh hello there:", allUsers);
   return (
-    <DashboardProfile profile={allUsers[0]}/>
+    <DashboardProfile profile={allUsers[8]}/>
   )
 }
 

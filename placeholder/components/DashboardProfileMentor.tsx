@@ -80,7 +80,7 @@ function DashboardMentorProfile( {profile}: { profile: { user: UserType, chatEng
             {/* </chakra.h3> */}
           </Flex>
 
-        {desiredTechnologies &&
+        {Boolean(desiredTechnologies.length) &&
         <Flex
           justifyContent="center"
           alignItems="center"
