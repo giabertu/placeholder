@@ -109,7 +109,7 @@ function DashboardMentorProfile({ profile }: { profile: { user: UserType, chatEn
           }
 
           {desiredCategories.includes("advance in their developer careers") &&
-            <Text display="inline" fontWeight="extrabold" position="relative" top="1.2rem">Providing career guidance</Text>
+            <Text display="inline" fontWeight="extrabold" position="relative" top="0.4rem">Providing career guidance</Text>
           }
 
         </Flex>
@@ -119,7 +119,7 @@ function DashboardMentorProfile({ profile }: { profile: { user: UserType, chatEn
 
 
 
-        <Stack mt={8} direction={'row'} spacing={3} position="absolute" bottom={"40px"}>
+        <Stack mt={8} direction={'row'} spacing={3} position="absolute" bottom={"15px"}>
           <Button
             leftIcon={<BsPersonCircle />}
             flex={1}

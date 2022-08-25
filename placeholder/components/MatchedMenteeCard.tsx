@@ -232,10 +232,10 @@ function MatchedUserCard({ matchedUser, handleAddMentee, selectedMenteeIds }: { 
               }}
             >
 
-              {desiredCareers.length === 0 ? <Icon as={BiQuestionMark} h={6} w={6} mr={2} /> : <Icon as={ImBubbles3} h={6} w={6} mr={2} />}
+              {desiredCareers.includes("general") ? <Icon as={BiQuestionMark} h={6} w={6} mr={2} /> : <Icon as={ImBubbles3} h={6} w={6} mr={2} />}
 
               <chakra.h3 px={2} fontSize="sm" fontWeight="hairline">
-                {desiredTechnologies.length === 0 ? <Box><Text display="inline" fontWeight="extrabold">Unsure</Text><Text display="inline"> about what kind of developer they'd like to speak to</Text></Box> : "Wants to know more about " + matchedUser.user.custom_json.mentorPreferences.desiredCareers.toString().replaceAll(",", ", ") + " careers"}
+                {desiredCareers.includes("general") ? <Box><Text display="inline" fontWeight="extrabold">Unsure</Text><Text display="inline"> about what kind of developer they'd like to speak to</Text></Box> : "Wants to know more about " + matchedUser.user.custom_json.mentorPreferences.desiredCareers.toString().replaceAll(",", ", ") + " careers"}
               </chakra.h3>
             </Flex>
           }

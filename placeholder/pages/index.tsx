@@ -6,7 +6,6 @@ import Typewriter from 'typewriter-effect';
 import React, { useRef, useEffect, useState, Suspense } from 'react';
 import { useRouter } from 'next/router'
 import { useSession, signIn, signOut } from 'next-auth/react'
-import { Avatar } from '@chakra-ui/avatar';
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls, PresentationControls, TransformControls } from '@react-three/drei';
 import { RetroWindows } from '../components/models/RetroWindows'
@@ -20,6 +19,10 @@ import { useAppSelector } from '../redux/hooks';
 const Home: NextPage = () => {
 
   const { data: session } = useSession()
+  const router = useRouter();
+
+
+  if (session) router.push("/dashboard")
 
 
   const [extraTerminalLines, setExtraTerminalLines] = useState<string[]>([]);
@@ -47,7 +50,6 @@ const Home: NextPage = () => {
     scrollToBottom()
   }, [extraTerminalLines]);
 
-  const router = useRouter();
 
   const handleCLIInput = function (event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -150,15 +152,6 @@ const Home: NextPage = () => {
         <input className={isDark ? styles.inputDark : styles.input} ref={inputElementRef} type={'text'} placeholder="command" autoFocus={true}></input>
       </form>
 
-      <div>
-        {/* <button onClick={() => signIn()}>Sign In</button> */}
-        {session &&
-          <div>
-            <button onClick={() => signOut()}>Sign Out</button>
-            <Avatar size='xl' name={`${session.user?.name}`} src={`${session.user?.image}`} />
-          </div>
-        }
-      </div>
       <div className={styles.canvasContainer + ' outline'}>
         <Canvas >
           <OrbitControls target={[-1, 0, 4]} enableZoom={false} autoRotate={true} enablePan={false} autoRotateSpeed={1.5} enableDamping={true} minPolarAngle={Math.PI / 2} maxPolarAngle={Math.PI / 2} />
