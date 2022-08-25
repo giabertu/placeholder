@@ -225,8 +225,8 @@ function CompleteProfile() {
                   <label className="profile-input-label">Experienced in</label>
                   <AvatarGroup size='md' max={4} marginRight='2rem' >
                     {experiencedWithTechnologies.map(technology => {
-                      if (typeof technology == 'string') {
-                        return <Tag>{technology}</Tag>
+                      if (technology.imageSrc === '') {
+                        return <Tag>{technology.name}</Tag>
                       }
                       return <Avatar src={technology.imageSrc} bg='transparent' border='none' borderRadius='none' scale={0.7} minWidth='fit-content' />
                     })}
