@@ -10,6 +10,9 @@ import { Canvas } from "@react-three/fiber"
 import { Suspense } from "react"
 import { RetroWindows } from "../../components/models/RetroWindows"
 import NotDoneQuiz from "../../components/NotDoneQuiz"
+import Navbar from "../../components/Navbar"
+import styles from '../../styles/dashboard.module.css'
+import DashboardNavbar from "../../components/DashboardNavbar"
 import styles from '../../styles/Home.module.css'
 import Navbar from "../../components/Navbar"
 import { Button, Tab, TabList, TabPanel, TabPanels, Tabs } from "@chakra-ui/react"

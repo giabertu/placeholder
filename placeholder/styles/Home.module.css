@@ -103,9 +103,9 @@
 .colorMode {
   
   
-  position: absolute;
-  left: 129.5rem;
-  bottom: 21rem 
+  position: fixed;
+  right: 1.2rem;
+  top: 1.1rem;
 
 
   

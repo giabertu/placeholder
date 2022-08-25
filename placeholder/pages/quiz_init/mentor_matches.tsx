@@ -28,7 +28,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       }
     }
   }
-  //@ts-ignore  
+  //@ts-ignore
   const user = await UserApi.getOneUser(session.user.email)
   console.log('Here is the user inside the server: ', user)
   console.log('Here are the mentors: ', user.custom_json.mentors)
@@ -115,7 +115,7 @@ function Matches({ matchedUsersInfo, currentUser }: { matchedUsersInfo: { user: 
             {matchedUsersInfo.map((matchedUserInfo) => (
               <SplideSlide key={matchedUserInfo.user.email} style={{ display: "flex", justifyContent: "center", backgroundColor: "transparent", padding: "0.5rem 0.5rem" }}>
                 {/* <MatchedMenteeCard matchedUser={matchedUserInfo}/> */}
-                <MatchedMentorCard matchedUser={matchedUserInfo} ownUser={{ username: user?.username, secret: user?.secret }} handleAddMentor={handleAddMentor} />
+                <MatchedMentorCard matchedUser={matchedUserInfo} handleAddMentor={handleAddMentor} selectedMentorIds={mentorIds} />
                 {/* <ProfileNotEditable user={matchedUserInfo.user} chatEngineUser={matchedUserInfo.chatEngineUser}/> */}
                 {/* <h1>hello</h1> */}
               </SplideSlide>
@@ -133,13 +133,7 @@ function Matches({ matchedUsersInfo, currentUser }: { matchedUsersInfo: { user: 
         </div>
       </Splide>
 
-      {currentUser?.custom_json.level === 'beginner' &&
-        <MatchesNavigationButton onClick={handleUpdateUserMentors} href="../dashboard" text="Go to your dashboard" />
-      }
-      {currentUser?.custom_json.purpose === 'both mentor and be mentored' &&
-        <MatchesNavigationButton onClick={handleUpdateUserMentors} href='/mentee_matches' text='Show matched mentees' />
-
-      }
+      <MatchesNavigationButton onClick={handleUpdateUserMentors} href="../dashboard" text="Go to your dashboard" />
 
     </div>
   )
