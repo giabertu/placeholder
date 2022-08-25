@@ -1,6 +1,5 @@
 .button {
   font-size: 1.1rem;
-  
   padding: 0.25rem 0.75rem;
   width: fit-content;
   text-align: left;
@@ -10,15 +9,13 @@
 }
 
 .buttonSelected {
-
   font-size: 1.1rem;
   padding: 0.25rem 0.75rem;
   width: fit-content;
-  text-align: left; 
-  transition: all 0.3s ease; 
+  text-align: left;
+  transition: all 0.3s ease;
   transform: translateX(0.625rem);
   border: solid 2px black;
- 
 }
 
 
