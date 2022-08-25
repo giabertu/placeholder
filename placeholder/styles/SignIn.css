@@ -127,3 +127,7 @@
 .input-signin:focus {
   outline: none;
 }
+
+.button-width {
+  width: 16.9rem;
+}
