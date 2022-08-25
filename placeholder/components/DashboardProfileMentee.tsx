@@ -94,6 +94,9 @@ function DashboardMenteeProfile({ profile }: { profile: { user: UserType, chatEn
           {desiredCategories.includes("developer careers") &&
             <Text display="inline" fontWeight="extrabold" position="relative" top="0.5rem">Would like to speak about developer careers</Text>
           }
+          {!desiredCategories.includes("developer careers") &&
+            <Text display="inline" fontWeight="extrabold" position="relative" top="0.5rem">Would like to strengthen their programming skills</Text>
+          }
         </Flex>
 
         <Stack mt={9} direction={'row'} spacing={3} position="absolute" bottom={"15px"}>
