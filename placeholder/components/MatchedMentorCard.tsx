@@ -10,25 +10,11 @@ import { ChatEngineUser, User, UserType } from '../lib/models/User';
 import ChatEngineApi from '../services/ChatEngineApi';
 import { useAppDispatch, useAppSelector } from '../redux/hooks';
 import { addMentorId } from '../redux/slices/mentorIdsSlice';
+import { Types } from 'mongoose';
 
 
 
-function MatchedUserCard({ matchedUser, ownUser }: { matchedUser: { user: UserType, chatEngineUser: ChatEngineUser }, ownUser: { username: string | undefined, secret: string | undefined } }) {
-
-  const dispatch = useAppDispatch();
-
-  async function handleAddMentor() {
-    if (ownUser.username && ownUser.secret) {
-
-      const result = await ChatEngineApi.getOrCreateChat(ownUser.username, ownUser.secret, matchedUser.chatEngineUser.username)
-      console.log('Here is the result from getOrCreateChat: ', result)
-      console.log('Here is the matchedUser id: ', matchedUser.user._id)
-      matchedUser.user._id && dispatch(addMentorId(matchedUser.user._id))
-      return true;
-    }
-    console.log('username and/or secret undefined')
-    return false;
-  }
+function MatchedUserCard({ matchedUser, ownUser, handleAddMentor }: { matchedUser: { user: UserType, chatEngineUser: ChatEngineUser }, ownUser: { username: string | undefined, secret: string | undefined }, handleAddMentor: any }) {
 
 
   // const preferenceGenerator = function() {
@@ -38,7 +24,7 @@ function MatchedUserCard({ matchedUser, ownUser }: { matchedUser: { user: UserTy
   //   else return <Box><Text display="inline"> Down to help out with </Text><Text display="inline" fontWeight="extrabold">developer careers</Text></Box>
   // }
 
-    const preferenceGenerator = function () {
+  const preferenceGenerator = function () {
     if (desiredCategories.length === 2) return <Box><Text display="inline" fontWeight="extrabold">Programming</Text><Text display="inline"> and </Text><Text display="inline" fontWeight="extrabold">developer careers</Text><Text display="inline"> mentor </Text></Box>
     else if (desiredCategories.includes("advance their programming skills")) return <Box><Text display="inline" fontWeight="extrabold">Programming</Text><Text display="inline"> mentor </Text></Box>
     // else if (matchedUser.user.custom_json.mentorPreferences.desiredCategories.includes("developer careers")) return "speak about developer careers"
@@ -118,20 +104,20 @@ function MatchedUserCard({ matchedUser, ownUser }: { matchedUser: { user: UserTy
         </Flex>
 
         {matchedUser.user.custom_json.level === "beginner" &&
-        <Flex justifyContent="center" alignItems="center" px={6} py={3} bg="gray.600" _dark={{
+          <Flex justifyContent="center" alignItems="center" px={6} py={3} bg="gray.600" _dark={{
             bg: "#fff",
           }}>
-          <Icon as={GiChart} h={6} w={6} color="white" _dark={{
-            color: "#1a202c",
-          }}/>
+            <Icon as={GiChart} h={6} w={6} color="white" _dark={{
+              color: "#1a202c",
+            }} />
 
-          <chakra.h1 mx={3} color="white" fontWeight="bold" fontSize="md" _dark={{
-            color: "#1a202c",
-          }}>
-            Beginner - just getting started!
-            {/* {matchedUser.user.custom_json.developerField} */}
-          </chakra.h1>
-        </Flex>
+            <chakra.h1 mx={3} color="white" fontWeight="bold" fontSize="md" _dark={{
+              color: "#1a202c",
+            }}>
+              Beginner - just getting started!
+              {/* {matchedUser.user.custom_json.developerField} */}
+            </chakra.h1>
+          </Flex>
         }
 
         {matchedUser.user.custom_json.level !== "beginner" &&
@@ -142,133 +128,133 @@ function MatchedUserCard({ matchedUser, ownUser }: { matchedUser: { user: UserTy
               color: "#1a202c",
             }} />
 
-          <chakra.h1 mx={3} color="white" fontWeight="bold" fontSize="md" _dark={{
-            color: "#1a202c",
-          }}>
-            {matchedUser.user.custom_json.level[0].toUpperCase() + matchedUser.user.custom_json.level.slice(1)} - {matchedUser.user.custom_json.developerField} developer
-            {/* {matchedUser.user.custom_json.developerField} */}
-          </chakra.h1>
-        </Flex>
+            <chakra.h1 mx={3} color="white" fontWeight="bold" fontSize="md" _dark={{
+              color: "#1a202c",
+            }}>
+              {matchedUser.user.custom_json.level[0].toUpperCase() + matchedUser.user.custom_json.level.slice(1)} - {matchedUser.user.custom_json.developerField} developer
+              {/* {matchedUser.user.custom_json.developerField} */}
+            </chakra.h1>
+          </Flex>
         }
 
-      <Box py={4} px={6} _dark={{
+        <Box py={4} px={6} _dark={{
           bg: "#1a202c",
         }}>
-      <chakra.h1
-        fontSize="xl"
-        fontWeight="bold"
-        color="gray.800"
-        _dark={{
-          color: "white",
-        }}
-      >
-        {/* {matchedUser.user.first_name} {matchedUser.user.last_name} */}
-        Bio
-      </chakra.h1>
+          <chakra.h1
+            fontSize="xl"
+            fontWeight="bold"
+            color="gray.800"
+            _dark={{
+              color: "white",
+            }}
+          >
+            {/* {matchedUser.user.first_name} {matchedUser.user.last_name} */}
+            Bio
+          </chakra.h1>
 
-      <chakra.p
-        py={2}
-        color="gray.700"
-        _dark={{
-          color: "gray.400",
-        }}
-      >
-        {matchedUser.user.custom_json.bio}
-      </chakra.p>
-
-
-
-      <Flex
-        alignItems="center"
-        mt={4}
-        color="gray.700"
-        _dark={{
-          color: "gray.200",
-        }}
-      >
-        <Icon as={FaHandsHelping} h={6} w={6} mr={2} />
-        <chakra.h3 px={2} fontSize="sm" fontWeight="hairline">
-          {preferenceGenerator()}
-        </chakra.h3>
-      </Flex>
-
-      <Flex
-        alignItems="center"
-        mt={4}
-        color="gray.700"
-        _dark={{
-          color: "gray.200",
-        }}
-      >
-        <Icon as={FaGraduationCap} h={6} w={6} mr={2} />
-        <chakra.h3 px={2} fontSize="sm" fontWeight="hairline">
-          <Text display="inline" fontWeight="extrabold">Down to teach </Text>
-        </chakra.h3>
-        <AvatarGroup size='sm' max={7} marginLeft='0.4rem' >
-                {desiredTechnologies.map(technology => {
-                  if (typeof technology == 'string') {
-                    return <Tag>{technology}</Tag>
-                  }
-                  return <Avatar src={technology.imageSrc} bg='transparent' border='none' borderRadius='none' scale={0.7} minWidth='fit-content' />
-                })}
-        </AvatarGroup>
-      </Flex>
-
-      {desiredCategories.includes("advance in their developer careers") &&
-      <Flex
-        alignItems="center"
-        mt={4}
-        color="gray.700"
-        _dark={{
-          color: "gray.200",
-        }}
-      >
-
-        <Icon as={ImBubbles3} h={6} w={6} mr={2} />
-
-        <chakra.h3 px={2} fontSize="sm" fontWeight="hairline">
-          <Box><Text display="inline"> Happy to give advice about</Text><Text display="inline" fontWeight="extrabold"> {matchedUser.user.custom_json.developerField} developer careers</Text></Box>
-        </chakra.h3>
-      </Flex>
-      }
-
-      <Flex
-        alignItems="center"
-        mt={4}
-        color="gray.700"
-        _dark={{
-          color: "gray.200",
-        }}
-      >
-        <Icon as={GiBrain} h={6} w={6} mr={2} />
-        <chakra.h3 px={2} fontSize="sm" fontWeight="hairline">
-          <Text display="inline" fontWeight="extrabold">Experienced with</Text>
-        </chakra.h3>
-        <AvatarGroup size='sm' max={7} marginLeft='0.4rem' >
-                {experiencedWithTechnologies.map(technology => {
-                  if (typeof technology == 'string') {
-                    return <Tag>{technology}</Tag>
-                  }
-                  return <Avatar src={technology.imageSrc} bg='transparent' border='none' borderRadius='none' scale={0.7} minWidth='fit-content' />
-                })}
-        </AvatarGroup>
-      </Flex>
+          <chakra.p
+            py={2}
+            color="gray.700"
+            _dark={{
+              color: "gray.400",
+            }}
+          >
+            {matchedUser.user.custom_json.bio}
+          </chakra.p>
 
 
-      {desiredCategories.includes("learning how to program") &&
-      <Flex
-        alignItems="center"
-        mt={4}
-        color="gray.700"
-        _dark={{
-          color: "gray.200",
-        }}
-      >
-      {desiredTechnologies.length === 0 ? <Icon as={BiQuestionMark} h={6} w={6} mr={2} /> : <Icon as={FaChalkboardTeacher} h={6} w={6} mr={2} /> }
-        <chakra.h3 px={2} fontSize="sm" fontWeight="hairline">
-          {/* The "general" string is not being successfully uploaded to the DB, so in the interim we replace checking for general with checking if length === 0 below */}
-          {/* {desiredTechnologies.includes("general") ? "Unsure of which technologies to start learning" : "Technologies of interest:"} */}
-          {desiredTechnologies.length === 0 ? <Box> <Text display="inline" fontWeight="extrabold">Unsure</Text> <Text display="inline"> of which technologies to start learning </Text> </Box>: "Technologies of interest:"}
+
+          <Flex
+            alignItems="center"
+            mt={4}
+            color="gray.700"
+            _dark={{
+              color: "gray.200",
+            }}
+          >
+            <Icon as={FaHandsHelping} h={6} w={6} mr={2} />
+            <chakra.h3 px={2} fontSize="sm" fontWeight="hairline">
+              {preferenceGenerator()}
+            </chakra.h3>
+          </Flex>
+
+          <Flex
+            alignItems="center"
+            mt={4}
+            color="gray.700"
+            _dark={{
+              color: "gray.200",
+            }}
+          >
+            <Icon as={FaGraduationCap} h={6} w={6} mr={2} />
+            <chakra.h3 px={2} fontSize="sm" fontWeight="hairline">
+              <Text display="inline" fontWeight="extrabold">Down to teach </Text>
+            </chakra.h3>
+            <AvatarGroup size='sm' max={7} marginLeft='0.4rem' >
+              {desiredTechnologies.map(technology => {
+                if (typeof technology == 'string') {
+                  return <Tag>{technology}</Tag>
+                }
+                return <Avatar src={technology.imageSrc} bg='transparent' border='none' borderRadius='none' scale={0.7} minWidth='fit-content' />
+              })}
+            </AvatarGroup>
+          </Flex>
+
+          {desiredCategories.includes("advance in their developer careers") &&
+            <Flex
+              alignItems="center"
+              mt={4}
+              color="gray.700"
+              _dark={{
+                color: "gray.200",
+              }}
+            >
+
+              <Icon as={ImBubbles3} h={6} w={6} mr={2} />
+
+              <chakra.h3 px={2} fontSize="sm" fontWeight="hairline">
+                <Box><Text display="inline"> Happy to give advice about</Text><Text display="inline" fontWeight="extrabold"> {matchedUser.user.custom_json.developerField} developer careers</Text></Box>
+              </chakra.h3>
+            </Flex>
+          }
+
+          <Flex
+            alignItems="center"
+            mt={4}
+            color="gray.700"
+            _dark={{
+              color: "gray.200",
+            }}
+          >
+            <Icon as={GiBrain} h={6} w={6} mr={2} />
+            <chakra.h3 px={2} fontSize="sm" fontWeight="hairline">
+              <Text display="inline" fontWeight="extrabold">Experienced with</Text>
+            </chakra.h3>
+            <AvatarGroup size='sm' max={7} marginLeft='0.4rem' >
+              {experiencedWithTechnologies.map(technology => {
+                if (typeof technology == 'string') {
+                  return <Tag>{technology}</Tag>
+                }
+                return <Avatar src={technology.imageSrc} bg='transparent' border='none' borderRadius='none' scale={0.7} minWidth='fit-content' />
+              })}
+            </AvatarGroup>
+          </Flex>
+
+
+          {desiredCategories.includes("learning how to program") &&
+            <Flex
+              alignItems="center"
+              mt={4}
+              color="gray.700"
+              _dark={{
+                color: "gray.200",
+              }}
+            >
+              {desiredTechnologies.length === 0 ? <Icon as={BiQuestionMark} h={6} w={6} mr={2} /> : <Icon as={FaChalkboardTeacher} h={6} w={6} mr={2} />}
+              <chakra.h3 px={2} fontSize="sm" fontWeight="hairline">
+                {/* The "general" string is not being successfully uploaded to the DB, so in the interim we replace checking for general with checking if length === 0 below */}
+                {/* {desiredTechnologies.includes("general") ? "Unsure of which technologies to start learning" : "Technologies of interest:"} */}
+                {desiredTechnologies.length === 0 ? <Box> <Text display="inline" fontWeight="extrabold">Unsure</Text> <Text display="inline"> of which technologies to start learning </Text> </Box> : "Technologies of interest:"}
 
               </chakra.h3>
               {desiredTechnologies.length === 0 ||
@@ -296,7 +282,7 @@ function MatchedUserCard({ matchedUser, ownUser }: { matchedUser: { user: UserTy
             {/* <Button leftIcon={<IoSendSharp />} colorScheme='cyan' variant='outline'>
           Message now
         </Button> */}
-            <Button leftIcon={<IoAddSharp />} colorScheme='cyan' variant='outline' onClick={handleAddMentor}>
+            <Button leftIcon={<IoAddSharp />} colorScheme='cyan' variant='outline' onClick={() => handleAddMentor(matchedUser)}>
               Add mentor
             </Button>
           </Flex>
