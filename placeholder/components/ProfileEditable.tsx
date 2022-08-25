@@ -126,13 +126,13 @@ function ProfileEditable({ user }: { user: UserType }) {
           <label className="profile-input-label" >Name </label>
           <input
             type='text' defaultValue={name}
-            className={!name && showRequired ? 'profile-input invalid' : 'profile-input'} required={true} spellCheck={false} onChange={(e) => handleInputChange(e, setName)}></input>
+            className={`${!name && showRequired ? 'profile-input-invalid' : 'profile-input'} ${isDark ? 'profile-input-dark' : 'profile-input-light'}`} required={true} spellCheck={false} onChange={(e) => handleInputChange(e, setName)}></input>
         </div>
         <Divider />
         <div className="profile-section flex-row gap-2r align-center">
           <label className="profile-input-label">Bio </label>
           <textarea
-            className={!bio && showRequired ? 'profile-input profile-textarea invalid' : 'profile-input profile-textarea'}
+            className={`${!bio && showRequired ? 'profile-input profile-textarea invalid' : 'profile-input profile-textarea'} ${isDark ? 'profile-input-dark' : 'profile-input-light'}`}
             rows={4.5} cols={22} required={true} placeholder={'What should people know about you?'} defaultValue={bio}
             onChange={(e) => handleInputChange(e, setBio)}></textarea>
         </div>
@@ -140,7 +140,7 @@ function ProfileEditable({ user }: { user: UserType }) {
         <div className="profile-section flex-row gap-2r align-center">
           <label className="profile-input-label">Location </label>
           <input
-            type='text' className={!location && showRequired ? 'profile-input invalid' : 'profile-input'}
+            type='text' className={`${!location && showRequired ? 'profile-input invalid' : 'profile-input'} ${isDark ? 'profile-input-dark' : 'profile-input-light'}`}
             required={true} placeholder='' defaultValue={location} onChange={(e) => handleInputChange(e, setLocation)}></input>
         </div>
         {developerField &&

@@ -13,7 +13,7 @@ const theme = extendTheme({
       body: {
         padding: 0,
         margin: 0,
-        fontFamily: 'monospace',
+        fontFamily: 'Consolas',
         boxSizing: 'border-box'
       },
       h1: {
