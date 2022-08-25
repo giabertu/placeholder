@@ -28,7 +28,7 @@ export default function CreateProfile({ providers }: { providers: Record<Literal
   }
   return (
     <div className="container flex-column outline align-center">
-      <Navbar progressValue={100} prevValue={75}/>
+      <Navbar progressValue={100} prevValue={75} />
 
       <div className="flex-column gap-2r m-top-auto m-bottom-auto">
         <Typewriter
@@ -61,7 +61,7 @@ export default function CreateProfile({ providers }: { providers: Record<Literal
                 <InputGroup>
                   <Input
                     placeholder='Type in email...'
-                    _placeholder={{ color: isDark ? 'gray.300' : 'gray.500'}}
+                    _placeholder={{ color: isDark ? 'gray.300' : 'gray.500' }}
                     borderColor={isDark ? 'gray.300' : 'gray.500'}
                     marginBottom='0.5rem'
                     value={value}
@@ -70,12 +70,15 @@ export default function CreateProfile({ providers }: { providers: Record<Literal
                       setValue(e.target.value)
                     }} />
                 </InputGroup>
-                <button
-                  className={isDark ? "button-style-dark " : "button-style "}
-                  onClick={() => {
-                    console.log('Button onClick', value);
-                    signIn('email', { redirect: false, email: value, callbackUrl: '/quiz_init/complete_profile' })
-                  }}>&gt; Sign in with <MailOutlined style={styleObject} />&nbsp;{provider.name}</button>
+                <div className="button-width">
+
+                  <button
+                    className={isDark ? "button-style-dark " : "button-style "}
+                    onClick={() => {
+                      console.log('Button onClick', value);
+                      signIn('email', { redirect: false, email: value, callbackUrl: '/quiz_init/complete_profile' })
+                    }}>&gt; Sign in with <MailOutlined style={styleObject} />&nbsp;{provider.name}</button>
+                </div>
               </div>
             </div>
           }
