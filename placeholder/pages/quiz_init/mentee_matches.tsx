@@ -104,14 +104,14 @@ function Matches({ matchedUsersInfo, currentUser }: { matchedUsersInfo: { user: 
               .start();
           }}
         /> */}
-      <Splide hasTrack={false} style={{marginTop: "6rem", backgroundColor: "transparent", padding: "2rem 0.5rem"  }} aria-label="..." options={{
+      <Splide hasTrack={false} style={{ marginTop: "6rem", backgroundColor: "transparent", padding: "2rem 0.5rem" }} aria-label="..." options={{
         width: "75vw",
         // fixedWidth: "70vw",
       }}>
         <div className="custom-wrapper">
           <SplideTrack>
             {matchedUsersInfo.map((matchedUserInfo) => (
-              <SplideSlide key={matchedUserInfo.user.email} style={{  display: "flex", justifyContent: "center", backgroundColor: "transparent", padding: "0.5rem 0.5rem"  }}>
+              <SplideSlide key={matchedUserInfo.user.email} style={{ display: "flex", justifyContent: "center", backgroundColor: "transparent", padding: "0.5rem 0.5rem" }}>
                 <MatchedMenteeCard handleAddMentee={handleAddMentee} matchedUser={matchedUserInfo} ownUser={{ username: user?.username, secret: user?.secret }} />
                 {/* <MatchedMentorCard matchedUser={matchedUserInfo}/> */}
                 {/* <ProfileNotEditable user={matchedUserInfo.user} chatEngineUser={matchedUserInfo.chatEngineUser}/> */}
@@ -131,9 +131,9 @@ function Matches({ matchedUsersInfo, currentUser }: { matchedUsersInfo: { user: 
       </Splide>
 
       {userPurpose === "both mentor and be mentored" ?
-        <MatchesNavigationButton href="mentor_matches" text="Go to your mentor matches" />
+        <MatchesNavigationButton onClick={handleUpdateUserMentees} href="mentor_matches" text="Go to your mentor matches" />
         :
-          <MatchesNavigationButton href="../dashboard" text="Go to your dashboard" />
+        <MatchesNavigationButton onClick={handleUpdateUserMentees} href="../dashboard" text="Go to your dashboard" />
       }
     </div>
   )
