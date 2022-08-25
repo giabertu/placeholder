@@ -35,12 +35,12 @@ function DashboardMatches({ user, mentorsProfiles, menteesProfiles }: { user: Us
         </Box>
       }
       {menteesProfiles.length > 0 &&
-        <Box bg={useColorModeValue('white', 'gray.900')} padding='2rem'>
+        <Box padding='2rem'>
           <Typewriter
             options={{ delay: 5, cursor: "" }}
             onInit={(typewriter) => {
               typewriter
-                .typeString("<h1 class='dashboard-title'>Mentors</h1>").start()
+                .typeString("<h1 class='dashboard-title'>Mentees</h1>").start()
             }} />
           <div className="flex-row gap-2r justify-center">
             {menteesProfiles.length > 0 &&
