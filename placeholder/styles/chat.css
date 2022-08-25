@@ -1,5 +1,5 @@
 .ce-my-message-body {
-  color: white;
+  color: white !important;
   display: inline-block;
   /* background-color: rgb(24, 144, 255); */
   background-color: green !important;
@@ -36,7 +36,7 @@
   margin-bottom: 0.188rem !important;
   
   position: absolute;
-  bottom: 0px;
+  bottom: 0px !important;
   /* border-radius: 2.063rem !important; */
   border: 1px gray solid !important;
   
@@ -49,15 +49,15 @@
   width: 80% !important;
   outline: none;
   font-size: 0.938rem;
-  font-family: Avenir;
-  padding-left: 0.75rem;
-  padding-right: 0.75rem;
+  font-family: 'Consolas' !important;
+  padding-left: 0.75rem  !important;
+  padding-right: 0.75rem !important;
  
   resize: none;
   overflow: hidden;
   position: relative;
-  top: 0.375rem;
-  height: 1.438rem;
+  top: 0.375rem !important;
+  height: 1.438rem !important;
   background-color: white !important;
   color: black !important
   
@@ -76,7 +76,7 @@
   /* padding: 6px 14px !important; */
   padding: 0.4rem 0.75rem !important;
   color: white;
-  font-size: 1.1rem;
+  font-size: 1.1rem !important;
   transition: all 0.33s ease 0s;
   position: relative;
   bottom: 0px !important;
@@ -151,7 +151,7 @@
 .ce-autocomplete-input {
   border: 1px solid green !important;
   background-color: white !important;
-  margin-top: 0.5rem;
+  margin-top: 0.5rem !important;
   font-family: 'Consolas' !important;
   border-radius: 0 !important;
   
@@ -175,8 +175,8 @@
 }
 
 .ce-my-message-timestamp {
-  margin-right: 0.25rem;
-  font-size: 0.875rem;
+  margin-right: 0.25rem !important;
+  font-size: 0.875rem !important;
   font-family: 'Consolas' !important;
   color: green !important;
   /* transition: all 0.15s ease 0s; */
@@ -188,7 +188,7 @@
 }
 
 .ce-chat-settings-title {
-  display: none
+  display: none !important
 }
 
 .ce-their-message-attachments {
@@ -224,7 +224,7 @@
 }
 
 .ce-ice-breaker-gif {
-  display: none;
+  display: none !important;
 }
 
 .ce-ice-breaker-text {
@@ -237,18 +237,6 @@
   font-family: 'Consolas' !important
 }
 
-.ant-input{
-  background-color: white;
-  width: 16rem
 
-}
 
-.ant-input::placeholder {
-  color: black
-}
-
-.ant-input-group-addon {
-  color: black;
-  margin-left: 7.5rem;
-}
 

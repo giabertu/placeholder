@@ -1,0 +1,6 @@
+.anticon {
+  margin-top: 0.56rem !important;
+  position: fixed;
+  right: 6.5rem;
+  transform: rotateY(180deg);
+}
