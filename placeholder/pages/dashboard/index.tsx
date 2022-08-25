@@ -11,25 +11,43 @@ import { Suspense } from "react"
 import { RetroWindows } from "../../components/models/RetroWindows"
 import NotDoneQuiz from "../../components/NotDoneQuiz"
 import Navbar from "../../components/Navbar"
-import styles from '../../styles/dashboard.module.css'
 import DashboardNavbar from "../../components/DashboardNavbar"
+import styles from '../../styles/Home.module.css'
+import { Button, Tab, TabList, TabPanel, TabPanels, Tabs } from "@chakra-ui/react"
+import { CgProfile } from 'react-icons/cg'
 
-
+const menuButtonStyle = {
+  borderRadius: 0,
+  fontSize: '1.3rem',
+  display: 'flex',
+}
 
 export default function Dashboard({ user, isAllowed }: { user: UserType, isAllowed: boolean }) {
 
   if (isAllowed) return (
-    <div className={styles.container}>
+    <div>
+      <h1>You are allowed here!! {user.email}</h1>
       <DashboardNavbar />
-      <div className={styles.header}>
-        <h1 className={styles.name}> &#62; {user.first_name} {user.last_name}</h1>
-        <h1>You are allowed here!! {user.email}</h1>
+      <div className="flex-row menu-container gap-2r ">
+        <Button borderRadius={'none'} style={menuButtonStyle} >Matches</Button>
+        <Button style={menuButtonStyle}><CgProfile /> Profile </Button>
+        <Button style={menuButtonStyle}>Messages</Button>
+        <Button style={menuButtonStyle}>Logout</Button>
       </div>
-      <div>
-        <h2>Bio</h2>
-        <p>{user.custom_json.bio}</p>
+      <div className={styles.canvasContainer + ' outline'}>
+        <Canvas >
+          <OrbitControls target={[-1, 0, 4]} enableZoom={false} autoRotate={true} enablePan={false} autoRotateSpeed={1.5} enableDamping={true} minPolarAngle={Math.PI / 2} maxPolarAngle={Math.PI / 2} />
+          <ambientLight intensity={0.5} />
+          <directionalLight
+            color={"white"}
+            intensity={0.5}
+            position={[-20, 100, 50]}
+          />
+          <Suspense>
+            <RetroWindows scale={[7, 7, 7]} position={[0, 0, 2]} />
+          </Suspense>
+        </Canvas>
       </div>
-      
     </div>
   )
   return (<NotDoneQuiz />)
