@@ -27,6 +27,19 @@
   min-width: 40rem;
 }
 
+.dashboard-profile-container-dark {
+  background-color: rgba(70, 67, 67, 0.427);
+  backdrop-filter: blur(5px);
+  min-width: 40rem;
+}
+
+.dashboard-profile-input-dark {
+  
+  backdrop-filter: blur(5px);
+ 
+  /* background-color: rgba(236, 240, 241, 0.1); */
+  background-color: rgba(237,242,247,0.1)
+}
 
 
 .menu-container {

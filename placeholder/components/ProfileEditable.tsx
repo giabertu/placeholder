@@ -104,7 +104,7 @@ function ProfileEditable({ user }: { user: UserType }) {
 
   return (
     <div className="profile-title-button-container align-center">
-      <div className="dashboard-profile-container flex-column align-center justify-center box-shadow">
+      <div className={isDark? "dashboard-profile-container-dark flex-column align-center justify-center box-shadow" : "dashboard-profile-container flex-column align-center justify-center box-shadow"}>
         <div className="profile-section flex-row gap-2r align-center">
           <Avatar size='xl' src={imgSrc}><AvatarBadge boxSize='0.4em' border='none' right='0.25em' bottom='0.2em' outline={'solid 1px white'} bg={'green.500'} /></Avatar>
           <button className={isDark ? "button-style-dark" : 'button-style'} onClick={(e) => handleUploadClick(e)}>
@@ -120,13 +120,13 @@ function ProfileEditable({ user }: { user: UserType }) {
           <label className="profile-input-label" >Name </label>
           <input
             type='text' defaultValue={name}
-            className={`${!name && showRequired ? 'profile-input-invalid' : 'profile-input'} ${isDark ? 'profile-input-dark' : 'profile-input-light'}`} required={true} spellCheck={false} onChange={(e) => handleInputChange(e, setName)}></input>
+            className={`${!name && showRequired ? 'profile-input-invalid' : 'profile-input'} ${isDark ? 'dashboard-profile-input-dark' : 'profile-input-light'}`} required={true} spellCheck={false} onChange={(e) => handleInputChange(e, setName)}></input>
         </div>
         <Divider />
         <div className="profile-section flex-row gap-2r align-center">
           <label className="profile-input-label">Bio </label>
           <textarea
-            className={`${!bio && showRequired ? 'profile-input profile-textarea invalid' : 'profile-input profile-textarea'} ${isDark ? 'profile-input-dark' : 'profile-input-light'}`}
+            className={`${!bio && showRequired ? 'profile-input profile-textarea invalid' : 'profile-input profile-textarea'} ${isDark ? 'dashboard-profile-input-dark' : 'profile-input-light'}`}
             rows={4.5} cols={22} required={true} placeholder={'What should people know about you?'} defaultValue={bio}
             onChange={(e) => handleInputChange(e, setBio)}></textarea>
         </div>
@@ -134,7 +134,7 @@ function ProfileEditable({ user }: { user: UserType }) {
         <div className="profile-section flex-row gap-2r align-center">
           <label className="profile-input-label">Location </label>
           <input
-            type='text' className={`${!location && showRequired ? 'profile-input invalid' : 'profile-input'} ${isDark ? 'profile-input-dark' : 'profile-input-light'}`}
+            type='text' className={`${!location && showRequired ? 'profile-input invalid' : 'profile-input'} ${isDark ? 'dashboard-profile-input-dark' : 'profile-input-light'}`}
             required={true} placeholder='' defaultValue={location} onChange={(e) => handleInputChange(e, setLocation)}></input>
         </div>
         {developerField &&
