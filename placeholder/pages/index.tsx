@@ -11,6 +11,7 @@ import { Canvas } from '@react-three/fiber';
 import { OrbitControls, PresentationControls, TransformControls } from '@react-three/drei';
 import { RetroWindows } from '../components/models/RetroWindows'
 import ColorModeToggle from '../components/ColorModeToggle';
+import { useAppSelector } from '../redux/hooks';
 
 
 // import techData from "../utils/autocompleteTermsGenerator"
@@ -24,6 +25,7 @@ const Home: NextPage = () => {
   const [extraTerminalLines, setExtraTerminalLines] = useState<string[]>([]);
   const [enteringEmail, setEnteringEmail] = useState(false);
   const [enteringPassword, setEnteringPassword] = useState(false);
+  const isDark = useAppSelector(state => state.darkMode)
 
   // automate focus on user input during page load (autoFocus unreliable in React)
   const inputElementRef = useRef<HTMLInputElement>(null);
@@ -93,7 +95,7 @@ const Home: NextPage = () => {
           }}
           onInit={(typewriter) => {
             typewriter
-              .typeString("01 welcome to <div style='font-weight: 600; font-size: 1.1rem; color: darkblue; display: inline'>placeholder.io</div> [Version 0.0.1]")
+              .typeString("01 welcome to <div style='font-weight: bold; font-size: 1.1rem; color: #f5006d; display: inline'>placeholder.io</div> [Version 0.0.1]")
               .pauseFor(150)
               .typeString("<br /> 02")
               .pauseFor(150)
@@ -103,11 +105,11 @@ const Home: NextPage = () => {
               .pauseFor(150)
               .typeString("<br /> 05 if (you've been here before)")
               .pauseFor(150)
-              .typeString("<br /> 06 &nbsp;&nbsp; enter 'git init' || 'google init' || 'email init'")
+              .typeString("<br /> 06 &nbsp;&nbsp; enter <div style='font-weight: bold; color:#a1b903; display: inline'>'git init'</div> || <div style='font-weight: bold; color:#a1b903; display: inline'>'google init'</div> || <div style='font-weight: bold; color:#a1b903; display: inline'>'email init'</div>")
               .pauseFor(150)
               .typeString("<br /> 07 else")
               .pauseFor(150)
-              .typeString("<br /> 08 &nbsp;&nbsp; enter 'quiz init'")
+              .typeString("<br /> 08 &nbsp;&nbsp; enter <div style='font-weight: bold; color:#60c1cc; display: inline'>'quiz init'</div> ")
 
               .start();
           }}
@@ -145,7 +147,7 @@ const Home: NextPage = () => {
 
       <form onSubmit={handleCLIInput}>
         <span className={styles.terminalArrow}>&gt;</span>
-        <input className={styles.input} ref={inputElementRef} type={'text'} placeholder="command" autoFocus={true}></input>
+        <input className={isDark ? styles.inputDark : styles.input} ref={inputElementRef} type={'text'} placeholder="command" autoFocus={true}></input>
       </form>
 
       <div>

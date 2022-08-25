@@ -10,18 +10,15 @@
 }
 
 .carousel-title {
-  margin-top: 7rem;
+  top: 4.5rem;
+  position: fixed;
+  /* margin-top: 7rem; */
   font-size: 1.3rem;
   font-weight: 100;
-  margin-bottom: -4rem;
-  z-index: 1;
+  /* margin-bottom: -4rem; */
+  /* z-index: 1; */
 }
 
-.carousel-image {
-  width: 300px;
-  height: 300px;
-  justify-self: center;
-}
 
 .matches-navigation-button-container {
   position: fixed;
