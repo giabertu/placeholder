@@ -2,8 +2,6 @@ import { Icon, useColorMode } from "@chakra-ui/react";
 import Link from "next/link";
 import React, { useState } from "react"
 import { AiOutlineArrowRight } from "react-icons/ai"
-import { useAppSelector } from "../redux/hooks";
-import UserApi from "../services/UserApi";
 
 import styles from "../styles/Components/QuestionnaireButton.module.css";
 
@@ -24,7 +22,7 @@ function MatchesNavigationButton({ onClick, href, text, onMouseEnter, onMouseLea
           className={`${selected ? styles.buttonSelected : styles.button}
           ${isDark ? styles.buttonStyleDarkMode : styles.buttonStyle}`}
 
-          style={(isDark && selected) ? { border: 'solid 2px white' } : isDark ? { borderStyle: 'solid 2px white' } : {}}
+          style = {{ display: "flex", alignItems: "center", gap: "0.3rem", border: isDark ? "solid 2px white" : "solid 2px black"}}
 
           onMouseEnter={() => {
             onMouseEnter && onMouseEnter()
@@ -35,7 +33,7 @@ function MatchesNavigationButton({ onClick, href, text, onMouseEnter, onMouseLea
             onMouseLeave && onMouseLeave()
           }}
         >
-          {text} <Icon as={AiOutlineArrowRight}></Icon>
+          <span>{text}</span> <Icon as={AiOutlineArrowRight}></Icon>
         </button>
       </Link>
     </div>
