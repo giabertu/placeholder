@@ -8,7 +8,7 @@ import { setDarkMode } from "../redux/slices/darkModeSlice";
 import { MessageFilled, MessageOutlined } from "@ant-design/icons";
 
 
-export default function DashboardNavbar({ progressValue, prevValue, onClick }: { progressValue?: number , prevValue?: number, onClick: (event: React.MouseEvent<HTMLButtonElement>) => void}) {
+export default function DashboardNavbar({ progressValue, prevValue, onClick }: { progressValue?: number, prevValue?: number, onClick: (event: React.MouseEvent<HTMLButtonElement>) => void }) {
 
   if (typeof window !== 'undefined') {
     const item = localStorage.getItem('chakra-ui-color-mode');
@@ -27,9 +27,8 @@ export default function DashboardNavbar({ progressValue, prevValue, onClick }: {
     <div className={isDark ? styles.flexboxDarkMode : styles.flexbox}>
       <div className={styles.container}>
         <QuizCompanyName />
-        <MessageOutlined style={{fontSize: '23px'}} onClick={(event) => {
-            onClick?.(event);
-        }}/>
+        <MessageOutlined style={{ fontSize: '23px' }} onClick={onClick}
+        />
         <ColorModeToggle />
       </div>
       {progressValue && prevValue ? <ProgressBar value={progressValue} prevValue={prevValue} /> : isDark ? <div className={styles.borderDivDarkMode} /> : <div className={styles.borderDiv} />}

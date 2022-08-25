@@ -11,17 +11,15 @@ import { Suspense } from "react"
 import { RetroWindows } from "../../components/models/RetroWindows"
 import NotDoneQuiz from "../../components/NotDoneQuiz"
 import Navbar from "../../components/Navbar"
-import styles from '../../styles/dashboard.module.css'
 import DashboardNavbar from "../../components/DashboardNavbar"
 import styles from '../../styles/Home.module.css'
-import Navbar from "../../components/Navbar"
 import { Button, Tab, TabList, TabPanel, TabPanels, Tabs } from "@chakra-ui/react"
-
+import { CgProfile } from 'react-icons/cg'
 
 const menuButtonStyle = {
   borderRadius: 0,
   fontSize: '1.3rem',
-
+  display: 'flex',
 }
 
 export default function Dashboard({ user, isAllowed }: { user: UserType, isAllowed: boolean }) {
@@ -29,10 +27,10 @@ export default function Dashboard({ user, isAllowed }: { user: UserType, isAllow
   if (isAllowed) return (
     <div>
       <h1>You are allowed here!! {user.email}</h1>
-      <Navbar />
-      <div className="flex-row menu-container gap-2r justify-center ">
+      <DashboardNavbar />
+      <div className="flex-row menu-container gap-2r ">
         <Button borderRadius={'none'} style={menuButtonStyle} >Matches</Button>
-        <Button style={menuButtonStyle}>My Profile</Button>
+        <Button style={menuButtonStyle}><CgProfile /> Profile </Button>
         <Button style={menuButtonStyle}>Messages</Button>
         <Button style={menuButtonStyle}>Logout</Button>
       </div>
