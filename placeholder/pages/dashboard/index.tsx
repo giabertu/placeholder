@@ -10,14 +10,26 @@ import { Canvas } from "@react-three/fiber"
 import { Suspense } from "react"
 import { RetroWindows } from "../../components/models/RetroWindows"
 import NotDoneQuiz from "../../components/NotDoneQuiz"
+import Navbar from "../../components/Navbar"
+import styles from '../../styles/dashboard.module.css'
+import DashboardNavbar from "../../components/DashboardNavbar"
 
 
 
 export default function Dashboard({ user, isAllowed }: { user: UserType, isAllowed: boolean }) {
 
   if (isAllowed) return (
-    <div>
-      <h1>You are allowed here!! {user.email}</h1>
+    <div className={styles.container}>
+      <DashboardNavbar />
+      <div className={styles.header}>
+        <h1 className={styles.name}> &#62; {user.first_name} {user.last_name}</h1>
+        <h1>You are allowed here!! {user.email}</h1>
+      </div>
+      <div>
+        <h2>Bio</h2>
+        <p>{user.custom_json.bio}</p>
+      </div>
+      
     </div>
   )
   return (<NotDoneQuiz />)
