@@ -15,7 +15,7 @@ function DashboardMatches({ user, mentorsProfiles, menteesProfiles }: { user: Us
   return (
     <Box className="flex-column" padding={'3rem'} >
       {mentorsProfiles.length > 0 &&
-        <Box bg={useColorModeValue('white', 'gray.900')} padding='2rem'>
+        <Box padding='2rem'>
           <Typewriter
             options={{ delay: 5, cursor: "" }}
             onInit={(typewriter) => {
