@@ -8,6 +8,7 @@ import { setDarkMode } from "../redux/slices/darkModeSlice";
 import { MessageFilled, MessageOutlined } from "@ant-design/icons";
 import { IoLogOutOutline, IoPeopleSharp } from "react-icons/io5";
 import { CgProfile } from "react-icons/cg";
+import { signOut } from "next-auth/react";
 
 
 export default function DashboardNavbar({ progressValue, prevValue, setCurrent }: { progressValue?: number, prevValue?: number, setCurrent: any }) {
@@ -32,7 +33,7 @@ export default function DashboardNavbar({ progressValue, prevValue, setCurrent }
         <IoPeopleSharp style={{ fontSize: '25px', position: 'fixed', marginTop: '0.47rem', right: '16.8rem', cursor: 'pointer' }} onClick={() => setCurrent(0)} className='navbar-icon' />
         <CgProfile style={{ fontSize: '25px', position: 'fixed', marginTop: '0.47rem', right: '13rem', cursor: 'pointer' }} onClick={() => setCurrent(1)} className='navbar-icon' />
         <MessageOutlined style={{ fontSize: '23px', cursor: 'pointer' }} onClick={() => setCurrent(2)} className={'navbar-icon'} />
-        <IoLogOutOutline style={{ fontSize: '30px', marginTop: '0.35rem', position: 'fixed', right: '5.5rem', cursor: 'pointer' }} className='navbar-icon' onClick={() => setCurrent(3)} />
+        <IoLogOutOutline style={{ fontSize: '30px', marginTop: '0.35rem', position: 'fixed', right: '5.5rem', cursor: 'pointer' }} className='navbar-icon' onClick={() => signOut()} />
 
         <ColorModeToggle />
       </div>

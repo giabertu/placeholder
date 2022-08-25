@@ -34,11 +34,11 @@
 }
 
 .dashboard-profile-input-dark {
-  
+
   backdrop-filter: blur(5px);
- 
+
   /* background-color: rgba(236, 240, 241, 0.1); */
-  background-color: rgba(237,242,247,0.1)
+  background-color: rgba(237, 242, 247, 0.1)
 }
 
 
@@ -55,4 +55,8 @@
 
 .navbar-icon:hover {
   transform: scale(1.2);
+}
+
+.dashboard-title {
+  font-size: 1.5rem;
 }

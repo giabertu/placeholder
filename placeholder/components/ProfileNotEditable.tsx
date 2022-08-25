@@ -1,10 +1,11 @@
-import { Divider, Wrap, WrapItem, Tag, AvatarGroup, AvatarBadge } from "@chakra-ui/react"
+import { Divider, Wrap, WrapItem, Tag, AvatarGroup, AvatarBadge, Button } from "@chakra-ui/react"
 import { useState } from "react"
 import { Avatar } from '@chakra-ui/react'
 import { SendSharp } from "react-ionicons"
 
 import { ChatEngineUser, UserType } from "../lib/models/User"
 import { useAppSelector } from "../redux/hooks"
+import { Router, useRouter } from "next/router"
 
 
 
@@ -16,7 +17,7 @@ function ProfileNotEditable({ user, chatEngineUser }: { user: UserType, chatEngi
   const { bio, location } = user.custom_json
 
   const isDark = useAppSelector(state => state.darkMode)
-
+  const router = useRouter();
 
   const { mentorPreferences, menteePreferences, developerField, experiencedWithTechnologies } = user.custom_json
   console.log('ChatEngine User', chatEngineUser)
@@ -164,7 +165,7 @@ function ProfileNotEditable({ user, chatEngineUser }: { user: UserType, chatEngi
           </>
         }
       </div>
-      <button className="button-style profile-find-matches"></button>
+      <Button onClick={() => router.back()}>Back</Button>
     </div>
   )
 

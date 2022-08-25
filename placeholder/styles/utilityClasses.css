@@ -43,6 +43,11 @@
   box-shadow: 0px 0px 2px rgb(105, 105, 105);
 }
 
+.white-shadow {
+  box-shadow: 0px 0px 20px rgb(191, 191, 191);
+  height: fit-content;
+}
+
 
 .fade-in {
   animation: fadeInAnimation linear 2s;
