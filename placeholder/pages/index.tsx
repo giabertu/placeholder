@@ -151,7 +151,7 @@ const Home: NextPage = () => {
       </form>
 
       <div>
-        <button onClick={() => signIn()}>Sign In</button>
+        {/* <button onClick={() => signIn()}>Sign In</button> */}
         {session &&
           <div>
             <button onClick={() => signOut()}>Sign Out</button>
