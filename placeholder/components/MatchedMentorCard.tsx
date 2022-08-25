@@ -51,6 +51,7 @@ function MatchedUserCard({ matchedUser, handleAddMentor, selectedMentorIds }: { 
       // w="full"
       alignItems="center"
       justifyContent="center"
+      paddingTop={'0'}
     >
       <Box
         // border="1px white solid"
@@ -144,7 +145,7 @@ function MatchedUserCard({ matchedUser, handleAddMentor, selectedMentorIds }: { 
           bg: "#1a202c",
         }}>
 
-      {/* <chakra.h1
+          {/* <chakra.h1
         fontSize="xl"
         fontWeight="bold"
         color="gray.800"
@@ -152,9 +153,9 @@ function MatchedUserCard({ matchedUser, handleAddMentor, selectedMentorIds }: { 
           color: "white",
         }}
       > */}
-        {/* {matchedUser.user.first_name} {matchedUser.user.last_name} */}
-        {/* Bio */}
-      {/* </chakra.h1> */}
+          {/* {matchedUser.user.first_name} {matchedUser.user.last_name} */}
+          {/* Bio */}
+          {/* </chakra.h1> */}
 
 
           <chakra.p
@@ -287,8 +288,8 @@ function MatchedUserCard({ matchedUser, handleAddMentor, selectedMentorIds }: { 
             {/* <Button leftIcon={<IoSendSharp />} colorScheme='cyan' variant='outline'>
           Message now
         </Button> */}
-            <Button leftIcon={ selectedMentorIds.includes(userId) ? <GiPartyPopper /> : <IoAddSharp />} style={{cursor: "pointer", transition: 'color 0.4s ease-out, background-color 0.4s ease-out'}} colorScheme={ selectedMentorIds.includes(userId) ? "whatsapp" : 'cyan'} variant='outline' onClick={() => handleAddMentor(matchedUser)}>
-             {selectedMentorIds.includes(userId) ? "Mentor added!" : "Add mentor"}
+            <Button leftIcon={selectedMentorIds.includes(userId) ? <GiPartyPopper /> : <IoAddSharp />} style={{ cursor: "pointer", transition: 'color 0.4s ease-out, background-color 0.4s ease-out' }} colorScheme={selectedMentorIds.includes(userId) ? "whatsapp" : 'cyan'} variant='outline' onClick={() => handleAddMentor(matchedUser)}>
+              {selectedMentorIds.includes(userId) ? "Mentor added!" : "Add mentor"}
             </Button>
           </Flex>
         </Box>

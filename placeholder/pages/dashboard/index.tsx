@@ -1,22 +1,16 @@
 import { GetServerSideProps } from "next"
 import { unstable_getServerSession } from "next-auth"
-import { UserType } from "../../lib/models/User"
+import { ChatEngineUser, UserType } from "../../lib/models/User"
 import UserApi from "../../services/UserApi"
 import { authOptions } from "../api/auth/[...nextauth]"
-import { Redirect } from "next/dist/lib/load-custom-routes"
-import Typewriter from 'typewriter-effect'
-import { OrbitControls } from "@react-three/drei"
-import { Canvas } from "@react-three/fiber"
-import { Suspense, useState } from "react"
-import { RetroWindows } from "../../components/models/RetroWindows"
+import { Suspense, useEffect, useState } from "react"
 import NotDoneQuiz from "../../components/NotDoneQuiz"
-import Navbar from "../../components/Navbar"
 import DashboardNavbar from "../../components/DashboardNavbar"
-import { Button, Tab, TabList, TabPanel, TabPanels, Tabs } from "@chakra-ui/react"
-import { CgProfile } from 'react-icons/cg'
 import Chat from "../quiz_init/chat"
+import ChatEngineApi from "../../services/ChatEngineApi"
 import ComputerBackground from "../../components/ComputerBackground"
 import ProfileEditable from "../../components/ProfileEditable"
+import DashboardMatches from "../../components/DashboardMatches"
 
 const menuButtonStyle = {
   borderRadius: 0,
@@ -27,29 +21,60 @@ const menuButtonStyle = {
 export default function Dashboard({ user, allUsers, isAllowed }: { user: UserType, allUsers: UserType[], isAllowed: boolean }) {
 
   const [current, setCurrent] = useState(0)
+  const [menteesProfiles, setMenteesProfiles] = useState<{ user: UserType, chatEngineUser: ChatEngineUser }[]>([])
+  const [mentorsProfiles, setMentorsProfiles] = useState<{ user: UserType, chatEngineUser: ChatEngineUser }[]>([])
+
+  console.log('Here is mentorsProfiles: ', mentorsProfiles)
+  console.log('Here is menteesProfiles: ', menteesProfiles)
+
+  useEffect(() => {
+
+    (async () => {
+      const matchedUsersInfo = await Promise.all(user.custom_json.mentees.map(async (match) => {
+        return {
+          user: match,
+          //@ts-ignore
+          chatEngineUser: await ChatEngineApi.getChatEngineUser({ username: match.username, secret: match.secret })
+        }
+      }));
+      //@ts-ignore
+      setMenteesProfiles(matchedUsersInfo)
+    })()
+
+  }, [])
+
+  useEffect(() => {
+
+    (async () => {
+      const matchedUsersInfo = await Promise.all(user.custom_json.mentors.map(async (match) => {
+        //@ts-ignore 
+        return {
+          user: match,
+          //@ts-ignore
+          chatEngineUser: await ChatEngineApi.getChatEngineUser({ username: match.username, secret: match.secret })
+        }
+      }));
+
+      //@ts-ignore
+      setMentorsProfiles(matchedUsersInfo.filter(userinfo => userinfo.user.custom_json.level !== 'beginner'))
+    })()
+
+  }, [])
 
 
   if (isAllowed) return (
-    <div className="flex-column justify-center align-center gap-2r">
+    <div className="container flex-column justify-center align-center gap-2r">
       <DashboardNavbar setCurrent={setCurrent} />
-      {/* <div className="flex-row menu-container gap-2r ">
-        <Button borderRadius={'none'} style={menuButtonStyle} >Matches</Button>
-        <Button style={menuButtonStyle}><CgProfile /> Profile </Button>
-        <Button style={menuButtonStyle}>Messages</Button>
-        <Button style={menuButtonStyle}>Logout</Button>
-      </div> */}
-      {/* {current === 0 && } */}
+
+      {current === 0 && <DashboardMatches user={user} mentorsProfiles={mentorsProfiles} menteesProfiles={menteesProfiles} />}
       {current === 1 && <ProfileEditable user={user} />}
       {current === 2 &&
         <div className="">
-          <h1 className="">Messages</h1>
           <Suspense fallback={<div>Loading...</div>}>
             <Chat currentUser={user} allUsers={allUsers} />
           </Suspense>
         </div>
       }
-      {/* {current === 3 && }
-      } */}
       <ComputerBackground />
     </div >
   )
@@ -76,6 +101,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     console.log('Here is the user inside the server: ', user)
     if (user.custom_json.level) {
       const allUsers = await UserApi.getAllUsers();
+
       return {
         props: {
           user,
