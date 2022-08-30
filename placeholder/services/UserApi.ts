@@ -32,17 +32,23 @@ export default class UserApi {
     console.log('Here is the response: ', response)
   }
 
-  static async getOneUser(email: string): Promise<UserType> {
-    console.log('Here is the email: ', email)
-    const response = await fetch(`${process.env.SERVER}${this.USER_ENDPOINT}`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({email}),
-    })
-    console.log('Response in userApi: ' , response)
-    return await response.json()
+  static async getOneUser(email: string): Promise<UserType | boolean> {
+    try {
+
+      console.log('Here is the email: ', email)
+      const response = await fetch(`${process.env.SERVER}${this.USER_ENDPOINT}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({email}),
+      })
+      console.log('Response in userApi: ' , response)
+      return await response.json()
+    } catch (error) {
+      console.log('There was an error with the request: ', error);
+      return false;
+    }
     // return await response.json()
   }
 

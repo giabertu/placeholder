@@ -243,7 +243,7 @@ function CompleteProfile() {
                   <Wrap spacing={2} justify={'flex-end'}>
                     {desiredCategories.map((category) =>
                       <WrapItem>
-                        <Tag key={category} size='lg' colorScheme='gray' borderRadius='full'>
+                        <Tag key={category} size='lg' colorScheme='gray' borderRadius='full' textAlign={'center'}>
                           {category[0].toUpperCase() + category.substring(1)}
                         </Tag>
                       </WrapItem>

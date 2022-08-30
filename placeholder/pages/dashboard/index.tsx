@@ -99,23 +99,26 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   if (session && session.user && session.user.email) {
     const user = await UserApi.getOneUser(session.user.email)
     console.log('Here is the user inside the server: ', user)
-    if (user.custom_json.level) {
-      const allUsers = await UserApi.getAllUsers();
+    if (typeof user !== 'boolean') {
+
+      if (user.custom_json.level) {
+        const allUsers = await UserApi.getAllUsers();
+
+        return {
+          props: {
+            user,
+            allUsers,
+            isAllowed: true,
+          }
+        }
+      }
+      //Destroy the user profile: 
+      const res = await UserApi.findByIdAndRemove(user._id)
 
       return {
         props: {
-          user,
-          allUsers,
-          isAllowed: true,
+          isAllowed: false
         }
-      }
-    }
-    //Destroy the user profile: 
-    const res = await UserApi.findByIdAndRemove(user._id)
-
-    return {
-      props: {
-        isAllowed: false
       }
     }
   }
