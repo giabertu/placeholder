@@ -226,9 +226,9 @@ function CompleteProfile() {
                   <AvatarGroup size='md' max={4} marginRight='2rem' >
                     {experiencedWithTechnologies.map(technology => {
                       if (technology.imageSrc === '') {
-                        return <Tag>{technology.name}</Tag>
+                        return <Tag key={technology.name}>{technology.name}</Tag>
                       }
-                      return <Avatar src={technology.imageSrc} bg='transparent' border='none' borderRadius='none' scale={0.7} minWidth='fit-content' />
+                      return <Avatar key={technology.name} src={technology.imageSrc} bg='transparent' border='none' borderRadius='none' scale={0.7} minWidth='fit-content' />
                     })}
                   </AvatarGroup>
                 </div>
@@ -278,9 +278,9 @@ function CompleteProfile() {
                     <AvatarGroup size='md' max={4} marginRight='2rem' >
                       {desiredTechnologies.map(technology => {
                         if (typeof technology == 'string') {
-                          return <Tag>{technology}</Tag>
+                          return <Tag key={technology}>{technology}</Tag>
                         }
-                        return <Avatar src={technology.imageSrc} bg='transparent' border='none' borderRadius='none' scale={0.7} minWidth='fit-content' />
+                        return <Avatar key={technology.name} src={technology.imageSrc} bg='transparent' border='none' borderRadius='none' scale={0.7} minWidth='fit-content' />
                       })}
                     </AvatarGroup>
                   </div>
