@@ -1,0 +1,272 @@
+.ce-my-message-body {
+  color: white !important;
+  display: inline-block;
+  /* background-color: rgb(24, 144, 255); */
+  background-color: green !important;
+  cursor: pointer;
+  text-align: left;
+  padding: 0.625rem !important;
+  font-size: 0.938rem;
+  font-family: Avenir;
+  white-space: pre-line;
+  overflow-wrap: anywhere;
+  max-width: calc(100% - 6.25rem);
+  transition: all 0.33s ease 0s;
+  border-radius: 1.2em 1.2em 1.2em !important;
+
+  font-family: 'Consolas' !important;
+
+}
+
+.ce-their-message-body {
+  border-radius: 1.2em 1.2em 1.2em !important;
+  font-family: 'Consolas' !important;
+}
+
+.ce-message-date-text {
+  font-family: 'Consolas' !important;
+}
+
+.ce-message-list {
+  overflow: hidden !important;
+}
+
+
+
+
+
+.ce-message-form {
+  padding-top: 0.25rem !important;
+  padding-bottom: 0.3rem !important;
+  padding-left: 0.5rem !important;
+  width: 98% !important;
+  margin-left: 0.51rem !important;
+  margin-bottom: 0.188rem !important;
+
+  position: absolute;
+  bottom: 0px !important;
+  /* border-radius: 2.063rem !important; */
+  /* border: 1px gray solid !important; */
+
+
+}
+
+.ce-message-form-input {
+  /* border: 1px solid white; */
+  /* width: calc((100% - 24px) - 116px); */
+  width: 80% !important;
+
+  /* outline: none !important; */
+  font-size: 0.938rem;
+  font-family: 'Consolas' !important;
+  /* padding-left: 0.75rem !important; */
+  /* padding-right: 0.75rem !important; */
+  resize: none;
+  overflow: hidden;
+  position: relative;
+  top: 0.375rem !important;
+  height: 1.438rem !important;
+  background-color: white !important;
+  color: black !important
+}
+
+.ce-message-form-input::placeholder {
+  color: gray !important;
+  font-family: 'Consolas' !important;
+  font-size: 1rem;
+}
+
+#ce-send-message-button {
+  cursor: pointer;
+
+  font-family: '' !important;
+  display: none !important;
+  position: absolute !important;
+  right: 0.5rem;
+  top: 0.5rem;
+  border-radius: 0 !important;
+  /* padding: 6px 14px !important; */
+  padding: 0.4rem 0.75rem !important;
+  color: white;
+  font-size: 1.1rem !important;
+  transition: all 0.33s ease 0s;
+  /* position: relative; */
+  /* bottom: 0px !important; */
+  /* left: 3.2rem !important; */
+  background-color: rgb(1, 163, 1) !important;
+}
+
+
+/* .ce-message-form-input::before {
+  content: '>'
+} */
+
+.ce-attachment-input {
+  /* display: none !important; */
+  padding: 0.375rem 0.625rem !important;
+  position: absolute;
+  top: 0.2rem !important;
+  right: 0rem !important;
+  bottom: 0 !important;
+}
+
+.ce-attachment-icon {
+  font-size: 1.5rem !important;
+}
+
+.ce-chat-card {
+  border-radius: 0 !important;
+}
+
+.ce-chat-card-unread {
+  background-color: green !important
+}
+
+.ce-chat-card-title.undefined {
+  font-family: 'Consolas' !important;
+  font-weight: 600 !important;
+  font-size: 1.1rem !important;
+}
+
+.ce-chat-card-subtitle.undefined {
+  font-family: 'Consolas' !important;
+}
+
+/* .ce-avatar {
+  background-color: black !important;
+
+  box-shadow: rgba(211, 189, 190, 0.35) 0px 2px 7px !important;
+  border: 1px solid green !important;
+}
+
+.ce-avatar-dot {
+  background-color: black !important;
+} */
+
+.ce-chat-card-title {
+  font-family: 'Consolas' !important;
+  color: black !important
+}
+
+.ce-dropdown-label {
+  font-family: 'Consolas' !important;
+  color: black !important;
+  margin-top: 0.5rem !important;
+  font-size: 1.3rem !important;
+}
+
+.ce-dropdown-children {
+  color: black !important;
+
+}
+
+
+.ce-autocomplete-input {
+  border: 1px solid green !important;
+  background-color: white !important;
+  margin-top: 0.5rem !important;
+  font-family: 'Consolas' !important;
+  border-radius: 0 !important;
+
+
+}
+
+.ce-autocomplete-input::placeholder {
+  color: green !important
+}
+
+.ce-my-message-attachments {
+  margin-left: 38.5rem !important;
+
+}
+
+.ce-message-list {
+  margin-bottom: 0.5rem !important;
+  margin-left: 0.5rem !important;
+  margin-right: 0.5rem !important
+}
+
+.ce-my-message-timestamp {
+  margin-right: 0.25rem !important;
+  font-size: 0.875rem !important;
+  font-family: 'Consolas' !important;
+  color: green !important;
+  /* transition: all 0.15s ease 0s; */
+  /* opacity: 0; */
+}
+
+.ce-their-message-timestamp {
+  font-family: 'Consolas' !important;
+}
+
+.ce-chat-settings-title {
+  display: none !important
+}
+
+.ce-their-message-attachments {
+  margin-left: 0.625rem !important
+}
+
+.ce-their-message {
+  padding-bottom: 1.563rem !important;
+}
+
+.ce-their-message-sender-username {
+  font-family: 'Consolas' !important;
+}
+
+.ce-chat-avatars {
+  margin-bottom: 0.5rem !important;
+  display: none !important;
+}
+
+.ce-avatar {
+  font-family: 'Consolas' !important;
+}
+
+.ce-danger-button {
+  margin-top: 0.3rem !important;
+  font-family: 'Consolas' !important;
+  padding-top: 0.4rem !important
+}
+
+.ce-ice-breaker-wrapper {
+  display: flex !important;
+  align-items: center !important;
+  flex-direction: column !important;
+}
+
+.ce-ice-breaker-gif {
+  display: none !important;
+}
+
+.ce-ice-breaker-text {
+  font-family: 'Consolas' !important;
+}
+
+.ce-chat-form-title {
+
+  color: black !important;
+  font-family: 'Consolas' !important
+}
+
+.anticon-message {
+  margin-top: 0.56rem !important;
+  position: fixed;
+  right: 9.4rem;
+  transform: rotateY(180deg);
+}
+
+.ce-chat-feed-column,
+.ce-chat-list-column,
+.ce-chat-list,
+.ce-chat-settings-column {
+  /* width: 20rem !important; */
+  overflow: hidden !important;
+}
+
+.ce-chat-settings {
+  /* display: none; */
+}
+
+.ce-chat-list-column {}

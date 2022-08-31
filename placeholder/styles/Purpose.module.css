@@ -1,0 +1,108 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  gap: 20px;
+
+}
+
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  margin-top: 20px;
+  gap: 1rem;
+  width: 60rem;
+  padding: 1.5rem;
+
+}
+
+.title {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  font-size: 1rem;
+  gap: 1rem;
+}
+
+
+
+
+.btn {
+  font-size: 1.2rem;
+  outline: solid 2px rgba(255, 255, 255, 0);
+  padding: 0.25rem 0.75rem;
+  padding-left: 0;
+  width: fit-content;
+  text-align: left;
+
+
+
+}
+
+
+
+
+
+.btn:hover {
+  
+  outline: solid 2px black;
+  padding-left: 0.5rem;
+  
+}
+
+.btnDarkMode {
+  font-size: 1.2rem;
+  outline: solid 2px rgba(255, 255, 255, 0);
+  padding: 0.25rem 0.75rem;
+  padding-left: 0;
+  width: fit-content;
+  text-align: left;
+  transition: all 0.3s ease;
+
+}
+
+
+.btnDarkMode:hover {
+  padding-left: 0.5rem;
+  outline: solid 2px white;
+}
+
+.navigationBtns {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 40rem;
+  left: 70rem;
+  
+
+}
+
+
+
+
+
+
+
+
+
+
+
+.underline {
+  animation: blink 1s step-end infinite;
+
+}
+
+
+@keyframes blink{
+  0%{opacity: 1.0;}
+  50%{opacity: 0.0;}
+  100%{opacity: 1.0;}
+  }
+

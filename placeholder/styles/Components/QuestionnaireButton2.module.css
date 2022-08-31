@@ -1,0 +1,31 @@
+.button {
+  font-size: 1.1rem;
+  padding: 0.25rem 0.75rem;
+  width: fit-content;
+  text-align: left;
+  transition: all 0.3s ease;
+  border: solid 2px rgba(255, 255, 255, 0);
+  transform: translateX(0);
+}
+
+
+.buttonSelected {
+ font-size: 1.1rem;
+ padding: 0.25rem 0.75rem;
+ width: fit-content;
+ text-align: left;
+ border: solid 2px black;
+ transition: all 0.3s ease;
+ transform: translateX(0.625rem);
+}
+
+.buttonStyle:hover  {
+  transform: translateX(0.625rem);
+  border: solid 2px black;
+}
+
+
+.buttonStyleDarkMode:hover {
+  transform: translateX(0.625rem);
+  border: solid 2px white;
+}

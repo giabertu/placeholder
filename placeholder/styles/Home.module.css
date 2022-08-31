@@ -1,129 +1,114 @@
 .container {
-  padding: 0 2rem;
+  padding: 1.3vw;
+  font-size: 1rem;
 }
 
-.main {
-  min-height: 100vh;
-  padding: 4rem 0;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+.canvasContainer {
+  z-index: -1;
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  right: 0rem;
+  animation: fadeInAnimation 3s ease
 }
 
-.footer {
-  display: flex;
-  flex: 1;
-  padding: 2rem 0;
-  border-top: 1px solid #eaeaea;
-  justify-content: center;
-  align-items: center;
+.CLIFeed {
+  max-height: 40vh;
+  overflow-y: auto;
+  z-index: 1;
+  background-color: transparent;
 }
 
-.footer a {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-grow: 1;
+/* Hide scrollbar for Chrome, Safari and Opera */
+.CLIFeed::-webkit-scrollbar {
+  display: none;
 }
 
-.title a {
-  color: #0070f3;
-  text-decoration: none;
+/* Hide scrollbar for IE, Edge and Firefox */
+.CLIFeed {
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
 }
 
-.title a:hover,
-.title a:focus,
-.title a:active {
-  text-decoration: underline;
+/* .container:hover {
+  background-color: red;
+} */
+
+.terminalArrow {
+  margin-right: 0.2em;
+  animation: fadeInAnimation ease 4s;
+  /* animation-delay: 2s; */
 }
 
-.title {
-  margin: 0;
-  line-height: 1.15;
-  font-size: 4rem;
+.input {
+  padding-top: 0.7em;
+  animation: fadeInAnimation linear 4s;
+  background-color: transparent;
+  /* outline: solid 1px rgb(107, 107, 107); */
+  /* animation-iteration-count: 1; */
+  /* animation-fill-mode: forwards; */
 }
 
-.title,
-.description {
-  text-align: center;
-}
-
-.description {
-  margin: 4rem 0;
-  line-height: 1.5;
-  font-size: 1.5rem;
-}
-
-.code {
-  background: #fafafa;
-  border-radius: 5px;
-  padding: 0.75rem;
-  font-size: 1.1rem;
-  font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
-    Bitstream Vera Sans Mono, Courier New, monospace;
-}
-
-.grid {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  max-width: 800px;
-}
-
-.card {
-  margin: 1rem;
-  padding: 1.5rem;
+.input::placeholder {
   text-align: left;
-  color: inherit;
-  text-decoration: none;
-  border: 1px solid #eaeaea;
-  border-radius: 10px;
-  transition: color 0.15s ease, border-color 0.15s ease;
-  max-width: 300px;
+  color: white
 }
 
-.card:hover,
-.card:focus,
-.card:active {
-  color: #0070f3;
-  border-color: #0070f3;
+
+.input:focus {
+  outline: none;
 }
 
-.card h2 {
-  margin: 0 0 1rem 0;
-  font-size: 1.5rem;
+.inputDark {
+  padding-top: 0.7em;
+  animation: fadeInAnimation linear 4s;
+  background-color: transparent;
+  /* outline: solid 1px rgb(107, 107, 107); */
+  /* animation-iteration-count: 1; */
+  /* animation-fill-mode: forwards; */
 }
 
-.card p {
-  margin: 0;
-  font-size: 1.25rem;
-  line-height: 1.5;
+.inputDark::placeholder {
+  text-align: left;
+  color: black
 }
 
-.logo {
-  height: 1em;
-  margin-left: 0.5rem;
+.inputDark:focus {
+  outline: none;
 }
 
-@media (max-width: 600px) {
-  .grid {
-    width: 100%;
-    flex-direction: column;
+
+@keyframes fadeInAnimation {
+  0% {
+    opacity: 0;
+  }
+
+  30% {
+    opacity: 0
+  }
+
+  100% {
+    opacity: 1;
   }
 }
 
-@media (prefers-color-scheme: dark) {
-  .card,
-  .footer {
-    border-color: #222;
-  }
-  .code {
-    background: #111;
-  }
-  .logo img {
-    filter: invert(1);
-  }
+.testButton {
+  background-color: red;
+  width: 200px
+}
+
+.colorMode {
+
+
+  position: fixed;
+  right: 1.2rem;
+  top: 1.1rem;
+
+
+
+
+
 }

@@ -1,0 +1,74 @@
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-row {
+  display: flex;
+}
+
+.outline {
+  outline: solid 1px;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.align-center {
+  align-items: center;
+}
+
+.a-self-start {
+  align-self: flex-start;
+}
+
+.j-self-start {
+  justify-self: flex-start;
+}
+
+.m-bottom-auto {
+  margin-bottom: auto;
+}
+
+.m-top-auto {
+  margin-top: auto;
+}
+
+.gap-2r {
+  gap: 2rem;
+}
+
+.box-shadow {
+  box-shadow: 0px 0px 2px rgb(105, 105, 105);
+}
+
+.white-shadow {
+  box-shadow: 0px 0px 20px rgb(191, 191, 191);
+  height: fit-content;
+}
+
+
+.fade-in {
+  animation: fadeInAnimation linear 2s;
+}
+
+
+@keyframes fadeInAnimation {
+  0% {
+    opacity: 0;
+  }
+
+  30% {
+    opacity: 0
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+
+.css-1vz34qo {
+  padding: 0 !important;
+}

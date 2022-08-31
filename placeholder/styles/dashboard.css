@@ -1,0 +1,63 @@
+.button-container {
+  width: 10rem;
+}
+
+.back-button:hover {
+  margin-left: 0;
+  margin-right: 0.5rem;
+}
+
+.title-buttons-container {
+  background-color: rgba(255, 255, 255, 0.427);
+  backdrop-filter: blur(3px);
+  padding: 2rem;
+  min-width: 40rem;
+}
+
+.title-buttons-container-dark {
+  background-color: rgba(117, 117, 117, 0.427);
+  backdrop-filter: blur(3px);
+  padding: 2rem;
+  min-width: 40rem;
+}
+
+.dashboard-profile-container {
+  background-color: rgba(255, 255, 255, 0.427);
+  backdrop-filter: blur(5px);
+  min-width: 40rem;
+}
+
+.dashboard-profile-container-dark {
+  background-color: rgba(70, 67, 67, 0.427);
+  backdrop-filter: blur(5px);
+  min-width: 40rem;
+}
+
+.dashboard-profile-input-dark {
+
+  backdrop-filter: blur(5px);
+
+  /* background-color: rgba(236, 240, 241, 0.1); */
+  background-color: rgba(237, 242, 247, 0.1)
+}
+
+
+.menu-container {
+  margin-top: 3rem;
+}
+
+.main-component-container {}
+
+
+.navbar-icon {
+  transition: all 0.2s ease;
+}
+
+.navbar-icon:hover {
+  transform: scale(1.2);
+}
+
+.dashboard-title {
+  font-size: 1.5rem;
+  font-weight: 900;
+}

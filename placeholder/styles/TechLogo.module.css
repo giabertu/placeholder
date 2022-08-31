@@ -1,0 +1,26 @@
+.container {
+  display: inline;
+  margin: 0 0.5rem;
+  width: 5rem;
+  height: 5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.button {
+  padding: 0.4rem;
+  outline: 1px transparent solid;
+  transition: outline-color 0.5s;
+}
+
+.selected {
+  padding: 0.4rem;
+  outline: 1px black solid;
+  transition: outline-color 0.5s;
+}
+
+.logo {
+  width: 3.2rem;
+  height: auto;
+}

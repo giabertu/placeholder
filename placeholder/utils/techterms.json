@@ -1,0 +1,2002 @@
+[
+ {
+   "tagName": "javascript",
+   "Count": 2410080
+ },
+ {
+   "tagName": "python",
+   "Count": 2002771
+ },
+ {
+   "tagName": "java",
+   "Count": 1859625
+ },
+ {
+   "tagName": "c#",
+   "Count": 1552476
+ },
+ {
+   "tagName": "php",
+   "Count": 1442564
+ },
+ {
+   "tagName": "android",
+   "Count": 1382121
+ },
+ {
+   "tagName": "html",
+   "Count": 1140513
+ },
+ {
+   "tagName": "jquery",
+   "Count": 1028710
+ },
+ {
+   "tagName": "c++",
+   "Count": 773088
+ },
+ {
+   "tagName": "css",
+   "Count": 767569
+ },
+ {
+   "tagName": "ios",
+   "Count": 673367
+ },
+ {
+   "tagName": "mysql",
+   "Count": 649490
+ },
+ {
+   "tagName": "sql",
+   "Count": 639104
+ },
+ {
+   "tagName": "r",
+   "Count": 459372
+ },
+ {
+   "tagName": "node.js",
+   "Count": 438619
+ },
+ {
+   "tagName": "reactjs",
+   "Count": 406310
+ },
+ {
+   "tagName": "arrays",
+   "Count": 396094
+ },
+ {
+   "tagName": "c",
+   "Count": 383510
+ },
+ {
+   "tagName": "asp.net",
+   "Count": 369527
+ },
+ {
+   "tagName": "json",
+   "Count": 344009
+ },
+ {
+   "tagName": "ruby-on-rails",
+   "Count": 333477
+ },
+ {
+   "tagName": ".net",
+   "Count": 321844
+ },
+ {
+   "tagName": "sql-server",
+   "Count": 321523
+ },
+ {
+   "tagName": "python-3.x",
+   "Count": 320025
+ },
+ {
+   "tagName": "swift",
+   "Count": 316907
+ },
+ {
+   "tagName": "django",
+   "Count": 295154
+ },
+ {
+   "tagName": "objective-c",
+   "Count": 292468
+ },
+ {
+   "tagName": "angular",
+   "Count": 282234
+ },
+ {
+   "tagName": "excel",
+   "Count": 267356
+ },
+ {
+   "tagName": "angularjs",
+   "Count": 262533
+ },
+ {
+   "tagName": "pandas",
+   "Count": 254886
+ },
+ {
+   "tagName": "regex",
+   "Count": 251730
+ },
+ {
+   "tagName": "ruby",
+   "Count": 225205
+ },
+ {
+   "tagName": "iphone",
+   "Count": 221459
+ },
+ {
+   "tagName": "ajax",
+   "Count": 220315
+ },
+ {
+   "tagName": "linux",
+   "Count": 218308
+ },
+ {
+   "tagName": "xml",
+   "Count": 209516
+ },
+ {
+   "tagName": "vba",
+   "Count": 201992
+ },
+ {
+   "tagName": "spring",
+   "Count": 198978
+ },
+ {
+   "tagName": "asp.net-mvc",
+   "Count": 198565
+ },
+ {
+   "tagName": "laravel",
+   "Count": 195938
+ },
+ {
+   "tagName": "typescript",
+   "Count": 191234
+ },
+ {
+   "tagName": "database",
+   "Count": 188398
+ },
+ {
+   "tagName": "wordpress",
+   "Count": 185413
+ },
+ {
+   "tagName": "string",
+   "Count": 176898
+ },
+ {
+   "tagName": "wpf",
+   "Count": 166239
+ },
+ {
+   "tagName": "mongodb",
+   "Count": 165142
+ },
+ {
+   "tagName": "windows",
+   "Count": 159106
+ },
+ {
+   "tagName": "postgresql",
+   "Count": 158088
+ },
+ {
+   "tagName": "xcode",
+   "Count": 155874
+ },
+ {
+   "tagName": "bash",
+   "Count": 147195
+ },
+ {
+   "tagName": "oracle",
+   "Count": 144133
+ },
+ {
+   "tagName": "git",
+   "Count": 143277
+ },
+ {
+   "tagName": "amazon-web-services",
+   "Count": 139557
+ },
+ {
+   "tagName": "vb.net",
+   "Count": 137755
+ },
+ {
+   "tagName": "flutter",
+   "Count": 135949
+ },
+ {
+   "tagName": "multithreading",
+   "Count": 135676
+ },
+ {
+   "tagName": "list",
+   "Count": 132453
+ },
+ {
+   "tagName": "firebase",
+   "Count": 130443
+ },
+ {
+   "tagName": "spring-boot",
+   "Count": 126221
+ },
+ {
+   "tagName": "dataframe",
+   "Count": 125759
+ },
+ {
+   "tagName": "eclipse",
+   "Count": 123915
+ },
+ {
+   "tagName": "azure",
+   "Count": 121712
+ },
+ {
+   "tagName": "react-native",
+   "Count": 120020
+ },
+ {
+   "tagName": "docker",
+   "Count": 118508
+ },
+ {
+   "tagName": "algorithm",
+   "Count": 115437
+ },
+ {
+   "tagName": "macos",
+   "Count": 112679
+ },
+ {
+   "tagName": "forms",
+   "Count": 110908
+ },
+ {
+   "tagName": "image",
+   "Count": 110382
+ },
+ {
+   "tagName": "visual-studio",
+   "Count": 110263
+ },
+ {
+   "tagName": "scala",
+   "Count": 109321
+ },
+ {
+   "tagName": "powershell",
+   "Count": 105637
+ },
+ {
+   "tagName": "numpy",
+   "Count": 104756
+ },
+ {
+   "tagName": "function",
+   "Count": 104460
+ },
+ {
+   "tagName": "twitter-bootstrap",
+   "Count": 102506
+ },
+ {
+   "tagName": "api",
+   "Count": 102031
+ },
+ {
+   "tagName": "selenium",
+   "Count": 98885
+ },
+ {
+   "tagName": "performance",
+   "Count": 98007
+ },
+ {
+   "tagName": "vue.js",
+   "Count": 96159
+ },
+ {
+   "tagName": "winforms",
+   "Count": 95997
+ },
+ {
+   "tagName": "python-2.7",
+   "Count": 95201
+ },
+ {
+   "tagName": "matlab",
+   "Count": 93241
+ },
+ {
+   "tagName": "sqlite",
+   "Count": 92298
+ },
+ {
+   "tagName": "hibernate",
+   "Count": 91575
+ },
+ {
+   "tagName": "apache",
+   "Count": 91239
+ },
+ {
+   "tagName": "loops",
+   "Count": 90821
+ },
+ {
+   "tagName": "entity-framework",
+   "Count": 89573
+ },
+ {
+   "tagName": "rest",
+   "Count": 89548
+ },
+ {
+   "tagName": "shell",
+   "Count": 88706
+ },
+ {
+   "tagName": "express",
+   "Count": 87648
+ },
+ {
+   "tagName": "android-studio",
+   "Count": 86904
+ },
+ {
+   "tagName": "facebook",
+   "Count": 85681
+ },
+ {
+   "tagName": "csv",
+   "Count": 85531
+ },
+ {
+   "tagName": "linq",
+   "Count": 84383
+ },
+ {
+   "tagName": "maven",
+   "Count": 84311
+ },
+ {
+   "tagName": "qt",
+   "Count": 83051
+ },
+ {
+   "tagName": "unit-testing",
+   "Count": 81388
+ },
+ {
+   "tagName": "swing",
+   "Count": 80498
+ },
+ {
+   "tagName": "file",
+   "Count": 78826
+ },
+ {
+   "tagName": "tensorflow",
+   "Count": 78231
+ },
+ {
+   "tagName": "kotlin",
+   "Count": 77211
+ },
+ {
+   "tagName": "class",
+   "Count": 76552
+ },
+ {
+   "tagName": "apache-spark",
+   "Count": 76449
+ },
+ {
+   "tagName": "dart",
+   "Count": 74716
+ },
+ {
+   "tagName": "date",
+   "Count": 73272
+ },
+ {
+   "tagName": "sorting",
+   "Count": 73115
+ },
+ {
+   "tagName": "dictionary",
+   "Count": 72243
+ },
+ {
+   "tagName": ".htaccess",
+   "Count": 71913
+ },
+ {
+   "tagName": "asp.net-core",
+   "Count": 71721
+ },
+ {
+   "tagName": "symfony",
+   "Count": 71448
+ },
+ {
+   "tagName": "tsql",
+   "Count": 70981
+ },
+ {
+   "tagName": "google-chrome",
+   "Count": 70054
+ },
+ {
+   "tagName": "codeigniter",
+   "Count": 69181
+ },
+ {
+   "tagName": "opencv",
+   "Count": 68677
+ },
+ {
+   "tagName": "unity3d",
+   "Count": 67187
+ },
+ {
+   "tagName": "for-loop",
+   "Count": 67087
+ },
+ {
+   "tagName": "perl",
+   "Count": 67003
+ },
+ {
+   "tagName": "datetime",
+   "Count": 66945
+ },
+ {
+   "tagName": "matplotlib",
+   "Count": 66619
+ },
+ {
+   "tagName": "http",
+   "Count": 65545
+ },
+ {
+   "tagName": "google-maps",
+   "Count": 65337
+ },
+ {
+   "tagName": "validation",
+   "Count": 65196
+ },
+ {
+   "tagName": "sockets",
+   "Count": 64996
+ },
+ {
+   "tagName": "uitableview",
+   "Count": 63868
+ },
+ {
+   "tagName": "go",
+   "Count": 63448
+ },
+ {
+   "tagName": "object",
+   "Count": 62174
+ },
+ {
+   "tagName": "cordova",
+   "Count": 61439
+ },
+ {
+   "tagName": "xaml",
+   "Count": 60276
+ },
+ {
+   "tagName": "web-services",
+   "Count": 60246
+ },
+ {
+   "tagName": "oop",
+   "Count": 59736
+ },
+ {
+   "tagName": "android-layout",
+   "Count": 58666
+ },
+ {
+   "tagName": "if-statement",
+   "Count": 58326
+ },
+ {
+   "tagName": "email",
+   "Count": 58038
+ },
+ {
+   "tagName": "ubuntu",
+   "Count": 57937
+ },
+ {
+   "tagName": "spring-mvc",
+   "Count": 57256
+ },
+ {
+   "tagName": "ruby-on-rails-3",
+   "Count": 56112
+ },
+ {
+   "tagName": "ms-access",
+   "Count": 55776
+ },
+ {
+   "tagName": "c++11",
+   "Count": 55726
+ },
+ {
+   "tagName": "parsing",
+   "Count": 55625
+ },
+ {
+   "tagName": "elasticsearch",
+   "Count": 55197
+ },
+ {
+   "tagName": "authentication",
+   "Count": 55045
+ },
+ {
+   "tagName": "security",
+   "Count": 54795
+ },
+ {
+   "tagName": "user-interface",
+   "Count": 54709
+ },
+ {
+   "tagName": "pointers",
+   "Count": 54328
+ },
+ {
+   "tagName": "sql-server-2008",
+   "Count": 53838
+ },
+ {
+   "tagName": "templates",
+   "Count": 52784
+ },
+ {
+   "tagName": "batch-file",
+   "Count": 52421
+ },
+ {
+   "tagName": "jsp",
+   "Count": 52187
+ },
+ {
+   "tagName": "variables",
+   "Count": 52175
+ },
+ {
+   "tagName": "listview",
+   "Count": 52099
+ },
+ {
+   "tagName": "github",
+   "Count": 51635
+ },
+ {
+   "tagName": "nginx",
+   "Count": 51564
+ },
+ {
+   "tagName": "flask",
+   "Count": 51124
+ },
+ {
+   "tagName": "machine-learning",
+   "Count": 51100
+ },
+ {
+   "tagName": "wcf",
+   "Count": 50728
+ },
+ {
+   "tagName": "debugging",
+   "Count": 50007
+ },
+ {
+   "tagName": "kubernetes",
+   "Count": 49936
+ },
+ {
+   "tagName": "delphi",
+   "Count": 49896
+ },
+ {
+   "tagName": "haskell",
+   "Count": 49386
+ },
+ {
+   "tagName": "jpa",
+   "Count": 49259
+ },
+ {
+   "tagName": "xamarin",
+   "Count": 49146
+ },
+ {
+   "tagName": "ssl",
+   "Count": 49129
+ },
+ {
+   "tagName": "ggplot2",
+   "Count": 48988
+ },
+ {
+   "tagName": "pdf",
+   "Count": 48871
+ },
+ {
+   "tagName": "asynchronous",
+   "Count": 48615
+ },
+ {
+   "tagName": "jenkins",
+   "Count": 48312
+ },
+ {
+   "tagName": "selenium-webdriver",
+   "Count": 48044
+ },
+ {
+   "tagName": "visual-studio-code",
+   "Count": 47819
+ },
+ {
+   "tagName": "gradle",
+   "Count": 47729
+ },
+ {
+   "tagName": "google-apps-script",
+   "Count": 47601
+ },
+ {
+   "tagName": "testing",
+   "Count": 47220
+ },
+ {
+   "tagName": "tkinter",
+   "Count": 47032
+ },
+ {
+   "tagName": "visual-studio-2010",
+   "Count": 46915
+ },
+ {
+   "tagName": "generics",
+   "Count": 46872
+ },
+ {
+   "tagName": "unix",
+   "Count": 46717
+ },
+ {
+   "tagName": "google-app-engine",
+   "Count": 46613
+ },
+ {
+   "tagName": "amazon-s3",
+   "Count": 46422
+ },
+ {
+   "tagName": "web",
+   "Count": 45839
+ },
+ {
+   "tagName": "google-sheets",
+   "Count": 45608
+ },
+ {
+   "tagName": "npm",
+   "Count": 45559
+ },
+ {
+   "tagName": "android-fragments",
+   "Count": 45288
+ },
+ {
+   "tagName": "ionic-framework",
+   "Count": 44760
+ },
+ {
+   "tagName": "recursion",
+   "Count": 44576
+ },
+ {
+   "tagName": "web-scraping",
+   "Count": 44354
+ },
+ {
+   "tagName": "session",
+   "Count": 44046
+ },
+ {
+   "tagName": "hadoop",
+   "Count": 43914
+ },
+ {
+   "tagName": "mongoose",
+   "Count": 43698
+ },
+ {
+   "tagName": "heroku",
+   "Count": 43481
+ },
+ {
+   "tagName": "animation",
+   "Count": 43148
+ },
+ {
+   "tagName": "url",
+   "Count": 42427
+ },
+ {
+   "tagName": "curl",
+   "Count": 42427
+ },
+ {
+   "tagName": "tomcat",
+   "Count": 42390
+ },
+ {
+   "tagName": "asp.net-mvc-4",
+   "Count": 42380
+ },
+ {
+   "tagName": "math",
+   "Count": 41846
+ },
+ {
+   "tagName": "svg",
+   "Count": 41545
+ },
+ {
+   "tagName": "actionscript-3",
+   "Count": 41328
+ },
+ {
+   "tagName": "exception",
+   "Count": 41103
+ },
+ {
+   "tagName": "join",
+   "Count": 40937
+ },
+ {
+   "tagName": "assembly",
+   "Count": 40926
+ },
+ {
+   "tagName": "inheritance",
+   "Count": 40881
+ },
+ {
+   "tagName": "intellij-idea",
+   "Count": 40712
+ },
+ {
+   "tagName": "django-models",
+   "Count": 40661
+ },
+ {
+   "tagName": "webpack",
+   "Count": 40605
+ },
+ {
+   "tagName": "winapi",
+   "Count": 40597
+ },
+ {
+   "tagName": "image-processing",
+   "Count": 40519
+ },
+ {
+   "tagName": "keras",
+   "Count": 40222
+ },
+ {
+   "tagName": ".net-core",
+   "Count": 40128
+ },
+ {
+   "tagName": "dom",
+   "Count": 40118
+ },
+ {
+   "tagName": "post",
+   "Count": 39801
+ },
+ {
+   "tagName": "google-cloud-platform",
+   "Count": 39748
+ },
+ {
+   "tagName": "jquery-ui",
+   "Count": 39736
+ },
+ {
+   "tagName": "cocoa",
+   "Count": 39477
+ },
+ {
+   "tagName": "matrix",
+   "Count": 39344
+ },
+ {
+   "tagName": "redirect",
+   "Count": 39298
+ },
+ {
+   "tagName": "logging",
+   "Count": 39291
+ },
+ {
+   "tagName": "gcc",
+   "Count": 39219
+ },
+ {
+   "tagName": "internet-explorer",
+   "Count": 39126
+ },
+ {
+   "tagName": "button",
+   "Count": 38899
+ },
+ {
+   "tagName": "d3.js",
+   "Count": 38751
+ },
+ {
+   "tagName": "asp.net-mvc-3",
+   "Count": 38560
+ },
+ {
+   "tagName": "firebase-realtime-database",
+   "Count": 38463
+ },
+ {
+   "tagName": "select",
+   "Count": 38246
+ },
+ {
+   "tagName": "firefox",
+   "Count": 38174
+ },
+ {
+   "tagName": "laravel-5",
+   "Count": 38116
+ },
+ {
+   "tagName": "magento",
+   "Count": 37927
+ },
+ {
+   "tagName": "iis",
+   "Count": 37836
+ },
+ {
+   "tagName": "xpath",
+   "Count": 37670
+ },
+ {
+   "tagName": "opengl",
+   "Count": 37448
+ },
+ {
+   "tagName": "xslt",
+   "Count": 37354
+ },
+ {
+   "tagName": "networking",
+   "Count": 37168
+ },
+ {
+   "tagName": "events",
+   "Count": 37083
+ },
+ {
+   "tagName": "javafx",
+   "Count": 36981
+ },
+ {
+   "tagName": "optimization",
+   "Count": 36914
+ },
+ {
+   "tagName": "caching",
+   "Count": 36892
+ },
+ {
+   "tagName": "ruby-on-rails-4",
+   "Count": 36751
+ },
+ {
+   "tagName": "asp.net-web-api",
+   "Count": 36597
+ },
+ {
+   "tagName": "google-cloud-firestore",
+   "Count": 36457
+ },
+ {
+   "tagName": "search",
+   "Count": 36371
+ },
+ {
+   "tagName": "stored-procedures",
+   "Count": 35982
+ },
+ {
+   "tagName": "encryption",
+   "Count": 35871
+ },
+ {
+   "tagName": "plot",
+   "Count": 35698
+ },
+ {
+   "tagName": "jsf",
+   "Count": 35666
+ },
+ {
+   "tagName": "flash",
+   "Count": 35112
+ },
+ {
+   "tagName": "canvas",
+   "Count": 35103
+ },
+ {
+   "tagName": "audio",
+   "Count": 35097
+ },
+ {
+   "tagName": "facebook-graph-api",
+   "Count": 34843
+ },
+ {
+   "tagName": "ipad",
+   "Count": 34737
+ },
+ {
+   "tagName": "memory",
+   "Count": 34682
+ },
+ {
+   "tagName": "cocoa-touch",
+   "Count": 34630
+ },
+ {
+   "tagName": "amazon-ec2",
+   "Count": 34537
+ },
+ {
+   "tagName": "multidimensional-array",
+   "Count": 33959
+ },
+ {
+   "tagName": "vector",
+   "Count": 33876
+ },
+ {
+   "tagName": "redux",
+   "Count": 33806
+ },
+ {
+   "tagName": "arraylist",
+   "Count": 33754
+ },
+ {
+   "tagName": "cookies",
+   "Count": 33737
+ },
+ {
+   "tagName": "pyspark",
+   "Count": 33700
+ },
+ {
+   "tagName": "random",
+   "Count": 33605
+ },
+ {
+   "tagName": "input",
+   "Count": 33355
+ },
+ {
+   "tagName": "video",
+   "Count": 33262
+ },
+ {
+   "tagName": "servlets",
+   "Count": 33171
+ },
+ {
+   "tagName": "xamarin.forms",
+   "Count": 33036
+ },
+ {
+   "tagName": "model-view-controller",
+   "Count": 32917
+ },
+ {
+   "tagName": "mod-rewrite",
+   "Count": 32613
+ },
+ {
+   "tagName": "indexing",
+   "Count": 32470
+ },
+ {
+   "tagName": "jdbc",
+   "Count": 32334
+ },
+ {
+   "tagName": "razor",
+   "Count": 32169
+ },
+ {
+   "tagName": "serialization",
+   "Count": 32167
+ },
+ {
+   "tagName": "data-structures",
+   "Count": 32037
+ },
+ {
+   "tagName": "iframe",
+   "Count": 31931
+ },
+ {
+   "tagName": "dplyr",
+   "Count": 31777
+ },
+ {
+   "tagName": "cakephp",
+   "Count": 31626
+ },
+ {
+   "tagName": "awk",
+   "Count": 31414
+ },
+ {
+   "tagName": "woocommerce",
+   "Count": 31208
+ },
+ {
+   "tagName": "design-patterns",
+   "Count": 31168
+ },
+ {
+   "tagName": "android-intent",
+   "Count": 30696
+ },
+ {
+   "tagName": "visual-c++",
+   "Count": 30670
+ },
+ {
+   "tagName": "text",
+   "Count": 30652
+ },
+ {
+   "tagName": "rust",
+   "Count": 30245
+ },
+ {
+   "tagName": "filter",
+   "Count": 29804
+ },
+ {
+   "tagName": "grails",
+   "Count": 29780
+ },
+ {
+   "tagName": "beautifulsoup",
+   "Count": 29618
+ },
+ {
+   "tagName": "mobile",
+   "Count": 29426
+ },
+ {
+   "tagName": "methods",
+   "Count": 29391
+ },
+ {
+   "tagName": "jakarta-ee",
+   "Count": 29388
+ },
+ {
+   "tagName": "ecmascript-6",
+   "Count": 29223
+ },
+ {
+   "tagName": "checkbox",
+   "Count": 29197
+ },
+ {
+   "tagName": "meteor",
+   "Count": 29009
+ },
+ {
+   "tagName": "struct",
+   "Count": 28977
+ },
+ {
+   "tagName": "mvvm",
+   "Count": 28948
+ },
+ {
+   "tagName": "android-activity",
+   "Count": 28774
+ },
+ {
+   "tagName": "groovy",
+   "Count": 28722
+ },
+ {
+   "tagName": "django-rest-framework",
+   "Count": 28707
+ },
+ {
+   "tagName": "core-data",
+   "Count": 28637
+ },
+ {
+   "tagName": "ssh",
+   "Count": 28559
+ },
+ {
+   "tagName": "time",
+   "Count": 28541
+ },
+ {
+   "tagName": "apache-kafka",
+   "Count": 28455
+ },
+ {
+   "tagName": "lambda",
+   "Count": 28447
+ },
+ {
+   "tagName": "android-recyclerview",
+   "Count": 28447
+ },
+ {
+   "tagName": "installation",
+   "Count": 28365
+ },
+ {
+   "tagName": "sharepoint",
+   "Count": 28333
+ },
+ {
+   "tagName": "activerecord",
+   "Count": 28314
+ },
+ {
+   "tagName": "bootstrap-4",
+   "Count": 28098
+ },
+ {
+   "tagName": "google-chrome-extension",
+   "Count": 27700
+ },
+ {
+   "tagName": "swiftui",
+   "Count": 27585
+ },
+ {
+   "tagName": "vim",
+   "Count": 27526
+ },
+ {
+   "tagName": "graph",
+   "Count": 27490
+ },
+ {
+   "tagName": "sed",
+   "Count": 27440
+ },
+ {
+   "tagName": "soap",
+   "Count": 27365
+ },
+ {
+   "tagName": "file-upload",
+   "Count": 27365
+ },
+ {
+   "tagName": "silverlight",
+   "Count": 27321
+ },
+ {
+   "tagName": "plsql",
+   "Count": 27268
+ },
+ {
+   "tagName": "excel-formula",
+   "Count": 27071
+ },
+ {
+   "tagName": "aws-lambda",
+   "Count": 26941
+ },
+ {
+   "tagName": "boost",
+   "Count": 26878
+ },
+ {
+   "tagName": "junit",
+   "Count": 26744
+ },
+ {
+   "tagName": "azure-devops",
+   "Count": 26661
+ },
+ {
+   "tagName": "gridview",
+   "Count": 26644
+ },
+ {
+   "tagName": "svn",
+   "Count": 26639
+ },
+ {
+   "tagName": "memory-management",
+   "Count": 26624
+ },
+ {
+   "tagName": "replace",
+   "Count": 26617
+ },
+ {
+   "tagName": "dynamic",
+   "Count": 26552
+ },
+ {
+   "tagName": "types",
+   "Count": 26545
+ },
+ {
+   "tagName": "scikit-learn",
+   "Count": 26406
+ },
+ {
+   "tagName": "docker-compose",
+   "Count": 26207
+ },
+ {
+   "tagName": "websocket",
+   "Count": 26185
+ },
+ {
+   "tagName": "layout",
+   "Count": 26146
+ },
+ {
+   "tagName": "spring-security",
+   "Count": 26139
+ },
+ {
+   "tagName": "shiny",
+   "Count": 26104
+ },
+ {
+   "tagName": "browser",
+   "Count": 25871
+ },
+ {
+   "tagName": "c#-4.0",
+   "Count": 25813
+ },
+ {
+   "tagName": "import",
+   "Count": 25769
+ },
+ {
+   "tagName": "sass",
+   "Count": 25650
+ },
+ {
+   "tagName": "cmd",
+   "Count": 25527
+ },
+ {
+   "tagName": "charts",
+   "Count": 25493
+ },
+ {
+   "tagName": "dll",
+   "Count": 25270
+ },
+ {
+   "tagName": "eloquent",
+   "Count": 25208
+ },
+ {
+   "tagName": "error-handling",
+   "Count": 25151
+ },
+ {
+   "tagName": "cmake",
+   "Count": 25151
+ },
+ {
+   "tagName": "vuejs2",
+   "Count": 25013
+ },
+ {
+   "tagName": "dependency-injection",
+   "Count": 25002
+ },
+ {
+   "tagName": "deep-learning",
+   "Count": 24994
+ },
+ {
+   "tagName": "mysqli",
+   "Count": 24961
+ },
+ {
+   "tagName": "reporting-services",
+   "Count": 24961
+ },
+ {
+   "tagName": "google-maps-api-3",
+   "Count": 24925
+ },
+ {
+   "tagName": "while-loop",
+   "Count": 24895
+ },
+ {
+   "tagName": "twitter",
+   "Count": 24887
+ },
+ {
+   "tagName": "foreach",
+   "Count": 24809
+ },
+ {
+   "tagName": "plugins",
+   "Count": 24799
+ },
+ {
+   "tagName": "ffmpeg",
+   "Count": 24747
+ },
+ {
+   "tagName": "extjs",
+   "Count": 24726
+ },
+ {
+   "tagName": "group-by",
+   "Count": 24716
+ },
+ {
+   "tagName": "highcharts",
+   "Count": 24707
+ },
+ {
+   "tagName": "unicode",
+   "Count": 24387
+ },
+ {
+   "tagName": "reflection",
+   "Count": 24301
+ },
+ {
+   "tagName": "https",
+   "Count": 24199
+ },
+ {
+   "tagName": "async-await",
+   "Count": 24181
+ },
+ {
+   "tagName": "deployment",
+   "Count": 24149
+ },
+ {
+   "tagName": "makefile",
+   "Count": 24066
+ },
+ {
+   "tagName": "apache-flex",
+   "Count": 24036
+ },
+ {
+   "tagName": "netbeans",
+   "Count": 23988
+ },
+ {
+   "tagName": "ember.js",
+   "Count": 23888
+ },
+ {
+   "tagName": "server",
+   "Count": 23823
+ },
+ {
+   "tagName": "pdo",
+   "Count": 23800
+ },
+ {
+   "tagName": "database-design",
+   "Count": 23691
+ },
+ {
+   "tagName": "encoding",
+   "Count": 23493
+ },
+ {
+   "tagName": "merge",
+   "Count": 23476
+ },
+ {
+   "tagName": "hash",
+   "Count": 23424
+ },
+ {
+   "tagName": "collections",
+   "Count": 23385
+ },
+ {
+   "tagName": "react-hooks",
+   "Count": 23363
+ },
+ {
+   "tagName": "data-binding",
+   "Count": 23201
+ },
+ {
+   "tagName": "redis",
+   "Count": 23085
+ },
+ {
+   "tagName": "visual-studio-2012",
+   "Count": 23025
+ },
+ {
+   "tagName": "command-line",
+   "Count": 22812
+ },
+ {
+   "tagName": "terminal",
+   "Count": 22810
+ },
+ {
+   "tagName": "jquery-mobile",
+   "Count": 22693
+ },
+ {
+   "tagName": "split",
+   "Count": 22683
+ },
+ {
+   "tagName": "service",
+   "Count": 22661
+ },
+ {
+   "tagName": "printing",
+   "Count": 22568
+ },
+ {
+   "tagName": "java-8",
+   "Count": 22432
+ },
+ {
+   "tagName": "html-table",
+   "Count": 22254
+ },
+ {
+   "tagName": "tcp",
+   "Count": 22228
+ },
+ {
+   "tagName": "django-views",
+   "Count": 22159
+ },
+ {
+   "tagName": "react-redux",
+   "Count": 22116
+ },
+ {
+   "tagName": "web-applications",
+   "Count": 21932
+ },
+ {
+   "tagName": "neo4j",
+   "Count": 21879
+ },
+ {
+   "tagName": "webview",
+   "Count": 21817
+ },
+ {
+   "tagName": "build",
+   "Count": 21772
+ },
+ {
+   "tagName": "automation",
+   "Count": 21744
+ },
+ {
+   "tagName": "utf-8",
+   "Count": 21710
+ },
+ {
+   "tagName": "uwp",
+   "Count": 21705
+ },
+ {
+   "tagName": "tfs",
+   "Count": 21680
+ },
+ {
+   "tagName": "google-bigquery",
+   "Count": 21568
+ },
+ {
+   "tagName": "promise",
+   "Count": 21564
+ },
+ {
+   "tagName": "oauth-2.0",
+   "Count": 21549
+ },
+ {
+   "tagName": "datatable",
+   "Count": 21527
+ },
+ {
+   "tagName": "twitter-bootstrap-3",
+   "Count": 21486
+ },
+ {
+   "tagName": "concurrency",
+   "Count": 21453
+ },
+ {
+   "tagName": "module",
+   "Count": 21448
+ },
+ {
+   "tagName": "drop-down-menu",
+   "Count": 21410
+ },
+ {
+   "tagName": "hive",
+   "Count": 21248
+ },
+ {
+   "tagName": "enums",
+   "Count": 21240
+ },
+ {
+   "tagName": "axios",
+   "Count": 21161
+ },
+ {
+   "tagName": "sqlalchemy",
+   "Count": 21099
+ },
+ {
+   "tagName": "scroll",
+   "Count": 21092
+ },
+ {
+   "tagName": "pip",
+   "Count": 21076
+ },
+ {
+   "tagName": "view",
+   "Count": 21018
+ },
+ {
+   "tagName": "apache-spark-sql",
+   "Count": 20991
+ },
+ {
+   "tagName": "file-io",
+   "Count": 20868
+ },
+ {
+   "tagName": "gwt",
+   "Count": 20801
+ },
+ {
+   "tagName": "syntax",
+   "Count": 20788
+ },
+ {
+   "tagName": "ansible",
+   "Count": 20770
+ },
+ {
+   "tagName": "parameters",
+   "Count": 20766
+ },
+ {
+   "tagName": "colors",
+   "Count": 20724
+ },
+ {
+   "tagName": "next.js",
+   "Count": 20704
+ },
+ {
+   "tagName": "backbone.js",
+   "Count": 20655
+ },
+ {
+   "tagName": "outlook",
+   "Count": 20654
+ },
+ {
+   "tagName": "lua",
+   "Count": 20596
+ },
+ {
+   "tagName": "paypal",
+   "Count": 20557
+ },
+ {
+   "tagName": "ssis",
+   "Count": 20513
+ },
+ {
+   "tagName": "count",
+   "Count": 20501
+ },
+ {
+   "tagName": "google-analytics",
+   "Count": 20486
+ },
+ {
+   "tagName": "jestjs",
+   "Count": 20470
+ },
+ {
+   "tagName": "zend-framework",
+   "Count": 20443
+ },
+ {
+   "tagName": "jupyter-notebook",
+   "Count": 20417
+ },
+ {
+   "tagName": "constructor",
+   "Count": 20261
+ },
+ {
+   "tagName": "fonts",
+   "Count": 20247
+ },
+ {
+   "tagName": "knockout.js",
+   "Count": 20225
+ },
+ {
+   "tagName": "solr",
+   "Count": 20194
+ },
+ {
+   "tagName": "parallel-processing",
+   "Count": 20179
+ },
+ {
+   "tagName": "flexbox",
+   "Count": 20170
+ },
+ {
+   "tagName": "drupal",
+   "Count": 20164
+ },
+ {
+   "tagName": "spring-data-jpa",
+   "Count": 20110
+ },
+ {
+   "tagName": "datagridview",
+   "Count": 20013
+ },
+ {
+   "tagName": "python-requests",
+   "Count": 19999
+ },
+ {
+   "tagName": "oracle11g",
+   "Count": 19980
+ },
+ {
+   "tagName": "socket.io",
+   "Count": 19959
+ },
+ {
+   "tagName": "graphics",
+   "Count": 19935
+ },
+ {
+   "tagName": "scipy",
+   "Count": 19924
+ },
+ {
+   "tagName": "ms-word",
+   "Count": 19750
+ },
+ {
+   "tagName": "windows-phone-7",
+   "Count": 19724
+ },
+ {
+   "tagName": "parse-platform",
+   "Count": 19648
+ },
+ {
+   "tagName": "firebase-authentication",
+   "Count": 19643
+ },
+ {
+   "tagName": "visual-studio-2015",
+   "Count": 19640
+ },
+ {
+   "tagName": "memory-leaks",
+   "Count": 19615
+ },
+ {
+   "tagName": "three.js",
+   "Count": 19606
+ },
+ {
+   "tagName": "cassandra",
+   "Count": 19570
+ },
+ {
+   "tagName": "oauth",
+   "Count": 19469
+ },
+ {
+   "tagName": "interface",
+   "Count": 19299
+ },
+ {
+   "tagName": "compiler-errors",
+   "Count": 19234
+ },
+ {
+   "tagName": "rxjs",
+   "Count": 19228
+ },
+ {
+   "tagName": "primefaces",
+   "Count": 19209
+ },
+ {
+   "tagName": "timer",
+   "Count": 19162
+ },
+ {
+   "tagName": "neural-network",
+   "Count": 19147
+ },
+ {
+   "tagName": "django-forms",
+   "Count": 19141
+ },
+ {
+   "tagName": "pygame",
+   "Count": 19118
+ },
+ {
+   "tagName": "casting",
+   "Count": 19073
+ },
+ {
+   "tagName": "proxy",
+   "Count": 19015
+ },
+ {
+   "tagName": "linked-list",
+   "Count": 18896
+ },
+ {
+   "tagName": "directory",
+   "Count": 18852
+ },
+ {
+   "tagName": "visual-studio-2013",
+   "Count": 18810
+ },
+ {
+   "tagName": "graphql",
+   "Count": 18799
+ },
+ {
+   "tagName": "google-api",
+   "Count": 18777
+ },
+ {
+   "tagName": "triggers",
+   "Count": 18775
+ },
+ {
+   "tagName": "orm",
+   "Count": 18730
+ },
+ {
+   "tagName": "react-router",
+   "Count": 18686
+ },
+ {
+   "tagName": "material-ui",
+   "Count": 18656
+ },
+ {
+   "tagName": "datatables",
+   "Count": 18647
+ },
+ {
+   "tagName": "routes",
+   "Count": 18623
+ },
+ {
+   "tagName": "uiview",
+   "Count": 18616
+ },
+ {
+   "tagName": "vbscript",
+   "Count": 18604
+ },
+ {
+   "tagName": "arduino",
+   "Count": 18592
+ },
+ {
+   "tagName": "nlp",
+   "Count": 18572
+ },
+ {
+   "tagName": "jar",
+   "Count": 18525
+ },
+ {
+   "tagName": "push-notification",
+   "Count": 18499
+ },
+ {
+   "tagName": "sql-server-2005",
+   "Count": 18405
+ },
+ {
+   "tagName": "swift3",
+   "Count": 18396
+ },
+ {
+   "tagName": "path",
+   "Count": 18370
+ },
+ {
+   "tagName": "pytorch",
+   "Count": 18271
+ },
+ {
+   "tagName": "django-templates",
+   "Count": 18267
+ },
+ {
+   "tagName": "windows-phone-8",
+   "Count": 18267
+ },
+ {
+   "tagName": "model",
+   "Count": 18264
+ },
+ {
+   "tagName": "functional-programming",
+   "Count": 18253
+ },
+ {
+   "tagName": "entity-framework-core",
+   "Count": 18187
+ },
+ {
+   "tagName": "xamarin.android",
+   "Count": 18186
+ },
+ {
+   "tagName": "hyperlink",
+   "Count": 18167
+ },
+ {
+   "tagName": "login",
+   "Count": 18075
+ },
+ {
+   "tagName": "discord",
+   "Count": 18009
+ },
+ {
+   "tagName": "rspec",
+   "Count": 17988
+ },
+ {
+   "tagName": "download",
+   "Count": 17886
+ },
+ {
+   "tagName": "angular-material",
+   "Count": 17837
+ },
+ {
+   "tagName": "combobox",
+   "Count": 17747
+ },
+ {
+   "tagName": "process",
+   "Count": 17694
+ },
+ {
+   "tagName": "properties",
+   "Count": 17649
+ },
+ {
+   "tagName": "jmeter",
+   "Count": 17611
+ },
+ {
+   "tagName": "callback",
+   "Count": 17536
+ },
+ {
+   "tagName": "angularjs-directive",
+   "Count": 17488
+ },
+ {
+   "tagName": "emacs",
+   "Count": 17484
+ },
+ {
+   "tagName": "nhibernate",
+   "Count": 17456
+ },
+ {
+   "tagName": "configuration",
+   "Count": 17418
+ },
+ {
+   "tagName": "cron",
+   "Count": 17361
+ }
+]

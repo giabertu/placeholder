@@ -1,0 +1,27 @@
+.carousel-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* background-color: red; */
+  justify-content: center;
+  /* min-height: 100vh; */
+  height: 96vh;
+  max-width: 100vw;
+}
+
+.carousel-title {
+  top: 4.5rem;
+  position: fixed;
+  /* margin-top: 7rem; */
+  font-size: 1.3rem;
+  font-weight: 100;
+  /* margin-bottom: -4rem; */
+  /* z-index: 1; */
+}
+
+
+.matches-navigation-button-container {
+  position: fixed;
+  right: 60px;
+  bottom: 20px;
+}
