@@ -104,7 +104,7 @@ function ProfileEditable({ user }: { user: UserType }) {
 
   return (
     <div className="profile-title-button-container align-center">
-      <div className={isDark? "dashboard-profile-container-dark flex-column align-center justify-center box-shadow" : "dashboard-profile-container flex-column align-center justify-center box-shadow"}>
+      <div className={isDark ? "dashboard-profile-container-dark flex-column align-center justify-center box-shadow" : "dashboard-profile-container flex-column align-center justify-center box-shadow"}>
         <div className="profile-section flex-row gap-2r align-center">
           <Avatar size='xl' src={imgSrc}><AvatarBadge boxSize='0.4em' border='none' right='0.25em' bottom='0.2em' outline={'solid 1px white'} bg={'green.500'} /></Avatar>
           <button className={isDark ? "button-style-dark" : 'button-style'} onClick={(e) => handleUploadClick(e)}>
@@ -158,9 +158,9 @@ function ProfileEditable({ user }: { user: UserType }) {
               <AvatarGroup size='md' max={4} marginRight='2rem' >
                 {experiencedWithTechnologies.map(technology => {
                   if (typeof technology == 'string') {
-                    return <Tag>{technology}</Tag>
+                    return <Tag key={technology}>{technology}</Tag>
                   }
-                  return <Avatar src={technology.imageSrc} bg='transparent' border='none' borderRadius='none' scale={0.7} minWidth='fit-content' />
+                  return <Avatar key={technology.name} src={technology.imageSrc} bg='transparent' border='none' borderRadius='none' scale={0.7} minWidth='fit-content' />
                 })}
               </AvatarGroup>
             </div>
@@ -210,11 +210,11 @@ function ProfileEditable({ user }: { user: UserType }) {
                   {mentorPreferences.desiredTechnologies.map(technology => {
                     console.log(technology)
                     if (typeof technology == 'string') {
-                      return <Tag>{technology}</Tag>
+                      return <Tag key={technology}>{technology}</Tag>
                     } else if (technology.imageSrc === '') {
-                      return <Tag>{technology.name}</Tag>
+                      return <Tag key={technology.name}>{technology.name}</Tag>
                     }
-                    return <Avatar src={technology.imageSrc} bg='transparent' border='none' borderRadius='none' scale={0.7} minWidth='fit-content' />
+                    return <Avatar key={technology.name} src={technology.imageSrc} bg='transparent' border='none' borderRadius='none' scale={0.7} minWidth='fit-content' />
                   })}
                 </AvatarGroup>
               </div>
@@ -230,9 +230,9 @@ function ProfileEditable({ user }: { user: UserType }) {
                 <AvatarGroup size='md' max={4} marginRight='2rem' >
                   {menteePreferences.desiredTechnologies.map(technology => {
                     if (typeof technology == 'string') {
-                      return <Tag>{technology}</Tag>
+                      return <Tag key={technology}>{technology}</Tag>
                     }
-                    return <Avatar src={technology.imageSrc} bg='transparent' border='none' borderRadius='none' scale={0.7} minWidth='fit-content' />
+                    return <Avatar key={technology.name} src={technology.imageSrc} bg='transparent' border='none' borderRadius='none' scale={0.7} minWidth='fit-content' />
                   })}
                 </AvatarGroup>
               </div>

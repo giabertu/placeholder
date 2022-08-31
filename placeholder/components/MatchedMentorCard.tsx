@@ -199,9 +199,9 @@ function MatchedUserCard({ matchedUser, handleAddMentor, selectedMentorIds }: { 
             <AvatarGroup size='sm' max={7} marginLeft='0.4rem' >
               {desiredTechnologies.map(technology => {
                 if (typeof technology == 'string') {
-                  return <Tag>{technology}</Tag>
+                  return <Tag key={technology}>{technology}</Tag>
                 }
-                return <Avatar src={technology.imageSrc} bg='transparent' border='none' borderRadius='none' scale={0.7} minWidth='fit-content' />
+                return <Avatar key={technology.name} src={technology.imageSrc} bg='transparent' border='none' borderRadius='none' scale={0.7} minWidth='fit-content' />
               })}
             </AvatarGroup>
           </Flex>
@@ -239,9 +239,9 @@ function MatchedUserCard({ matchedUser, handleAddMentor, selectedMentorIds }: { 
             <AvatarGroup size='sm' max={7} marginLeft='0.4rem' >
               {experiencedWithTechnologies.map(technology => {
                 if (typeof technology == 'string') {
-                  return <Tag>{technology}</Tag>
+                  return <Tag key={technology}>{technology}</Tag>
                 }
-                return <Avatar src={technology.imageSrc} bg='transparent' border='none' borderRadius='none' scale={0.7} minWidth='fit-content' />
+                return <Avatar key={technology.name} src={technology.imageSrc} bg='transparent' border='none' borderRadius='none' scale={0.7} minWidth='fit-content' />
               })}
             </AvatarGroup>
           </Flex>
@@ -267,9 +267,9 @@ function MatchedUserCard({ matchedUser, handleAddMentor, selectedMentorIds }: { 
                 <AvatarGroup size='sm' max={7} marginLeft='0.4rem' >
                   {desiredTechnologies.map(technology => {
                     if (typeof technology == 'string') {
-                      return <Tag>{technology}</Tag>
+                      return <Tag key={technology}>{technology}</Tag>
                     }
-                    return <Avatar src={technology.imageSrc} bg='transparent' border='none' borderRadius='none' scale={0.7} minWidth='fit-content' />
+                    return <Avatar key={technology.name} src={technology.imageSrc} bg='transparent' border='none' borderRadius='none' scale={0.7} minWidth='fit-content' />
                   })}
                 </AvatarGroup>}
             </Flex>
