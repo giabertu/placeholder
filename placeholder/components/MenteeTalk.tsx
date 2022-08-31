@@ -28,21 +28,21 @@ function MenteeTalk({ choices, descriptions }: { choices: string[], descriptions
 
   return (
     <div className="form-container flex-column">
-      <h1 className='title'> I'd like to help my mentee {menteeChoices.length ? getStringifiedArray() : <span className="underline">_______</span>}</h1>
+      <h1 className='title'> I&apos;d like to help my mentee {menteeChoices.length ? getStringifiedArray() : <span className="underline">_______</span>}</h1>
       <h2 className='subtitle'>Choose all that apply</h2>
       <div className="options-container flex-row">
         <div className="choices-container flex-column">
           {choices.map((text: string, index: number) =>
-              <QuestionnaireButton2
-                key={text}
-                text={text}
-                value={text}
-                onClick={(event) => handleButtonClick(event)}
-                onMouseEnter={() => setCurrentSelection(index)}
-                onMouseLeave={() => setCurrentSelection(null)}
-                selected={menteeChoices.includes(text)}
-              />
-              )}
+            <QuestionnaireButton2
+              key={text}
+              text={text}
+              value={text}
+              onClick={(event) => handleButtonClick(event)}
+              onMouseEnter={() => setCurrentSelection(index)}
+              onMouseLeave={() => setCurrentSelection(null)}
+              selected={menteeChoices.includes(text)}
+            />
+          )}
         </div>
         {currentSelection == null ||
           <div className={isDark ? "descriptions-container-dark-mode" : "descriptions-container"}>
