@@ -14,19 +14,19 @@ function Roles({ choices, beginner }: { choices: string[], beginner: boolean }) 
 
   const generateTitleBeginner = function () {
     if (!selectedFields.length) {
-      return <h1 className="title"> &#62; I'm interested in a career as a <span className="underline">____</span> developer.</h1>
+      return <h1 className="title"> &#62; I&apos;m interested in a career as a <span className="underline">____</span> developer.</h1>
     }
     if (selectedFields[0] === "general") {
-      return <h1 className="title"> &#62; I'm interested in a career as a developer.</h1>
+      return <h1 className="title"> &#62; I&apos;m interested in a career as a developer.</h1>
     }
-    return <h1 className="title"> &#62; I'm interested in a career as a {JSON.stringify(selectedFields).replaceAll(",", ", ")} developer.</h1>
+    return <h1 className="title"> &#62; I&apos;m interested in a career as a {JSON.stringify(selectedFields).replaceAll(",", ", ")} developer.</h1>
   }
 
   const generateTitleInt_Adv = function () {
     if (!selectedFields.length) {
-      return <h1 className="title"> &#62; I'd like to get career advice from a <span className="underline">____</span> developer .</h1>
+      return <h1 className="title"> &#62; I&apos;d like to get career advice from a <span className="underline">____</span> developer .</h1>
     }
-    return <h1 className="title"> &#62; I'd like to get career advice from a {JSON.stringify(selectedFields).replaceAll(",", ", ")} developer.</h1>
+    return <h1 className="title"> &#62; I&apos;d like to get career advice from a {JSON.stringify(selectedFields).replaceAll(",", ", ")} developer.</h1>
   }
 
   const isDark = useAppSelector(state => state.darkMode)
