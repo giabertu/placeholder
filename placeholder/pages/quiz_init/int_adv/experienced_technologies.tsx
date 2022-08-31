@@ -38,23 +38,14 @@ function ExperiencedTechnologies() {
       {/* <ProgressBar value={10} /> */}
       <div className={styles.formContainer}>
         <div className={styles.title}>
-          {!technologies.length ? <h1 className={styles.title}> I'm experienced with <span className={styles.underline}>_______</span></h1>
-            : <h1 className={styles.title}> I'm experienced with {JSON.stringify(technologyNames).replaceAll(",", ", ")}</h1>
+          {!technologies.length ? <h1 className={styles.title}> I&apos;m experienced with <span className={styles.underline}>_______</span></h1>
+            : <h1 className={styles.title}> I&apos;m experienced with {JSON.stringify(technologyNames).replaceAll(",", ", ")}</h1>
           }
         </div>
 
-        <h2 className={styles.instruction}>Search for the technologies you're most familiar with, or choose from the list of popular tech / programming fields below:</h2>
+        <h2 className={styles.instruction}>Search for the technologies you&apos;re most familiar with, or choose from the list of popular tech / programming fields below:</h2>
 
         <AutocompleteInput learnOrLearnt='experienced' />
-        {/* <form> */}
-        {/* <span className={styles.terminalArrow}>&gt;</span> */}
-        {/* <InputGroup width='22em' >
-            <InputLeftElement children='>' color={isDark ? 'gray.300' : 'gray.500'}/>
-            <Input variant='outline' placeholder='Type technology here...' color={isDark ? 'gray.300' : 'gray.500'} _placeholder={{color: 'inherit'}} focusBorderColor='gray.500'/>
-          </InputGroup> */}
-        {/* <input className={styles.technologiesSearchInput} type="text" placeholder='Type technology here...'></input> */}
-
-        {/* </form> */}
 
         <div className={styles.logoContainer}>
           {logos.map(technology =>
@@ -63,8 +54,8 @@ function ExperiencedTechnologies() {
 
       </div>
 
-      
-      <QuizNavigationButtons next="quiz_init/int_adv/purpose" canProceed={Boolean(technologies.length)} progressValue={30}/>
+
+      <QuizNavigationButtons next="quiz_init/int_adv/purpose" canProceed={Boolean(technologies.length)} progressValue={30} />
 
     </div>
   )
