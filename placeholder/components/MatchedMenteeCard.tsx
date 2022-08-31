@@ -235,7 +235,7 @@ function MatchedUserCard({ matchedUser, handleAddMentee, selectedMenteeIds }: { 
               {desiredCareers.includes("general") ? <Icon as={BiQuestionMark} h={6} w={6} mr={2} /> : <Icon as={ImBubbles3} h={6} w={6} mr={2} />}
 
               <chakra.h3 px={2} fontSize="sm" fontWeight="hairline">
-                {desiredCareers.includes("general") ? <Box><Text display="inline" fontWeight="extrabold">Unsure</Text><Text display="inline"> about what kind of developer they'd like to speak to</Text></Box> : "Wants to know more about " + matchedUser.user.custom_json.mentorPreferences.desiredCareers.toString().replaceAll(",", ", ") + " careers"}
+                {desiredCareers.includes("general") ? <Box><Text display="inline" fontWeight="extrabold">Unsure</Text><Text display="inline"> about what kind of developer they&apos;d like to speak to</Text></Box> : "Wants to know more about " + matchedUser.user.custom_json.mentorPreferences.desiredCareers.toString().replaceAll(",", ", ") + " careers"}
               </chakra.h3>
             </Flex>
           }
@@ -252,8 +252,8 @@ function MatchedUserCard({ matchedUser, handleAddMentee, selectedMenteeIds }: { 
             {/* <Button leftIcon={<IoSendSharp />} colorScheme='cyan' variant='outline'>
           Message now
         </Button> */}
-            <Button leftIcon={ selectedMenteeIds.includes(userId) ? <GiPartyPopper /> : <IoAddSharp />} style={{cursor: "pointer", transition: 'color 0.4s ease-out, background-color 0.4s ease-out'}} colorScheme={ selectedMenteeIds.includes(userId) ? "whatsapp" : 'cyan'} variant='outline' onClick={() => handleAddMentee(matchedUser)}>
-             {selectedMenteeIds.includes(userId) ? "Mentee added!" : "Add mentee"}
+            <Button leftIcon={selectedMenteeIds.includes(userId) ? <GiPartyPopper /> : <IoAddSharp />} style={{ cursor: "pointer", transition: 'color 0.4s ease-out, background-color 0.4s ease-out' }} colorScheme={selectedMenteeIds.includes(userId) ? "whatsapp" : 'cyan'} variant='outline' onClick={() => handleAddMentee(matchedUser)}>
+              {selectedMenteeIds.includes(userId) ? "Mentee added!" : "Add mentee"}
             </Button>
           </Flex>
         </Box>
