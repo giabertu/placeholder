@@ -26,7 +26,7 @@ function DashboardMatches({ user, mentorsProfiles, menteesProfiles }: { user: Us
             {mentorsProfiles.length > 0 &&
               mentorsProfiles.map(mentor => {
                 console.log('Mentor: ', mentor)
-                return <div className={isDark ? "white-shadow" : ''}>
+                return <div key={mentor.user.secret} className={isDark ? "white-shadow" : ''}>
                   <DashboardMentorProfile profile={mentor} />
                 </div>
               })
@@ -45,7 +45,7 @@ function DashboardMatches({ user, mentorsProfiles, menteesProfiles }: { user: Us
           <div className="flex-row gap-2r justify-center">
             {menteesProfiles.length > 0 &&
               menteesProfiles.map(mentee => {
-                return <div className={isDark ? "white-shadow" : ''}>
+                return <div key={mentee.user.secret} className={isDark ? "white-shadow" : ''}>
                   <DashboardMenteeProfile profile={mentee} />
                 </div>
               })
