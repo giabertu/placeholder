@@ -8,7 +8,7 @@ import { logos } from "../../../utils/logos";
 import { useAppSelector, useAppDispatch } from '../../../redux/hooks';
 import QuestionnaireButton from '../../../components/QuestionnaireButton';
 import { toggleDesiredTechnologies } from '../../../redux/slices/mentorPreferencesSlice';
-import { Input, InputGroup, InputLeftAddon, InputLeftElement} from '@chakra-ui/react';
+import { Input, InputGroup, InputLeftAddon, InputLeftElement } from '@chakra-ui/react';
 import AutocompleteInput from '../../../components/AutocompleteInput';
 
 
@@ -20,10 +20,10 @@ function WhichTechnologies() {
   const technologyNames = technologies.map((techObj) => {
     if (typeof techObj !== "string") return techObj.name;
   });
- 
+
   const isDark = useAppSelector(state => state.darkMode)
-  
-  
+
+
 
 
   const handleButtonClick = function (event: React.MouseEvent<HTMLButtonElement>) {
@@ -44,7 +44,7 @@ function WhichTechnologies() {
 
   return (
     <div className={styles.container}>
-      <Navbar progressValue={50} prevValue={30}/>
+      <Navbar progressValue={50} prevValue={30} />
       {/* <ProgressBar value={10} /> */}
       <div className={styles.formContainer}>
         <div className={styles.title}>
@@ -57,16 +57,6 @@ function WhichTechnologies() {
         <h2 className={styles.instruction}>Search for the technologies you wish to learn, or choose from the list of popular tech / programming fields below:</h2>
 
         <AutocompleteInput learnOrLearnt='to learn' />
-        {/* <Autocomplete /> */}
-        {/* <form> */}
-        {/* <span className={styles.terminalArrow}>&gt;</span> */}
-        {/* <InputGroup width='22em' >
-            <InputLeftElement children='>' color={isDark ? 'gray.300' : 'gray.500'} />
-            <Input variant='outline' placeholder='Type technology here...' color={isDark ? 'gray.300' : 'gray.500'} _placeholder={{ color: 'inherit' }} focusBorderColor='gray.500' />
-          </InputGroup> */}
-        {/* <input className={styles.technologiesSearchInput} type="text" placeholder='Type technology here...'></input> */}
-
-        {/* </form> */}
 
         <div className={styles.logoContainer}>
           {logos.map(technology =>
@@ -79,7 +69,7 @@ function WhichTechnologies() {
 
       </div>
 
-      
+
       <QuizNavigationButtons next={`quiz_init/${route}`} canProceed={Boolean(technologies.length)} progressValue={50} />
 
     </div>
