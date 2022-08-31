@@ -296,9 +296,9 @@ function CompleteProfile() {
                     <AvatarGroup size='md' max={4} marginRight='2rem' >
                       {menteePreferences.desiredTechnologies.map(technology => {
                         if (technology.imageSrc === '') {
-                          return <Tag>{technology.name}</Tag>
+                          return <Tag key={technology.name}>{technology.name}</Tag>
                         }
-                        return <Avatar src={technology.imageSrc} bg='transparent' border='none' borderRadius='none' scale={0.7} minWidth='fit-content' />
+                        return <Avatar key={technology.name} src={technology.imageSrc} bg='transparent' border='none' borderRadius='none' scale={0.7} minWidth='fit-content' />
                       })}
                     </AvatarGroup>
                   </div>
@@ -312,7 +312,7 @@ function CompleteProfile() {
                   <label className="profile-input-label">Career interests </label>
                   <Wrap spacing={2} justify={'flex-end'}>
                     {desiredCareers.map((career) =>
-                      <WrapItem>
+                      <WrapItem >
                         <Tag key={career} size='md' colorScheme='gray' borderRadius='full'>
                           {career[0].toUpperCase() + career.substring(1)}
                         </Tag>
