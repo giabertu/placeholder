@@ -48,9 +48,9 @@ function WhichTechnologies() {
       {/* <ProgressBar value={10} /> */}
       <div className={styles.formContainer}>
         <div className={styles.title}>
-          {!technologies.length ? <h1 className={styles.title}> I'd like to become a better <span className={styles.underline}>_______</span> developer</h1>
-            : technologies[0] === "general" ? <h1 className={styles.title}> I'd like to become a better developer</h1>
-              : <h1 className={styles.title}> I'd like to become a better {JSON.stringify(technologyNames).replaceAll(",", ", ")} developer</h1>
+          {!technologies.length ? <h1 className={styles.title}> I&apos;d like to become a better <span className={styles.underline}>_______</span> developer</h1>
+            : technologies[0] === "general" ? <h1 className={styles.title}> I&apos;d like to become a better developer</h1>
+              : <h1 className={styles.title}> I&apos;d like to become a better {JSON.stringify(technologyNames).replaceAll(",", ", ")} developer</h1>
           }
         </div>
 
