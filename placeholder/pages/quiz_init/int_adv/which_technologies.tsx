@@ -21,7 +21,7 @@ function WhichTechnologies() {
     if (typeof techObj !== "string") return techObj.name;
   });
 
-  
+
 
   const handleButtonClick = function (event: React.MouseEvent<HTMLButtonElement>) {
     const technology = event.currentTarget.value;
@@ -44,22 +44,22 @@ function WhichTechnologies() {
       <Navbar progressValue={80} prevValue={70} />
       <div className={styles.formContainer}>
         <div className={styles.title}>
-          {!technologies.length ? <h1 className={styles.title}> I'd like to become a better <span className={styles.underline}>_______</span> developer</h1>
-            : technologies[0] === "general" ? <h1 className={styles.title}> I'd like to become a better developer</h1>
-              : <h1 className={styles.title}> I'd like to become a better {JSON.stringify(technologyNames).replaceAll(",", ", ")} developer</h1>
+          {!technologies.length ? <h1 className={styles.title}> I&apos;d like to become a better <span className={styles.underline}>_______</span> developer</h1>
+            : technologies[0] === "general" ? <h1 className={styles.title}> I&apos;d like to become a better developer</h1>
+              : <h1 className={styles.title}> I&apos;d like to become a better {JSON.stringify(technologyNames).replaceAll(",", ", ")} developer</h1>
           }
         </div>
 
         <h2 className={styles.instruction}>Search for the technologies you wish to improve in, or choose from the list of popular tech / programming fields below:</h2>
 
-        <AutocompleteInput learnOrLearnt='to learn'/>
+        <AutocompleteInput learnOrLearnt='to learn' />
         {/* <form> */}
-          {/* <span className={styles.terminalArrow}>&gt;</span> */}
-          {/* <InputGroup width='22em' >
+        {/* <span className={styles.terminalArrow}>&gt;</span> */}
+        {/* <InputGroup width='22em' >
             <InputLeftElement children='>' color={isDark ? 'gray.300' : 'gray.500'} />
             <Input variant='outline' placeholder='Type technology here...' color={isDark ? 'gray.300' : 'gray.500'} _placeholder={{ color: 'inherit' }} focusBorderColor='gray.500' />
           </InputGroup> */}
-          {/* <input className={styles.technologiesSearchInput} type="text" placeholder='Type technology here...'></input> */}
+        {/* <input className={styles.technologiesSearchInput} type="text" placeholder='Type technology here...'></input> */}
 
         {/* </form> */}
 
@@ -69,9 +69,9 @@ function WhichTechnologies() {
         </div>
 
       </div>
-      <QuizNavigationButtons next={`quiz_init/${route}`} canProceed={Boolean(technologies.length)} progressValue={80}/>
+      <QuizNavigationButtons next={`quiz_init/${route}`} canProceed={Boolean(technologies.length)} progressValue={80} />
 
-      
+
 
     </div>
   )
