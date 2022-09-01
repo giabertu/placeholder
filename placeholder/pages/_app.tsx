@@ -1,7 +1,7 @@
 import '../styles/globals.css'
 import '../styles/MentorTalk.css'
 import '../styles/utilityClasses.css'
-import '../styles/components/QuizNavigationButtons.css'
+import '../styles/Components/QuizNavigationButtons.css'
 import '../styles/SignIn.css'
 import '../styles/IconMessage.css'
 import '../styles/dashboard.css'

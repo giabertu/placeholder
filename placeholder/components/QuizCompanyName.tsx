@@ -1,4 +1,4 @@
-import styles from '../styles/components/Navbar.module.css'
+import styles from '../styles/Components/Navbar.module.css'
 
 function QuizCompanyName() {
   return (
