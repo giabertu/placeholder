@@ -10,7 +10,8 @@ import { Canvas } from '@react-three/fiber';
 import { OrbitControls, PresentationControls, TransformControls } from '@react-three/drei';
 import { RetroWindows } from '../components/models/RetroWindows'
 import ColorModeToggle from '../components/ColorModeToggle';
-import { useAppSelector } from '../redux/hooks';
+import { useAppDispatch, useAppSelector } from '../redux/hooks';
+import { setDarkMode } from '../redux/slices/darkModeSlice';
 
 
 // import techData from "../utils/autocompleteTermsGenerator"
@@ -29,10 +30,12 @@ const Home: NextPage = () => {
   const [enteringEmail, setEnteringEmail] = useState(false);
   const [enteringPassword, setEnteringPassword] = useState(false);
   let isDark = useAppSelector(state => state.darkMode)
+  const dispatch = useAppDispatch();
 
   if (typeof window !== 'undefined') {
     const theme = window.localStorage.getItem('chakra-ui-color-mode');
-    isDark = theme === 'dark' ? true : false;
+    isDark = theme === 'dark';
+    dispatch(setDarkMode(isDark));
   }
 
   // automate focus on user input during page load (autoFocus unreliable in React)
