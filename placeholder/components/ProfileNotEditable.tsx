@@ -81,8 +81,8 @@ function ProfileNotEditable({ user, chatEngineUser }: { user: UserType, chatEngi
               <label className="profile-input-label">Mentor Topics</label>
               <Wrap spacing={2} justify={'flex-end'}>
                 {mentorPreferences.desiredCategories.map((category) =>
-                  <WrapItem>
-                    <Tag key={category} size='lg' colorScheme='gray' borderRadius='full'>
+                  <WrapItem key={category}>
+                    <Tag size='lg' colorScheme='gray' borderRadius='full'>
                       {category[0].toUpperCase() + category.substring(1)}
                     </Tag>
                   </WrapItem>
@@ -98,8 +98,8 @@ function ProfileNotEditable({ user, chatEngineUser }: { user: UserType, chatEngi
               <label className="profile-input-label">Mentee Topics</label>
               <Wrap spacing={2} justify={'flex-end'}>
                 {menteePreferences.desiredCategories.map((category) =>
-                  <WrapItem>
-                    <Tag key={category} size='lg' colorScheme='gray' borderRadius='full'>
+                  <WrapItem key={category}>
+                    <Tag size='lg' colorScheme='gray' borderRadius='full'>
                       {category[0].toUpperCase() + category.substring(1)}
                     </Tag>
                   </WrapItem>
@@ -154,8 +154,8 @@ function ProfileNotEditable({ user, chatEngineUser }: { user: UserType, chatEngi
               <label className="profile-input-label">Career interests </label>
               <Wrap spacing={2} justify={'flex-end'}>
                 {mentorPreferences.desiredCareers.map((career) =>
-                  <WrapItem>
-                    <Tag key={career} size='md' colorScheme='gray' borderRadius='full'>
+                  <WrapItem key={category}>
+                    <Tag size='md' colorScheme='gray' borderRadius='full'>
                       {career[0].toUpperCase() + career.substring(1)}
                     </Tag>
                   </WrapItem>
