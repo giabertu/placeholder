@@ -24,3 +24,5 @@
 
 // export const { setUsername, setSecret} = registeredUserSlice.actions;
 // export default registeredUserSlice.reducer;
+
+export const registeredUser = null;
