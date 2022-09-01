@@ -31,7 +31,7 @@ export default function teach_which_technologies() {
 
         <div className={styles.tagContainer}>
           {experiencedWithTechnologies.map((technology) => (
-            <TechTag technology={technology} />
+            <TechTag key={technology.name} technology={technology} />
           ))}
         </div>
 
