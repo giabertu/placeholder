@@ -154,7 +154,7 @@ function ProfileNotEditable({ user, chatEngineUser }: { user: UserType, chatEngi
               <label className="profile-input-label">Career interests </label>
               <Wrap spacing={2} justify={'flex-end'}>
                 {mentorPreferences.desiredCareers.map((career) =>
-                  <WrapItem key={category}>
+                  <WrapItem key={career}>
                     <Tag size='md' colorScheme='gray' borderRadius='full'>
                       {career[0].toUpperCase() + career.substring(1)}
                     </Tag>
