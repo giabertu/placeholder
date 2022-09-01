@@ -26,16 +26,18 @@ const Home: NextPage = () => {
   if (session) router.push("/dashboard")
 
 
+  const dispatch = useAppDispatch();
   const [extraTerminalLines, setExtraTerminalLines] = useState<string[]>([]);
   const [enteringEmail, setEnteringEmail] = useState(false);
   const [enteringPassword, setEnteringPassword] = useState(false);
-  let isDark = useAppSelector(state => state.darkMode)
-  const dispatch = useAppDispatch();
+  const isDark = useAppSelector(state => state.darkMode)
 
   if (typeof window !== 'undefined') {
     const theme = window.localStorage.getItem('chakra-ui-color-mode');
-    isDark = theme === 'dark';
-    dispatch(setDarkMode(isDark));
+    console.log('Here is the theme in local storage: ', theme);
+    const newMode = theme === 'dark';
+    console.log('Here is the new isDark: ', newMode)
+    dispatch(setDarkMode(newMode));
   }
 
   // automate focus on user input during page load (autoFocus unreliable in React)
