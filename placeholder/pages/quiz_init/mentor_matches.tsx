@@ -31,20 +31,29 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   //@ts-ignore
   const user = await UserApi.getOneUser(session.user.email)
   console.log('Here is the user inside the server: ', user)
-  console.log('Here are the mentors: ', user.custom_json.mentors)
-  const matchedUsersInfo = await Promise.all(user.custom_json.mentors.map(async (match) => {
+  if (typeof user !== 'boolean') {
+    console.log('Here are the mentors: ', user.custom_json.mentors)
+    const matchedUsersInfo = await Promise.all(user.custom_json.mentors.map(async (match) => {
+      return {
+        user: match,
+        //@ts-ignore
+        chatEngineUser: await ChatEngineApi.getChatEngineUser({ username: match.username, secret: match.secret })
+      }
+    }));
     return {
-      user: match,
-      //@ts-ignore
-      chatEngineUser: await ChatEngineApi.getChatEngineUser({ username: match.username, secret: match.secret })
+      props: {
+        matchedUsersInfo,
+        currentUser: user
+      }
+    };
+  } else {
+    return {
+      redirect: {
+        destination: '/',
+        permanent: false,
+      }
     }
-  }));
-  return {
-    props: {
-      matchedUsersInfo,
-      currentUser: user
-    }
-  };
+  }
 }
 
 function Matches({ matchedUsersInfo, currentUser }: { matchedUsersInfo: { user: UserType, chatEngineUser: ChatEngineUser }[], currentUser: UserType }) {
@@ -105,7 +114,7 @@ function Matches({ matchedUsersInfo, currentUser }: { matchedUsersInfo: { user: 
               .start();
           }}
         /> */}
-      <Splide hasTrack={false} style={{marginTop: "6rem", backgroundColor: "transparent", padding: "2rem 0.5rem"  }} aria-label="..." options={{
+      <Splide hasTrack={false} style={{ marginTop: "6rem", backgroundColor: "transparent", padding: "2rem 0.5rem" }} aria-label="..." options={{
         width: "75vw",
         // fixedWidth: "70vw",
       }}>
