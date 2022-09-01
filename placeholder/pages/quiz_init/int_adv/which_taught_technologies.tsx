@@ -19,11 +19,11 @@ export default function teach_which_technologies() {
 
   return (
     <div className={styles.container}>
-      <Navbar progressValue={60} prevValue={50}/>
+      <Navbar progressValue={60} prevValue={50} />
       <div className={styles.formContainer}>
         <div className={styles.title}>
-          {!selectedTechnologies.length ? <h1 className={styles.title}> I'd like to be a <span className={styles.underline}>_______</span> mentor</h1>
-            : <h1 className={styles.title}> I'd like to be a {JSON.stringify(technologyNames).replaceAll(",", ", ")} mentor </h1>
+          {!selectedTechnologies.length ? <h1 className={styles.title}> I&apos;d like to be a <span className={styles.underline}>_______</span> mentor</h1>
+            : <h1 className={styles.title}> I&apos;d like to be a {JSON.stringify(technologyNames).replaceAll(",", ", ")} mentor </h1>
           }
         </div>
         <h2 className={styles.instruction}>From the technologies you have experience with, select those which you wish to help your mentees with:</h2>
@@ -31,12 +31,12 @@ export default function teach_which_technologies() {
 
         <div className={styles.tagContainer}>
           {experiencedWithTechnologies.map((technology) => (
-            <TechTag technology={technology}/>
+            <TechTag technology={technology} />
           ))}
         </div>
 
       </div>
-      <QuizNavigationButtons next={`quiz_init/${route}`} canProceed={Boolean(selectedTechnologies.length)} progressValue={60}/>
+      <QuizNavigationButtons next={`quiz_init/${route}`} canProceed={Boolean(selectedTechnologies.length)} progressValue={60} />
 
     </div>
   )
