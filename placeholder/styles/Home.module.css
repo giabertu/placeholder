@@ -54,7 +54,7 @@
 
 .input::placeholder {
   text-align: left;
-  color: white
+  color: black
 }
 
 
@@ -73,7 +73,7 @@
 
 .inputDark::placeholder {
   text-align: left;
-  color: black
+  color: white
 }
 
 .inputDark:focus {
