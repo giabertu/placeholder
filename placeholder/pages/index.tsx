@@ -28,7 +28,12 @@ const Home: NextPage = () => {
   const [extraTerminalLines, setExtraTerminalLines] = useState<string[]>([]);
   const [enteringEmail, setEnteringEmail] = useState(false);
   const [enteringPassword, setEnteringPassword] = useState(false);
-  const isDark = useAppSelector(state => state.darkMode)
+  let isDark = useAppSelector(state => state.darkMode)
+
+  if (typeof window !== 'undefined') {
+    const theme = window.localStorage.getItem('chakra-ui-color-mode');
+    isDark = theme === 'dark' ? true : false;
+  }
 
   // automate focus on user input during page load (autoFocus unreliable in React)
   const inputElementRef = useRef<HTMLInputElement>(null);
