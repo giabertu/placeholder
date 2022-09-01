@@ -1,7 +1,7 @@
 import { MultiChatWindow, useMultiChatLogic, MultiChatSocket, ChatCardProps, ChatHeaderProps, PeopleSettings } from 'react-chat-engine-advanced'
 
 import Navbar from './Navbar';
-import styles from '../../styles/chat.module.css'
+import styles from '../styles/chat.module.css'
 import { current } from '@reduxjs/toolkit';
 import { GetServerSideProps } from 'next';
 import { unstable_getServerSession } from 'next-auth';
