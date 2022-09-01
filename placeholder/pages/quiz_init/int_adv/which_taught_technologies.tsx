@@ -1,15 +1,12 @@
 import React from "react";
 import styles from "../../../styles/which_technologies.module.css";
-import { Tag, TagLabel, TagLeftIcon, TagRightIcon, TagCloseButton, HStack } from "@chakra-ui/react"
 import Navbar from "../../../components/Navbar";
-import { useAppDispatch, useAppSelector } from "../../../redux/hooks";
-import { AddIcon } from "@chakra-ui/icons";
+import { useAppSelector } from "../../../redux/hooks";
 import TechTag from "../../../components/TechTag";
 import QuizNavigationButtons from "../../../components/QuizNavigationButtons";
 
-export default function teach_which_technologies() {
+export default function WhichTaughtTechnologies() {
 
-  const dispatch = useAppDispatch();
   const experiencedWithTechnologies = useAppSelector((state) => state.userInfo.experiencedWithTechnologies);
   const selectedTechnologies = useAppSelector((state) => state.menteePreferences.desiredTechnologies);
   const userPurpose = useAppSelector((state) => state.userInfo.purpose);
