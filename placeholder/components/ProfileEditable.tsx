@@ -173,8 +173,8 @@ function ProfileEditable({ user }: { user: UserType }) {
               <label className="profile-input-label">Mentor Topics</label>
               <Wrap spacing={2} justify={'flex-end'}>
                 {mentorPreferences.desiredCategories.map((category) =>
-                  <WrapItem>
-                    <Tag key={category} size='lg' colorScheme='gray' borderRadius='full'>
+                  <WrapItem key={category}>
+                    <Tag size='lg' colorScheme='gray' borderRadius='full'>
                       {category[0].toUpperCase() + category.substring(1)}
                     </Tag>
                   </WrapItem>
