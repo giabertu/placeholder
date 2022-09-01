@@ -37,19 +37,27 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   console.log('Here is the user inside the server: ', user)
 
   // const matches = await MatchService.getFirstNMentees(user, 5)
-  const matchedUsersInfo = await Promise.all(user.custom_json.mentees.map(async (match) => {
+  if (typeof user !== 'boolean') {
+    const matchedUsersInfo = await Promise.all(user.custom_json.mentees.map(async (match) => {
+      return {
+        user: match,
+        //@ts-ignore
+        chatEngineUser: await ChatEngineApi.getChatEngineUser({ username: match.username, secret: match.secret })
+      }
+    }));
     return {
-      user: match,
-      //@ts-ignore
-      chatEngineUser: await ChatEngineApi.getChatEngineUser({ username: match.username, secret: match.secret })
-    }
-  }));
+      props: {
+        matchedUsersInfo,
+        currentUser: user
+      }
+    };
+  }
   return {
-    props: {
-      matchedUsersInfo,
-      currentUser: user
+    redirect: {
+      destination: '/',
+      permanent: false,
     }
-  };
+  }
 }
 
 function Matches({ matchedUsersInfo, currentUser }: { matchedUsersInfo: { user: UserType, chatEngineUser: ChatEngineUser }[], currentUser: UserType }) {
