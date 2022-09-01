@@ -1,19 +1,19 @@
 import { MultiChatWindow, useMultiChatLogic, MultiChatSocket, ChatCardProps, ChatHeaderProps, PeopleSettings } from 'react-chat-engine-advanced'
 
-import Navbar from '../../components/Navbar';
+import Navbar from './Navbar';
 import styles from '../../styles/chat.module.css'
 import { current } from '@reduxjs/toolkit';
 import { GetServerSideProps } from 'next';
 import { unstable_getServerSession } from 'next-auth';
 import React from 'react';
 
-import { UserType } from '../../lib/models/User';
-import UserApi from '../../services/UserApi';
-import { authOptions } from '../api/auth/[...nextauth]';
-import CustomChatCard from '../../components/ChatCard';
-import UserSearch from '../../components/UserSearch';
-import ChatHeader from '../../components/ChatHeader';
-import MatchesList from '../../components/ChatForm';
+import { UserType } from '../lib/models/User';
+import UserApi from '../services/UserApi';
+import { authOptions } from '../pages/api/auth/[...nextauth]';
+import CustomChatCard from './ChatCard';
+import UserSearch from './UserSearch';
+import ChatHeader from './ChatHeader';
+import MatchesList from './ChatForm';
 
 
 
