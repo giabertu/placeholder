@@ -1,9 +1,8 @@
-import React, { useState } from "react"
+import React from "react"
 import styles from "../styles/TechLogo.module.css"
-import { Tooltip} from '@chakra-ui/react'
+import { Tooltip } from '@chakra-ui/react'
 
 import { useAppSelector } from "../redux/hooks";
-import { StaticImageData } from "next/image";
 
 type PropType = {
   imgSrc: string,
@@ -14,7 +13,11 @@ type PropType = {
 
 function TechLogo({ imgSrc, value, onClick, toLearn }: PropType) {
 
-  const selectedTechnologies = toLearn ? useAppSelector((state) => state.mentorPreferences.desiredTechnologies) : useAppSelector((state) => state.userInfo.experiencedWithTechnologies);
+  const desiredTechnologies = useAppSelector(state => state.mentorPreferences.desiredTechnologies)
+  const experiencedWithTechnologies = useAppSelector(state => state.userInfo.experiencedWithTechnologies);
+
+  const selectedTechnologies = toLearn ? desiredTechnologies : experiencedWithTechnologies;
+
   const selected = selectedTechnologies.some((techObj) => typeof techObj !== "string" && techObj.name === value[0]);
   const isDark = useAppSelector(state => state.darkMode)
 

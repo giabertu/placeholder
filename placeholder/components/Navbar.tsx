@@ -14,7 +14,6 @@ function Navbar({ progressValue, prevValue }: { progressValue?: number, prevValu
     const item = localStorage.getItem('chakra-ui-color-mode');
     const isDarkActive = item === 'dark' ? true : false;
     dispatch(setDarkMode(isDarkActive))
-
   }
   const { colorMode } = useColorMode();
   const isDark = colorMode === 'dark';
