@@ -11,20 +11,19 @@ import { CgProfile } from "react-icons/cg";
 import { signOut } from "next-auth/react";
 
 
-export default function DashboardNavbar({ progressValue, prevValue, setCurrent }: { progressValue?: number, prevValue?: number, setCurrent: any }) {
+function DashboardNavbar({ progressValue, prevValue, setCurrent }: { progressValue?: number, prevValue?: number, setCurrent: any }) {
+
+  const dispatch = useAppDispatch();
 
   if (typeof window !== 'undefined') {
     const item = localStorage.getItem('chakra-ui-color-mode');
     const isDarkActive = item === 'dark' ? true : false;
-    const dispatch = useAppDispatch();
     dispatch(setDarkMode(isDarkActive))
 
   }
+
   const { colorMode } = useColorMode();
-
   const isDark = colorMode === 'dark';
-
-
 
   return (
     <div className={isDark ? styles.flexboxDarkMode : styles.flexbox}>
@@ -41,3 +40,5 @@ export default function DashboardNavbar({ progressValue, prevValue, setCurrent }
     </div>
   )
 }
+
+export default DashboardNavbar;
