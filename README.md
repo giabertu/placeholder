@@ -2,7 +2,7 @@
   <img src="https://res.cloudinary.com/gianni-bertuzzi/image/upload/v1662112401/Picture_1_izvu0m.png" alt="drawing" width="400"/>
 </div>
 
-# Placeholder.io
+# [Placeholder.io](https://placeholder.codes)
 
 Placeholder.io is an online platform specifically designed for software developers to find 
 mentors/mentees. 
