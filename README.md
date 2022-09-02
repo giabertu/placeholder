@@ -14,7 +14,7 @@ We’ve tried to create an aesthetic and UI which makes it clear that this is a 
 
 ## Demo
 
-Insert gif or link to demo
+<img src="./placeholder/public/homepage.gif" alt="drawing" width="400"/>
 
 
 ## Tech Stack
