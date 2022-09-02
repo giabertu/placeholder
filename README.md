@@ -16,9 +16,9 @@ We’ve tried to create an aesthetic and UI which makes it clear that this is a 
 
 <div>
   <p align="left">
-    <img src="./placeholder/public/homepage.gif" alt="drawing" width="300"/>
-    <img src="./placeholder/public/questionnaire.gif" alt="drawing" width="300"/>
-    <img src="./placeholder/public/matches.gif" alt="drawing" width="300"/>
+    <img src="./placeholder/public/homepage.gif" alt="drawing" width="270"/>
+    <img src="./placeholder/public/questionnaire.gif" alt="drawing" width="270"/>
+    <img src="./placeholder/public/matches.gif" alt="drawing" width="270"/>
   </p>
 </div>
 
@@ -33,7 +33,7 @@ We’ve tried to create an aesthetic and UI which makes it clear that this is a 
 
 To run the app locally, please make sure that you have [node.js](https://nodejs.dev/) installed, then use the following commands:
 
-> Note: you will need to add environment variables to a .env file ([see below](https://github.com/giabertu/placeholder/main/README.md#environment-variables))
+> Note: you will need to add environment variables to a .env file ([see below](https://github.com/giabertu/placeholder#environment-variables))
 
 Clone the project
 
