@@ -14,8 +14,13 @@ We’ve tried to create an aesthetic and UI which makes it clear that this is a 
 
 ## Demo
 
-<img src="./placeholder/public/homepage.gif" alt="drawing" width="400"/>
-
+<div>
+  <p align="left">
+    <img src="./placeholder/public/homepage.gif" alt="drawing" width="300"/>
+    <img src="./placeholder/public/questionnaire.gif" alt="drawing" width="300"/>
+    <img src="./placeholder/public/matches.gif" alt="drawing" width="300"/>
+  </p>
+</div>
 
 ## Tech Stack
 
